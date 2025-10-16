@@ -1,106 +1,204 @@
 ---
-import { Image } from 'astro:assets';
-import { Mail, MapPin, Facebook, Instagram, Youtube,Linkedin } from '@lucide/astro'
+import { Image } from "astro:assets";
+import {
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Youtube,
+  Linkedin,
+} from "@lucide/astro";
 
-import logoUnagBlanco from '@assets/img/logo-unag-blanco.png';
-import LinkUnderline from '@/components/astro/link-underline.astro';
-
-
+import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
+import hojaDesenfocada from "@assets/img/hojas/hoja-desenfocada.webp";
+import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
+import LinkUnderline from "@/components/astro/link-underline.astro";
 ---
 
-<section class="text-[12px] h-screen">
-    <footer class="relative overflow-hidden bg-unag-dark-green text-white p-4 text-center h-auto lg:h-screen p-15">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 justify-items-center">
-            <div class="w-full h-50 justify-items-start">
-                <Image class="w-70 lg:w-50" src={logoUnagBlanco} alt="UNAG Logo" />
-                <div class="mt-5">
-                    <p class="flex gap-2"><Mail size={20}/> info@unag.edu.hn</p>
-                    <p class="flex gap-2 mt-2"><MapPin size={20}/> Catacamas, Olancho</p>
-                </div>
-                <div class="flex mt-5 gap-3 scale-75 origin-left">
-                    <a class="bg-unag-green rounded-full p-2" href=""><Facebook /></a>
-                    <a class="bg-unag-green rounded-full p-2" href=""><Instagram /></a>
-                    <a class="bg-unag-green rounded-full p-2" href=""><Youtube /></a>
-                    <a class="bg-unag-green rounded-full p-2" href=""><Linkedin /></a>
-                </div>
-            </div>
-            <div class="w-full h-fit mt-5 lg:mt-0">
-                <h2 class="text-start p-1 border-b-3 border-unag-green font-bold font-bold">Carreras</h2>
-                <ul class="mt-5 text-start space-y-1">
-                  <li>
-                    <LinkUnderline href="">Ingeniería Agronómica</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Ingeniería en Gestión Integral de los Recursos Naturales</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Ingeniería en Tecnología Alimentaria</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Medicina Veterinaria</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Ingeniería en Zootecnia</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Administración de Empresas Agropecuarias</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Licenciatura en Economía Social Agraria</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Ingeniería en Agroexportación</LinkUnderline>
-                  </li>
-                </ul>
-            </div>
-            <div class="w-full h-fit">
-                <h2 class="text-start p-1 border-b-3 border-unag-green font-bold">Admisiones</h2>
-                <ul class="mt-5 text-start space-y-1">
-                  <li>
-                    <LinkUnderline href="">Tercer proceso de admisión mediante la UNAG 2026 (Presencial)</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Requisitos para ingresar a la Universidad Nacional de Agricultura</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Requisitos para participar en los procesos de admisión</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Preguntas recurrentes</LinkUnderline>
-                  </li>
-                </ul>
-            </div>
-            <div class="w-full h-fit">
-                <h2 class="text-start p-1 border-b-3 border-unag-green font-bold">ERP</h2>
-                <ul class="mt-5 text-start space-y-1">
-                  <li>
-                    <LinkUnderline href="">Ingresar</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Campus Virtual</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">Sistema de Educación a Distancia</LinkUnderline>
-                  </li>
-                  <li>
-                    <LinkUnderline href="">SysUNAG</LinkUnderline>
-                  </li>
-                </ul>
-            </div>
-        </div>
+<section class="text-[12px] h-auto relative">
+  <div class="absolute bg-unag-yellow w-50 h-40 z-1"></div>
 
-        <div class="flex justify-center mt-15">
-            <p class="mt-10">©2025 Universidad Nacional de Agricultura - Todos los derechos reservados. <br> <a class="text-unag-light-green" href="https://setic.unag.edu.hn" target="_blank">Secretaría de Tecnologías de la Información y Comunicación (SETIC)</a></p>
-        </div>
+  <div id="hojas-footer" class="overflow-hidden">
+    <div
+      class="absolute z-1 bottom-10 lg:translate-y-0 lg:bottom-10 -translate-x-10 select-none"
+    >
+      <Image
+        class="w-40 lg:w-65"
+        loading="lazy"
+        src={hojaDesenfocada}
+        alt="UNAG Logo"
+        aria-hidden="true"
+        decoding="async"
+        fetchpriority="low"
+      />
+    </div>
+    <div class="absolute z-1 right-0 lg:right-10 translate-x-10 select-none">
+      <Image
+        class="w-40 lg:w-40"
+        loading="lazy"
+        src={hojaDesencadda02}
+        alt="UNAG Logo"
+        aria-hidden="true"
+        decoding="async"
+        fetchpriority="low"
+      />
+    </div>
+    <div
+      class="absolute z-1 right-10 bottom-100 lg:bottom-60 translate-x-10 rotate-90"
+    >
+      <Image
+        class="w-25 lg:w-25"
+        loading="lazy"
+        src={hojaDesenfocada}
+        alt="UNAG Logo"
+        aria-hidden="true"
+        decoding="async"
+        fetchpriority="low"
+      />
+    </div>
+  </div>
 
-        <div class="relative pointer-events-none select-none h-[280px] lg:h-[360px]">
-          <h1 class="absolute right-[-40px] bottom-0 translate-y-[40%] font-black italic text-[180px] leading-none">
-            APRENDER
-          </h1>
-          <h1 class="absolute right-[-40px] bottom-0 translate-y-[120%] font-black text-unag-green italic text-[180px] leading-none">
-            HACIENDO
-          </h1>
+  <footer
+    class="relative overflow-hidden bg-unag-dark-green text-white text-center h-auto lg:h-screen p-6 lg:p-15"
+  >
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 justify-items-center">
+        
+      <div class="w-full h-50 justify-items-start">
+        <Image
+          class="w-70 lg:w-50"
+          src={logoUnagBlanco}
+          alt="UNAG Logo"
+          loading="lazy"
+        />
+        <div class="mt-5">
+          <p class="flex gap-2"><Mail size={20} /> info@unag.edu.hn</p>
+          <p class="flex gap-2 mt-2"><MapPin size={20} /> Catacamas, Olancho</p>
         </div>
+        <div class="flex mt-5 gap-3 scale-75 origin-left">
+          <a class="bg-unag-green rounded-full p-2" href=""><Facebook /></a>
+          <a class="bg-unag-green rounded-full p-2" href=""><Instagram /></a>
+          <a class="bg-unag-green rounded-full p-2" href=""><Youtube /></a>
+          <a class="bg-unag-green rounded-full p-2" href=""><Linkedin /></a>
+        </div>
+      </div>
 
-    </footer>
+      <div class="w-full h-fit mt-5 lg:mt-0">
+        <h2
+          class="text-start p-1 border-b-3 border-unag-green font-bold font-bold"
+        >
+          Carreras
+        </h2>
+        <ul class="mt-5 text-start space-y-1">
+          <li>
+            <LinkUnderline href="">Ingeniería Agronómica</LinkUnderline>
+          </li>
+          <li>
+            <LinkUnderline href=""
+              >Ingeniería en Gestión Integral de los Recursos Naturales</LinkUnderline
+            >
+          </li>
+          <li>
+            <LinkUnderline href=""
+              >Ingeniería en Tecnología Alimentaria</LinkUnderline
+            >
+          </li>
+          <li>
+            <LinkUnderline href="">Medicina Veterinaria</LinkUnderline>
+          </li>
+          <li>
+            <LinkUnderline href="">Ingeniería en Zootecnia</LinkUnderline>
+          </li>
+          <li>
+            <LinkUnderline href=""
+              >Administración de Empresas Agropecuarias</LinkUnderline
+            >
+          </li>
+          <li>
+            <LinkUnderline href=""
+              >Licenciatura en Economía Social Agraria</LinkUnderline
+            >
+          </li>
+          <li>
+            <LinkUnderline href="">Ingeniería en Agroexportación</LinkUnderline>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w-full h-fit">
+        <h2 class="text-start p-1 border-b-3 border-unag-green font-bold">
+          Admisiones
+        </h2>
+        <ul class="mt-5 text-start space-y-1">
+          <li>
+            <LinkUnderline href=""
+              >Tercer proceso de admisión mediante la UNAG 2026 (Presencial)</LinkUnderline
+            >
+          </li>
+          <li>
+            <LinkUnderline href=""
+              >Requisitos para ingresar a la Universidad Nacional de Agricultura</LinkUnderline
+            >
+          </li>
+          <li>
+            <LinkUnderline href=""
+              >Requisitos para participar en los procesos de admisión</LinkUnderline
+            >
+          </li>
+          <li>
+            <LinkUnderline href="">Preguntas recurrentes</LinkUnderline>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w-full h-fit">
+        <h2 class="text-start p-1 border-b-3 border-unag-green font-bold">
+          ERP
+        </h2>
+        <ul class="mt-5 text-start space-y-1">
+          <li>
+            <LinkUnderline href="">Ingresar</LinkUnderline>
+          </li>
+          <li>
+            <LinkUnderline href="">Campus Virtual</LinkUnderline>
+          </li>
+          <li>
+            <LinkUnderline href=""
+              >Sistema de Educación a Distancia</LinkUnderline
+            >
+          </li>
+          <li>
+            <LinkUnderline href="">SysUNAG</LinkUnderline>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-15">
+      <p class="mt-10">
+        ©2025 Universidad Nacional de Agricultura - Todos los derechos
+        reservados. <br />
+        <a
+          class="text-unag-light-green"
+          href="https://setic.unag.edu.hn"
+          target="_blank"
+          >Secretaría de Tecnologías de la Información y Comunicación (SETIC)</a>
+      </p>
+    </div>
+
+    <div
+      id="lema-aprender-haciendo"
+      class="relative pointer-events-none select-none h-[280px] lg:h-[360px]"
+    >
+      <h1
+        class="absolute right-[-40px] bottom-7 lg:bottom-0 font-black italic text-[65px] lg:text-[240px] leading-none"
+      >
+        APRENDER
+      </h1>
+      <h1
+        class="absolute right-[-40px] bottom-0 translate-y-[40%] lg:translate-y-[80%] font-black text-unag-green italic text-[65px] lg:text-[210px] leading-none"
+      >
+        HACIENDO
+      </h1>
+    </div>
+  </footer>
 </section>

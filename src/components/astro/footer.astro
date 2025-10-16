@@ -15,10 +15,22 @@ import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
 import LinkUnderline from "@/components/astro/link-underline.astro";
 ---
 
-<section class="text-[12px] h-auto relative">
-  <div class="absolute bg-unag-yellow w-50 h-40 z-1"></div>
+<section
+  id="frase-footer"
+   class="shadow-md relative z-2 flex h-30 lg:h-60 w-[80%] rounded-2xl translate-y-4 mx-auto mb-[-30px] 
+         bg-[url('/img/bg-frase-footer.webp')] bg-center bg-no-repeat bg-cover overflow-hidden
+         before:content-[''] before:absolute before:inset-0 before:bg-black/40 before:rounded-2xl before:z-0 "
+>
+  <div class="flex flex-col z-3 max-w-lg mx-auto my-auto">
+    <p class="text-white text-[14px] lg:text-[28px] font-extrabold italic -translate-x-7 lg:-translate-x-40">FORMANDO EL</p>
+    <p class="text-unag-yellow text-[20px] lg:text-[45px] font-extrabold italic leading-none">FUTURO <span class="text-white text-[14px] lg:text-[28px]">DE</span></p>
+    <p class="text-unag-yellow text-[20px] lg:text-[45px] font-extrabold italic leading-none translate-x-8 lg:translate-x-40">HONDURAS</p>
+  </div>
 
-  <div id="hojas-footer" class="overflow-hidden">
+</section>
+
+<section class="text-[12px] h-auto relative overflow-hidden">
+  <div id="hojas-footer">
     <div
       class="absolute z-1 bottom-10 lg:translate-y-0 lg:bottom-10 -translate-x-10 select-none"
     >
@@ -32,7 +44,7 @@ import LinkUnderline from "@/components/astro/link-underline.astro";
         fetchpriority="low"
       />
     </div>
-    <div class="absolute z-1 right-0 lg:right-10 translate-x-10 select-none">
+    <div class="absolute z-1 right-0 lg:right-10 translate-x-10 translate-y-8 lg:translate-y-0 select-none">
       <Image
         class="w-40 lg:w-40"
         loading="lazy"
@@ -61,8 +73,7 @@ import LinkUnderline from "@/components/astro/link-underline.astro";
   <footer
     class="relative overflow-hidden bg-unag-dark-green text-white text-center h-auto lg:h-screen p-6 lg:p-15"
   >
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 justify-items-center">
-        
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 justify-items-center pt-10">
       <div class="w-full h-50 justify-items-start">
         <Image
           class="w-70 lg:w-50"
@@ -181,7 +192,8 @@ import LinkUnderline from "@/components/astro/link-underline.astro";
           class="text-unag-light-green"
           href="https://setic.unag.edu.hn"
           target="_blank"
-          >Secretaría de Tecnologías de la Información y Comunicación (SETIC)</a>
+          >Secretaría de Tecnologías de la Información y Comunicación (SETIC)</a
+        >
       </p>
     </div>
 
@@ -190,12 +202,12 @@ import LinkUnderline from "@/components/astro/link-underline.astro";
       class="relative pointer-events-none select-none h-[280px] lg:h-[360px]"
     >
       <h1
-        class="absolute right-[-40px] bottom-7 lg:bottom-0 font-black italic text-[65px] lg:text-[240px] leading-none"
+        class="absolute right-[-40px] bottom-7 lg:bottom-0 lg:-translate-y-10 font-black italic text-[65px] lg:text-[240px] leading-none"
       >
         APRENDER
       </h1>
       <h1
-        class="absolute right-[-40px] bottom-0 translate-y-[40%] lg:translate-y-[80%] font-black text-unag-green italic text-[65px] lg:text-[210px] leading-none"
+        class="absolute right-[-40px] bottom-0 translate-y-[40%] lg:translate-y-[60%] font-black text-unag-green italic text-[65px] lg:text-[210px] leading-none"
       >
         HACIENDO
       </h1>

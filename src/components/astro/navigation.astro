@@ -1,0 +1,210 @@
+---
+import { Image } from "astro:assets";
+import { Menu, X, ChevronDown } from "@lucide/astro";
+
+import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
+import LinkDropdownMenu from "@/components/astro/navigation/link-dropdown-menu.astro";
+import DropdownMenuContainer from "@/components/astro/navigation/dropdown-menu-container.astro";
+import DropdownMenuItemWithSubmenu from "@/components/astro/navigation/dropdown-menu-item-with-submenu.astro";
+import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
+---
+
+<nav class="pt-1 pl-5 lg:pt-5 lg:pl-4 text-white z-10">
+    
+    <div class="hidden lg:flex items-center">
+        <div id="logo-unag" class="bg-unag-dark-green p-5 rounded-sm">
+            <a href="/" class="block ">
+                <Image class={''} src={logoUnagBlanco} alt="Logo Universidad Nacional de Agricultura" width={130} height={50} />
+            </a>
+        </div>
+        <div class="flex items-center bg-unag-green h-13 px-5 overflow-visible relative border-b-4 rounded-br-full border-unag-dark-green">
+            <ul class="flex gap-5">
+                <li><a href="" class="hover:text-unag-yellow transition-colors">Inicio</a></li>
+                <li><a href="" class="hover:text-unag-yellow transition-colors">Noticias</a></li>
+                
+                <!-- Dropdown Acerca -->
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Acerca <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Misión y Visión</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Valores</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Autoridades</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                <!-- Dropdown Organización -->
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Organización <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <DropdownMenuItemWithSubmenu title="Estructura Organizacional">
+                            <SubmenuLink href="">Sistema de autoevaluación para la acreditación de la calidad educativa</SubmenuLink>
+                            <SubmenuLink href="">Direcciones</SubmenuLink>
+                            <SubmenuLink href="">Coordinaciones</SubmenuLink>
+                        </DropdownMenuItemWithSubmenu>
+                        <DropdownMenuItemWithSubmenu title="Consejo Directivo">
+                            <SubmenuLink href="">Miembros</SubmenuLink>
+                            <SubmenuLink href="">Funciones</SubmenuLink>
+                            <SubmenuLink href="">Actas</SubmenuLink>
+                        </DropdownMenuItemWithSubmenu>
+                        <DropdownMenuItemWithSubmenu title="Rectoría">
+                            <SubmenuLink href="">Rector</SubmenuLink>
+                            <SubmenuLink href="">Vicerrectoría Académica</SubmenuLink>
+                            <SubmenuLink href="">Vicerrectoría Administrativa</SubmenuLink>
+                        </DropdownMenuItemWithSubmenu>
+                        <LinkDropdownMenu href="">Departamentos</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                <!-- Dropdown ERP -->
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        ERP <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Sistema Académico</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Portal Estudiantes</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Portal Docentes</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Biblioteca Virtual</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                <!-- Dropdown Carreras -->
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Carreras <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Ingeniería Agronómica</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ingeniería en Zootecnia</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ingeniería Forestal</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ingeniería Agroindustrial</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ver todas las carreras</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                <!-- Dropdown Biblioteca -->
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Biblioteca <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Catálogo</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Biblioteca Digital</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Horarios</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Servicios</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                <!-- Dropdown Transparencias -->
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Transparencias <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Presupuesto</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Informes Financieros</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Licitaciones</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Portal de Datos Abiertos</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                <!-- Dropdown Admisión -->
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Admisión <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Requisitos</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Proceso de Admisión</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Fechas Importantes</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Aplicar Ahora</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                <!-- Dropdown COCOIN -->
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        COCOIN <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Sobre COCOIN</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Proyectos</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Publicaciones</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Contacto</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                <!-- Dropdown Comisión CACN -->
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Comisión CACN <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">¿Qué es CACN?</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Integrantes</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Documentos</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Información</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+   
+    <div class="lg:hidden mt-3 mb-3">
+        <button id="menu-toggle" class="bg-unag-green p-3 rounded-lg">
+            <Menu size={24} />
+        </button>
+
+        
+        <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 opacity-0 invisible transition-all duration-300"></div>
+
+        
+        <div id="mobile-drawer" class="fixed top-0 left-0 w-64 h-full bg-unag-dark-green z-50 transform -translate-x-full transition-transform duration-300 ease-out shadow-2xl">
+            <div class="flex justify-between items-center p-5 border-b border-unag-green">
+                <Image src={logoUnagBlanco} alt="Logo UNAG" width={100} height={40} />
+                <button id="menu-close" class="hover:text-unag-yellow transition-colors">
+                    <X size={24} />
+                </button>
+            </div>
+            <ul class="flex flex-col p-5 gap-4">
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Inicio</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">La UNAG</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Facultades</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Admisiones</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Investigación</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Extensión</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuClose = document.getElementById('menu-close');
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('mobile-overlay');
+
+  function openDrawer() {
+    drawer?.classList.remove('-translate-x-full');
+    overlay?.classList.remove('opacity-0', 'invisible');
+    overlay?.classList.add('opacity-100', 'visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer?.classList.add('-translate-x-full');
+    overlay?.classList.add('opacity-0', 'invisible');
+    overlay?.classList.remove('opacity-100', 'visible');
+    document.body.style.overflow = '';
+  }
+
+  menuToggle?.addEventListener('click', openDrawer);
+  menuClose?.addEventListener('click', closeDrawer);
+  overlay?.addEventListener('click', closeDrawer);
+</script>

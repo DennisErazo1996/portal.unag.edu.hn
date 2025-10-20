@@ -12,14 +12,22 @@ import {
 import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
 import hojaDesenfocada from "@assets/img/hojas/hoja-desenfocada.webp";
 import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
-import LinkUnderline from "@/components/astro/link-underline.astro";
+import LinkUnderline from "@/components/astro/navigation/link-underline.astro";
+
+
+
 ---
 
 <section
   id="frase-footer"
    class="shadow-md relative z-2 flex h-30 lg:h-60 w-[80%] rounded-2xl translate-y-4 mx-auto mb-[-30px] 
-         bg-[url('/img/bg-frase-footer.webp')] bg-center bg-no-repeat bg-cover overflow-hidden
-         before:content-[''] before:absolute before:inset-0 before:bg-black/40 before:rounded-2xl before:z-0 "
+         overflow-hidden 
+         before:content-[''] before:absolute before:inset-0 before:bg-black/40 before:rounded-2xl before:z-0 
+         before:transition-transform before:duration-500 before:ease-out
+         after:content-[''] after:absolute after:inset-0 after:z-[-1] after:rounded-2xl
+         after:bg-[url('/img/bg-frase-footer.webp')] after:bg-center after:bg-no-repeat after:bg-cover
+         after:transition-transform after:duration-500 after:ease-out
+         hover:after:scale-110 "
 >
   <div class="flex flex-col z-3 max-w-lg mx-auto my-auto">
     <p class="text-white text-[14px] lg:text-[28px] font-extrabold italic -translate-x-7 lg:-translate-x-40">FORMANDO EL</p>
@@ -32,7 +40,7 @@ import LinkUnderline from "@/components/astro/link-underline.astro";
 <section class="text-[12px] h-auto relative overflow-hidden">
   <div id="hojas-footer">
     <div
-      class="absolute z-1 bottom-10 lg:translate-y-0 lg:bottom-10 -translate-x-10 select-none"
+      class="absolute z-1 bottom-70 lg:translate-y-0 lg:bottom-10 -translate-x-10 select-none rellax"
     >
       <Image
         class="w-40 lg:w-65"
@@ -44,7 +52,7 @@ import LinkUnderline from "@/components/astro/link-underline.astro";
         fetchpriority="low"
       />
     </div>
-    <div class="absolute z-1 right-0 lg:right-10 translate-x-10 translate-y-8 lg:translate-y-0 select-none">
+    <div class="absolute z-1 right-0 lg:right-10 translate-x-10 translate-y-8 lg:translate-y-0 select-none rellax">
       <Image
         class="w-40 lg:w-40"
         loading="lazy"
@@ -56,7 +64,7 @@ import LinkUnderline from "@/components/astro/link-underline.astro";
       />
     </div>
     <div
-      class="absolute z-1 right-10 bottom-100 lg:bottom-60 translate-x-10 rotate-90"
+      class="hidden lg:flex absolute z-1 right-0 bottom-100 lg:bottom-60 translate-x-10 rotate-90 rellax"
     >
       <Image
         class="w-25 lg:w-25"
@@ -214,3 +222,18 @@ import LinkUnderline from "@/components/astro/link-underline.astro";
     </div>
   </footer>
 </section>
+
+<script>
+  import Rellax from 'rellax';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const rellax = new Rellax('.rellax', {
+      speed: -3,
+      center: false,
+      wrapper: undefined,
+      round: true,
+      vertical: true,
+      horizontal: false
+    });
+  });
+</script>

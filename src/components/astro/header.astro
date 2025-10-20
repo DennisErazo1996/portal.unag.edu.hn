@@ -1,1 +1,81 @@
- 
+---
+import { MapPin, Mail, LogIn } from "@lucide/astro";
+
+import AdmisionesIcon from "@assets/icons/admisiones-icon.astro";
+import Navigation from "@/components/astro/navigation.astro";
+---
+
+<section id="header-section" class="text-[12px] z-50 fixed w-full transition-all duration-300">
+  <header class="flex flex-col lg:flex-row justify-between w-full">
+
+    <div class="flex bg-unag-dark-green text-white w-full lg:w-fit h-fit py-2 px-3 gap-4">
+      <p class="flex items-center gap-1">
+        <MapPin size={12} /> Catacamas, Olancho
+      </p>
+      <p>
+        <a class="flex items-center gap-1" href="mailto:info@unag.edu.hn"
+          ><Mail size={12} /> info@unag.edu.hn</a
+        >
+      </p>
+    </div>
+
+    <div class="flex text-white">
+      <div
+        class="flex bg-unag-dark-green py-2 px-4 items-center hover:bg-unag-yellow hover:text-unag-gray hover:transition hover:ease-out hover:duration-300"
+      >
+        <a class="flex gap-1 items-center" href=""
+          ><LogIn size={22} /> Ingresar</a
+        >
+      </div>
+      <div
+        class="relative flex bg-unag-green py-2 px-4 items-center overflow-hidden group cursor-pointer"
+      >
+        <a class="flex items-center gap-1 relative z-10 group-hover:opacity-0 transition-opacity duration-200" href="">
+          <AdmisionesIcon /> Admisiones
+        </a>
+        <div
+          class="absolute inset-0 bg-unag-yellow transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out pointer-events-none"
+        >
+        </div>
+        <a
+          href=""
+          class="absolute inset-0 flex items-center justify-center text-unag-gray opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 z-20"
+        >
+          Admisiones
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <Navigation />
+</section>
+
+<script>
+  const headerSection = document.getElementById('header-section');
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    
+    if (scrollY > 50) {
+      headerSection?.classList.add('scrolled');
+    } else {
+      headerSection?.classList.remove('scrolled');
+    }
+    
+    lastScrollY = scrollY;
+  });
+</script>
+
+<style>
+  #header-section {
+    background: transparent;
+  }
+
+  #header-section.scrolled {
+    
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+  }
+</style>

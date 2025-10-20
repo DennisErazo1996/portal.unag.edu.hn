@@ -15,6 +15,7 @@
     "@tailwindcss/vite": "^4.1.14",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
+    "@types/rellax": "^1.7.7",
     "astro": "^5.14.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

@@ -1,0 +1,45 @@
+#header-section {
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#header-section.scrolled {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+}
+
+header {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  opacity: 1;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+header.hide-header {
+  transform: translateY(-100%);
+  opacity: 0;
+  max-height: 0;
+  margin-bottom: 0;
+}
+
+header.show-header {
+  transform: translateY(0);
+  opacity: 1;
+  max-height: 500px;
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    max-height: 500px;
+  }
+}

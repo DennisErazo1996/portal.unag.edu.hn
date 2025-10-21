@@ -1,7 +1,9 @@
 ---
+import '@/styles/header.css';
 import { MapPin, Mail, LogIn } from "@lucide/astro";
 
 import AdmisionesIcon from "@assets/icons/admisiones-icon.astro";
+import CalendarioAcademicoIcon from "@/assets/icons/calendario-academico-icon.astro";
 import Navigation from "@/components/astro/navigation.astro";
 ---
 
@@ -19,12 +21,20 @@ import Navigation from "@/components/astro/navigation.astro";
       </p>
     </div>
 
-    <div class="flex text-white">
+
+    <div class="grid grid-cols-3 lg:flex text-white">
       <div
-        class="flex bg-unag-dark-green py-2 px-4 items-center hover:bg-unag-yellow hover:text-unag-gray hover:transition hover:ease-out hover:duration-300"
+        class="flex bg-unag-dark-green py-2 px-4 h-full items-center hover:bg-unag-yellow hover:text-unag-gray hover:transition hover:ease-out hover:duration-300"
       >
-        <a class="flex gap-1 items-center" href=""
+        <a class="flex gap-1 items-center text-center" href=""
           ><LogIn size={22} /> Ingresar</a
+        >
+      </div>
+      <div
+        class="flex bg-unag-light-green text-unag-dark-green py-2 lg:px-4 h-full items-center hover:bg-unag-yellow hover:text-unag-gray hover:transition hover:ease-out hover:duration-300"
+      >
+        <a class="flex gap-1 items-center pl-3 lg:pl-0" href=""
+          ><CalendarioAcademicoIcon /> Calendario academico</a
         >
       </div>
       <div
@@ -51,7 +61,8 @@ import Navigation from "@/components/astro/navigation.astro";
 </section>
 
 <script>
-  const headerSection = document.getElementById('header-section');
+  const headerSection = document.querySelector('#header-section');
+  const header = document.querySelector('header');
   let lastScrollY = window.scrollY;
 
   window.addEventListener('scroll', () => {
@@ -62,20 +73,24 @@ import Navigation from "@/components/astro/navigation.astro";
     } else {
       headerSection?.classList.remove('scrolled');
     }
+
+    
+    const scrollDiff = Math.abs(scrollY - lastScrollY);
+    if (scrollDiff > 5 && scrollY > 100) {
+      if(scrollY > lastScrollY) {
+        
+        header?.classList.add('hide-header');
+        header?.classList.remove('show-header');
+        headerSection?.classList.add('collapsed');
+      } else {
+       
+        header?.classList.remove('hide-header');
+        header?.classList.add('show-header');
+        headerSection?.classList.remove('collapsed');
+      }
+    }
     
     lastScrollY = scrollY;
   });
 </script>
 
-<style>
-  #header-section {
-    background: transparent;
-  }
-
-  #header-section.scrolled {
-    
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    
-  }
-</style>

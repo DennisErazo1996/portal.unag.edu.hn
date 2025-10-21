@@ -1,21 +1,70 @@
+---
+import {Image} from 'astro:assets'
+import {Play} from '@lucide/astro';
+import GlassIcons from '@/components/react/GlassIcons';
+
+import hojaDesenfocada from "@assets/img/hojas/hoja-desenfocada.webp";
+import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
+
+---
+
 <section
   id="hero"
-  class="text-[12px] w-full h-screen bg-[url('/img/bg-hero.webp')] bg-center bg-no-repeat bg-cover flex items-center justify-center 
-  relative overflow-hidden "
+  class="text-[12px] w-full h-screen bg-[url('/img/bg-hero.webp')] bg-center bg-no-repeat bg-cover flex
+  relative overflow-hidden pt-55 pl-3  lg:pl-20"
 >
-  <div class="absolute inset-0 bg-black/40 z-0"></div>
-  <div class="relative z-1 text-center px-4">
-    <h1 class="text-white text-4xl lg:text-6xl font-extrabold mb-4">
-      Bienvenidos a la Universidad Nacional de Agricultura
-    </h1>
-    <p class="text-white text-lg lg:text-2xl mb-8 max-w-3xl mx-auto">
-      Formando profesionales de excelencia en el campo de la agricultura y el
-      desarrollo rural sostenible.
-    </p>
-    <a
-      href="#admisiones"
-      class="bg-unag-green text-white font-bold py-3 px-6 rounded-full hover:bg-unag-yellow hover:text-unag-gray transition-colors duration-300"
-      >Explorar Admisiones</a
+<div id="hojas-hero">
+    <div
+      class="absolute z-1 bottom-30 lg:translate-y-0 lg:bottom-10 -translate-x-20 lg:-translate-x-50 select-none rellax"
     >
+      <Image
+        class="w-40 lg:w-65"
+        loading="lazy"
+        src={hojaDesenfocada}
+        alt="UNAG Logo"
+        aria-hidden="true"
+        decoding="async"
+        fetchpriority="low"
+      />
+    </div>
+    <div class="absolute z-1 right-0 lg:right-10 translate-x-20 rotate-180 translate-y-8 lg:translate-y-0 select-none rellax">
+      <Image
+        class="w-40 lg:w-40"
+        loading="lazy"
+        src={hojaDesencadda02}
+        alt="UNAG Logo"
+        aria-hidden="true"
+        decoding="async"
+        fetchpriority="low"
+      />
+    </div>
+  </div>
+
+  <div class="absolute inset-0 bg-black/40 z-0"></div>
+  <div class="relative z-1 pl-4">
+    <p class="text-white text-xl lg:text-[35px]">BIENVENIDOS A LA</p>
+    <p class="text-white font-extrabold text-4xl lg:text-[70px] leading-none">
+      UNIVERSIDAD NACIONAL
+    </p>
+    <p class="text-white font-extrabold mb-6 text-3xl lg:text-[70px] mt-1 lg:mt-0">
+      DE <span class="bg-unag-dark-green text-unag-light-green lg:py-0 px-2 lg:px-5"
+        >AGRICULTURA</span>
+    </p>
+    <div class="flex items-center gap-6">
+        <a href="" class="relative bg-unag-green p-4 rounded-full hover:scale-110 transition-transform duration-300 group">
+            <Play size={20} class="text-white relative z-10" />
+            <span class="absolute inset-0 rounded-full bg-unag-green animate-ping opacity-75"></span>
+            <span class="absolute inset-0 rounded-full bg-unag-green animate-pulse opacity-50"></span>
+        </a>
+        <a
+          href="#admisiones"
+          class="bg-transparent border-2 text-white py-2 px-6 rounded-full hover:bg-unag-yellow hover:text-unag-gray transition-colors duration-300"
+          >Nosotros</a
+        >
+    </div>
+  </div>
+  <div class="absolute right-5 -bottom-3 lg:right-15 lg:bottom-20 z-2 justify-items-end">
+     <p class="text-white translate-y-7 lg:translate-y-0">Acceso Rápido:</p>
+    <GlassIcons className="custom-class"/>
   </div>
 </section>

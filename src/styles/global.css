@@ -13,6 +13,7 @@
   --color-unag-yellow: #ffcc00;
   --color-unag-overlay-green: #E5FFD5;
   --color-unag-gray: #303030;
+  --color-unag-light-gray: #d5d5d5;
 }
 
 @layer utilities {

@@ -1,0 +1,304 @@
+---
+import { 
+    Menu, 
+    X, 
+    ChevronDown, 
+    Home, 
+    Newspaper, 
+    Info, 
+    Building2, 
+    Server, 
+    GraduationCap, 
+    BookOpen, 
+    Eye, 
+    UserPlus, 
+    FlaskConical, 
+    Award 
+} from "@lucide/astro";
+import {Image} from 'astro:assets';
+import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
+---
+
+
+<section class="text-white text-[12px]">
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/50 opacity-0 invisible transition-all duration-300"></div>
+
+        
+        <div id="mobile-drawer" class="z-50 fixed top-0 left-0 w-75 h-full bg-unag-dark-green transform -translate-x-full transition-transform duration-300 ease-out shadow-2xl" style="z-index: 9999 !important;">
+            <div class="flex justify-between items-center p-5 border-b-2 border-unag-green">
+                <a href="/">
+                    <Image src={logoUnagBlanco} alt="Logo UNAG" loading="eager" class="w-35" />
+                </a>
+                <button id="menu-close" class="hover:text-unag-yellow transition-colors">
+                    <X size={24} />
+                </button>
+            </div>
+           <ul class="flex flex-col p-4 gap-1 overflow-y-auto max-h-[calc(100vh-100px)] text-white">
+        <!-- Inicio -->
+        <li>
+            <a href="/" class="flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <Home size={20} />
+                <span>Inicio</span>
+            </a>
+        </li>
+
+        <!-- Noticias -->
+        <li>
+            <a href="" class="flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <Newspaper size={20} />
+                <span>Noticias</span>
+            </a>
+        </li>
+                
+        <!-- Dropdown móvil: Acerca -->
+        <li>
+            <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <div class="flex items-center gap-3">
+                    <Info size={20} />
+                    <span>Acerca</span>
+                </div>
+                <ChevronDown size={18} class="transition-transform duration-300" />
+            </button>
+            <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                <li><a href="" class="block py-2 pl-11  hover:text-unag-yellow transition-colors">Misión y Visión</a></li>
+                <li><a href="" class="block py-2 pl-11  hover:text-unag-yellow transition-colors">Valores</a></li>
+                <li><a href="" class="block py-2 pl-11  hover:text-unag-yellow transition-colors">Autoridades</a></li>
+            </ul>
+        </li>
+
+        <!-- Dropdown móvil: Organización -->
+        <li>
+            <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <div class="flex items-center gap-3">
+                    <Building2 size={20} />
+                    <span>Organización</span>
+                </div>
+                <ChevronDown size={18} class="transition-transform duration-300" />
+            </button>
+            <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                <li>
+                    <button class="mobile-submenu-toggle w-full flex items-center justify-between py-2 pl-11 hover:text-unag-yellow transition-colors">
+                        <span>Estructura Organizacional</span>
+                        <ChevronDown size={14} class="transition-transform duration-300" />
+                    </button>
+                    <ul class="mobile-submenu-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                        <li><a href="" class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors">Sistema de autoevaluación</a></li>
+                        <li><a href="" class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors">Direcciones</a></li>
+                        <li><a href="" class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors">Coordinaciones</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="mobile-submenu-toggle w-full flex items-center justify-between py-2 pl-11 hover:text-unag-yellow transition-colors">
+                        <span>Consejo Directivo</span>
+                        <ChevronDown size={14} class="transition-transform duration-300" />
+                    </button>
+                    <ul class="mobile-submenu-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                        <li><a href="" class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors">Miembros</a></li>
+                        <li><a href="" class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors">Funciones</a></li>
+                        <li><a href="" class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors">Actas</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="mobile-submenu-toggle w-full flex items-center justify-between py-2 pl-11 hover:text-unag-yellow transition-colors">
+                        <span>Rectoría</span>
+                        <ChevronDown size={14} class="transition-transform duration-300" />
+                    </button>
+                    <ul class="mobile-submenu-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                        <li><a href="" class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors">Rector</a></li>
+                        <li><a href="" class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors">Vicerrectoría Académica</a></li>
+                        <li><a href="" class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors">Vicerrectoría Administrativa</a></li>
+                    </ul>
+                </li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Departamentos</a></li>
+            </ul>
+        </li>
+
+        <!-- Dropdown móvil: ERP -->
+        <li>
+            <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <div class="flex items-center gap-3">
+                    <Server size={20} />
+                    <span>ERP</span>
+                </div>
+                <ChevronDown size={18} class="transition-transform duration-300" />
+            </button>
+            <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Sistema Académico</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Portal Estudiantes</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Portal Docentes</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Biblioteca Virtual</a></li>
+            </ul>
+        </li>
+
+        <!-- Dropdown móvil: Carreras -->
+        <li>
+            <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <div class="flex items-center gap-3">
+                    <GraduationCap size={20} />
+                    <span>Carreras</span>
+                </div>
+                <ChevronDown size={18} class="transition-transform duration-300" />
+            </button>
+            <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Ingeniería Agronómica</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Ingeniería en Zootecnia</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Ingeniería Forestal</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Ingeniería Agroindustrial</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Ver todas las carreras</a></li>
+            </ul>
+        </li>
+
+        <!-- Dropdown móvil: Biblioteca -->
+        <li>
+            <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <div class="flex items-center gap-3">
+                    <BookOpen size={20} />
+                    <span>Biblioteca</span>
+                </div>
+                <ChevronDown size={18} class="transition-transform duration-300" />
+            </button>
+            <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Catálogo</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Biblioteca Digital</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Horarios</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Servicios</a></li>
+            </ul>
+        </li>
+
+        <!-- Dropdown móvil: Transparencias -->
+        <li>
+            <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <div class="flex items-center gap-3">
+                    <Eye size={20} />
+                    <span>Transparencias</span>
+                </div>
+                <ChevronDown size={18} class="transition-transform duration-300" />
+            </button>
+            <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Presupuesto</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Informes Financieros</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Licitaciones</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Portal de Datos Abiertos</a></li>
+            </ul>
+        </li>
+
+        <!-- Dropdown móvil: Admisión -->
+        <li>
+            <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <div class="flex items-center gap-3">
+                    <UserPlus size={20} />
+                    <span>Admisión</span>
+                </div>
+                <ChevronDown size={18} class="transition-transform duration-300" />
+            </button>
+            <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Requisitos</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Proceso de Admisión</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Fechas Importantes</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Aplicar Ahora</a></li>
+            </ul>
+        </li>
+
+        <!-- Dropdown móvil: COCOIN -->
+        <li>
+            <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <div class="flex items-center gap-3">
+                    <FlaskConical size={20} />
+                    <span>COCOIN</span>
+                </div>
+                <ChevronDown size={18} class="transition-transform duration-300" />
+            </button>
+            <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Sobre COCOIN</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Proyectos</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Publicaciones</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Contacto</a></li>
+            </ul>
+        </li>
+
+        <!-- Dropdown móvil: Comisión CACN -->
+        <li>
+            <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <div class="flex items-center gap-3">
+                    <Award size={20} />
+                    <span>Comisión CACN</span>
+                </div>
+                <ChevronDown size={18} class="transition-transform duration-300" />
+            </button>
+            <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">¿Qué es CACN?</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Integrantes</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Documentos</a></li>
+                <li><a href="" class="block py-2 pl-11 hover:text-unag-yellow transition-colors">Información</a></li>
+            </ul>
+        </li>
+    </ul>
+        </div>
+
+</section>
+
+
+<script>
+   
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    
+    dropdownToggles.forEach((toggle) => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const content = toggle.nextElementSibling;
+        const svgs = toggle.querySelectorAll('svg');
+        const chevron = svgs[svgs.length - 1]; // Último SVG es el ChevronDown
+        const isOpen = content?.classList.contains('max-h-[1000px]');
+
+        // Cerrar todos los otros dropdowns
+        document.querySelectorAll('.mobile-dropdown-content').forEach((item) => {
+          if (item !== content) {
+            item.classList.remove('max-h-[1000px]');
+            item.classList.add('max-h-0');
+            const otherToggle = item.previousElementSibling;
+            const otherSvgs = otherToggle?.querySelectorAll('svg');
+            const otherChevron = otherSvgs?.[otherSvgs.length - 1];
+            otherChevron?.classList.remove('rotate-180');
+          }
+        });
+
+        // Toggle del dropdown actual
+        if (isOpen) {
+          content?.classList.remove('max-h-[1000px]');
+          content?.classList.add('max-h-0');
+          chevron?.classList.remove('rotate-180');
+        } else {
+          content?.classList.remove('max-h-0');
+          content?.classList.add('max-h-[1000px]');
+          chevron?.classList.add('rotate-180');
+        }
+      });
+    });
+
+    // Submenús
+    const submenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
+    
+    submenuToggles.forEach((toggle) => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const content = toggle.nextElementSibling;
+        const chevron = toggle.querySelector('svg');
+        const isOpen = content?.classList.contains('max-h-[500px]');
+
+        // Toggle del submenú actual
+        if (isOpen) {
+          content?.classList.remove('max-h-[500px]');
+          content?.classList.add('max-h-0');
+          chevron?.classList.remove('rotate-180');
+        } else {
+          content?.classList.remove('max-h-0');
+          content?.classList.add('max-h-[500px]');
+          chevron?.classList.add('rotate-180');
+        }
+      });
+    });
+  });
+</script>

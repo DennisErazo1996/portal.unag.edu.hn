@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/main.astro';
+import { MoveRight } from '@lucide/astro';
+
+const comunicados = (await getCollection('comunicados')).sort(
+  (a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const content = {
+  title: "Comunicados | UNAG",
+};
+
+const categoryColors: Record<string, string> = {
+  'Convocatoria': 'bg-unag-light-green',
+  'Evento': 'bg-unag-light-green',
+  'Aviso': 'bg-unag-light-green',
+  'Graduación': 'bg-unag-light-green',
+  'Becas': 'bg-unag-light-green',
+  'Académico': 'bg-unag-light-green',
+};
+---
+
+<Layout content={content}>
+  <section class="pt-40 pb-20 px-6 lg:px-20 min-h-screen text-[12px]">
+    <header class="mb-12">
+      <p class="flex gap-2 text-unag-gray items-center">
+        <MoveRight /> Noticias y Anuncios
+      </p>
+      <h1 class="font-extrabold text-unag-dark-green text-4xl lg:text-[60px] leading-none">
+        Comunicados
+      </h1>
+      <p class="text-unag-gray mt-4 max-w-2xl">
+        Mantente informado sobre las últimas noticias, eventos y comunicados oficiales de la Universidad Nacional de Agricultura.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        comunicados.map((comunicado : any) => (
+          <article class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+            <div class="h-48 bg-unag-dark-green relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/20" />
+              <div class="absolute top-4 left-4">
+                <span class={`px-3 py-1 rounded-full text-white text-xs font-bold ${categoryColors[comunicado.data.category]}`}>
+                  {comunicado.data.category}
+                </span>
+              </div>
+              {comunicado.data.featured && (
+                <div class="absolute top-4 right-4">
+                  <span class="px-3 py-1 rounded-full bg-unag-yellow text-unag-dark-green text-xs font-bold">
+                    Destacado
+                  </span>
+                </div>
+              )}
+            </div>
+            
+            <div class="p-6">
+              <time class="text-sm text-gray-500 italic">
+                {new Date(comunicado.data.date).toLocaleDateString('es-HN', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              
+              <h2 class="mt-2 text-xl font-bold text-unag-dark-green group-hover:text-unag-green transition-colors">
+                {comunicado.data.title}
+              </h2>
+              
+              <p class="mt-3 text-gray-600 line-clamp-3">
+                {comunicado.data.description}
+              </p>
+              
+              <a 
+                href={`/comunicados/${comunicado.slug}`}
+                class="mt-4 inline-flex items-center gap-2 text-unag-green font-semibold hover:gap-4 transition-all duration-300"
+              >
+                Leer más
+                <MoveRight size={18} />
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

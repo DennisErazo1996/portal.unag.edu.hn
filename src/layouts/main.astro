@@ -11,6 +11,9 @@ import {Headset} from "@lucide/astro";
 
 import  Footer from '@/components/astro/footer.astro';
 import Header from '@/components/astro/header.astro';
+import {X} from '@lucide/astro';
+import {Image} from 'astro:assets';
+import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
 
 const {content} = Astro.props;
 
@@ -37,6 +40,27 @@ const {content} = Astro.props;
 		</main>
 
 		<Footer/>
+
+		<div id="mobile-overlay" class="fixed inset-0 bg-black/50 opacity-0 invisible transition-all duration-300" style="z-index: 9998 !important;"></div>
+
+        
+        <div id="mobile-drawer" class="fixed top-0 left-0 w-64 h-full bg-unag-dark-green transform -translate-x-full transition-transform duration-300 ease-out shadow-2xl" style="z-index: 9999 !important;">
+            <div class="flex justify-between items-center p-5 border-b-2 border-unag-green">
+                <Image src={logoUnagBlanco} alt="Logo UNAG" loading="eager" class="w-35" />
+                <button id="menu-close" class="hover:text-unag-yellow transition-colors">
+                    <X size={24} />
+                </button>
+            </div>
+            <ul class="flex flex-col p-5 gap-4">
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Inicio</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">La UNAG</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Facultades</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Admisiones</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Investigación</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Extensión</a></li>
+                <li><a href="" class="block py-2 hover:text-unag-yellow transition-colors">Contacto</a></li>
+            </ul>
+        </div>
 
 		<script src="@/scripts/parallax.js"></script>
 	</body>

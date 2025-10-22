@@ -1,0 +1,170 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/main.astro';
+import { Calendar, Tag, ArrowLeft } from '@lucide/astro';
+
+export async function getStaticPaths() {
+  const comunicados = await getCollection('comunicados');
+  return comunicados.map((comunicado: any) => ({
+    params: { slug: comunicado.slug },
+    props: { comunicado },
+  }));
+}
+
+interface Props {
+  comunicado: any; // You can replace 'any' with a more specific type if available
+}
+
+const { comunicado } = Astro.props;
+const { Content } = await comunicado.render();
+
+const content = {
+  title: `${comunicado.data.title} | UNAG`,
+};
+
+const categoryColors: Record<string, string> = {
+  'Convocatoria': 'bg-blue-500',
+  'Evento': 'bg-purple-500',
+  'Aviso': 'bg-yellow-500',
+  'Graduación': 'bg-green-500',
+  'Becas': 'bg-orange-500',
+  'Académico': 'bg-red-500',
+};
+---
+
+<Layout content={content}>
+  <article class="pt-40 pb-20 px-6 lg:px-20 min-h-screen">
+    <!-- Back Button -->
+    <a 
+      href="/comunicados"
+      class="inline-flex items-center gap-2 text-unag-green font-semibold hover:gap-4 transition-all duration-300 mb-8"
+    >
+      <ArrowLeft size={18} />
+      Volver a comunicados
+    </a>
+
+    <!-- Header -->
+    <header class="max-w-4xl mx-auto mb-12">
+      <div class="flex flex-wrap gap-3 mb-4">
+        <span class={`px-4 py-2 rounded-full text-white text-sm font-bold ${categoryColors[comunicado.data.category]}`}>
+          <Tag size={16} class="inline mr-1" />
+          {comunicado.data.category}
+        </span>
+        {comunicado.data.featured && (
+          <span class="px-4 py-2 rounded-full bg-unag-yellow text-unag-dark-green text-sm font-bold">
+            ⭐ Destacado
+          </span>
+        )}
+      </div>
+
+      <h1 class="text-4xl lg:text-6xl font-extrabold text-unag-dark-green leading-tight mb-6">
+        {comunicado.data.title}
+      </h1>
+
+      <div class="flex items-center gap-4 text-gray-600">
+        <div class="flex items-center gap-2">
+          <Calendar size={18} />
+          <time>
+            {new Date(comunicado.data.date).toLocaleDateString('es-HN', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </time>
+        </div>
+      </div>
+
+      <p class="mt-6 text-xl text-gray-700">
+        {comunicado.data.description}
+      </p>
+    </header>
+
+    <!-- Content -->
+    <div class="max-w-4xl mx-auto">
+      <div class="h-1 w-20 bg-unag-green rounded-full mb-8"></div>
+      
+      <div class="prose prose-lg max-w-none
+        prose-headings:text-unag-dark-green 
+        prose-headings:font-bold
+        prose-h2:text-3xl
+        prose-h3:text-2xl
+        prose-p:text-gray-700
+        prose-a:text-unag-green
+        prose-a:no-underline
+        hover:prose-a:underline
+        prose-strong:text-unag-dark-green
+        prose-ul:text-gray-700
+        prose-ol:text-gray-700
+        prose-li:marker:text-unag-green
+        prose-table:border-collapse
+        prose-th:bg-unag-green
+        prose-th:text-white
+        prose-th:p-3
+        prose-td:border
+        prose-td:border-gray-300
+        prose-td:p-3
+      ">
+        <Content />
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-12 p-6 bg-unag-light-gray rounded-2xl">
+        <h3 class="font-bold text-unag-dark-green mb-2">¿Necesitas más información?</h3>
+        <p class="text-gray-700 mb-4">
+          Para consultas adicionales, comunícate con nosotros:
+        </p>
+        <div class="flex flex-col gap-2 text-gray-700">
+          <p>📧 Email: info@unag.edu.hn</p>
+          <p>📞 Teléfono: +504 2799-4500</p>
+          <p>📍 Catacamas, Olancho, Honduras</p>
+        </div>
+      </div>
+
+      <!-- Share & Back -->
+      <div class="mt-8 flex justify-between items-center">
+        <a 
+          href="/comunicados"
+          class="inline-flex items-center gap-2 text-unag-green font-semibold hover:gap-4 transition-all duration-300"
+        >
+          <ArrowLeft size={18} />
+          Volver a comunicados
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  /* Estilos adicionales para el contenido markdown */
+  article :global(img) {
+    border-radius: 1rem;
+    margin: 2rem 0;
+  }
+
+  article :global(blockquote) {
+    border-left: 4px solid #00A76F;
+    padding-left: 1.5rem;
+    font-style: italic;
+    color: #374151;
+  }
+
+  article :global(code) {
+    background-color: #f3f4f6;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+  }
+
+  article :global(pre) {
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  article :global(pre code) {
+    background-color: transparent;
+    padding: 0;
+  }
+</style>

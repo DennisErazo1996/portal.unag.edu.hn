@@ -10,10 +10,20 @@ import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
 
 <section
   id="hero"
-  class="text-[12px] w-full h-screen bg-[url('/img/bg-hero.webp')] bg-center bg-no-repeat bg-cover flex
-  relative overflow-hidden pt-55 pl-3  lg:pl-20"
+  class="w-full h-screen bg-[url('/img/bg-hero.webp')] bg-center bg-no-repeat bg-cover flex
+  relative overflow-hidden pt-55 pl-3 lg:pl-20"
 >
-<div id="hojas-hero">
+  <!-- DEBUG: Indicador de breakpoint -->
+  <div class="fixed top-4 right-4 bg-red-500 text-white px-3 py-1 rounded z-50 text-sm">
+    <span class="sm:hidden">XS</span>
+    <span class="hidden sm:block md:hidden">SM</span>
+    <span class="hidden md:block lg:hidden">MD</span>
+    <span class="hidden lg:block xl:hidden">LG</span>
+    <span class="hidden xl:block 2xl:hidden">XL</span>
+    <span class="hidden 2xl:block">2XL</span>
+  </div>
+
+  <div id="hojas-hero">
     <div
       class="absolute z-1 bottom-30 lg:translate-y-0 lg:bottom-10 -translate-x-20 lg:-translate-x-50 select-none rellax"
     >
@@ -41,7 +51,7 @@ import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
   </div>
 
   <div class="absolute inset-0 bg-black/40 z-0"></div>
-  <div class="relative z-1 pl-4">
+  <div class="relative z-1 pl-4 min-[1920px]:scale-100 min-[1280px]:scale-80 min-[2560px]:scale-150  origin-top-left">
     <p class="text-white text-xl lg:text-[35px]">BIENVENIDOS A LA</p>
     <p class="text-white font-extrabold text-4xl lg:text-[70px] leading-none">
       UNIVERSIDAD NACIONAL
@@ -63,7 +73,7 @@ import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
         >
     </div>
   </div>
-  <div class="absolute right-5 -bottom-3 lg:right-15 lg:bottom-15 z-2 justify-items-end">
+  <div class="absolute right-5 -bottom-3 lg:right-15 lg:bottom-15 z-2 justify-items-end scale-100 min-[1280px]:scale-80 min-[2560px]:scale-105 origin-right">
      <p class="text-white translate-y-7 lg:translate-y-0">Acceso Rápido:</p>
     <GlassIcons className="custom-class"/>
   </div>

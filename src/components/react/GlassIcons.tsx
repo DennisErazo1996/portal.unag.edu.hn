@@ -33,7 +33,7 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ className }) => {
   };
 
   return (
-    <div className={`flex scale-70 lg:scale-130 origin-right gap-[3em]  mx-auto py-[3em] text-white overflow-visible ${className || ''}`}>
+    <div className={`flex scale-70 lg:scale-130 origin-right gap-8  mx-auto py-[3em] text-white overflow-visible ${className || ''}`}>
       {items.map((item, index) => (
         <a
           key={index}

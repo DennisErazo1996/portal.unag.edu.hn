@@ -1,7 +1,5 @@
 import type { APIRoute } from 'astro';
 import OpenAI from 'openai';
-import fs from 'fs';
-import path from 'path';
 
 export const prerender = false;
 
@@ -30,15 +28,6 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Cargar la base de conocimientos de la UNAG
-    const knowledgeBasePath = path.join(process.cwd(), 'src', 'data', 'unag-knowledge.md');
-    let knowledgeBase = '';
-    try {
-      knowledgeBase = fs.readFileSync(knowledgeBasePath, 'utf-8');
-    } catch (error) {
-      console.warn('No se pudo cargar la base de conocimientos:', error);
-    }
-
     const systemPrompt = `
       Eres un asistente virtual útil y amigable para la Universidad Nacional de Agricultura (UNAG) de Honduras.
       Tu objetivo es ayudar a estudiantes, aspirantes y visitantes con información sobre la universidad.
@@ -50,10 +39,7 @@ export const POST: APIRoute = async ({ request }) => {
       4. La UNAG está ubicada en Catacamas, Olancho.
       5. Sé conciso pero informativo.
       6. Responde preguntas relacionadas con la agricultura.
-      7. Usa la informacion del sitio web de la UNAG para responder preguntas https://portal.unag.edu.hn y sus subdominios.
-
-      INFORMACIÓN OFICIAL DE LA UNAG:
-      ${knowledgeBase}
+      7. Usa la informacion del sitio web de la UNAG para responder preguntas https://portal.unag.edu.hn.
     `;
 
     const completion = await openai.chat.completions.create({
@@ -76,7 +62,6 @@ export const POST: APIRoute = async ({ request }) => {
   } catch (error: any) {
     console.error('Error in chat API:', error);
     
-    // Check for 429 error specifically (OpenAI also uses 429)
     if (error.status === 429) {
        return new Response(JSON.stringify({ 
          error: 'Quota exceeded. Please try again later.',

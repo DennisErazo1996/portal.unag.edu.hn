@@ -11,14 +11,15 @@ interface Message {
 }
 
 const Typewriter = ({ text, onComplete, onUpdate }: { text: string, onComplete?: () => void, onUpdate?: () => void }) => {
-  const [display, setDisplay] = useState('');
+  const [displayedChars, setDisplayedChars] = useState(0);
   
   useEffect(() => {
+    setDisplayedChars(0);
     let i = 0;
     const timer = setInterval(() => {
       if (i < text.length) {
-        setDisplay(prev => prev + text.charAt(i));
         i++;
+        setDisplayedChars(i);
         onUpdate?.();
       } else {
         clearInterval(timer);
@@ -28,9 +29,11 @@ const Typewriter = ({ text, onComplete, onUpdate }: { text: string, onComplete?:
     return () => clearInterval(timer);
   }, [text]);
 
+  const displayText = text.substring(0, displayedChars);
+
   return (
     <div className="prose prose-sm dark:prose-invert max-w-none [&>p]:mb-2 [&>p:last-child]:mb-0 [&>ul]:list-disc [&>ul]:pl-4 [&>ol]:list-decimal [&>ol]:pl-4">
-      <ReactMarkdown>{display}</ReactMarkdown>
+      <ReactMarkdown>{displayText}</ReactMarkdown>
     </div>
   );
 };

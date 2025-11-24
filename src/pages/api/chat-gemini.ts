@@ -1,5 +1,6 @@
+
 import type { APIRoute } from 'astro';
-import OpenAI from 'openai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import fs from 'fs';
 import path from 'path';
 
@@ -7,17 +8,18 @@ export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const apiKey = import.meta.env.OPENAI_API_KEY;
+    const apiKey = import.meta.env.GEMINI_API_KEY;
 
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'OPENAI_API_KEY is not set' }), {
+      return new Response(JSON.stringify({ error: 'GEMINI_API_KEY is not set' }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    const openai = new OpenAI({
-      apiKey: apiKey,
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ 
+      model: 'gemini-2.5-flash'
     });
 
     const body = await request.json();
@@ -50,23 +52,29 @@ export const POST: APIRoute = async ({ request }) => {
       4. La UNAG está ubicada en Catacamas, Olancho.
       5. Sé conciso pero informativo.
       6. Responde preguntas relacionadas con la agricultura.
-      7. Usa la informacion del sitio web de la UNAG para responder preguntas https://portal.unag.edu.hn y sus subdominios.
+      7. Usa buena ortografía y gramática en tus respuestas en español.
+      8. Usa la informacion del sitio web de la UNAG para responder preguntas https://portal.unag.edu.hn.
 
       INFORMACIÓN OFICIAL DE LA UNAG:
       ${knowledgeBase}
     `;
 
-    const completion = await openai.chat.completions.create({
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "assistant", content: "Entendido. Soy el asistente virtual de la UNAG. Estoy listo para ayudar con información sobre la universidad, sus carreras, admisiones y más. ¿En qué puedo ayudarte hoy?" },
-        { role: "user", content: message }
+    const chat = model.startChat({
+      history: [
+        {
+          role: "user",
+          parts: [{ text: systemPrompt }],
+        },
+        {
+          role: "model",
+          parts: [{ text: "Entendido. Soy el asistente virtual de la UNAG. Estoy listo para ayudar con información sobre la universidad, sus carreras, admisiones y más. ¿En qué puedo ayudarte hoy?" }],
+        },
       ],
-      // Usando modelo con búsqueda web integrada
-      model: "gpt-4o-mini-search-preview",
     });
 
-    const text = completion.choices[0].message.content;
+    const result = await chat.sendMessage(message);
+    const response = await result.response;
+    const text = response.text();
 
     return new Response(JSON.stringify({ reply: text }), {
       status: 200,
@@ -75,18 +83,6 @@ export const POST: APIRoute = async ({ request }) => {
 
   } catch (error: any) {
     console.error('Error in chat API:', error);
-    
-    // Check for 429 error specifically (OpenAI also uses 429)
-    if (error.status === 429) {
-       return new Response(JSON.stringify({ 
-         error: 'Quota exceeded. Please try again later.',
-         code: 'QUOTA_EXCEEDED'
-       }), {
-        status: 429,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
     return new Response(JSON.stringify({ error: error.message || 'Internal Server Error', stack: error.stack }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

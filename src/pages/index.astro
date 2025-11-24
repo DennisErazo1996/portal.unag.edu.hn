@@ -1,17 +1,26 @@
 ---
-import Layout from '../layouts/main.astro';
-import Hero from '@/components/astro/hero.astro'
-import CarrerasSection from '@/components/react/CarrerasSection';
-import ComunicadosSection from '@/components/react/ComunicadosSection';
-import { getCollection } from 'astro:content';
+import Layout from "../layouts/main.astro";
+import Hero from "@/components/astro/hero.astro";
+import CarrerasSection from "@/components/react/CarrerasSection";
+import ComunicadosSection from "@/components/react/ComunicadosSection";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+import imgEstudio from "@assets/img/estudio.png";
+import imgTrabajo from "@assets/img/trabajo.png";
+import imgDisciplina from "@assets/img/disciplina.png";
 
 const content = {
-	title: "UNAG | Universidad Nacional de Agricultura"
-}
+	title: "UNAG | Universidad Nacional de Agricultura",
+};
 
-const comunicados = (await getCollection('comunicados'))
-	.sort((a : any, b : any) => b.data.date.valueOf() - a.data.date.valueOf());
+const comunicados = (await getCollection("comunicados")).sort(
+	(a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 
+const añoFundacion = 1952;
+const añoActual = new Date().getFullYear();
+const añosDesdesFundacion = añoActual - añoFundacion;
 ---
 
 <Layout content={content}>
@@ -19,5 +28,56 @@ const comunicados = (await getCollection('comunicados'))
 
 	<ComunicadosSection client:load comunicados={comunicados} />
 
-	<CarrerasSection client:load/>
+	<CarrerasSection client:load />
+
+	<section
+		id="lema-section"
+		class="w-full h-[100vh] flex items-center justify-center overflow-hidden"
+	>
+		<div
+			class="pointer-events-none w-200 h-200 bg-unag-overlay-green rounded-full"
+		>
+		</div>
+		<div
+			class="absolute pointer-events-none left-0 -translate-x-20 w-200 h-200 rounded-full bg-transparent border border-unag-dark-green"
+		>
+		</div>
+		<div
+			class="absolute pointer-events-none right-0 translate-x-20 w-200 h-200 rounded-full bg-transparent border border-unag-dark-green"
+		>
+		</div>
+		<div class="absolute -translate-y-80">
+			<p
+				class="text-[120px] font-black text-unag-dark-green italic top-0 leading-none"
+			>
+				{añosDesdesFundacion}
+			</p>
+			<p
+				class="absolute translate-x-30 translate-y-10 text-[80px] leading-none texto-lema text-unag-light-green top-0"
+			>
+				años
+			</p>
+			<p class="text-[20px] font-normal">¡Formando líderes!</p>
+		</div>
+		<div class="absolute flex items-center gap-15 scale-120 mt-20">
+			<div class="flex flex-col items-center gap-2">
+				<p class="bg-unag-green text-white p-2 rounded-full w-fit px-5">
+					Estudio
+				</p>
+				<Image src={imgEstudio} alt="Estudio" class="w-50" />
+			</div>
+			<div class="flex flex-col items-center gap-2">
+				<Image src={imgTrabajo} alt="Trabajo" class="w-50" />
+				<p class="bg-unag-green text-white p-2 rounded-full w-fit px-5">
+					Trabajo
+				</p>
+			</div>
+			<div class="flex flex-col items-center gap-2">
+				<p class="bg-unag-green text-white p-2 rounded-full w-fit px-5">
+					Disciplina
+				</p>
+				<Image src={imgDisciplina} alt="Disciplina" class="w-50" />
+			</div>
+		</div>
+	</section>
 </Layout>

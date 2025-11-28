@@ -26,6 +26,32 @@
   .texto-lema {
     font-family: 'Nothing You Could Do', sans-serif !important;
   }
+
+  ::selection {
+    background: var(--color-unag-green);
+    color: #ffffff; 
+  }
+
+
+  ::-moz-selection {
+    background: var(--color-unag-green);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px; 
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-unag-dark-green); 
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-unag-green); 
+    border-radius: 10px;
+  }
+
+  
 }
 
 @theme inline {

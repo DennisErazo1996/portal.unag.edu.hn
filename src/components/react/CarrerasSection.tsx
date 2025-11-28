@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const carreras = [
@@ -10,7 +10,7 @@ const carreras = [
   {
     nombre: "Ingeniería en Gestión Integral de los Recursos Naturales",
     imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
+    link: "/carreras/ingenieria-gestion-integral-recursos-naturales",
   },
   {
     nombre: "Ingeniería en Recursos Naturales",
@@ -45,17 +45,72 @@ const carreras = [
 ];
 
 const stats = [
-  { valor: "+3500", etiqueta: "Estudiantes" },
-  { valor: "+3500", etiqueta: "Egresados" },
-  { valor: "6", etiqueta: "Centros Regionales" },
-  { valor: "+3500", etiqueta: "Docentes y Personal" },
+  { valor: 3500, etiqueta: "Estudiantes", prefijo: "+" },
+  { valor: 3500, etiqueta: "Egresados", prefijo: "+" },
+  { valor: 6, etiqueta: "Centros Regionales", prefijo: "" },
+  { valor: 3500, etiqueta: "Docentes y Personal", prefijo: "+" },
 ];
+
+// Hook personalizado para animar números
+function useCountUp(end: number, duration: number = 2000, isVisible: boolean = false) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    let startTime: number | null = null;
+    const startValue = 0;
+
+    const animate = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      // Easing function para una animación más suave
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * (end - startValue) + startValue));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [end, duration, isVisible]);
+
+  return count;
+}
 
 export default function CarrerasSection() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isStatsVisible, setIsStatsVisible] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
   const carrerasPerPage = 3;
   const totalPages = Math.ceil(carreras.length / carrerasPerPage);
+
+  // Intersection Observer para detectar cuando las estadísticas son visibles
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isStatsVisible) {
+            setIsStatsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, [isStatsVisible]);
 
   const handleSlide = (pageIndex: number) => {
     if (isAnimating || pageIndex === currentPage) return;
@@ -79,7 +134,7 @@ export default function CarrerasSection() {
   const visibleCarreras = carreras.slice(startIndex, startIndex + carrerasPerPage);
 
   return (
-    <section className="bg-white text-green-900 py-30">
+    <section className="bg-white text-green-900 lg:py-20 lg:mb-20">
       {/* Encabezado */}
       <div className="max-w-6xl mx-auto px-4 py-10">
         <p className="text-sm text-gray-600">Oferta académica</p>
@@ -93,7 +148,7 @@ export default function CarrerasSection() {
           <button
             onClick={handlePrev}
             disabled={isAnimating}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white hover:bg-green-50 rounded-full p-3 shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:hover:scale-100 hidden md:block"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-5 bg-white hover:bg-green-50 rounded-full p-3 shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:hover:scale-100 hidden md:block"
             aria-label="Página anterior"
           >
             <ChevronLeft size={24} className="text-green-900" />
@@ -103,7 +158,7 @@ export default function CarrerasSection() {
           <button
             onClick={handleNext}
             disabled={isAnimating}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white hover:bg-green-50 rounded-full p-3 shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:hover:scale-100 hidden md:block"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-5 bg-white hover:bg-green-50 rounded-full p-3 shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:hover:scale-100 hidden md:block"
             aria-label="Página siguiente"
           >
             <ChevronRight size={24} className="text-green-900" />
@@ -184,26 +239,44 @@ export default function CarrerasSection() {
       </div>
 
       {/* Sección de estadísticas */}
-      <div className="bg-unag-dark-green py-10">
+      <div ref={statsRef} className="bg-unag-dark-green py-10">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((item, i) => (
-            <div
-              key={i}
-              className={`rounded-2xl p-6 text-center flex flex-col justify-center items-center ${
-                i % 2 === 0 ? "bg-green-700" : "bg-green-600"
-              }`}
-            >
-              <ArrowUpRight size={18} className="text-white mb-2" />
-              <p className="text-2xl md:text-3xl font-bold text-white">
-                {item.valor}
-              </p>
-              <p className="text-sm md:text-base text-white/90">
-                {item.etiqueta}
-              </p>
-            </div>
+            <StatCard 
+              key={i} 
+              item={item} 
+              index={i} 
+              isVisible={isStatsVisible}
+            />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+// Componente StatCard separado para manejar la animación de cada stat
+function StatCard({ item, index, isVisible }: { 
+  item: { valor: number; etiqueta: string; prefijo: string }; 
+  index: number;
+  isVisible: boolean;
+}) {
+  const animatedValue = useCountUp(item.valor, 2000, isVisible);
+  
+  return (
+    <div
+      className={`rounded-2xl p-6 text-center flex flex-col justify-center items-center transition-all duration-500 ${
+        index % 2 === 0 ? "bg-green-700" : "bg-green-600"
+      } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <ArrowUpRight size={18} className="text-white mb-2" />
+      <p className="text-2xl md:text-3xl font-bold text-white tabular-nums">
+        {item.prefijo}{animatedValue.toLocaleString()}
+      </p>
+      <p className="text-sm md:text-base text-white/90">
+        {item.etiqueta}
+      </p>
+    </div>
   );
 }

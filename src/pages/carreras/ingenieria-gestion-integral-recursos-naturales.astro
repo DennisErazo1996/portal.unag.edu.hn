@@ -1,0 +1,369 @@
+---
+import Layout from "@/layouts/main.astro";
+import { Download, FileText } from "@lucide/astro";
+
+const content = {
+  title: "Ingeniería en Gestión Integral de los Recursos Naturales | UNAG",
+};
+
+const carrera = {
+  nombre: "Ingeniería en Gestión Integral de los Recursos Naturales",
+  imagenHeader:
+    "https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=1920",
+  descripcion:
+    "Profesionales capaces de gestionar de manera sostenible los recursos naturales, implementando estrategias innovadoras para la conservación y uso eficiente del medio ambiente.",
+  planEstudioUrl: "/documents/plan-estudios-girn.pdf",
+  correoCoordinacion: "coordinacion.girn@unag.edu.hn",
+
+  perfil: {
+    titulo: "Perfil de la Carrera",
+    contenido: `La carrera de Ingeniería en Gestión Integral de los Recursos Naturales forma profesionales comprometidos 
+		con el desarrollo sostenible y la conservación del medio ambiente. Los estudiantes adquieren conocimientos en:
+		<ul class="list-disc ml-6 mt-4 space-y-2">
+			<li>Manejo y conservación de recursos naturales renovables y no renovables</li>
+			<li>Evaluación de impacto ambiental y sistemas de gestión ambiental</li>
+			<li>Ordenamiento territorial y planificación del uso del suelo</li>
+			<li>Gestión de cuencas hidrográficas y recursos hídricos</li>
+			<li>Restauración ecológica y servicios ecosistémicos</li>
+			<li>Legislación ambiental y políticas públicas</li>
+		</ul>`,
+  },
+
+  objetivos: {
+    titulo: "Objetivos Generales",
+    contenido: `
+		<ul class="list-disc ml-6 space-y-3">
+			<li>Formar profesionales con capacidad técnica y científica para la gestión sostenible de los recursos naturales</li>
+			<li>Desarrollar competencias en evaluación, planificación y ejecución de proyectos ambientales</li>
+			<li>Promover la investigación aplicada en conservación y manejo de ecosistemas</li>
+			<li>Fomentar el liderazgo y la ética profesional en el ámbito ambiental</li>
+			<li>Integrar conocimientos multidisciplinarios para abordar problemáticas ambientales complejas</li>
+		</ul>`,
+  },
+
+  docentes: [
+    {
+      nombre: "Dr. Carlos Mendoza",
+      cargo: "Coordinador de Carrera",
+      correo: "carlos.mendoza@unag.edu.hn",
+      imagen:
+        "https://ui-avatars.com/api/?name=Carlos+Mendoza&size=200&background=1ba333&color=fff&bold=true",
+    },
+    {
+      nombre: "MSc. Ana García",
+      cargo: "Docente de Gestión Ambiental",
+      correo: "ana.garcia@unag.edu.hn",
+      imagen:
+        "https://ui-avatars.com/api/?name=Ana+Garcia&size=200&background=00371d&color=fff&bold=true",
+    },
+    {
+      nombre: "Ing. Roberto Silva",
+      cargo: "Docente de Recursos Hídricos",
+      correo: "roberto.silva@unag.edu.hn",
+      imagen:
+        "https://ui-avatars.com/api/?name=Roberto+Silva&size=200&background=6CC836&color=fff&bold=true",
+    },
+    {
+      nombre: "MSc. Laura Martínez",
+      cargo: "Docente de Conservación",
+      correo: "laura.martinez@unag.edu.hn",
+      imagen:
+        "https://ui-avatars.com/api/?name=Laura+Martinez&size=200&background=1ba333&color=fff&bold=true",
+    },
+  ],
+
+  sedes: [
+    {
+      nombre: "Campus Central Catacamas",
+      direccion: "Catacamas, Olancho, Honduras",
+      telefono: "+504 2799-4263",
+      horario: "Lunes a Viernes: 7:00 AM - 5:00 PM",
+    },
+    {
+      nombre: "CURLA - Centro Universitario Regional del Litoral Atlántico",
+      direccion: "La Ceiba, Atlántida, Honduras",
+      telefono: "+504 2442-0241",
+      horario: "Lunes a Viernes: 7:00 AM - 5:00 PM",
+    },
+    {
+      nombre: "CURC - Centro Universitario Regional de Occidente",
+      direccion: "Santa Rosa de Copán, Copán, Honduras",
+      telefono: "+504 2662-0404",
+      horario: "Lunes a Viernes: 7:00 AM - 5:00 PM",
+    },
+  ],
+};
+---
+
+<Layout content={content}>
+  <!-- Header con imagen -->
+  <section class="relative w-full h-[60vh] lg:h-[75vh] overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"
+    >
+    </div>
+    <img
+      src={carrera.imagenHeader}
+      alt={carrera.nombre}
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div
+      class="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center"
+    >
+      <div class="max-w-3xl mt-15">
+        <div
+          class="inline-block bg-unag-green/90 backdrop-blur-sm text-white px-4 py-2 rounded-lg mb-4"
+        >
+          <p class="text-sm font-semibold text-white">Oferta Académica</p>
+        </div>
+        <h1
+          class="text-4xl lg:text-6xl font-black text-white mb-6 leading-tight"
+        >
+          {carrera.nombre}
+        </h1>
+        <!-- <p class="text-lg text-white lg:text-xl  leading-relaxed">
+          {carrera.descripcion}
+        </p> -->
+      </div>
+    </div>
+
+    
+  </section>
+
+  <!-- Contenido principal con sidebar -->
+  <section class="relative bg-white py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <aside class="lg:sticky lg:top-24 h-fit">
+          <div
+            class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden"
+          >
+            <div class="bg-unag-green text-white p-6">
+              <div class="flex items-center gap-3 mb-2">
+                <FileText size={24} />
+                <h3 class="font-bold text-lg">Documentos</h3>
+              </div>
+              <p class="text-sm text-white/90">
+                Archivos disponibles para descargar
+              </p>
+            </div>
+
+            <div class="p-4 space-y-3">
+              <a
+                href="/"
+                download
+                class="flex items-center gap-3 p-4 bg-unag-light-gray/50 hover:bg-unag-light-gray rounded-xl transition-all duration-300 group border border-transparent hover:border-unag-green"
+              >
+                <div
+                  class="flex-shrink-0 w-10 h-10 bg-unag-green/10 rounded-lg flex items-center justify-center group-hover:bg-unag-green/20 transition-colors"
+                >
+                  <Download size={20} class="text-unag-green" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p
+                    class="font-semibold text-unag-dark-green text-sm group-hover:text-unag-green transition-colors truncate"
+                  >Plan de Estudios
+                  </p>
+
+                  <p class="text-xs text-gray-500 uppercase"></p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div
+            class="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow mt-5"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div class="bg-unag-green/10 p-3 rounded-lg">
+                <svg
+                  class="w-6 h-6 text-unag-green"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-gray-800">Coordinación</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">
+              Contáctanos para más información
+            </p>
+            <a
+              href={`mailto:${carrera.correoCoordinacion}`}
+              class="block text-sm text-unag-green hover:text-unag-dark-green font-medium break-words transition-colors"
+            >
+              {carrera.correoCoordinacion}
+            </a>
+          </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="lg:col-span-3 space-y-12">
+          <!-- Perfil de la carrera -->
+          <article id="perfil" class="scroll-mt-24">
+            <div
+              class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+            >
+              <div class="flex items-center gap-3 mb-6">
+                <div class="bg-unag-green/10 p-3 rounded-lg">
+                  <svg
+                    class="w-8 h-8 text-unag-green"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-3xl font-black text-gray-800">
+                  {carrera.perfil.titulo}
+                </h2>
+              </div>
+              <div
+                class="prose prose-lg max-w-none text-gray-700"
+                set:html={carrera.perfil.contenido}
+              />
+            </div>
+          </article>
+
+          <!-- Objetivos generales -->
+          <article id="objetivos" class="mt-15">
+            <div
+              class="bg-gradient-to-br from-unag-overlay-green to-white rounded-2xl p-8 shadow-lg border border-gray-100"
+            >
+              <div class="flex items-center gap-3 mb-6">
+                <div class="bg-unag-green/10 p-3 rounded-lg">
+                  <svg
+                    class="w-8 h-8 text-unag-green"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-3xl font-black text-gray-800">
+                  {carrera.objetivos.titulo}
+                </h2>
+              </div>
+              <div
+                class="prose prose-lg max-w-none text-gray-700"
+                set:html={carrera.objetivos.contenido}
+              />
+            </div>
+          </article>
+
+          <!-- Docentes -->
+          <article id="docentes" class="mt-15">
+            <div class="mb-8">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="bg-unag-green/10 p-3 rounded-lg">
+                  <svg
+                    class="w-8 h-8 text-unag-green"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <h2 class="text-3xl font-black text-gray-800">
+                  Nuestros Docentes
+                </h2>
+              </div>
+              <p class="text-gray-600 ml-16">
+                Conoce al equipo de profesionales que te guiarán en tu formación
+                académica
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {
+                carrera.docentes.map((docente) => (
+                  <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="p-6">
+                      <div class="flex items-center gap-4 mb-4">
+                        <img
+                          src={docente.imagen}
+                          alt={docente.nombre}
+                          class="w-20 h-20 rounded-full object-cover border-4 border-unag-green/20"
+                        />
+                        <div class="flex-1">
+                          <h3 class="font-bold text-lg text-gray-800">
+                            {docente.nombre}
+                          </h3>
+                          <p class="text-sm text-unag-green font-medium">
+                            {docente.cargo}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
+                        <svg
+                          class="w-4 h-4 text-unag-green flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                          />
+                        </svg>
+                        <a
+                          href={`mailto:${docente.correo}`}
+                          class="hover:text-unag-green transition-colors break-all"
+                        >
+                          {docente.correo}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+
+            
+          </article>
+
+         
+
+          
+        </main>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .prose ul {
+    color: #374151;
+  }
+
+  .scroll-mt-24 {
+    scroll-margin-top: 6rem;
+  }
+</style>

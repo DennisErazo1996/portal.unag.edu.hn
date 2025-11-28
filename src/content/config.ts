@@ -9,6 +9,11 @@ const comunicadosCollection = defineCollection({
     date: z.date(),
     image: z.string().optional(),
     featured: z.boolean().default(false),
+    attachments: z.array(z.object({
+      name: z.string(),
+      url: z.string(),
+      type: z.string().optional(),
+    })).optional(),
   }),
 });
 

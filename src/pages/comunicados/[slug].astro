@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/main.astro';
-import { Calendar, Tag, ArrowLeft } from '@lucide/astro';
+import { Calendar, Tag, ArrowLeft, Download, FileText } from '@lucide/astro';
 
 export async function getStaticPaths() {
   const comunicados = await getCollection('comunicados');
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  comunicado: any; // You can replace 'any' with a more specific type if available
+  comunicado: any;
 }
 
 const { comunicado } = Astro.props;
@@ -30,22 +30,36 @@ const categoryColors: Record<string, string> = {
   'Becas': 'bg-orange-500',
   'Académico': 'bg-red-500',
 };
+
+const hasAttachments = comunicado.data.attachments && comunicado.data.attachments.length > 0;
 ---
 
 <Layout content={content}>
-  <article class="pt-40 pb-20 px-6 lg:px-20 min-h-screen">
-    <!-- Back Button -->
-    <a 
-      href="/comunicados"
-      class="inline-flex items-center gap-2 text-unag-green font-semibold hover:gap-4 transition-all duration-300 mb-8"
-    >
-      <ArrowLeft size={18} />
-      Volver a comunicados
-    </a>
+  <!-- Hero Header with Background Image -->
+  <div class="relative h-[70vh] w-full overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src={comunicado.data.image || "https://images.pexels.com/photos/2132171/pexels-photo-2132171.jpeg?auto=compress&cs=tinysrgb&w=1920"} 
+        alt={comunicado.data.title}
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>
+    </div>
 
-    <!-- Header -->
-    <header class="max-w-4xl mx-auto mb-12">
-      <div class="flex flex-wrap gap-3 mb-4">
+    <!-- Content Overlay -->
+    <div class="relative h-full flex flex-col justify-end pb-16 px-6 lg:px-20 max-w-7xl mx-auto">
+      <!-- Back Button -->
+      <a 
+        href="/comunicados"
+        class="inline-flex items-center gap-2 text-white font-semibold hover:gap-4 transition-all duration-300 mb-8 w-fit bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+      >
+        <ArrowLeft size={18} />
+        Volver a comunicados
+      </a>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-3 mb-6">
         <span class={`px-4 py-2 rounded-full text-white text-sm font-bold ${categoryColors[comunicado.data.category]}`}>
           <Tag size={16} class="inline mr-1" />
           {comunicado.data.category}
@@ -57,11 +71,13 @@ const categoryColors: Record<string, string> = {
         )}
       </div>
 
-      <h1 class="text-4xl lg:text-6xl font-extrabold text-unag-dark-green leading-tight mb-6">
+      <!-- Title -->
+      <h1 class="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-4 max-w-4xl">
         {comunicado.data.title}
       </h1>
 
-      <div class="flex items-center gap-4 text-gray-600">
+      <!-- Meta -->
+      <div class="flex items-center gap-4 text-white/90">
         <div class="flex items-center gap-2">
           <Calendar size={18} />
           <time>
@@ -73,98 +89,146 @@ const categoryColors: Record<string, string> = {
           </time>
         </div>
       </div>
+    </div>
+  </div>
 
-      <p class="mt-6 text-xl text-gray-700">
-        {comunicado.data.description}
-      </p>
-    </header>
+  <!-- Main Content Area -->
+  <article class="py-12 px-6 lg:px-20">
+    <div class="max-w-7xl mx-auto">
+      <div class={`grid ${hasAttachments ? 'lg:grid-cols-[1fr_320px]' : 'grid-cols-1'} gap-8`}>
+        
+        <!-- Content Column -->
+        <div>
+          <!-- Description -->
+          <p class="text-sm text-gray-700 mb-8 p-6 bg-unag-light-gray/50 rounded-2xl border-l-4 border-unag-green">
+            {comunicado.data.description}
+          </p>
 
-    <!-- Content -->
-    <div class="max-w-4xl mx-auto">
-      <div class="h-1 w-20 bg-unag-green rounded-full mb-8"></div>
-      
-      <div class="prose prose-lg max-w-none
-        prose-headings:text-unag-dark-green 
-        prose-headings:font-bold
-        prose-h2:text-3xl
-        prose-h3:text-2xl
-        prose-p:text-gray-700
-        prose-a:text-unag-green
-        prose-a:no-underline
-        hover:prose-a:underline
-        prose-strong:text-unag-dark-green
-        prose-ul:text-gray-700
-        prose-ol:text-gray-700
-        prose-li:marker:text-unag-green
-        prose-table:border-collapse
-        prose-th:bg-unag-green
-        prose-th:text-white
-        prose-th:p-3
-        prose-td:border
-        prose-td:border-gray-300
-        prose-td:p-3
-      ">
-        <Content />
-      </div>
+          <!-- Separator -->
+          <div class="h-1 w-20 bg-unag-green rounded-full mb-8"></div>
+          
+          <!-- Markdown Content -->
+          <div class=" text-sm prose prose-lg max-w-none
+            prose-headings:text-unag-dark-green 
+            prose-headings:font-bold
+            prose-headings:mt-8
+            prose-headings:mb-4
+            prose-h2:text-3xl
+            prose-h2:mt-12
+            prose-h2:mb-6
+            prose-h3:text-2xl
+            prose-p:text-gray-700
+            prose-p:mb-6
+            prose-p:leading-relaxed
+            prose-a:text-unag-green
+            prose-a:no-underline
+            hover:prose-a:underline
+            prose-strong:text-unag-dark-green
+            prose-strong:font-bold
+            prose-ul:text-gray-700
+            prose-ul:my-6
+            prose-ol:text-gray-700
+            prose-ol:my-6
+            prose-li:marker:text-unag-green
+            prose-li:my-2
+            prose-table:border-collapse
+            prose-th:bg-unag-green
+            prose-th:text-white
+            prose-th:p-3
+            prose-td:border
+            prose-td:border-gray-300
+            prose-td:p-3
+          ">
+            <Content />
+          </div>
 
-      <!-- Footer -->
-      <div class="mt-12 p-6 bg-unag-light-gray rounded-2xl">
-        <h3 class="font-bold text-unag-dark-green mb-2">¿Necesitas más información?</h3>
-        <p class="text-gray-700 mb-4">
-          Para consultas adicionales, comunícate con nosotros:
-        </p>
-        <div class="flex flex-col gap-2 text-gray-700">
-          <p>📧 Email: info@unag.edu.hn</p>
-          <p>📞 Teléfono: +504 2799-4500</p>
-          <p>📍 Catacamas, Olancho, Honduras</p>
+          <!-- Footer Info -->
+          <div class="mt-12 p-6 text-sm bg-unag-light-gray rounded-2xl">
+            <h3 class="font-bold text-unag-dark-green mb-2">¿Necesitas más información?</h3>
+            <p class="text-gray-700 mb-4">
+              Para consultas adicionales, comunícate con nosotros:
+            </p>
+            <div class="flex flex-col gap-2 text-gray-700">
+              <p>📧 Email: info@unag.edu.hn</p>
+              <p>📞 Teléfono: +504 2799-4500</p>
+              <p>📍 Catacamas, Olancho, Honduras</p>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Share & Back -->
-      <div class="mt-8 flex justify-between items-center">
-        <a 
-          href="/comunicados"
-          class="inline-flex items-center gap-2 text-unag-green font-semibold hover:gap-4 transition-all duration-300"
-        >
-          <ArrowLeft size={18} />
-          Volver a comunicados
-        </a>
+        <!-- Sidebar (only if attachments exist) -->
+        {hasAttachments && (
+          <aside class="lg:sticky lg:top-24 h-fit">
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+              
+              <div class="bg-unag-green text-white p-6">
+                <div class="flex items-center gap-3 mb-2">
+                  <FileText size={24} />
+                  <h3 class="font-bold text-lg">Documentos</h3>
+                </div>
+                <p class="text-sm text-white/90">Archivos disponibles para descargar</p>
+              </div>
+
+              
+              <div class="p-4 space-y-3">
+                {comunicado.data.attachments.map((attachment: any) => (
+                  <a
+                    href={attachment.url}
+                    download
+                    class="flex items-center gap-3 p-4 bg-unag-light-gray/50 hover:bg-unag-light-gray rounded-xl transition-all duration-300 group border border-transparent hover:border-unag-green"
+                  >
+                    <div class="flex-shrink-0 w-10 h-10 bg-unag-green/10 rounded-lg flex items-center justify-center group-hover:bg-unag-green/20 transition-colors">
+                      <Download size={20} class="text-unag-green" />
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="font-semibold text-unag-dark-green text-sm group-hover:text-unag-green transition-colors truncate">
+                        {attachment.name}
+                      </p>
+                      {attachment.type && (
+                        <p class="text-xs text-gray-500 uppercase">{attachment.type}</p>
+                      )}
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              <!-- Download All Button (if multiple files) -->
+              {comunicado.data.attachments.length > 1 && (
+                <div class="p-4 pt-0">
+                  <button 
+                    id="download-all-btn"
+                    class="w-full bg-unag-green hover:bg-unag-dark-green text-white font-semibold py-3 px-4 rounded-xl transition-colors duration-300 flex items-center justify-center gap-2"
+                  >
+                    <Download size={18} />
+                    Descargar todos
+                  </button>
+                </div>
+              )}
+            </div>
+          </aside>
+        )}
+
       </div>
     </div>
   </article>
 </Layout>
 
-<style>
-  /* Estilos adicionales para el contenido markdown */
-  article :global(img) {
-    border-radius: 1rem;
-    margin: 2rem 0;
+<script>
+  
+  const downloadAllBtn = document.getElementById('download-all-btn');
+  
+  if (downloadAllBtn) {
+    downloadAllBtn.addEventListener('click', async () => {
+      const attachmentLinks = document.querySelectorAll('aside a[download]');
+      
+      attachmentLinks.forEach((link, index) => {
+        setTimeout(() => {
+          const anchor = link as HTMLAnchorElement;
+          anchor.click();
+        }, index * 300); 
+      });
+    });
   }
+</script>
 
-  article :global(blockquote) {
-    border-left: 4px solid #00A76F;
-    padding-left: 1.5rem;
-    font-style: italic;
-    color: #374151;
-  }
 
-  article :global(code) {
-    background-color: #f3f4f6;
-    padding: 0.2rem 0.4rem;
-    border-radius: 0.25rem;
-    font-size: 0.875em;
-  }
-
-  article :global(pre) {
-    background-color: #1f2937;
-    color: #f9fafb;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-  }
-
-  article :global(pre code) {
-    background-color: transparent;
-    padding: 0;
-  }
-</style>

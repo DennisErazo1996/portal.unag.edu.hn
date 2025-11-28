@@ -9,8 +9,7 @@ import DropdownMenuItemWithSubmenu from "@/components/astro/navigation/dropdown-
 import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
 ---
 
-
-<nav class="pt-1 pl-5 lg:pt-5 lg:pl-5 text-white z-10 scale-100 min-[1280px]:scale-90 min-[2560px]:scale-110 origin-left ">
+<!-- <nav class="pt-1 pl-5 lg:pt-5 lg:pl-5 text-white z-10 scale-100 min-[1280px]:scale-90 min-[2560px]:scale-110 origin-left ">
     
     <div class="hidden lg:flex items-center gap-2">
         <div id="logo-unag" class="bg-unag-dark-green p-5 mb-3">
@@ -28,7 +27,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                 <li><a href="/" class="hover:text-unag-yellow transition-colors">Inicio</a></li> 
                 <li><a href="" class="hover:text-unag-yellow transition-colors">Noticias</a></li>
                 
-                <!-- Dropdown Acerca -->
+                
                 <li class="relative group">
                     <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
                         Acerca <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
@@ -40,7 +39,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                     </DropdownMenuContainer>
                 </li>
 
-                <!-- Dropdown Organización -->
+                
                 <li class="relative group">
                     <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
                         Organización <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
@@ -92,7 +91,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                     </DropdownMenuContainer>
                 </li>
 
-                <!-- Dropdown Biblioteca -->
+                
                 <li class="relative group">
                     <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
                         Biblioteca <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
@@ -105,7 +104,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                     </DropdownMenuContainer>
                 </li>
 
-                <!-- Dropdown Transparencias -->
+               
                 <li class="relative group">
                     <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
                         Transparencias <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
@@ -118,7 +117,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                     </DropdownMenuContainer>
                 </li>
 
-                <!-- Dropdown Admisión -->
+               
                 <li class="relative group">
                     <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
                         Admisión <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
@@ -131,7 +130,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                     </DropdownMenuContainer>
                 </li>
 
-                <!-- Dropdown COCOIN -->
+                
                 <li class="relative group">
                     <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
                         COCOIN <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
@@ -144,7 +143,177 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                     </DropdownMenuContainer>
                 </li>
 
-                <!-- Dropdown Comisión CACN -->
+                
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Comisión CACN <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">¿Qué es CACN?</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Integrantes</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Documentos</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Información</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+   
+    <div class="lg:hidden mt-3 mb-3">
+        <div class="flex items-center gap-5">
+            <button id="menu-toggle" class="bg-unag-green p-3 rounded-lg">
+            <Menu size={24} />
+            </button>
+             <a href="/">
+                <Image
+                    class="w-35"
+                    src={logoUnagBlanco}
+                    alt="UNAG Logo"
+                    loading="eager"
+                />
+            </a>
+        </div>
+    </div>
+
+</nav> -->
+
+
+<nav class="flex justify-center items-center w-full text-white z-10 scale-100 min-[1280px]:scale-90 min-[2560px]:scale-110">
+    
+    <div class="hidden lg:flex items-center">
+        <div id="logo-unag" class="bg-unag-dark-green px-20 py-4 rounded-l-lg">
+            <a href="/" class="block ">
+                 <Image    
+                    class="lg:w-45"
+                    src={logoUnagBlanco}
+                    alt="UNAG Logo"
+                    loading="eager"
+                  />
+            </a>
+        </div>
+        <div class="flex items-center bg-unag-green h-13 p-5 h-15 rounded-r-lg overflow-visible relative border-b-4 border-unag-dark-green">
+            <ul class="flex gap-5">
+                <li><a href="/" class="hover:text-unag-yellow transition-colors">Inicio</a></li> 
+                <li><a href="" class="hover:text-unag-yellow transition-colors">Noticias</a></li>
+                
+                
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Acerca <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Misión y Visión</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Valores</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Autoridades</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Organización <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <DropdownMenuItemWithSubmenu title="Estructura Organizacional">
+                            <SubmenuLink href="">Sistema de autoevaluación para la acreditación de la calidad educativa</SubmenuLink>
+                            <SubmenuLink href="">Direcciones</SubmenuLink>
+                            <SubmenuLink href="">Coordinaciones</SubmenuLink>
+                        </DropdownMenuItemWithSubmenu>
+                        <DropdownMenuItemWithSubmenu title="Consejo Directivo">
+                            <SubmenuLink href="">Miembros</SubmenuLink>
+                            <SubmenuLink href="">Funciones</SubmenuLink>
+                            <SubmenuLink href="">Actas</SubmenuLink>
+                        </DropdownMenuItemWithSubmenu>
+                        <DropdownMenuItemWithSubmenu title="Rectoría">
+                            <SubmenuLink href="">Rector</SubmenuLink>
+                            <SubmenuLink href="">Vicerrectoría Académica</SubmenuLink>
+                            <SubmenuLink href="">Vicerrectoría Administrativa</SubmenuLink>
+                        </DropdownMenuItemWithSubmenu>
+                        <LinkDropdownMenu href="">Departamentos</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+              
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        ERP <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Sistema Académico</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Portal Estudiantes</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Portal Docentes</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Biblioteca Virtual</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+               
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Carreras <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Ingeniería Agronómica</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ingeniería en Zootecnia</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ingeniería Forestal</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ingeniería Agroindustrial</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ver todas las carreras</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Biblioteca <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Catálogo</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Biblioteca Digital</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Horarios</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Servicios</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Transparencias <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Presupuesto</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Informes Financieros</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Licitaciones</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Portal de Datos Abiertos</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        Admisión <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Requisitos</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Proceso de Admisión</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Fechas Importantes</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Aplicar Ahora</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                
+                <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                        COCOIN <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                    </button>
+                    <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Sobre COCOIN</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Proyectos</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Publicaciones</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Contacto</LinkDropdownMenu>
+                    </DropdownMenuContainer>
+                </li>
+
+                
                 <li class="relative group">
                     <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
                         Comisión CACN <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />

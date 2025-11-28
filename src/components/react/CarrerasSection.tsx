@@ -137,7 +137,10 @@ export default function CarrerasSection() {
     <section className="bg-white text-green-900 lg:py-20 lg:mb-20">
       {/* Encabezado */}
       <div className="max-w-6xl mx-auto px-4 py-10">
-        <p className="text-sm text-gray-600">Oferta académica</p>
+        <div className="inline-flex items-center gap-2 bg-unag-green/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+					<div className="w-2 h-2 bg-unag-green rounded-full animate-pulse"></div>
+					<p className="text-sm font-semibold text-unag-dark-green">Oferta Académica</p>
+				</div>
         <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 mb-6">
           NUESTRAS CARRERAS
         </h2>

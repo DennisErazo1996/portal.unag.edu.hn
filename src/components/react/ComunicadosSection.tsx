@@ -46,7 +46,10 @@ export default function ComunicadosSection({ comunicados }: ComunicadosSectionPr
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-12">
           <div>
-            <p className="text-sm text-gray-600 flex gap-1 items-center"><MoveRight /> Ultimas Publicaciones</p>
+            <div className="inline-flex items-center gap-2 bg-unag-green/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+              <div className="w-2 h-2 bg-unag-green rounded-full animate-pulse"></div>
+              <p className="text-sm font-semibold text-unag-dark-green">Últimas publicaciones</p>
+            </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 mb-6">
             COMUNICADOS
             </h2>

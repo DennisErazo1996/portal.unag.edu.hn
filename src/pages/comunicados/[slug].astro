@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/main.astro';
-import { Calendar, Tag, ArrowLeft, Download, FileText } from '@lucide/astro';
+import { Calendar, Tag, ArrowLeft, Download, FileText, Star } from '@lucide/astro';
 
 export async function getStaticPaths() {
   const comunicados = await getCollection('comunicados');
@@ -32,6 +32,9 @@ const categoryColors: Record<string, string> = {
 };
 
 const hasAttachments = comunicado.data.attachments && comunicado.data.attachments.length > 0;
+
+export const prerender = true;
+
 ---
 
 <Layout content={content}>
@@ -65,8 +68,8 @@ const hasAttachments = comunicado.data.attachments && comunicado.data.attachment
           {comunicado.data.category}
         </span>
         {comunicado.data.featured && (
-          <span class="px-4 py-2 rounded-full bg-unag-yellow text-unag-dark-green text-sm font-bold">
-            ⭐ Destacado
+          <span class="px-4 py-2 rounded-full flex items-center gap-2 bg-unag-yellow text-unag-dark-green text-sm font-bold">
+            <Star size={16} /> Destacado
           </span>
         )}
       </div>
@@ -138,6 +141,7 @@ const hasAttachments = comunicado.data.attachments && comunicado.data.attachment
             prose-td:border
             prose-td:border-gray-300
             prose-td:p-3
+            text-unag-gray
           ">
             <Content />
           </div>

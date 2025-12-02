@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/main.astro';
-import { MoveRight, Calendar, Tag } from '@lucide/astro';
+import { MoveRight, Calendar, Tag, Star } from '@lucide/astro';
 
 const comunicados = (await getCollection('comunicados')).sort(
   (a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -12,12 +12,12 @@ const content = {
 };
 
 const categoryColors: Record<string, string> = {
-  'Convocatoria': 'bg-blue-500',
-  'Evento': 'bg-purple-500',
-  'Aviso': 'bg-yellow-500',
-  'Graduación': 'bg-green-500',
-  'Becas': 'bg-orange-500',
-  'Académico': 'bg-red-500',
+  'Convocatoria': 'bg-unag-green',
+  'Evento': 'bg-unag-dark-green',
+  'Aviso': 'bg-unag-light-green',
+  'Graduación': 'bg-unag-green',
+  'Becas': 'bg-unag-light-green',
+  'Académico': 'bg-unag-dark-green',
 };
 ---
 
@@ -26,7 +26,7 @@ const categoryColors: Record<string, string> = {
   <div class="relative h-[60vh] w-full overflow-hidden">
     <div class="absolute inset-0">
       <img 
-        src="https://images.pexels.com/photos/2132171/pexels-photo-2132171.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+        src="https://images.pexels.com/photos/96715/pexels-photo-96715.jpeg" 
         alt="Comunicados UNAG"
         class="w-full h-full object-cover"
       />
@@ -34,10 +34,10 @@ const categoryColors: Record<string, string> = {
     </div>
 
     <div class="relative h-full flex flex-col justify-center items-center text-center px-6">
-      <p class="flex gap-2 text-white/90 items-center mb-4">
+      <!-- <p class="flex gap-2 text-white/90 items-center mb-4">
         <MoveRight size={20} /> Noticias y Anuncios
-      </p>
-      <h1 class="font-extrabold text-white text-5xl lg:text-7xl leading-none mb-6">
+      </p> -->
+      <h1 class="font-extrabold text-white text-5xl lg:text-7xl leading-none mb-2">
         Comunicados
       </h1>
       <p class="text-white/90 text-lg max-w-3xl">
@@ -98,8 +98,8 @@ const categoryColors: Record<string, string> = {
                 </div>
                 {comunicado.data.featured && (
                   <div class="absolute top-3 right-3">
-                    <span class="px-2.5 py-1 rounded-full bg-unag-yellow text-unag-dark-green text-xs font-bold shadow-lg">
-                      ⭐ Destacado
+                    <span class="px-2.5 py-1 flex items-center gap-2 rounded-full bg-unag-yellow text-unag-dark-green text-xs font-bold shadow-lg">
+                      <Star size={12} /> Destacado
                     </span>
                   </div>
                 )}

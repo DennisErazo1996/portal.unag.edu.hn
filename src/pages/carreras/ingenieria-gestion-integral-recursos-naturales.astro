@@ -93,20 +93,23 @@ const carrera = {
     },
   ],
 };
+
+export const prerender = true;
+
 ---
 
 <Layout content={content}>
   <!-- Header con imagen -->
   <section class="relative w-full h-[60vh] lg:h-[75vh] overflow-hidden">
-    <div
-      class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"
-    >
-    </div>
     <img
       src={carrera.imagenHeader}
       alt={carrera.nombre}
       class="absolute inset-0 w-full h-full object-cover"
     />
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"
+    >
+    </div>
     <div
       class="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center"
     >

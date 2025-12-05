@@ -2,6 +2,9 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/main.astro';
 import { MoveRight, Calendar, Tag, Star } from '@lucide/astro';
+import { Image } from 'astro:assets';
+import bgComunicados from '@/assets/img/bg-comunicados.jpg';
+import categoryColors from '@/consts/category-colors';
 
 const comunicados = (await getCollection('comunicados')).sort(
   (a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -11,37 +14,32 @@ const content = {
   title: "Comunicados | UNAG",
 };
 
-const categoryColors: Record<string, string> = {
-  'Convocatoria': 'bg-unag-green',
-  'Evento': 'bg-unag-dark-green',
-  'Aviso': 'bg-unag-light-green',
-  'Graduación': 'bg-unag-green',
-  'Becas': 'bg-unag-light-green',
-  'Académico': 'bg-unag-dark-green',
-};
+
+export const prerender = true;
 ---
 
 <Layout content={content}>
   <!-- Hero Header -->
   <div class="relative h-[60vh] w-full overflow-hidden">
     <div class="absolute inset-0">
-      <img 
-        src="https://images.pexels.com/photos/96715/pexels-photo-96715.jpeg" 
+      <Image 
+        src={bgComunicados}
         alt="Comunicados UNAG"
         class="w-full h-full object-cover"
+        loading="eager"
       />
       <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
     </div>
 
-    <div class="relative h-full flex flex-col justify-center items-center text-center px-6">
+    <div class="relative h-full flex flex-col justify-center items-center text-center mt-10">
       <!-- <p class="flex gap-2 text-white/90 items-center mb-4">
         <MoveRight size={20} /> Noticias y Anuncios
       </p> -->
-      <h1 class="font-extrabold text-white text-5xl lg:text-7xl leading-none mb-2">
+      <h1 class="font-extrabold text-white text-4xl lg:text-7xl leading-none mb-2">
         Comunicados
       </h1>
-      <p class="text-white/90 text-lg max-w-3xl">
-        Mantente informado sobre las últimas noticias, eventos y comunicados oficiales de la Universidad Nacional de Agricultura.
+      <p class="text-white/90 text-sm lg:text-lg max-w-3xl">
+        Mantente informado con los comunicados oficiales de la Universidad Nacional de Agricultura.
       </p>
     </div>
   </div>
@@ -88,7 +86,7 @@ const categoryColors: Record<string, string> = {
               data-title={comunicado.data.title.toLowerCase()}
               data-category={comunicado.data.category}
             >
-              <div class="h-40 bg-[url('https://images.pexels.com/photos/1002703/pexels-photo-1002703.jpeg')] bg-cover bg-center relative overflow-hidden">
+              <div class="h-40 bg-[url('/img/bg-comunicado.jpg')] bg-cover bg-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-br from-unag-green/20 to-unag-dark-green/40" />
                 <div class="absolute top-3 left-3">
                   <span class={`px-2.5 py-1 rounded-full text-white text-xs font-bold ${categoryColors[comunicado.data.category]} shadow-lg`}>

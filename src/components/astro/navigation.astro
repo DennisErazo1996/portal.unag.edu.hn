@@ -179,7 +179,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
 </nav> -->
 
 
-<nav class="flex lg:justify-center lg:items-center w-full text-white z-10 scale-100 min-[1280px]:scale-90 min-[2560px]:scale-110">
+<nav class="flex lg:justify-center lg:items-center w-full text-white z-20 scale-100 min-[1280px]:scale-90 min-[2560px]:scale-110">
     
     <div class="hidden lg:flex items-center">
         <div id="logo-unag" class="bg-unag-dark-green px-20 py-4 rounded-l-lg">
@@ -195,7 +195,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
         <div class="flex items-center bg-unag-green h-13 p-5 h-15 rounded-r-lg overflow-visible relative border-b-4 border-unag-dark-green">
             <ul class="flex gap-5">
                 <li><a href="/" class="hover:text-unag-yellow transition-colors">Inicio</a></li> 
-                <li><a href="" class="hover:text-unag-yellow transition-colors">Noticias</a></li>
+                <li><a href="https://portal.blog.unag.edu.hn" class="hover:text-unag-yellow transition-colors">Noticias</a></li>
                 
                 
                 <li class="relative group">
@@ -204,8 +204,9 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                     </button>
                     <DropdownMenuContainer>
                         <LinkDropdownMenu href="">Misión y Visión</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Valores</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Autoridades</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Historia</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Experiencia Académica</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Normativas</LinkDropdownMenu>
                     </DropdownMenuContainer>
                 </li>
 
@@ -215,22 +216,47 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                         Organización <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
-                        <DropdownMenuItemWithSubmenu title="Estructura Organizacional">
-                            <SubmenuLink href="">Sistema de autoevaluación para la acreditación de la calidad educativa</SubmenuLink>
-                            <SubmenuLink href="">Direcciones</SubmenuLink>
-                            <SubmenuLink href="">Coordinaciones</SubmenuLink>
-                        </DropdownMenuItemWithSubmenu>
-                        <DropdownMenuItemWithSubmenu title="Consejo Directivo">
-                            <SubmenuLink href="">Miembros</SubmenuLink>
-                            <SubmenuLink href="">Funciones</SubmenuLink>
-                            <SubmenuLink href="">Actas</SubmenuLink>
-                        </DropdownMenuItemWithSubmenu>
                         <DropdownMenuItemWithSubmenu title="Rectoría">
                             <SubmenuLink href="">Rector</SubmenuLink>
-                            <SubmenuLink href="">Vicerrectoría Académica</SubmenuLink>
-                            <SubmenuLink href="">Vicerrectoría Administrativa</SubmenuLink>
+                            <SubmenuLink href="">Unidad de Transparencia</SubmenuLink>
+                            <SubmenuLink href="">Unidad de Género</SubmenuLink>
+                            <SubmenuLink href="">Comisionado Universitario de Derechos Humanos</SubmenuLink>
+                            <SubmenuLink href="">Asesoría Legal</SubmenuLink>
+                            <SubmenuLink href="">SEPEG</SubmenuLink>
+                            <SubmenuLink href="https://setic.unag.edu.hn" target="_blank">SETIC</SubmenuLink>
+                            <SubmenuLink href="">SEGRE</SubmenuLink>
+                            <SubmenuLink href="">SEAPI</SubmenuLink>
                         </DropdownMenuItemWithSubmenu>
-                        <LinkDropdownMenu href="">Departamentos</LinkDropdownMenu>
+                        <DropdownMenuItemWithSubmenu title="Vicerrectorías">
+                            <SubmenuLink href="">Vicerrectoría Académica</SubmenuLink>
+                            <SubmenuLink href="">Vicerrectoría de Internacionalización</SubmenuLink>
+                            <SubmenuLink href="">Vicerrectoría de Vida Estudiantil</SubmenuLink>
+                        </DropdownMenuItemWithSubmenu>
+                        <LinkDropdownMenu href="">Secretaría General</LinkDropdownMenu>
+                        <DropdownMenuItemWithSubmenu title="Facultades">
+                            <SubmenuLink href="">Facultad de Ciencias</SubmenuLink>
+                            <SubmenuLink href="">Facultad de Ciencias Agrarias</SubmenuLink>
+                            <SubmenuLink href="">Facultad de Ciencias de la Tierra y la Conservación</SubmenuLink>
+                            <SubmenuLink href="">Facultad de Ciencias Tecnológicas</SubmenuLink>
+                            <SubmenuLink href="">Facultad de Medicina Veterinaria y Zootecnia</SubmenuLink>
+                            <SubmenuLink href="">Facultad de Ciencias Económicas y Administrativas</SubmenuLink>
+                        </DropdownMenuItemWithSubmenu>
+                        <DropdownMenuItemWithSubmenu title="Direcciones Académicas">
+                            <SubmenuLink href="">Sistema de Docencia e Innovación Educativa</SubmenuLink>
+                            <SubmenuLink href="">Sistema de Admisión</SubmenuLink>
+                            <SubmenuLink href="">Sistema de Autoevaluación para la Acreditación de la Calidad Educativa</SubmenuLink>
+                            <SubmenuLink href="">Sistema Académico de Cultura, Artes y Deportes</SubmenuLink>
+                            <SubmenuLink href="">Sistema de Carrera Docente</SubmenuLink>
+                            <SubmenuLink href="">Sistema de Desarrollo Tecnológico</SubmenuLink>
+                            <SubmenuLink href="">Sistema de Investigación y Postgrado</SubmenuLink>
+                            <SubmenuLink href="">Sistema de Vinculación Universidad Sociedad</SubmenuLink>
+                        </DropdownMenuItemWithSubmenu>
+                        <DropdownMenuItemWithSubmenu title="Sedes Regionales">
+                            <SubmenuLink href="">Comayagua</SubmenuLink>
+                            <SubmenuLink href="">Tomalá</SubmenuLink>
+                            <SubmenuLink href="">Mistruck</SubmenuLink>
+                        </DropdownMenuItemWithSubmenu>
+                        <LinkDropdownMenu href="">Junta de Dirección Universitaria</LinkDropdownMenu>
                     </DropdownMenuContainer>
                 </li>
 
@@ -240,10 +266,9 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                         ERP <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
-                        <LinkDropdownMenu href="">Sistema Académico</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Portal Estudiantes</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Portal Docentes</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Biblioteca Virtual</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ingresar ERP</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Campus Virtual</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Sistema de Educación a Distancia</LinkDropdownMenu>                        
                     </DropdownMenuContainer>
                 </li>
 
@@ -254,10 +279,13 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                     </button>
                     <DropdownMenuContainer>
                         <LinkDropdownMenu href="">Ingeniería Agronómica</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ingeniería en Gestión Integral de los Recursos Naturales</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ingeniería en Tecnología Alimentaria</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Medicina Veterinaria</LinkDropdownMenu>
                         <LinkDropdownMenu href="">Ingeniería en Zootecnia</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Ingeniería Forestal</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Ingeniería Agroindustrial</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Ver todas las carreras</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Administración de Empresas Agropecuarias</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Licenciatura en Economía Social Agraria</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Ingeniería en Agroexportación</LinkDropdownMenu>
                     </DropdownMenuContainer>
                 </li>
 
@@ -268,9 +296,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                     </button>
                     <DropdownMenuContainer>
                         <LinkDropdownMenu href="">Catálogo</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Biblioteca Digital</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Horarios</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Servicios</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Recursos Descargables</LinkDropdownMenu>
                     </DropdownMenuContainer>
                 </li>
 
@@ -280,10 +306,8 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                         Transparencias <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
-                        <LinkDropdownMenu href="">Presupuesto</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Informes Financieros</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Licitaciones</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Portal de Datos Abiertos</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Portal IAIP</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">SIELHO IAIP</LinkDropdownMenu>
                     </DropdownMenuContainer>
                 </li>
 
@@ -293,10 +317,9 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                         Admisión <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
+                        <LinkDropdownMenu href="">Procesos de Admisión</LinkDropdownMenu>
                         <LinkDropdownMenu href="">Requisitos</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Proceso de Admisión</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Fechas Importantes</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Aplicar Ahora</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Preguntas Frecuentes</LinkDropdownMenu>
                     </DropdownMenuContainer>
                 </li>
 
@@ -306,10 +329,8 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                         COCOIN <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
-                        <LinkDropdownMenu href="">Sobre COCOIN</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Proyectos</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Publicaciones</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Contacto</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Componentes</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">ONADICI</LinkDropdownMenu>
                     </DropdownMenuContainer>
                 </li>
 
@@ -319,10 +340,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                         Comisión CACN <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
-                        <LinkDropdownMenu href="">¿Qué es CACN?</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Integrantes</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Documentos</LinkDropdownMenu>
-                        <LinkDropdownMenu href="">Información</LinkDropdownMenu>
+                        <LinkDropdownMenu href="">Decreto No. 47-2022</LinkDropdownMenu>
                     </DropdownMenuContainer>
                 </li>
             </ul>

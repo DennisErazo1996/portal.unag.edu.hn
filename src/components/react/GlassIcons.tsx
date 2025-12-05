@@ -19,9 +19,9 @@ const gradientMapping: Record<string, string> = {
 
 const items: GlassIconsItem[] = [
   { icon: <GraduationCap />, color: 'green1', label: 'Maestrías', url: 'https://maestrias.unag.edu.hn' },
-  { icon: <Laptop />, color: 'green1', label: 'SED', url: '/sed' },
-  { icon: <Monitor />, color: 'green1', label: 'Moodle', url: '/campus-virtual' },
-  { icon: <Leaf />, color: 'green1', label: 'Carreras', url: '/carreras' },
+  { icon: <Laptop />, color: 'green1', label: 'SED', url: 'https://sed.unag.edu.hn' },
+  { icon: <Monitor />, color: 'green1', label: 'Moodle', url: 'https://moodle.unag.edu.hn/login/index.php' },
+  { icon: <Leaf />, color: 'green1', label: 'SysUNAG', url: 'https://sys.unag.edu.hn/login' },
   ];
 
 const GlassIcons: React.FC<GlassIconsProps> = ({ className }) => {

@@ -1,57 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
-const carreras = [
-  {
-    nombre: "Medicina Veterinaria",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "",
-  },
-  {
-    nombre: "Ingeniería en Gestión Integral de los Recursos Naturales",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "/carreras/ingenieria-gestion-integral-recursos-naturales",
-  },
-  {
-    nombre: "Ingeniería en Recursos Naturales",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
-  },
-  {
-    nombre: "Ingeniería en Alimentos",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
-  },
-  {
-    nombre: "Ingeniería Forestal",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
-  },
-  {
-    nombre: "Ingeniería en Administración de Empresas Agropecuarias",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
-  },
-  {
-    nombre: "Ingeniería en Desarrollo Socioeconómico y Ambiente",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
-  },
-  {
-    nombre: "Técnico en Producción Animal",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
-  },
-];
+import carreras from "@/consts/carreras";
+import stats from "@/consts/estadisticas";
 
-const stats = [
-  { valor: 3500, etiqueta: "Estudiantes", prefijo: "+" },
-  { valor: 3500, etiqueta: "Egresados", prefijo: "+" },
-  { valor: 6, etiqueta: "Centros Regionales", prefijo: "" },
-  { valor: 3500, etiqueta: "Docentes y Personal", prefijo: "+" },
-];
 
-// Hook personalizado para animar números
+
+
 function useCountUp(end: number, duration: number = 2000, isVisible: boolean = false) {
   const [count, setCount] = useState(0);
 
@@ -65,7 +20,7 @@ function useCountUp(end: number, duration: number = 2000, isVisible: boolean = f
       if (startTime === null) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
       
-      // Easing function para una animación más suave
+      
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       setCount(Math.floor(easeOutQuart * (end - startValue) + startValue));
 
@@ -88,7 +43,7 @@ export default function CarrerasSection() {
   const carrerasPerPage = 3;
   const totalPages = Math.ceil(carreras.length / carrerasPerPage);
 
-  // Intersection Observer para detectar cuando las estadísticas son visibles
+  
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -129,7 +84,7 @@ export default function CarrerasSection() {
     handleSlide(newPage);
   };
 
-  // Obtener las carreras de la página actual
+  
   const startIndex = currentPage * carrerasPerPage;
   const visibleCarreras = carreras.slice(startIndex, startIndex + carrerasPerPage);
 
@@ -141,13 +96,16 @@ export default function CarrerasSection() {
 					<div className="w-2 h-2 bg-unag-green rounded-full animate-pulse"></div>
 					<p className="text-sm font-semibold text-unag-dark-green">Oferta Académica</p>
 				</div>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 mb-6">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 mb-2 leading-none">
           NUESTRAS CARRERAS
         </h2>
+        <p className="text-sm text-gray-600 mb-8 w-full leading-none">
+          8 carreras de grado diseñadas para formar líderes en el sector agrícola y agroindustrial del país.
+        </p>
 
         {/* Carrusel */}
         <div className="relative">
-          {/* Botón Anterior */}
+          
           <button
             onClick={handlePrev}
             disabled={isAnimating}
@@ -157,7 +115,7 @@ export default function CarrerasSection() {
             <ChevronLeft size={24} className="text-green-900" />
           </button>
 
-          {/* Botón Siguiente */}
+          
           <button
             onClick={handleNext}
             disabled={isAnimating}
@@ -258,7 +216,7 @@ export default function CarrerasSection() {
   );
 }
 
-// Componente StatCard separado para manejar la animación de cada stat
+
 function StatCard({ item, index, isVisible }: { 
   item: { valor: number; etiqueta: string; prefijo: string }; 
   index: number;

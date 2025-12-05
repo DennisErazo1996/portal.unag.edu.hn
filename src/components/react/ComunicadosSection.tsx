@@ -20,15 +20,6 @@ interface ComunicadosSectionProps {
   comunicados: Comunicado[];
 }
 
-const categoryColors: Record<string, string> = {
-  'Académico': 'bg-unag-light-green',
-  'Deportes': 'bg-unag-light-green',
-  'Cultura': 'bg-unag-light-green',
-  'Administrativo': 'bg-unag-light-green',
-  'Evento': 'bg-unag-light-green',
-  'Graduación': 'bg-unag-light-green',
-  'Becas': 'bg-unag-light-green',
-};
 
 export default function ComunicadosSection({ comunicados }: ComunicadosSectionProps) {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
@@ -99,14 +90,12 @@ export default function ComunicadosSection({ comunicados }: ComunicadosSectionPr
             <SwiperSlide key={comunicado.slug}>
               <a
                 href={`/comunicados/${comunicado.slug}`}
-                className="block bg-unag-dark-green rounded-3xl h-full"
+                className="block bg-unag-dark-green rounded-3xl h-[280px]"
               >
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                     <span
-                      className={`${
-                        categoryColors[comunicado.data.category] || 'bg-gray-500'
-                      } text-unag-dark-green font-extrabold text-xs font-semibold px-3 py-1 rounded-full`}
+                      className={` text-unag-dark-green bg-unag-light-green font-extrabold text-xs font-semibold px-3 py-1 rounded-full`}
                     >
                       {comunicado.data.category}
                     </span>
@@ -119,11 +108,11 @@ export default function ComunicadosSection({ comunicados }: ComunicadosSectionPr
                     {comunicado.data.title}
                   </h3>
 
-                  <p className="text-gray-300 text-sm mb-4 line-clamp-3 flex-grow">
+                  <p className="text-gray-300 text-sm mb-4 line-clamp-4 flex-grow">
                     {comunicado.data.description}
                   </p>
 
-                  <div className="text-white italic text-sm font-medium">
+                  <div className="text-white italic text-sm font-medium mt-auto">
                     {formatDate(comunicado.data.date)}
                   </div>
                 </div>

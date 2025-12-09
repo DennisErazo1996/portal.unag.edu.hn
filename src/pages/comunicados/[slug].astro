@@ -34,13 +34,15 @@ export const prerender = true;
 
 <Layout content={content}>
   <!-- Hero Header with Background Image -->
-  <div class="relative h-[70vh] w-full overflow-hidden">
+  <div class="relative h-[70vh] w-full overflow-hidden bg-unag-dark-green">
     <!-- Background Image -->
     <div class="absolute inset-0">
       <Image 
         src={comunicado.data.image || bgComunicadoDetalle} 
         alt={comunicado.data.title}
         loading="eager"
+        fetchpriority="high"
+        decoding="async"
         class="w-full h-full object-cover"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>

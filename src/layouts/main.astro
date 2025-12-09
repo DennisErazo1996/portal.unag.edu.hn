@@ -7,26 +7,67 @@ import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 import "@fontsource/montserrat/900.css";
 
-import { Headset } from "@lucide/astro";
 
 import Footer from "@/components/astro/footer.astro";
 import Header from "@/components/astro/header.astro";
-import { X } from "@lucide/astro";
-import { Image } from "astro:assets";
-import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
 import Chatbot from "@/components/Chatbot";
 
 const { content } = Astro.props;
+
+
+const {
+	title = "Universidad Nacional de Agricultura | UNAG",
+	description = "Universidad Nacional de Agricultura de Honduras. Formando profesionales en ciencias agrarias, veterinaria, recursos naturales y tecnología alimentaria. Campus en Catacamas, Olancho.",
+	image = "/img/og-image.jpg",
+	author = "Universidad Nacional de Agricultura",
+	keywords = "UNAG, Universidad Nacional de Agricultura, Honduras, Catacamas, Olancho, Agronomía, Veterinaria, Ingeniería Agrícola, Educación Superior",
+	type = "website",
+	canonicalURL = new URL(Astro.url.pathname, Astro.site)
+} = content || {};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/img/unag-hoja.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" href="/img/unag-hoja.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{content.title}</title>
+		
+		
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="author" content={author} />
+		<meta name="keywords" content={keywords} />
+		<link rel="canonical" href={canonicalURL} />
+		
+		
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.site)} />
+		<meta property="og:site_name" content="Universidad Nacional de Agricultura" />
+		<meta property="og:locale" content="es_HN" />
+		
+		
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, Astro.site)} />
+		
+		
+		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="index, follow" />
+		<meta name="theme-color" content="#1ba333" />
+		
+		
+		<meta name="geo.region" content="HN-OL" />
+		<meta name="geo.placename" content="Catacamas" />
+		<meta name="geo.position" content="14.8497;-85.9003" />
+		<meta name="ICBM" content="14.8497, -85.9003" />
 	</head>
 	<body class="min-h-screen flex flex-col">
 		<Header />
@@ -39,79 +80,6 @@ const { content } = Astro.props;
 
 		<Footer />
 
-		<div
-			id="mobile-overlay"
-			class="fixed inset-0 bg-black/50 opacity-0 invisible transition-all duration-300"
-			style="z-index: 9998 !important;"
-		>
-		</div>
-
-		<div
-			id="mobile-drawer"
-			class="fixed top-0 left-0 w-64 h-full bg-unag-dark-green transform -translate-x-full transition-transform duration-300 ease-out shadow-2xl"
-			style="z-index: 9999 !important;"
-		>
-			<div
-				class="flex justify-between items-center p-5 border-b-2 border-unag-green"
-			>
-				<Image
-					src={logoUnagBlanco}
-					alt="Logo UNAG"
-					loading="eager"
-					class="w-35"
-				/>
-				<button
-					id="menu-close"
-					class="hover:text-unag-yellow transition-colors"
-				>
-					<X size={24} />
-				</button>
-			</div>
-			<ul class="flex flex-col p-5 gap-4">
-				<li>
-					<a
-						href=""
-						class="block py-2 hover:text-unag-yellow transition-colors"
-						>Inicio</a>
-				</li>
-				<li>
-					<a
-						href=""
-						class="block py-2 hover:text-unag-yellow transition-colors"
-						>La UNAG</a>
-				</li>
-				<li>
-					<a
-						href=""
-						class="block py-2 hover:text-unag-yellow transition-colors"
-						>Facultades</a>
-				</li>
-				<li>
-					<a
-						href=""
-						class="block py-2 hover:text-unag-yellow transition-colors"
-						>Admisiones</a>
-				</li>
-				<li>
-					<a
-						href=""
-						class="block py-2 hover:text-unag-yellow transition-colors"
-						>Investigación</a>
-				</li>
-				<li>
-					<a
-						href=""
-						class="block py-2 hover:text-unag-yellow transition-colors"
-						>Extensión</a>
-				</li>
-				<li>
-					<a
-						href=""
-						class="block py-2 hover:text-unag-yellow transition-colors"
-						>Contacto</a>
-				</li>
-			</ul>
-		</div>
 
 		<script src="@/scripts/parallax.js"></script>
 	</body>

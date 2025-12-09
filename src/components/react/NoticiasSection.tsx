@@ -88,7 +88,7 @@ export default function NoticiasSection() {
               <div className="w-24 h-4 bg-gray-200 rounded animate-pulse"></div>
             </div>
             <div className="w-64 h-10 bg-gray-200 rounded mx-auto mb-3 animate-pulse"></div>
-            <div className="w-96 h-6 bg-gray-200 rounded mx-auto animate-pulse"></div>
+            <div className="w-40 h-6 bg-gray-200 rounded mx-auto animate-pulse"></div>
           </div>
 
           {/* Grid Skeleton */}

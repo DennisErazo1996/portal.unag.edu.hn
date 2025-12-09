@@ -3,7 +3,7 @@ title: "Proceso de votación programado para el 30 de noviembre"
 description: "Celebración del proceso de votación programado para el domingo 30 de noviembre de 2025"
 category: "Aviso"
 date: 2025-11-28
-featured: true
+featured: false
   
 ---
 

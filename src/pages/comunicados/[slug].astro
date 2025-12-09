@@ -3,6 +3,10 @@ import { getCollection } from 'astro:content';
 import Layout from '@/layouts/main.astro';
 import { Calendar, Tag, ArrowLeft, Download, FileText, Star } from '@lucide/astro';
 import categoryColors from '@/consts/category-colors';
+
+import { Image } from 'astro:assets';
+
+import bgComunicadoDetalle from '@/assets/img/bg-comunicado-detalle.webp';
 interface Props {
   comunicado: any;
 }
@@ -36,8 +40,8 @@ export const prerender = true;
   <div class="relative h-[70vh] w-full overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0">
-      <img 
-        src={comunicado.data.image || "https://images.pexels.com/photos/2132171/pexels-photo-2132171.jpeg?auto=compress&cs=tinysrgb&w=1920"} 
+      <Image 
+        src={comunicado.data.image || bgComunicadoDetalle} 
         alt={comunicado.data.title}
         class="w-full h-full object-cover"
       />
@@ -49,7 +53,7 @@ export const prerender = true;
       <!-- Back Button -->
       <a 
         href="/comunicados"
-        class="inline-flex items-center gap-2 text-white font-semibold hover:gap-4 transition-all duration-300 mb-8 w-fit bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+        class="inline-flex items-center gap-2 text-white font-semibold hover:gap-4 transition-all duration-300 mb-8 w-fit bg-white/10 backdrop-blur-sm px-4 py-1 text-sm rounded-full"
       >
         <ArrowLeft size={18} />
         Volver a comunicados
@@ -57,19 +61,19 @@ export const prerender = true;
 
       <!-- Tags -->
       <div class="flex flex-wrap gap-3 mb-6">
-        <span class={`px-4 py-2 rounded-full text-white text-sm font-bold ${categoryColors[comunicado.data.category]}`}>
+        <span class={`px-3 py-1 rounded-full text-white text-sm font-bold ${categoryColors[comunicado.data.category]}`}>
           <Tag size={16} class="inline mr-1" />
           {comunicado.data.category}
         </span>
         {comunicado.data.featured && (
-          <span class="px-4 py-2 rounded-full flex items-center gap-2 bg-unag-yellow text-unag-dark-green text-sm font-bold">
+          <span class="px-3 py-1 rounded-full flex items-center gap-2 bg-unag-yellow text-unag-dark-green text-sm font-bold">
             <Star size={16} /> Destacado
           </span>
         )}
       </div>
 
       <!-- Title -->
-      <h1 class="text-2xl lg:text-4xl font-extrabold text-white leading-tight mb-4 max-w-4xl">
+      <h1 class="text-3xl lg:text-5xl font-extrabold text-white leading-tight mb-4 max-w-4xl">
         {comunicado.data.title}
       </h1>
 
@@ -165,7 +169,8 @@ export const prerender = true;
             prose-headings:mb-4
             prose-h2:text-2xl
             prose-h2:mt-12
-            prose-h2:mb-6
+            prose-h2:mb-5
+            prose-h3:mb-1
             prose-h3:text-2xl
             prose-p:text-gray-700
             prose-p:mb-6

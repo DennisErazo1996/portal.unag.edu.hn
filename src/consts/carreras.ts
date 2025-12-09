@@ -1,43 +1,43 @@
 const carreras = [
   {
     nombre: "Ingeniería Agronómica",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
+    imagen: "/img/carreras/bg-ing-agronomica.webp",
+    link: "https://portal.unag.edu.hn/ingenieria-agronomica/",
   },
   {
     nombre: "Ingeniería en Gestión Integral de los Recursos Naturales",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "/carreras/ingenieria-gestion-integral-recursos-naturales",
+    imagen: "/img/carreras/bg-ing-gestion-integral-recursos-naturales.webp",
+    link: "https://portal.unag.edu.hn/ingenieria-en-gestion-integral-de-los-recursos-naturales/",
   },
   {
     nombre: "Ingeniería en Tecnología Alimentaria",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
+    imagen: "/img/carreras/bg-ing-tecnologia-alimentaria.webp",
+    link: "https://portal.unag.edu.hn/tecnologia-de-alimentos/",
   },
   {
     nombre: "Medicina Veterinaria",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
+    imagen: "/img/carreras/bg-medicina-veterinaria.webp",
+    link: "https://portal.unag.edu.hn/medicina-veterinaria/",
   },
   {
     nombre: "Ingeniería en Zootecnia",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
+    imagen: "/img/carreras/bg-ing-zootecnia.webp",
+    link: "https://portal.unag.edu.hn/ingenieria-en-zootecnia/",
   },
   {
     nombre: "Administración de Empresas Agropecuarias",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
+    imagen: "/img/carreras/bg-administracion-empresas-agropecuarias.webp",
+    link: "https://portal.unag.edu.hn/administracion-de-empresas-agropecuarias/",
   },
   {
     nombre: "Licenciatura en Economía Social Agraria",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
+    imagen: "/img/carreras/bg-economia-social-agraria.webp",
+    link: "https://portal.unag.edu.hn/licenciatura-en-economia-social-agraria/",
   },
   {
     nombre: "Ingeniería en Agroexportación",
-    imagen: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-    link: "#",
+    imagen: "/img/carreras/bg-ing-agroexportacion.webp",
+    link: "https://portal.unag.edu.hn/ingenieria-en-agroexportacion/",
   },
 ];
 

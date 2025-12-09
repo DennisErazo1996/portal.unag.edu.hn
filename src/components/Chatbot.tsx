@@ -174,7 +174,7 @@ export default function Chatbot() {
                 className={cn(
                   "p-3 rounded-2xl text-sm shadow-sm",
                   msg.role === 'user' 
-                    ? "bg-unag-green text-white rounded-tr-none" 
+                    ? "bg-unag-green prose-p:text-white rounded-tr-none" 
                     : "bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 dark:border-zinc-700 rounded-tl-none"
                 )}
               >

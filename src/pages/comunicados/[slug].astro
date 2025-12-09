@@ -26,9 +26,6 @@ const content = {
   title: `${comunicado.data.title} | UNAG`,
 };
 
-
-
-
 const hasAttachments = comunicado.data.attachments && comunicado.data.attachments.length > 0;
 
 export const prerender = true;
@@ -43,6 +40,7 @@ export const prerender = true;
       <Image 
         src={comunicado.data.image || bgComunicadoDetalle} 
         alt={comunicado.data.title}
+        loading="eager"
         class="w-full h-full object-cover"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>

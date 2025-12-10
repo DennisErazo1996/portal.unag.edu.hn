@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+import "@/styles/spinner.css";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/500.css";
 import "@fontsource/montserrat/600.css";
@@ -11,6 +12,7 @@ import "@fontsource/montserrat/900.css";
 import Footer from "@/components/astro/footer.astro";
 import Header from "@/components/astro/header.astro";
 import Chatbot from "@/components/Chatbot";
+import EstadisticasButton from "@/components/astro/estadisticas-button.astro";
 
 const { content } = Astro.props;
 
@@ -70,17 +72,32 @@ const {
 		<meta name="ICBM" content="14.8497, -85.9003" />
 	</head>
 	<body class="min-h-screen flex flex-col">
+		
+		<div id="loading-screen" class="fixed inset-0 bg-unag-dark-green z-[10000] flex items-center justify-center transition-opacity duration-500">
+			<div class="relative">
+				
+				<div class="flower-spinner">
+				<div class="dots-container">
+					<div class="bigger-dot">
+					<div class="smaller-dot"></div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+
 		<Header />
 
-		<main class="flex-1">
-			<slot />
-		</main>
+	<main class="flex-1">
+		<slot />
+	</main>
 
-		<Chatbot client:load />
+	<Chatbot client:load />
+	<EstadisticasButton />
 
-		<Footer />
-
-
+	<Footer />
 		<script src="@/scripts/parallax.js"></script>
+		<script src="@/scripts/loading.js"></script>
+		
 	</body>
 </html>

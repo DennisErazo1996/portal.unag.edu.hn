@@ -1,0 +1,88 @@
+---
+
+---
+
+<button
+  id="scroll-to-top"
+  class="fixed bottom-24 right-6 lg:bottom-25 lg:right-6 z-50
+   inline-flex items-center justify-center rounded-full bg-unag-dark-green/90 text-white 
+   shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-unag-green 
+   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-unag-green 
+   focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+  aria-label="Subir al inicio"
+  type="button"
+>
+  <span class="sr-only">Subir al inicio</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 19V5"></path>
+    <path d="m5 12 7-7 7 7"></path>
+  </svg>
+</button>
+
+<style>
+  #scroll-to-top {
+    width: 48px;
+    height: 48px;
+    transform: translateY(12px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease,
+      visibility 0s linear 220ms;
+  }
+
+  #scroll-to-top[data-visible="true"] {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease;
+  }
+
+  @media (max-width: 480px) {
+    #scroll-to-top {
+      width: 44px;
+      height: 44px;
+      bottom: 6rem;
+      right: 1rem;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById("scroll-to-top");
+  if (btn) {
+    const showAfterPx = 1200;
+
+    const update = () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      if (y > showAfterPx) {
+        btn.setAttribute("data-visible", "true");
+      } else {
+        btn.removeAttribute("data-visible");
+      }
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+</script>

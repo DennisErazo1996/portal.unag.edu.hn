@@ -34,7 +34,7 @@ export const prerender = true;
 
 <Layout content={content}>
   <!-- Hero Header with Background Image -->
-  <div class="relative h-[70vh] w-full overflow-hidden bg-unag-dark-green">
+  <div class="relative h-[80vh]  lg:h-[70vh] w-full overflow-hidden bg-unag-dark-green">
     <!-- Background Image -->
     <div class="absolute inset-0">
       <Image 
@@ -79,7 +79,7 @@ export const prerender = true;
 
       <!-- Meta -->
       <div class="flex items-center gap-4 text-white/90">
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 text-sm">
           <Calendar size={18} />
           <time>
             {new Date(comunicado.data.date).toLocaleDateString('es-HN', {
@@ -123,8 +123,8 @@ export const prerender = true;
                     <div class="flex-shrink-0 w-10 h-10 bg-unag-green/10 rounded-lg flex items-center justify-center group-hover:bg-unag-green/20 transition-colors">
                       <Download size={20} class="text-unag-green" />
                     </div>
-                    <div class="flex-1 min-w-0">
-                      <p class="font-semibold text-unag-dark-green text-sm group-hover:text-unag-green transition-colors truncate">
+                    <div class="flex-1 min-w-0 overflow-hidden">
+                      <p class="font-semibold text-unag-dark-green text-sm group-hover:text-unag-green transition-colors w-50 overflow-hidden text-ellipsis whitespace-nowrap">
                         {attachment.name}
                       </p>
                       {attachment.type && (

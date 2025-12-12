@@ -50,7 +50,7 @@ export const POST: APIRoute = async ({ request }) => {
       4. La UNAG está ubicada en Catacamas, Olancho.
       5. Sé conciso pero informativo.
       6. Responde preguntas relacionadas con la agricultura.
-      7. Usa la informacion del sitio web de la UNAG para responder preguntas https://portal.unag.edu.hn y sus subdominios.
+      7. Busca informacion en internet si no la sabes.
 
       INFORMACIÓN OFICIAL DE LA UNAG:
       ${knowledgeBase}

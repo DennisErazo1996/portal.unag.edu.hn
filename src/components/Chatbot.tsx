@@ -108,7 +108,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
+    <div className="fixed bottom-6 right-4 lg:right-6 z-50 flex flex-col items-end font-sans">
       {/* Overlay */}
       <div 
         className={cn(
@@ -227,18 +227,18 @@ export default function Chatbot() {
         {/* Tooltip */}
         <div 
           className={cn(
-            "bg-white dark:bg-zinc-800 text-[12px] text-zinc-800 dark:text-zinc-200 px-4 py-2 rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-700 whitespace-nowrap transition-all duration-300 origin-right",
+            "bg-white dark:bg-zinc-800 text-[10px] lg:text-[12px] text-zinc-800 dark:text-zinc-200 px-4 py-2 rounded-xl shadow-lg border border-zinc-200 dark:border-zinc-700 whitespace-nowrap transition-all duration-300 origin-right",
             isOpen ? "opacity-0 scale-95 pointer-events-none hidden" : "opacity-100 scale-100"
           )}
         >
-          <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white dark:bg-zinc-800 border-t border-r border-zinc-200 dark:border-zinc-700 rotate-45"></div>
+          <div className="absolute text-sm right-[-6px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white dark:bg-zinc-800 border-t border-r border-zinc-200 dark:border-zinc-700 rotate-45"></div>
           Hola, ¿en qué puedo ayudarte?
         </div>
 
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={cn(
-            "bg-unag-green hover:bg-unag-dark-green text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center",
+            "bg-unag-green hover:bg-unag-dark-green text-white p-3 lg:p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center",
             isOpen ? "rotate-90 opacity-0 pointer-events-none absolute right-0" : "rotate-0 opacity-100 animate-pulse-scale hover:animate-none"
           )}
           aria-label="Abrir chat"

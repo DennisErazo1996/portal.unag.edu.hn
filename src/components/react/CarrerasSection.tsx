@@ -97,7 +97,7 @@ export default function CarrerasSection() {
 					<p className="text-sm font-semibold text-unag-dark-green">Oferta Académica</p>
 				</div>
         <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 mb-2 leading-none">
-          NUESTRAS CARRERAS
+          NUESTRAS CARRERAS DE GRADO
         </h2>
         <p className="text-sm text-gray-600 mb-8 w-full leading-none">
           8 carreras de grado diseñadas para formar líderes en el sector agrícola y agroindustrial del país.

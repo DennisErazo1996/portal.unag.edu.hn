@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import OpenAI from 'openai';
 import fs from 'fs';
 import path from 'path';
+import { PDFParse } from 'pdf-parse';
 
 export const prerender = false;
 
@@ -39,6 +40,18 @@ export const POST: APIRoute = async ({ request }) => {
       console.warn('No se pudo cargar la base de conocimientos:', error);
     }
 
+    
+    const calendarioPdfPath = path.join(process.cwd(), 'public', 'documents', 'calendario-academico.pdf');
+    let calendarioAcademico = '';
+    try {
+      const dataBuffer = fs.readFileSync(calendarioPdfPath);
+      const parser = new PDFParse({ data: dataBuffer });
+      const pdfData = await parser.getText();
+      calendarioAcademico = pdfData.text;
+    } catch (error) {
+      console.warn('No se pudo cargar el calendario académico:', error);
+    }
+
     const systemPrompt = `
       Eres un asistente virtual útil y amigable para la Universidad Nacional de Agricultura (UNAG) de Honduras.
       Tu objetivo es ayudar a estudiantes, aspirantes y visitantes con información sobre la universidad.
@@ -50,10 +63,16 @@ export const POST: APIRoute = async ({ request }) => {
       4. La UNAG está ubicada en Catacamas, Olancho.
       5. Sé conciso pero informativo.
       6. Responde preguntas relacionadas con la agricultura.
-      7. Busca informacion en internet si no la sabes.
+      7. Busca primeramente informacion localmente y luego en internet si no la sabes.
+      8. Prioriza infromación actualizada del calendario académico oficial.
+
+      Aquí tienes información adicional y la del calendario académico oficial para ayudarte a responder mejor las preguntas:
 
       INFORMACIÓN OFICIAL DE LA UNAG:
       ${knowledgeBase}
+
+      CALENDARIO ACADÉMICO OFICIAL:
+      ${calendarioAcademico}
     `;
 
     const completion = await openai.chat.completions.create({

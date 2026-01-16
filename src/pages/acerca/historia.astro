@@ -1,0 +1,152 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderPages from "@/components/astro/header-bg-pages.astro";
+import carreras from "@/consts/carreras.ts";
+
+const content = {
+  title: "Nuestra Historia | UNAG",
+};
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/bg-historia.webp"
+    etiqueta="Acerca"
+    titulo="Nuestra Historia"
+    descripcion="Conoce la historia que ha forjado a la Universidad Nacional de Agricultura, desde sus inicios hasta su compromiso actual con la educación y el desarrollo integral."
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+  >
+    <article class="text-unag-gray">
+      <div>
+        <h2 class="font-bold">Naturaleza jurídica</h2><br />
+        <p>
+          La Universidad Nacional de Agricultura es una <strong
+            class="text-unag-dark-green">comunidad académica</strong
+          >
+          integrada por estudiantes, docentes, graduados y personal administrativo
+          y de apoyo que asume la educación superior como derecho fundamental y un
+          servicio público esencial.
+        </p><br />
+        <p>
+          La Universidad Nacional de Agricultura tiene como fines primordiales
+          la <strong class="text-unag-dark-green"
+            >gestión del conocimiento</strong
+          > para contribuir a desarrollar el sector agrícola nacional y afines en
+          su multidimensionalidad: tierra, agua, mar, aire; mediante la formación
+          humanista, científica y tecnológica, la generación y difusión de conocimientos,
+          así como la realización de actividades de vinculación con la sociedad, con
+          una clara conciencia de la naturaleza multicultural y compleja de la nación
+          hondureña.
+        </p><br />
+        <p>
+          Estas actividades son desarrolladas en un marco de mejora continua,
+          con enfoques multi, inter y transculturales, y con principios éticos y
+          de responsabilidad social y ambiental que orientan la búsqueda de la
+          calidad y pertinencia con equidad para el cumplimiento de su misión.
+        </p>
+      </div>
+      <br />
+      <div class="bg-unag-overlay-green/30 p-5 rounded-lg">
+        <h2 class="font-bold">Orígenes</h2><br />
+        <p>
+          La <strong class="text-unag-dark-green"
+            >Universidad Nacional de Agricultura</strong
+          > tiene sus orígenes en la
+          <strong class="text-unag-dark-green"
+            >Escuela Granja Demostrativa</strong
+          > creada mediante Decreto Legislativo No. 35 del 20 de enero de 1950 del
+          Congreso Nacional de Honduras, la cual cambió su denominación a <strong
+            class="text-unag-dark-green">Escuela Nacional de Agricultura</strong
+          > a partir del año de 1968.
+        </p><br />
+        <p>
+          Su conversión a <strong class="text-unag-dark-green"
+            >Universidad</strong
+          > fue autorizada por el soberano Congreso Nacional de la República mediante
+          Decreto No. 192-2001 de fecha 01 de noviembre del 2001 y publicado en el
+          Diario Oficial La Gaceta con fecha 06 de diciembre del 2001. Para todos
+          los efectos legales aplicables, la Universidad Nacional de Agricultura sustituye
+          a la Escuela Nacional de Agricultura.
+        </p><br />
+        <p>
+          La creación, organización y funcionamiento de la Universidad Nacional
+          de Agricultura fue aprobado por el Consejo de Educación Superior
+          mediante Acuerdo 1058-153-2002 del 02 de diciembre de 2002.
+        </p>
+      </div>
+      <br />
+      <div>
+        <h2 class="font-bold">Un poco de historia</h2><br />
+        <p>
+          En aquel entonces (1950), el presidente de Honduras era el Doctor Juan
+          Manuel Gálvez, que junto a la iniciativa de un grupo de ciudadanos del
+          departamento de Olancho, liderados por Don Alberto Díaz Osorio
+          Q.E.P.D., Don Vicente Alemán y otros, sancionó el decreto No. 35, que
+          le dio vida a la Escuela Granja Demostrativa.
+        </p><br />
+        <p>
+          Los servicios académicos se abrieron en el mes de mayo de 1952,
+          contando con el soporte financiero del Servicio Cooperativo
+          Interamericano de Educación (SCIDE) por intermedio del STICA, Proyecto
+          Cooperativo de la Secretaría de Agricultura, cuyo titular era el
+          Ingeniero Benjamín Membreño Marín, cuyo nombre se le dio al edificio H
+          Grande de la institución.
+        </p><br />
+        <p>
+          En 1968, la Escuela cambia su denominación por el de Escuela Nacional
+          de Agricultura (ENA) y pasa a la tutela del Ministerio de Educación
+          Pública, con un nuevo nivel académico: Bachiller en Ciencias
+          Agrícolas, el que podía ser obtenido después de cursar tres años de
+          estudios, con el requisito de ingreso de ciclo común general.
+        </p><br />
+        <p>
+          En febrero de 1978, mediante Decreto No. 587, el Estado en Consejo de
+          Ministros acuerda elevar el nivel académico de la ENA a superior no
+          universitario. Con este nivel académico se otorgaba el título de
+          Agrónomo mediante un plan de estudios diseñado para tres años,
+          exigiéndose un título de educación media como requisito de ingreso.
+        </p><br />
+        <p>
+          De 1979 a 2001, la ENA depende de la Secretaría de Recursos Naturales
+          (hoy Secretaría de Agricultura y Ganadería).
+        </p><br />
+        <p>
+          Actualmente es una institución descentralizada del Estado de Honduras,
+          categoría que fue adquirida mediante Decreto Legislativo No. 192-2001.
+        </p>
+        <p>
+          En 1994, por Decreto No. 200-58-94 , la ENA se incorpora al sistema de
+          educación superior, otorgando desde entonces el título de Ingeniero
+          Agrónomo en el grado de Licenciatura. Este plan de estudios se
+          completa en cuatro años.
+        </p><br />
+        <p>
+          En el año 2002, mediante decreto 192-2001, la ENA pasa a llamarse
+          Universidad Nacional de Agricultura (UNA), una institución de
+          educación superior con autogobierno dedicada a la formación de
+          profesionales en ciencias agropecuarias y afines.
+        </p><br />
+      </div>
+      <div>
+        <p>
+          Actualmente la UNA cuenta con las siguientes carreras universitarias:
+        </p>
+        <br />
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-5">
+          {
+            carreras.map((carrera) => (
+              <a href={carrera.link} target="_blank" class="">
+                <div class="bg-unag-dark-green/10 text-unag-dark-green rounded-xl font-medium p-5 text-center flex-1 items-align-center hover:bg-unag-dark-green hover:text-white transition-colors">
+                  {carrera.nombre}
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </article>
+  </section>
+</Layout>

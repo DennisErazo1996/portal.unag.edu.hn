@@ -1,0 +1,38 @@
+---
+const { imagen, etiqueta, titulo, descripcion } = Astro.props;
+---
+
+<section class="relative w-full h-[60vh] lg:h-[60vh] overflow-hidden">
+    <img
+      src={imagen}
+      alt="Misión y Visión"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"
+    >
+    </div>
+    <div
+      class="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center"
+    >
+      <div class="max-w-3xl mt-40 lg:mt-20">
+        <div
+          class="inline-block bg-unag-green/90 backdrop-blur-sm text-white px-4 py-2 rounded-lg mb-4"
+        >
+          <p class="text-sm font-semibold text-white">{etiqueta}</p>
+        </div>
+        <h1
+          class="text-4xl lg:text-6xl font-black text-white mb-6 leading-tight"
+        >
+          {titulo}
+        </h1>
+        {
+          descripcion && (
+            <p class="text-sm text-white leading-relaxed">
+              {descripcion}
+            </p>
+          )
+        }
+      </div>
+    </div>
+  </section>

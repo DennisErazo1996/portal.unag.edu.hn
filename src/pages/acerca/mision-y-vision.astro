@@ -1,0 +1,33 @@
+---
+import Layout from "@/layouts/main.astro";
+import misionVision from "@/consts/mision-vision";
+import HeaderPages from "@/components/astro/header-bg-pages.astro";
+
+const content = {
+  title: "Misión y Visión | UNAG",
+};
+---
+
+<Layout content={content}>
+  
+  <HeaderPages 
+    imagen="/img/bg-comunicado.jpg"
+    etiqueta="Acerca"
+    titulo="Misión y Visión"
+    descripcion="Conoce la misión y visión que guían a la Universidad Nacional de Agricultura en su compromiso con la educación de calidad y el desarrollo integral de sus estudiantes."
+  />
+
+  <section class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <article class="">
+      {
+        misionVision.map(({ title, description }) => (
+          <section class="mb-8 bg-unag-light-gray/30 p-6 rounded-lg">
+            <h2 class="text-2xl font-semibold mb-4">{title}</h2>
+            <p>{description}</p>
+          </section>
+        ))
+      }
+    </article>
+  </section>
+
+</Layout>

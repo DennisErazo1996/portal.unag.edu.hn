@@ -179,10 +179,10 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
 </nav> -->
 
 
-<nav class="flex lg:justify-center lg:items-center w-full text-white z-20 scale-100 min-[1280px]:scale-90 min-[2560px]:scale-110">
+<nav class="flex lg:justify-center lg:items-center w-full text-white z-20 scale-100 min-[1280px]:scale-90 min-[2560px]:scale-110 py-2">
     
     <div class="hidden lg:flex items-center">
-        <div id="logo-unag" class="bg-unag-dark-green px-20 py-4 rounded-l-lg">
+        <div id="logo-unag" class="bg-unag-dark-green px-20 py-4 ">
             <a href="/" class="block ">
                  <Image    
                     class="lg:w-45"
@@ -192,7 +192,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                   />
             </a>
         </div>
-        <div class="flex items-center bg-unag-green h-13 p-5 h-15 rounded-r-lg overflow-visible relative border-b-4 border-unag-dark-green">
+        <div class="flex items-center bg-unag-green h-13 p-5 h-15 overflow-visible relative border-b-4 border-r-4 border-unag-dark-green">
             <ul class="flex gap-5">
                 <li><a href="/" class="hover:text-unag-yellow transition-colors">Inicio</a></li> 
                 <li><a href="https://portal.blog.unag.edu.hn" class="hover:text-unag-yellow transition-colors">Noticias</a></li>
@@ -203,8 +203,8 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                         Acerca <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/mision-y-vision/">Misión y Visión</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/historia/">Historia</LinkDropdownMenu>
+                        <LinkDropdownMenu href="/acerca/mision-y-vision">Misión y Visión</LinkDropdownMenu>
+                        <LinkDropdownMenu href="/acerca/historia/">Historia</LinkDropdownMenu>
                         <LinkDropdownMenu href="https://portal.unag.edu.hn/experiencia-academica/">Experiencia Académica</LinkDropdownMenu>
                         <LinkDropdownMenu href="https://portal.unag.edu.hn/normativas/">Normativas</LinkDropdownMenu>
                     </DropdownMenuContainer>

@@ -12,8 +12,9 @@
       "@/*": [
         "./src/*"
       ],
-      "@assets/*": ["./src/assets/*"],
+      "@assets/*": ["./src/assets/*"]
     },
+    "ignoreDeprecations": "6.0",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "esModuleInterop": true

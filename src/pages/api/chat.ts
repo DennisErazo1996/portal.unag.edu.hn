@@ -2,7 +2,6 @@ import type { APIRoute } from 'astro';
 import OpenAI from 'openai';
 import fs from 'fs';
 import path from 'path';
-import { PDFParse } from 'pdf-parse';
 
 export const prerender = false;
 
@@ -40,17 +39,15 @@ export const POST: APIRoute = async ({ request }) => {
       console.warn('No se pudo cargar la base de conocimientos:', error);
     }
 
-    
-    const calendarioPdfPath = path.join(process.cwd(), 'public', 'documents', 'calendario-academico.pdf');
+    const calendarioAcademicoPath = path.join(process.cwd(), 'src', 'data', 'calendario_academico.md');
     let calendarioAcademico = '';
     try {
-      const dataBuffer = fs.readFileSync(calendarioPdfPath);
-      const parser = new PDFParse({ data: dataBuffer });
-      const pdfData = await parser.getText();
-      calendarioAcademico = pdfData.text;
+      calendarioAcademico = fs.readFileSync(calendarioAcademicoPath, 'utf-8');
     } catch (error) {
       console.warn('No se pudo cargar el calendario académico:', error);
     }
+
+    
 
     const systemPrompt = `
       Eres un asistente virtual útil y amigable para la Universidad Nacional de Agricultura (UNAG) de Honduras.
@@ -65,6 +62,8 @@ export const POST: APIRoute = async ({ request }) => {
       6. Responde preguntas relacionadas con la agricultura.
       7. Busca primeramente informacion localmente y luego en internet si no la sabes.
       8. Prioriza infromación actualizada del calendario académico oficial.
+      9. Usa informacion del sitio web oficial https://unag.edu.hn/ cuando sea necesario.
+      10. No puedes generar documentos como pdfs, solo puedes proporcionar texto plano.
 
       Aquí tienes información adicional y la del calendario académico oficial para ayudarte a responder mejor las preguntas:
 
@@ -82,7 +81,7 @@ export const POST: APIRoute = async ({ request }) => {
         { role: "user", content: message }
       ],
       // Usando modelo con búsqueda web integrada
-      model: "gpt-4o-mini-search-preview",
+      model: "gpt-5-nano",
     });
 
     const text = completion.choices[0].message.content;

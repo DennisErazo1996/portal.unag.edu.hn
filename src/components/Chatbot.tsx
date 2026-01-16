@@ -82,14 +82,22 @@ export default function Chatbot() {
 
     const userMessage = input.trim();
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', text: userMessage }]);
+    const newUserMessage: Message = { role: 'user', text: userMessage };
+    const updatedMessages = [...messages, newUserMessage];
+    setMessages(updatedMessages);
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      // Convert internal messages to OpenAI format
+      const apiMessages = updatedMessages.map(msg => ({
+        role: msg.role === 'model' ? 'assistant' : 'user',
+        content: msg.text
+      }));
+
+      const response = await fetch('/api/chat-openai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage }),
+        body: JSON.stringify({ messages: apiMessages }),
       });
 
       const data = await response.json();

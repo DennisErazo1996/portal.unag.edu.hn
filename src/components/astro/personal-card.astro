@@ -1,5 +1,7 @@
 ---
-const {nombreCompleto, cargo, correo, nombre, apellido} = Astro.props;
+import {Mail, Phone} from '@lucide/astro'
+
+const {nombreCompleto, cargo, correo, nombre, apellido, telefono} = Astro.props;
 
 const imagen = `https://ui-avatars.com/api/?name=${nombre}+${apellido}&size=200&background=1ba333&color=fff&bold=true`
 ---
@@ -26,25 +28,28 @@ const imagen = `https://ui-avatars.com/api/?name=${nombre}+${apellido}&size=200&
     <div
       class="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg"
     >
-      <svg
-        class="w-4 h-4 text-unag-green flex-shrink-0"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-        ></path>
-      </svg>
-      <a
-        href={`mailto:${correo}`}
-        class="hover:text-unag-green transition-colors break-all"
-      >
-        {correo}
-      </a>
+      {
+        correo && (
+          <Mail class="w-4 h-4 text-unag-green" />
+          <a
+            href={`mailto:${correo}`}
+            class="hover:text-unag-green transition-colors break-all"
+          >
+            {correo}
+          </a>
+        )
+      }
+      {
+        telefono && (
+          <Phone class="w-4 h-4 text-unag-green" />
+          <a
+            href={`tel:${telefono}`}
+            class="hover:text-unag-green transition-colors break-all"
+          >
+            {telefono}
+          </a>
+        )
+      }
     </div>
   </div>
 </div>

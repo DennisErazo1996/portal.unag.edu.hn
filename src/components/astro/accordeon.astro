@@ -1,0 +1,24 @@
+---
+const {etiqueta} = Astro.props;
+---
+
+<details class="group rounded-lg overflow-hidden border border-gray-200">
+  <summary
+    class="flex items-center justify-between p-4 bg-unag-light-green/10 text-unag-gray font-bold cursor-pointer hover:bg-unag-green hover:text-white transition-colors duration-200 group-open:bg-unag-green group-open:text-white select-none"
+  >
+    <span>{etiqueta}</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-5 h-5 transition-transform duration-300 group-open:rotate-180"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg
+    >
+  </summary>
+  <div class="p-6 bg-white border-t border-gray-100 space-y-4 text-gray-600">
+    <slot/>
+  </div>
+</details>

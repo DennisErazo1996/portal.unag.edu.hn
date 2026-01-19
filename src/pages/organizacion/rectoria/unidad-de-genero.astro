@@ -1,0 +1,231 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderPages from "@/components/astro/header-bg-pages.astro";
+import Accordeon from "@/components/astro/accordeon.astro";
+
+const content = {
+  title: "Unidad de Género | UNAG",
+};
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/bg-default-unag.webp"
+    etiqueta="Organización"
+    subetiqueta="Rectoría"
+    titulo="Unidad de Género"
+    descripcion="Descubra la misión, funciones y contacto de la Unidad de Género de la Universidad Nacional de Agricultura, dedicada a promover la igualdad y el respeto dentro de nuestra comunidad universitaria."
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <p class="leading-relaxed">
+        La Unidad de Género Institucional (UG) es una instancia asesora y
+        técnica adscrita a la Rectoría de la Universidad Nacional de Agricultura
+        (UNAG), cuyo propósito es integrar de manera transversal el enfoque de
+        género en todas las funciones sustantivas de la vida universitaria: la
+        docencia, la investigación, la vinculación social, la gestión
+        institucional y la convivencia comunitaria.
+      </p>
+      <p class="leading-relaxed">
+        Su trabajo se fundamenta en los principios de igualdad, inclusión, no
+        discriminación y respeto a los derechos humanos, en concordancia con el
+        III Plan de Igualdad y Justicia de Género de Honduras (2023–2033), la
+        Política Nacional de la Mujer, y los compromisos internacionales
+        suscritos por el Estado de Honduras, como la CEDAW y los Objetivos de
+        Desarrollo Sostenible.
+      </p>
+      <p class="leading-relaxed">
+        La UG impulsa acciones estratégicas orientadas a transformar la cultura
+        institucional, prevenir la violencia y promover el liderazgo, la
+        participación y el bienestar de todas las personas que conforman la
+        comunidad universitaria.
+      </p>
+      <blockquote
+        class="border-l-4 border-unag-green pl-6 py-4 my-8 bg-gray-50 rounded-r-lg shadow-sm"
+      >
+        <p class="text-sm italic text-gray-800 font-medium leading-relaxed">
+          Educar con perspectiva de género es formar para la libertad.
+        </p>
+        <footer
+          class="mt-3 text-sm font-bold text-unag-dark-green tracking-wide"
+        >
+          – Rita Laura Segato
+        </footer>
+      </blockquote>
+    </div>
+
+    <!-- Acordeón de Información -->
+    <div class="max-w-5xl mx-auto space-y-3 mb-16">
+      <!-- Item 1 -->
+      <Accordeon etiqueta="FUNCIONES Y ESTRATEGIAS">
+        <div class="flex justify-center">
+          <img
+            src="https://portal.unag.edu.hn/wp-content/uploads/2025/09/estrategias-unidad-genero.png"
+            alt="Funciones Unidad de Género"
+            class="max-w-full h-auto rounded-lg shadow-sm"
+          />
+        </div>
+      </Accordeon>
+
+      <!-- Item 2 -->
+      <Accordeon etiqueta="PROYECTOS Y LÍNEAS DE ACCIÓN">
+        <p>
+          En coherencia con el mandato institucional y compromiso ético con los
+          derechos humanos, la Unidad de Género de la UNAG impulsa una serie de
+          proyectos estratégicos orientados a transformar la cultura
+          universitaria, garantizar la igualdad sustantiva y prevenir toda forma
+          de violencia y exclusión.
+        </p>
+        <p>
+          Entendemos que las desigualdades de género no son naturales ni
+          individuales, sino el resultado de una pedagogía social de la
+          desigualación, transmitida desde las estructuras culturales,
+          normativas y simbólicas.
+        </p>
+        <p>
+          Estos proyectos se organizan en ejes temáticos que integran
+          transversalmente los enfoques de interseccionalidad, justicia social,
+          derechos humanos y sostenibilidad. Cada línea de acción se desarrolla
+          en articulación con dependencias internas, organismos aliados y redes
+          estratégicas, posicionando a la UNAG como una institución comprometida
+          con una educación superior pública transformadora, inclusiva y con
+          perspectiva de género.
+        </p>
+      </Accordeon>
+
+      <!-- Item 3 -->
+      <Accordeon
+        etiqueta="EJE DE TRANSVERSALIZACIÓN DEL ENFOQUE DE GÉNERO EN LA GESTIÓN UNIVERSITARIA"
+      >
+        <p class="mb-4">
+          <strong class="text-unag-dark-green">Objetivo:</strong> Acompañar a las
+          autoridades, comités y dependencias en la integración de la perspectiva
+          de género en las políticas y procedimientos institucionales.
+        </p>
+        <p class="font-bold text-gray-800 mb-2">Iniciativas asociadas:</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>
+            <strong>Taller para directivos:</strong> “Leyes de Igualdad y Gestión
+            Universitaria” – Para la construcción de una política universitaria con
+            enfoque de género. (Campus Central, final de agosto 2025)
+          </li>
+          <li>
+            Juramentación del Comité de Equidad de Género Institucional
+            2025–2027.
+          </li>
+          <li>
+            Entregas del I y II Informe Trimestral a la Secretaría de la Mujer.
+          </li>
+        </ul>
+      </Accordeon>
+
+      <!-- Item 4 -->
+      <Accordeon
+        etiqueta="EJE DE FORMACIÓN Y SENSIBILIZACIÓN A LA COMUNIDAD UNIVERSITARIA"
+      >
+        <p class="mb-4">
+          <strong class="text-unag-dark-green">Objetivo:</strong> Desvelar aprendizajes
+          patriarcales mediante una pedagogía de la dignidad.
+        </p>
+        <p class="mb-4">
+          En este Eje se trabajan procesos pedagógicos orientados a la
+          desnaturalización de las desigualdades, mediante talleres,
+          conferencias, encuentros y herramientas educativas que interpelen las
+          estructuras simbólicas y cotidianas.
+        </p>
+        <p class="font-bold text-gray-800 mb-2">Iniciativas asociadas:</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>
+            <strong>Taller en Comayagua:</strong> “Identidades y condiciones de género
+            en la vida de las mujeres”.
+          </li>
+          <li>
+            <strong>Taller en Tomalá:</strong> “Memorias del cuerpo, género y territorio”.
+          </li>
+          <li>
+            <strong>Conferencia – Conmemoración del 25N:</strong> Día Internacional
+            para la Eliminación de la Violencia contra la Mujer. Conferencia especial
+            en honor a la eliminación de la violencia contra la mujer (Campus Central,
+            noviembre).
+          </li>
+        </ul>
+      </Accordeon>
+
+      <!-- Item 5 -->
+      <Accordeon
+        etiqueta="EJE DE INCIDENCIA CULTURAL E INSTITUCIONAL VÍA CAMPAÑAS SIMBÓLICAS"
+      >
+        <p class="mb-4">
+          <strong class="text-unag-dark-green">Objetivo:</strong> Incidir simbólicamente
+          en la cultura institucional desde la imagen.
+        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>
+            Diseño y planificación de la campaña visual “Cultivando cultura de
+            equidad” (remoto, septiembre).
+          </li>
+          <li>
+            Lanzamiento oficial de la campaña “Cultivando cultura de equidad”
+            (Campus, octubre).
+          </li>
+        </ul>
+      </Accordeon>
+
+      <!-- Item 6 -->
+      <Accordeon etiqueta="EJE DE PARTICIPACIÓN INTERINSTITUCIONAL">
+        <p class="mb-4">
+          <strong class="text-unag-dark-green">Objetivo:</strong> Construir acciones
+          colectivas en clave de género junto a organismos aliados nacionales.
+        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Secretaría de la Mujer</li>
+          <li>Oficinas municipales de la Mujer</li>
+          <li>Ciudad Mujer</li>
+          <li>SOCODEVY</li>
+          <li>Universidades y organismos aliados</li>
+        </ul>
+      </Accordeon>
+
+      <!-- Item 7 -->
+      <Accordeon
+        etiqueta="SISTEMATIZACIÓN, EVALUACIÓN Y PROYECCIÓN INSTITUCIONAL"
+      >
+        <p>
+          <strong class="text-unag-dark-green">Objetivo:</strong> Documentar logros,
+          evaluar resultados y planificar el siguiente ciclo operativo.
+        </p>
+      </Accordeon>
+    </div>
+
+    <div
+      class="bg-gray-50 border-t border-gray-100 p-8 rounded-xl shadow-sm text-center"
+    >
+      <h3 class="text-lg font-bold text-unag-dark-green mb-2">Contacto</h3>
+      <p class="text-gray-600 mb-4">
+        Si desea ponerse en contacto con la Unidad de Género de la Universidad
+        Nacional de Agricultura, puede escribirnos o visitarnos:
+      </p>
+      <a
+        href="mailto:szelaya@unag.edu.hn"
+        class="inline-flex items-center gap-2 text-unag-green font-bold hover:text-unag-dark-green transition-colors bg-white px-4 py-2 rounded-lg border border-unag-green/30 shadow-sm hover:shadow-md"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><rect width="20" height="16" x="2" y="4" rx="2"></rect><path
+            d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg
+        >
+        szelaya@unag.edu.hn
+      </a>
+    </div>
+  </section>
+</Layout>

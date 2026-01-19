@@ -1,0 +1,90 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderPages from "@/components/astro/header-bg-pages.astro";
+import PersonalCard from "@/components/astro/personal-card.astro";
+
+const content = {
+  title: "SEAPI | UNAG",
+};
+
+const infoEquipo = [
+    {
+        nombreCompleto: "Ing. Norman Roberto Montes Ramos",
+        nombre: "Norman",
+        apellido: "Montes",
+        cargo: "Secretario Administrador",
+        correo: ""
+    },
+    {
+        nombreCompleto: "Arq. Zaby María Henríquez Ordoñez",
+        nombre: "Zaby",
+        apellido: "Henríquez",
+        cargo: "Oficial de Arquitectura",
+        correo: ""
+    },
+    {
+        nombreCompleto: "Ing. Olvin Rigoberto Álvarez Rodríguez",
+        nombre: "Olvin",
+        apellido: "Alvarez",
+        cargo: "Ingeniero Civil",
+        correo: ""
+    },
+]
+
+const jefe = infoEquipo.slice(0,1);
+const equipo = infoEquipo.slice(1, infoEquipo.length);
+
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/bg-default-unag-02.webp"
+    etiqueta="Organización"
+    subetiqueta="Rectoría"
+    titulo="SEAPI"
+    descripcion="Secretaría de Administración de Proyectos e Infraestructura"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <p>
+        La <strong>Secretaría de Administración de Proyectos e Infraestructura</strong> es responsable de asegurar las acciones coordinadas de diseño, ejecución, seguimiento y evaluación, de los programas y proyectos de inversión en infraestructura, financiados con fondos nacionales y/o externos ejecutados por La Universidad, sobre la base de los compromisos establecidos en los respectivos convenios suscritos con el estado y/o con organismos de cooperación internacional.
+      </p>
+      <p>
+        Dentro de ese propósito contribuirá a alcanzar las políticas institucionales de proveer los espacios físicos necesarios y adecuados para el desarrollo de la actividad académica y administrativa institucional y cumplir con los criterios de calidad ineludibles de ambientación y de comodidad del desarrollo humano para lograr el aprendizaje óptimo de los integrantes de la comunidad universitaria.
+      </p>
+    </div>
+
+    {
+        jefe.map((persona) => (
+            <PersonalCard 
+                nombreCompleto={persona.nombreCompleto}
+                nombre={persona.nombre}
+                apellido={persona.apellido}
+                cargo={persona.cargo}
+                correo={persona.correo}
+            />
+        ))
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+        {
+            equipo.map((persona) => (
+                <div class="">
+                    <PersonalCard 
+                        nombreCompleto={persona.nombreCompleto}
+                        nombre={persona.nombre}
+                        apellido={persona.apellido}
+                        cargo={persona.cargo}
+                        correo={persona.correo}
+                    />
+                </div>
+            ))
+        }
+    </div>
+
+
+  </section>
+</Layout>

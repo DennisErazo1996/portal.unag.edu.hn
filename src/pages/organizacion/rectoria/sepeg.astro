@@ -1,0 +1,120 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderPages from "@/components/astro/header-bg-pages.astro";
+import PersonalCard from "@/components/astro/personal-card.astro";
+
+const content = {
+  title: "SEPEG | UNAG",
+};
+
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/bg-default-unag-02.webp"
+    etiqueta="Organización"
+    subetiqueta="Rectoría"
+    titulo="SEPEG"
+    descripcion="Secretaría de Planificación y Evaluación de la Gestión"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <p class="leading-relaxed">
+        La <strong
+          >Secretaría de Planificación y Evaluación de la Gestión</strong
+        >, es la responsable del diseño, implementación, evaluación y control de
+        los planes operativos y programas de desarrollo institucional para el
+        corto, mediano y largo plazo.
+      </p>
+
+      <h3 class="text-xl font-bold text-unag-dark-green">Objetivo General</h3>
+      <p class="leading-relaxed">
+        Desarrollar la planificación general de manera eficaz y transparente en
+        el marco de la misión, visión, principios, fines y funciones de la
+        Universidad Nacional de Agricultura.
+      </p>
+
+      <h3 class="text-xl font-bold text-unag-dark-green">
+        Objetivos Específicos
+      </h3>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>
+          Crear y fortalecer la cultura de la planificación mediante el
+          fortalecimiento de capacidades y la institucionalización de planes
+          estratégicos y operativos funcionales.
+        </li>
+        <li>
+          Apoyar la formulación y gestión de programas y proyectos
+          institucionales de trascendencia para el desarrollo de la Universidad.
+        </li>
+        <li>
+          Retroalimentar el desarrollo de la Universidad con propuestas
+          orientadas a mejorar su desempeño administrativo, académico y
+          productivo.
+        </li>
+      </ul>
+
+      <h3 class="text-xl font-bold text-unag-dark-green">Funciones</h3>
+      <p class="leading-relaxed">
+        Las funciones de la Dirección se establecen en el Artículo 159 del
+        estatuto.
+      </p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>
+          Consolidar el plan de desarrollo institucional, el plan estratégico
+          institucional y el plan operativo institucional de la Universidad
+          Nacional de Agricultura en función de los requerimientos del
+          desarrollo económico y social del país y en coordinación con la
+          Gerencia Administrativo-Financiera en lo que fuera pertinente.
+        </li>
+        <li>
+          Identificar y proponer estrategias y líneas de acción para el
+          desarrollo institucional.
+        </li>
+        <li>
+          Proponer, supervisar y elaborar estudios orientados a medir el
+          desarrollo de la institución y el comportamiento del entorno, mundial,
+          nacional y local del sector educativo.
+        </li>
+        <li>
+          Proponer las estrategias institucionales en la implementación de
+          políticas públicas que afecten el desarrollo de la institución.
+        </li>
+        <li>
+          Apoyar en la coordinación de los procesos de elaboración de proyectos,
+          propuestas, solicitudes y demás tareas inherentes a la gestión de
+          ingresos no regularizables, ante instancias públicas, privadas y
+          organismos no gubernamentales.
+        </li>
+        <li>
+          Coordinar el desarrollo de las diferentes dependencias de la
+          Universidad Nacional de Agricultura y racionalizar su administración
+          en concordancia con las metas institucionales.
+        </li>
+        <li>
+          Apoyar a las diferentes unidades presupuestales de la Universidad
+          Nacional de Agricultura en la elaboración de su presupuesto y
+          consolidar sus requerimientos en el presupuesto general, cuya
+          ejecución debe evaluar y controlar.
+        </li>
+        <li>
+          Todas las demás funciones que se estipulen en el Estatuto, su
+          reglamento y otros que se deriven de éstos.
+        </li>
+      </ul>
+    </div>
+
+    <PersonalCard 
+        nombreCompleto="Lic. Marlen Suyapa Santos Rodriguez"
+        nombre="Marlen"
+        apellido="Santos"
+        cargo="Secretaria de Planificación y Evaluación de la Gestión"
+        correo="msantos@unag.edu.hn"
+     />
+
+
+  </section>
+</Layout>

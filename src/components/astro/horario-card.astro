@@ -1,0 +1,41 @@
+---
+const {dias, horas} = Astro.props;
+---
+
+<div
+  class="bg-unag-overlay-green/30 border border-unag-green/20 rounded-xl p-6 mb-12 flex flex-col md:flex-row items-center justify-between gap-6"
+>
+  <div class="flex items-center gap-4">
+    <div class="bg-white p-3 rounded-full shadow-sm text-unag-green">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><circle cx="12" cy="12" r="10"></circle><polyline
+          points="12 6 12 12 16 14"></polyline></svg
+      >
+    </div>
+    <div>
+      <h3 class="font-bold text-lg text-unag-dark-green">
+        Horario de Atención
+      </h3>
+      <p class="text-unag-gray text-sm">
+        Estamos disponibles para atender sus consultas
+      </p>
+    </div>
+  </div>
+  <div class="flex flex-col sm:flex-row gap-4 sm:gap-12">
+    <div class="text-center sm:text-left lg:mr-5">
+      <span
+        class="block text-xs font-bold text-unag-green uppercase tracking-wide lg:text-end"
+        >{dias}</span
+      >
+      <span class="text-gray-800 font-medium">{horas}</span>
+    </div>
+  </div>
+</div>

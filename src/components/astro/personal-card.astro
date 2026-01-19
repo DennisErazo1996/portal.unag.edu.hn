@@ -25,22 +25,27 @@ const imagen = `https://ui-avatars.com/api/?name=${nombre}+${apellido}&size=200&
         </p>
       </div>
     </div>
-    <div
-      class="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg"
-    >
+    
       {
         correo && (
-          <Mail class="w-4 h-4 text-unag-green" />
-          <a
-            href={`mailto:${correo}`}
-            class="hover:text-unag-green transition-colors break-all"
+          <div
+            class="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg"
           >
-            {correo}
-          </a>
+            <Mail class="w-4 h-4 text-unag-green" />
+            <a
+              href={`mailto:${correo}`}
+              class="hover:text-unag-green transition-colors break-all"
+            >
+              {correo}
+            </a>
+          </div>
         )
       }
       {
         telefono && (
+          <div
+            class="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg"
+          >
           <Phone class="w-4 h-4 text-unag-green" />
           <a
             href={`tel:${telefono}`}
@@ -48,8 +53,8 @@ const imagen = `https://ui-avatars.com/api/?name=${nombre}+${apellido}&size=200&
           >
             {telefono}
           </a>
+          </div>
         )
       }
-    </div>
   </div>
 </div>

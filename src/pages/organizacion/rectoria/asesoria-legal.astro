@@ -1,0 +1,118 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderPages from "@/components/astro/header-bg-pages.astro";
+import PersonalCard from "@/components/astro/personal-card.astro";
+import HorarioCard from "@/components/astro/horario-card.astro";
+
+const content = {
+  title: "Asesoría Legal | UNAG",
+};
+
+const infoEquipo = [
+    {
+        nombreCompleto: "M.Sc. Iris Azucena López Rivera",
+        nombre: "Iris",
+        apellido: "López",
+        cargo: "Jefe Asesoría Legal UNAG",
+        correo: "irivera@unag.edu.hn"
+    },
+    {
+        nombreCompleto: "Abog. Silvia Marina Ordoñez Sánchez",
+        nombre: "Silvia",
+        apellido: "Ordoñez",
+        cargo: "Procuradora UNAG",
+        correo: ""
+    },
+    {
+        nombreCompleto: "M.Sc. Karen Patricia Reyes Quan",
+        nombre: "Karen",
+        apellido: "Reyes",
+        cargo: "Oficial Juridico UNAG",
+        correo: ""
+    },
+    {
+        nombreCompleto: "Xiomara Lizeth Zelaya",
+        nombre: "Xiomara",
+        apellido: "Zelaya",
+        cargo: "Secretaria",
+        correo: ""
+    },
+    
+]
+
+const jefe = infoEquipo.slice(0,1);
+const equipo = infoEquipo.slice(1, infoEquipo.length);
+
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/bg-default-unag.webp"
+    etiqueta="Organización"
+    subetiqueta="Rectoría"
+    titulo="Asesoría Legal"
+    descripcion="Conozca la función y el equipo de la Asesoría Legal de la Universidad Nacional de Agricultura, encargada de brindar apoyo jurídico y garantizar el cumplimiento normativo en todas las actividades institucionales."
+  />
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <p>
+        Es <strong>Asesoría Legal</strong> la instancia de la Universidad Nacional de Agricultura que tiene bajo
+        su responsabilidad:
+      </p>
+      <ul class="">
+        <li>
+          Asesorar al Rector y autoridades universitarias en asuntos legales y
+          contenciosos de la Universidad Nacional de Agricultura.
+        </li>
+        <li>
+          Llevar los procesos contenciosos de la Universidad Nacional de
+          Agricultura; para lo cual contará con el equipo de profesionales del
+          Derecho para su procuración.
+        </li>
+        <li>
+          Asistir en temas legales a la comunidad universitaria en asuntos
+          institucionales y todas las demás funciones que se estipulen en el
+          presente Estatuto, su Reglamento y otros que se deriven de éstos.
+        </li>
+      </ul>
+    </div>
+
+    <HorarioCard 
+        dias="Lunes a Jueves"
+        horas="8:30 A.M. a 4:30 P.M."
+    />
+
+    <div>
+        <h1 class="font-bold text-lg">Personal:</h1>
+        {
+            jefe.map((persona) => (
+                <PersonalCard 
+                    nombreCompleto={persona.nombreCompleto}
+                    nombre={persona.nombre}
+                    apellido={persona.apellido}
+                    cargo={persona.cargo}
+                    correo={persona.correo}
+                />
+            ))
+        }
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-3">
+        {
+            equipo.map((persona) => (
+                <PersonalCard 
+                    nombreCompleto={persona.nombreCompleto}
+                    nombre={persona.nombre}
+                    apellido={persona.apellido}
+                    cargo={persona.cargo}
+                    correo={persona.correo}
+                />
+            ))
+        }
+
+    </div>
+
+  </section>
+</Layout>

@@ -1,5 +1,5 @@
 ---
-const { imagen, etiqueta, titulo, descripcion } = Astro.props;
+const { imagen, etiqueta, subetiqueta, titulo, descripcion } = Astro.props;
 ---
 
 <section class="relative w-full h-[60vh] lg:h-[60vh] overflow-hidden">
@@ -17,9 +17,9 @@ const { imagen, etiqueta, titulo, descripcion } = Astro.props;
     >
       <div class="max-w-3xl mt-40 lg:mt-20">
         <div
-          class="inline-block bg-unag-green/90 backdrop-blur-sm text-white px-4 py-2 rounded-lg mb-4"
+          class="inline-block bg-unag-green/90 backdrop-blur-sm text-white px-4 py-2 rounded-sm mb-4"
         >
-          <p class="text-sm font-semibold text-white">{etiqueta}</p>
+          <p class="text-sm font-semibold text-white">{etiqueta} {  (subetiqueta) ? '> ' + subetiqueta : ''}</p>
         </div>
         <h1
           class="text-4xl lg:text-6xl font-black text-white mb-6 leading-tight"

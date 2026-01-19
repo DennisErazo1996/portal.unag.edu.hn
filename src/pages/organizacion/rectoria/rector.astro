@@ -1,0 +1,152 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderPages from "@/components/astro/header-bg-pages.astro";
+import { Quote, Mail, Phone } from "lucide-react";
+
+const content = {
+  title: "Rector | UNAG",
+};
+
+const rectorInfo = {
+  name: "Dr. Víctor Javier González",
+  title: "Rector de la Universidad Nacional de Agricultura",
+  email: "rectoria@unag.edu.hn",
+};
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/bg-default-unag-02.webp"
+    etiqueta="Organización"
+    subetiqueta="Rectoría"
+    titulo="Rector"
+    descripcion="Conozca al Rector de la Universidad Nacional de Agricultura, su trayectoria académica y su visión para el futuro de la institución."
+  />
+
+  <section
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-30 relative z-2"
+  >
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
+        <!-- Sidebar / Photo Section -->
+        <div
+          class="lg:col-span-4 bg-gray-50 p-8 flex flex-col items-center text-center border-r border-gray-100"
+        >
+          <div
+            class="relative w-64 h-80 rounded-xl overflow-hidden shadow-lg mb-6 group bg-white"
+          >
+            <div
+              class="absolute inset-0 bg-unag-green/10 group-hover:bg-transparent transition-colors duration-300 pointer-events-none"
+            >
+            </div>
+            <img src="/img/rector-victor.webp" alt={rectorInfo.name} class="w-full h-full object-cover" />
+          </div>
+
+          <h2 class="text-2xl font-bold text-unag-dark-green mb-2">
+            {rectorInfo.name}
+          </h2>
+          <p class="text-unag-green font-medium mb-6 text-sm leading-tight">
+            {rectorInfo.title}
+          </p>
+
+          <div
+            class="w-full space-y-4 text-left p-4 bg-white rounded-lg border border-gray-100 shadow-sm"
+          >
+            <div class="flex items-center gap-3 text-gray-600">
+              <Mail className="w-5 h-5 text-unag-green" />
+              <a
+                href={`mailto:${rectorInfo.email}`}
+                class="text-sm hover:text-unag-green transition-colors"
+                >{rectorInfo.email}</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Content / Message Section -->
+        <div class="lg:col-span-8 p-8 lg:p-12">
+          <div class="mb-8">
+            <div class="flex items-start gap-4 mb-6">
+              <Quote className="w-12 h-12 text-unag-green shrink-0" />
+              <h3 class="text-3xl font-bold text-gray-800 mt-2">
+                Mensaje a la Comunidad Universitaria
+              </h3>
+            </div>
+
+            <div class="prose prose-sm text-gray-600 max-w-none space-y-4">
+              <p class="leading-relaxed">
+                En esta fecha con mucho orgullo y júbilo celebramos el setenta y
+                un aniversario de la Universidad Nacional de Agricultura. El
+                surgimiento de esta noble institución, sin duda alguna, es un
+                hecho histórico que ha marcado positivamente la vida de muchas
+                personas, dado que el mismo representa siete décadas de
+                contribución significativa con el desarrollo del sector
+                agropecuario a nivel nacional; comprometidos con la excelencia
+                académica, el estudio de la problemática del agro, el
+                crecimiento económico de los productores y la disponibilidad de
+                alimento para las comunidades.
+              </p>
+              <p class="leading-relaxed">
+                Desde su fundación en el año 1952, como Escuela Granja
+                Demostrativa, La Universidad ha sido un faro de conocimiento y
+                una fuente inagotable de inspiración para quienes han pasado por
+                sus aulas y laboratorios. A lo largo de estos años, hemos sido
+                testigos de cómo la Universidad Nacional de Agricultura ha
+                contribuido de manera significativa al progreso y la
+                transformación del sector agrícola, tanto a nivel nacional como
+                internacional.
+              </p>
+              <p class="leading-relaxed">
+                En este setenta y un aniversario, es justo reconocer la labor
+                que con mucho entusiasmo y entrega realizan todos nuestros
+                colaboradores, sus esfuerzos son determinantes para el logro de
+                los objetivos institucionales. Particularmente al cuerpo de
+                profesores e investigadores, por su compromiso en la
+                construcción de los conocimientos y la búsqueda incansable de
+                soluciones a los desafíos actuales y futuros del sector
+                agrícola; y a nuestros estudiantes, por su entusiasmo y deseo de
+                aprender, que nos recuerdan constantemente la importancia de
+                nuestra labor. También es oportuno extender nuestra gratitud a
+                todos aquellos que nos precedieron, que con sus esfuerzos y
+                sacrificios allanaron el camino para las actuales y futuras
+                generaciones. La ocasión es propicia para destacar y agradecer
+                la colaboración de nuestros socios y aliados externos, quienes
+                han brindado su apoyo y confianza en los diferentes proyectos e
+                iniciativas institucionales; gracias a su respaldo, hemos
+                fortalecido nuestras capacidades y ampliado nuestro alcance,
+                posicionándonos como una institución de referencia en la
+                educación agropecuaria.
+              </p>
+              <p class="leading-relaxed">
+                Hasta ahora hemos avanzado en mucho, pero debemos seguir fortaleciéndonos para enfrentar los nuevos desafíos de este mundo cambiante; es nuestra responsabilidad mantenernos a la vanguardia de la investigación y la tecnología agrícola, adaptándonos a las demandas y necesidades de un mercado globalizado. Debemos seguir impulsando la innovación, fomentando la colaboración multidisciplinaria y formando líderes capaces de enfrentar los desafíos del siglo XXI. Es por esta razón que la Universidad Nacional de Agricultura debe continuar comprometida con la mejora constante de sus programas académicos, la expansión de sus infraestructuras y la creación de nuevas oportunidades para el desarrollo profesional de nuestros estudiantes.
+              </p>
+              <p class="font-medium text-unag-dark-green pt-2">
+                Miremos hacia el futuro con esperanza y determinación, sabiendo que juntos podemos construir un mundo mejor para todos, a través del acceso a nuevos conocimientos y la innovación en la agricultura.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="mt-12 pt-8 border-t border-gray-100 flex items-center justify-between"
+          >
+            <div class="flex flex-col">
+              <span
+                class="text-xs text-gray-500 uppercase tracking-widest font-bold"
+                >Gestión Rectoral</span
+              >
+              <span class="text-xl font-bold text-unag-dark-green"
+                >2023 - 2026</span
+              >
+            </div>
+
+            <!-- <div
+              class="h-16 w-40 bg-gray-50 rounded flex items-center justify-center text-xs text-gray-300 italic border border-dashed border-gray-200"
+            >
+              Firma del Rector
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

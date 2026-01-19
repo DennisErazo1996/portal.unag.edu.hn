@@ -1,0 +1,46 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderPages from "@/components/astro/header-bg-pages.astro";
+import PersonalCard from "@/components/astro/peronal-card.astro";
+
+const content = {
+  title: "Unidad de Transparencia | UNAG",
+};
+
+const jefeInfo = {
+  name: "M. Sc. Kenia Leticia Estrada Castro",
+  title: "Jefa de la Unidad de Transparencia",
+  email: "oficialdetransparencia@unag.edu.hn",
+};
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/bg-default-unag-02.webp"
+    etiqueta="Organización"
+    subetiqueta="Rectoría"
+    titulo="Unidad de Transparencia"
+    descripcion="Lunes a viernes de 8:00 a.m. a 4:30 p.m."
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+  >
+    <p>
+      Es la instancia universitaria, creada en cumplimiento a la Ley de
+      Transparencia y Acceso a la Información Pública, para garantizar el
+      Derecho de Acceso a la Información, a través del trámite de las
+      solicitudes de información y la difusión de la información en el Portal
+      Único de Transparencia.
+    </p>
+    <div>
+        <PersonalCard
+            nombreCompleto={jefeInfo.name}
+            cargo={jefeInfo.title}
+            correo={jefeInfo.email}
+            nombre="Kenia"
+            apellido="Estrada"
+        />
+    </div>
+  </section>
+</Layout>

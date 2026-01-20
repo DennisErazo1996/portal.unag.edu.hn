@@ -9,7 +9,7 @@ featured: true
 
 ## COMUNICADO JDU-UNAG-002-2026
 
-La ,JUNTA DE DIRECCIÓN UNIVERSITARIA (JDU), como órgano principal
+La JUNTA DE DIRECCIÓN UNIVERSITARIA (JDU), como órgano principal
 administrativo de la UNIVERSIDAD NACIONAL DE AGRICULTURA (UNAG), y
 en uso de las atribuciones que le confieren el art. 45 del Estatuto y art. 68 de su
 Reglamento, en el Marco del Concurso Público de Méritos JDU-UNAG-001-2025 para

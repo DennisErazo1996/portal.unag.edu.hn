@@ -1,0 +1,80 @@
+---
+import {Mail, Phone, GraduationCap, Briefcase} from '@lucide/astro'
+
+const {nombreCompleto, cargo, correo, nombre, apellido, telefono, grado, area} = Astro.props;
+
+const imagen = `https://ui-avatars.com/api/?name=${nombre}+${apellido}&size=200&background=1ba333&color=fff&bold=true`
+---
+
+<div
+  class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-lg transition-all hover:-translate-y-1 mt-10 h-full flex flex-col"
+>
+  <div class="p-6 flex flex-col h-full">
+    <div class="flex items-start gap-4 mb-4">
+      <img
+        src={imagen}
+        alt={nombreCompleto}
+        class="w-16 h-16 rounded-full object-cover border-4 border-unag-green/20 shrink-0"
+      />
+      <div class="flex-1">
+        <h3 class="font-bold text-lg text-gray-800 leading-tight mb-1">
+          {nombreCompleto}
+        </h3>
+        <p class="text-sm text-unag-green font-bold mb-1">
+          {cargo}
+        </p>
+        {
+          grado && (
+            <div class="flex items-start gap-1.5 text-xs text-gray-500 font-medium">
+              <GraduationCap class="w-3.5 h-3.5 mt-0.5 shrink-0" />
+              <span>{grado}</span>
+            </div>
+          )
+        }
+      </div>
+    </div>
+    
+    <div class="space-y-2 mt-auto">
+      {
+         area && (
+           <div
+             class="flex items-start gap-2 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg"
+           >
+             <Briefcase class="w-4 h-4 text-unag-green mt-0.5 shrink-0" />
+             <span class="break-words line-clamp-2">{area}</span>
+           </div>
+         )
+       }
+      {
+        correo && (
+          <div
+            class="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg"
+          >
+            <Mail class="w-4 h-4 text-unag-green shrink-0" />
+            <a
+              href={`mailto:${correo}`}
+              class="hover:text-unag-green transition-colors break-all text-xs sm:text-sm"
+            >
+              {correo}
+            </a>
+          </div>
+        )
+      }
+      {
+        telefono && (
+          <div
+            class="flex items-center gap-2 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg"
+          >
+          <Phone class="w-4 h-4 text-unag-green shrink-0" />
+          <a
+            href={`tel:${telefono}`}
+            class="hover:text-unag-green transition-colors break-all"
+          >
+            {telefono}
+          </a>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</div>

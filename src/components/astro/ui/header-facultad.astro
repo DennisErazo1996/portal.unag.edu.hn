@@ -1,0 +1,35 @@
+---
+const { titulo, imagen } = Astro.props;
+---
+
+<section class="relative pt-50 pb-16 overflow-hidden">
+    
+    <div class={`absolute inset-0 bg-[url('${imagen}')] bg-cover bg-center`}>
+        <div class="absolute inset-0 bg-unag-gray/60"></div>
+    </div>
+
+    
+    <div class="absolute top-56 lg:top-45 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center text-center">
+        
+            <div class="flex items-center gap-2 text-white/60 text-sm mb-4 font-medium tracking-wider uppercase">
+                <span>Organización</span>
+                <span class="w-1 h-1 bg-unag-yellow rounded-full"></span>
+                <span>Facultades</span>
+            </div>
+            
+
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight">
+                {titulo}
+            </h1>
+        
+            <div class="mt-6 flex items-center gap-2">
+                <div class="w-12 h-[1px] bg-unag-yellow rounded-full"></div>
+                <div class="w-5 h-5 bg-[url('/img/unag-hoja.png')] bg-contain bg-center bg-no-repeat"></div>
+                <div class="w-12 h-[1px] bg-unag-yellow rounded-full"></div>
+            </div>
+        </div>
+    </div>
+</section>

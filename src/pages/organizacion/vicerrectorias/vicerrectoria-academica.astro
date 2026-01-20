@@ -1,0 +1,92 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
+import PersonalCard from "@/components/astro/ui/personal-card.astro";
+
+const content = {
+  title: "Vicerrectoría Académica | UNAG",
+};
+
+const infoEquipo = [
+  {
+    nombreCompleto: "Ph. D. Orlando David Murillo Lizardo",
+    nombre: "Orlando",
+    apellido: "Murillo",
+    cargo: "Vicerrector Académico",
+    correo: "",
+  },
+  {
+    nombreCompleto: "Lic. Kenia Vanesa Martínez Rivera",
+    nombre: "Kenia",
+    apellido: "Martínez",
+    cargo: "Asistente Académico de VRA",
+    correo: "vmartinez@unag.edu.hn",
+  },
+  {
+    nombreCompleto: "Lic. Nancy Carolina Contreras Ávila",
+    nombre: "Nancy",
+    apellido: "Contreras",
+    cargo: "Asistente Administrativo de VRA",
+    correo: "ncontreras@unag.edu.hn",
+  },
+];
+
+const jefe = infoEquipo.slice(0, 1);
+const equipo = infoEquipo.slice(1, infoEquipo.length);
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/bg-default-unag-02.webp"
+    etiqueta="Organización"
+    subetiqueta="Vicerrectorías"
+    titulo="Vicerrectoría Académica"
+    descripcion="Responsable de dirigir el régimen académico y ejecutar la política general de formación académica de la Universidad"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <p>
+        La <strong>Vicerrectoría Académica (VRA)</strong> como parte del nivel de Dirección Ejecutiva de la Universidad Nacional de Agricultura, es responsable de <strong>dirigir el régimen académico</strong> y ejecutar la política general de formación académica de la Universidad.
+      </p>
+      <p>
+        Es responsable de <strong>coordinar, supervisar y evaluar</strong> las actividades de la gestión del conocimiento, mediante las funciones de <strong>docencia, de investigación científica, vinculación con la sociedad</strong>, administración y orientación académica, capacitación docente y de la acreditación de la calidad y pertinencia y de todas aquellas funciones de tipo académico.
+      </p>
+      <p>
+        La Vicerrectoría Académica, cuenta con una <strong>estructura permanente</strong>, organizada en Sistemas de Dirección Académica, Unidades de Apoyo y los Cuerpos Auxiliares como Consejo Académico, Comité Técnico de las Etnias e Inclusión Social y la Comisión de Becas. Para desarrollar los procesos académicos de la Universidad, está organizada por Direcciones Académicas, Facultades, Departamentos Académicos, Carreras, Centros Regionales o Especializados, Centros de Producción y los Centros e Institutos de Investigación y Capacitación.
+      </p>
+    </div>
+
+    <h1 class="font-bold">Personal:</h1>
+
+    {
+      jefe.map((persona) => (
+        <PersonalCard
+          nombreCompleto={persona.nombreCompleto}
+          nombre={persona.nombre}
+          apellido={persona.apellido}
+          cargo={persona.cargo}
+          correo={persona.correo}
+        />
+      ))
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+      {
+        equipo.map((persona) => (
+          <div class="">
+            <PersonalCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              correo={persona.correo}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

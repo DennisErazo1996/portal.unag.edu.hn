@@ -1,0 +1,72 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
+import DocenteCard from "@/components/astro/ui/docente-card.astro";
+
+import docentesFacultadCienciasAgrarias from "@/consts/facultades/docentes-facultad-de-ciencias-agrarias.ts";
+
+const content = {
+  title: "Facultad de Ciencias Agrarias | UNAG",
+};
+
+const decano = docentesFacultadCienciasAgrarias.slice(0, 1);
+const docentes = docentesFacultadCienciasAgrarias.slice(
+  1,
+  docentesFacultadCienciasAgrarias.length
+);
+---
+
+<Layout content={content}>
+  <HeaderFacultad 
+    titulo="Facultad de Ciencias Agrarias"
+    imagen="/img/facultades/bg-facultad-de-ciencias.webp"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <h1 class="font-bold">MARCO CONCEPTUAL DE LA FACULTAD DE CIENCIAS</h1>
+      <p>
+        La Facultad de Ciencia Agrarias pretende ser un aliado estratégico para la academia y la sociedad hondureña desde que se ofertara como espacio abierto para y de innovaciones tecnológicas, generadora de conocimientos y de discusiones académicas sobre temas de interés nacional e internacional.
+      </p>
+      
+    </div>
+
+    <h1 class="font-bold">Personal:</h1>
+
+    {
+      decano.map((persona) => (
+        <DocenteCard
+          nombreCompleto={persona.nombreCompleto}
+          nombre={persona.nombre}
+          apellido={persona.apellido}
+          cargo={persona.cargo}
+          grado={persona.grado}
+          area={persona.area}
+          correo={persona.correo}
+        />
+      ))
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+      {
+        docentes.map((persona) => (
+          <div class="">
+            <DocenteCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              grado={persona.grado}
+              area={persona.area}
+              correo={persona.correo}
+            />
+          </div>
+        ))
+      }
+    </div>
+
+
+  </section>
+</Layout>

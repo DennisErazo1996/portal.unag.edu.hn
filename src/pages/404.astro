@@ -1,0 +1,52 @@
+---
+import Layout from '@/layouts/main.astro';
+import HeaderPages from '@/components/astro/ui/header-bg-pages.astro';
+import { Home, ArrowLeft } from 'lucide-react';
+
+const content = {
+    title: 'Página no encontrada | UNAG'
+}
+---
+
+<Layout content={content}>
+
+    <section class="bg-[url('/img/bg-404.webp')] w-full h-[30vh] bg-cover">
+        <div class="w-full h-[30vh] bg-unag-gray/30"></div>
+    </section>
+
+    <section class="flex flex-col items-center justify-center p-20 relative overflow-hidden">
+        
+        <div class="text-center relative max-w-2xl mx-auto">
+            
+            <h1 class="text-[130px] lg:text-[150px] font-black text-unag-gray/10 leading-none select-none">
+                404
+            </h1>
+            
+            <div class="-mt-16 mb-8 relative">
+                <div class="inline-flex items-center justify-center w-24 h-24 bg-white rounded-2xl shadow-lg border border-gray-100 rotate-12 transition-transform hover:rotate-0 duration-500 after:content-[''] after:bg-unag-green">
+                    <span class="text-6xl">🌱</span>
+                </div>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-unag-dark-green mb-4">
+                Página no encontrada
+            </h2>
+            
+            <p class="text-gray-600 text-sm mb-8 max-w-md mx-auto leading-relaxed">
+                Parece que la página que buscas no existe o ha sido movida a otro campo.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="history.back()" class="w-full sm:w-auto px-6 py-3 rounded-xl border border-gray-200 text-gray-600 font-semibold hover:bg-white hover:text-unag-green hover:border-unag-green/30 transition-all duration-300 flex items-center justify-center gap-2 group shadow-sm hover:shadow-md">
+                    <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                    Regresar
+                </button>
+
+                <a href="/" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-unag-green text-white font-semibold hover:bg-unag-dark-green transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-unag-green/20 hover:shadow-unag-green/40 hover:-translate-y-0.5">
+                    <Home className="w-5 h-5" />
+                    Ir al Inicio
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>

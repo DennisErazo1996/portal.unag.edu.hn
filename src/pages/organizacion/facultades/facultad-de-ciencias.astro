@@ -1,0 +1,171 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
+import DocenteCard from "@/components/astro/ui/docente-card.astro";
+import Contacto from "@/components/astro/ui/contacto.astro";
+
+import docentesFacultadCiencias from "@/consts/facultades/docentes-facultad-de-ciencias.ts";
+
+const content = {
+  title: "Facultad de Ciencias | UNAG",
+};
+
+const decano = docentesFacultadCiencias.slice(0, 1);
+const docentes = docentesFacultadCiencias.slice(
+  1,
+  docentesFacultadCiencias.length
+);
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/facultades/bg-facultad-de-ciencias.webp"
+    etiqueta="Organización"
+    subetiqueta="Facultades"
+    titulo="Facultad de Ciencias"
+    descripcion="Tiene el fin de fortalecer la actividad académica en una universidad cuyo énfasis son las Ciencias Agrarias"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <h1 class="font-bold">MARCO CONCEPTUAL DE LA FACULTAD DE CIENCIAS</h1>
+      <p>
+        La Facultad es la <strong class="text-unag-green"
+          >unidad fundamental de organización y de gestión
+          académico-administrativa</strong
+        > que desarrolla determinadas áreas afines del conocimiento, que se estructura
+        y divide en uno o varios departamentos académicos y desarrolla planes de estudio
+        que conforman una o varias carreras para la formación profesional de estudiantes,
+        así como de formación humana, académica y profesional.
+      </p>
+      <p>
+        En el marco del proceso de reforma la institucional (período 2017 –
+        2020), se devine la necesidad de transformación de lo que, hasta
+        entonces, había sido el Departamento Académico de Estudios Generales, en
+        la “<strong>Facultad de Ciencias</strong>”, con el fin de <strong
+          >fortalecer la actividad académica</strong
+        > en una universidad cuyo énfasis son las Ciencias Agrarias.
+      </p>
+      <p>
+        De esta manera, la Facultad Ciencias de la Universidad Nacional de
+        Agricultura, se constituye como un conjunto de <strong
+          >políticas, estrategias, procesos y proyectos</strong
+        > relacionados entre sí y con el desarrollo nacional y regional, que forman
+        un cuerpo de doctrina orientado hacia la <strong
+          >gestión del conocimiento de las ciencias afines</strong
+        >, que son básicas en la gestión del conocimiento en el ámbito
+        agropecuario, y que se constituyen en una responsabilidad de la Facultad
+        de Ciencias, en la búsqueda de la <strong
+          >calidad de la Institución</strong
+        >, sus programas y carreras.
+      </p>
+      <p>
+        La Facultad de Ciencias así conceptualizada, implica el esfuerzo
+        continuo de la UNAG para cumplir en forma responsable con las exigencias
+        propias de cada una de sus funciones de <strong
+          >docencia, investigación, vinculación universidad-sociedad y gestión
+          académica-administrativa</strong
+        >, de acuerdo al énfasis que su misión le establece y con el objeto de
+        brindar información confiable sobre la calidad de su quehacer, programas
+        y carreras.
+      </p>
+      <p>
+        Concibiendo la ciencia como una estructura de conocimiento relativamente
+        corroborado y exacto, en constante evolución, dirigido siempre hacia la <strong
+          >búsqueda de la verdad</strong
+        > en contextos espacio-temporales; y la comprensión del universo humano, en
+        tanto ser y devenir, en todas sus variantes biológicas, físicas, químicas,
+        históricas, sociales y conceptuales; desde una escala microscópica hasta sus
+        dimensiones cosmológicas, englobando la totalidad del ser-acontecer del hombre
+        y su universo.
+      </p>
+      <p>
+        Las ciencias naturales exigen un <strong>lenguaje formal</strong>, que
+        proviene de la matemática o es la matemática misma, sin el cual su
+        estudio profundo es imposible. Asimismo, estas ciencias se enfrentan a
+        ciertos problemas filosóficos y conceptuales, que ameritan un estudio
+        desprejuiciado desde la <strong>filosofía rigurosa</strong>. Por otro
+        lado, sus avances tienen <strong>efectos sociales significativos</strong
+        > y muchas veces revolucionarios, que exigen la vigilancia de las ciencias
+        humanísticas y sociales.
+      </p>
+      <p>
+        Es por eso que el desarrollo de pensamiento y del conocimiento
+        científico en la Universidad Nacional de Agricultura, no debe darse
+        desde una perspectiva periférica, sino <strong>universal</strong>; de
+        tal manera que se construya una atmósfera enriquecedora para el <strong
+          >estudio y la transformación de la realidad nacional</strong
+        >; y si es posible, que contribuya a las transformaciones globales, para
+        que esto sea posible, sin duda se requiere la conformación de
+        estructuras académicas que cumplan justamente con esta función, a modo
+        de posibilitar la gestación y consolidación de personal
+        multidisciplinario, capaces de interconectar las funciones básicas de la
+        Universidad, como son la <strong
+          >investigación científica, la vinculación universidad-sociedad y la
+          docencia</strong
+        >. Es responsabilidad de la Facultad de Ciencias desarrollar áreas del
+        conocimiento como la <strong
+          >biología, microbiología, química, matemática, física, informática,
+          ciencias sociales y humanísticas</strong
+        >; para lo cual se han constituido cinco Departamentos Académicos, según
+        áreas afines; estos son:
+      </p>
+      <ul>
+        <li>Departamento Académico de Biología y Microbiología</li>
+        <li>Departamento Académico de Química</li>
+        <li>Departamento Académico de Matemática, Física e Informática</li>
+        <li>Departamento Académico de Letras y Lenguas</li>
+        <li>Departamento Académico de Sociales y Humanidades</li>
+      </ul>
+      <p>
+        La Facultad de Ciencias sirve el componente de formación general de
+        todas las carreras; el que, en promedio equivale a un <strong
+          >25% de los Planes de Estudio</strong
+        > correspondientes.
+      </p>
+      <p>
+        Para desarrollar estos campos disciplinares la Facultad cuenta con un
+        total de <strong>48 docentes</strong>, especialistas en las respectivas
+        áreas de desempeño.
+      </p>
+    </div>
+
+    <h1 class="font-bold">Personal:</h1>
+
+    {
+      decano.map((persona) => (
+        <DocenteCard
+          nombreCompleto={persona.nombreCompleto}
+          nombre={persona.nombre}
+          apellido={persona.apellido}
+          cargo={persona.cargo}
+          grado={persona.grado}
+          area={persona.area}
+          correo={persona.correo}
+        />
+      ))
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+      {
+        docentes.map((persona) => (
+          <div class="">
+            <DocenteCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              grado={persona.grado}
+              area={persona.area}
+              correo={persona.correo}
+            />
+          </div>
+        ))
+      }
+    </div>
+
+
+  </section>
+</Layout>

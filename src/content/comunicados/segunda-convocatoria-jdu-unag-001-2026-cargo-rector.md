@@ -7,7 +7,7 @@ order: 2
 featured: true
 attachments:
   - name: "Segunda convocatoria cargo Rector UNAG"
-    url: "/documents/segunda-convocatoria-a-concurso-publico-de-meritos-jdu-unag-001-2026.pdf"
+    url: "/documents/comunicados/segunda-convocatoria-a-concurso-publico-de-meritos-jdu-unag-001-2026.pdf"
     type: "PDF" 
 ---
 
@@ -27,4 +27,4 @@ Vigente, aprobado por el Consejo de Educación Superior, mediante Acuerdo No. 40
 de fecha 12 de agosto de 2019, para que profesionales interesados presenten su aplicación para 
 optar al cargo que se ofrece de acuerdo al ordenamiento y bases siguientes.
 
-👉 **[Descargar Segunda Convocatoria JDU-UNAG-001-2026](/documents/segunda-convocatoria-a-concurso-publico-de-meritos-jdu-unag-001-2026.pdf)**
+👉 **[Descargar Segunda Convocatoria JDU-UNAG-001-2026](/documents/comunicados/segunda-convocatoria-a-concurso-publico-de-meritos-jdu-unag-001-2026.pdf)**

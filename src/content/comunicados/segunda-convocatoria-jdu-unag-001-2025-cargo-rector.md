@@ -1,5 +1,5 @@
 ---
-title: "Segunga convocatoria JDU-UNAG-001-2026 para ocupar el cargo de Rector de la UNAG"
+title: "Segunda convocatoria JDU-UNAG-001-2026 para ocupar el cargo de Rector de la UNAG"
 description: "Cargo de Rector de la Universidad Nacional de Agricultura"
 category: "Convocatoria"
 date: 2026-01-20

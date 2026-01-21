@@ -1,5 +1,5 @@
 ---
-title: "Segunda convocatoria JDU-UNAG-001-2026 para ocupar el cargo de Rector de la UNAG"
+title: "Segunda convocatoria JDU-UNAG-002-2025 para ocupar el cargo de Rector de la UNAG"
 description: "Cargo de Rector de la Universidad Nacional de Agricultura"
 category: "Convocatoria"
 date: 2026-01-20
@@ -7,11 +7,11 @@ order: 2
 featured: true
 attachments:
   - name: "Segunda convocatoria cargo Rector UNAG"
-    url: "/documents/comunicados/segunda-convocatoria-a-concurso-publico-de-meritos-jdu-unag-001-2026.pdf"
+    url: "/documents/comunicados/segunda-convocatoria-a-concurso-publico-de-meritos-jdu-unag-002-2025.pdf"
     type: "PDF" 
 ---
 
-## SEGUNDA CONVOCATORIA A CONCURSO PÚBLICO DE MÉRITOS JDU-UNAG-001-2026 PARA OCUPAR EL CARGO DE RECTOR DE LA UNAG
+## SEGUNDA CONVOCATORIA A CONCURSO PÚBLICO DE MÉRITOS JDU-UNAG-002-2025 PARA OCUPAR EL CARGO DE RECTOR DE LA UNAG
 
 La Junta de Dirección Universitaria (JDU) de la Universidad Nacional de Agricultura en uso de 
 las atribuciones conferidas en el Artículo 45 del Estatuto Institucional y el Artículo 68 del 
@@ -27,4 +27,4 @@ Vigente, aprobado por el Consejo de Educación Superior, mediante Acuerdo No. 40
 de fecha 12 de agosto de 2019, para que profesionales interesados presenten su aplicación para 
 optar al cargo que se ofrece de acuerdo al ordenamiento y bases siguientes.
 
-👉 **[Descargar Segunda Convocatoria JDU-UNAG-001-2026](/documents/comunicados/segunda-convocatoria-a-concurso-publico-de-meritos-jdu-unag-001-2026.pdf)**
+👉 **[Descargar Segunda Convocatoria JDU-UNAG-002-2025](/documents/comunicados/segunda-convocatoria-a-concurso-publico-de-meritos-jdu-unag-002-2025.pdf)**

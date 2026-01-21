@@ -3,6 +3,7 @@ title: "Comunicado JDU-UNAG-002-2026 para ocupar el cargo de Rector de la Univer
 description: "Cargo de Rector de la Universidad Nacional de Agricultura"
 category: "Aviso"
 date: 2026-01-20
+order: 1
 featured: true
 
 ---

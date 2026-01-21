@@ -4,7 +4,6 @@ import Hero from "@/components/astro/hero.astro";
 import CarrerasSection from "@/components/react/CarrerasSection";
 import ComunicadosSection from "@/components/react/ComunicadosSection";
 import NoticiasSection from "@/components/react/NoticiasSection";
-import { Star } from "@lucide/astro";
 
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
@@ -23,7 +22,13 @@ const content = {
 };
 
 const comunicados = (await getCollection("comunicados")).sort(
-	(a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf(),
+	(a: any, b: any) => {
+		
+		const dateDiff = b.data.date.valueOf() - a.data.date.valueOf();
+		if (dateDiff !== 0) return dateDiff;
+		
+		return (b.data.order ?? 0) - (a.data.order ?? 0);
+	}
 );
 
 const añoFundacion = 1952;
@@ -45,23 +50,24 @@ const añosDesdesFundacion = añoActual - añoFundacion;
 		id="lema-section"
 		class="relative text-[12px] w-full mt-35 lg:mt-0 h-[90vh] lg:h-[100vh] flex items-center justify-center overflow-hidden"
 	>
-		<!-- Círculo central con animación flotante -->
+		<!-- Círculos con animación flotante -->
 		<div
 			class="pointer-events-none w-100 h-100 lg:w-200 lg:h-200 bg-unag-overlay-green rounded-full animate-float"
 		>
 		</div>
 		
-		<!-- Círculo izquierdo con animación flotante inversa -->
+		
 		<div
 			class="absolute pointer-events-none left-0 -translate-x-20 w-100 h-100 lg:w-[90vh] lg:h-[90vh] rounded-full bg-transparent border border-unag-dark-green animate-float-reverse"
 		>
 		</div>
 		
-		<!-- Círculo derecho con animación flotante -->
 		<div
-			class="absolute pointer-events-none right-0 translate-x-20 w-100 h-100 lg:w-[90vh] lg:h-[90vh] rounded-full bg-transparent border border-unag-dark-green animate-float"
+		class="absolute pointer-events-none right-0 translate-x-20 w-100 h-100 lg:w-[90vh] lg:h-[90vh] rounded-full bg-transparent border border-unag-dark-green animate-float"
 		>
 		</div>
+		<!-- Círculos con animación flotante -->
+
 		
 		<div class="absolute -translate-y-70 lg:-translate-y-80">
 			<p

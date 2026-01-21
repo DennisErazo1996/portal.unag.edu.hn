@@ -7,7 +7,13 @@ import bgComunicados from '@/assets/img/bg-comunicados.jpg';
 import categoryColors from '@/consts/category-colors';
 
 const comunicados = (await getCollection('comunicados')).sort(
-  (a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf()
+  (a: any, b: any) => {
+    // Primero ordenar por fecha (más reciente primero)
+    const dateDiff = b.data.date.valueOf() - a.data.date.valueOf();
+    if (dateDiff !== 0) return dateDiff;
+    // Si las fechas son iguales, ordenar por el campo order (mayor = más reciente)
+    return (b.data.order ?? 0) - (a.data.order ?? 0);
+  }
 );
 
 const content = {

@@ -1,38 +1,103 @@
 ---
+import { Image } from "astro:assets";
+
+interface Props {
+  imagen: string;
+  etiqueta: string;
+  subetiqueta?: string;
+  titulo: string;
+  descripcion?: string;
+}
+
 const { imagen, etiqueta, subetiqueta, titulo, descripcion } = Astro.props;
+
+import hoja01 from "@assets/img/hojas/hoja-angulo-02.webp";
+import hoja02 from "@assets/img/hojas/hoja-angulo-01.webp";
 ---
 
-<section class="relative w-full h-[60vh] lg:h-[60vh] overflow-hidden">
-    <img
-      src={imagen}
-      alt="Misión y Visión"
-      class="absolute inset-0 w-full h-full object-cover"
+<header class="relative w-full h-[60vh] lg:h-[60vh] overflow-hidden">
+  <section
+    class="absolute z-5 inset-0 w-full flex justify-between pointer-events-none select-none"
+  >
+    <Image
+      src={hoja01}
+      alt=""
+      class="w-20 h-20 md:w-38 md:h-38 lg:w-50 lg:h-50 -ml-10 mt-110 lg:-ml-20 lg:mt-110"
     />
-    <div
-      class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"
-    >
-    </div>
-    <div
-      class="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center"
-    >
-      <div class="max-w-3xl lg:max-w-4xl mt-40 lg:mt-30">
-        <div
-          class="inline-block bg-unag-green/90 backdrop-blur-sm text-white px-4 py-2 rounded-sm mb-4"
-        >
-          <p class="text-sm font-semibold text-white">{etiqueta} {  (subetiqueta) ? '> ' + subetiqueta : ''}</p>
-        </div>
-        <h1
-          class="text-4xl lg:text-6xl font-black text-white mb-6 leading-tight"
-        >
-          {titulo}
-        </h1>
-        {
-          descripcion && (
-            <p class="text-sm text-white leading-relaxed">
-              {descripcion}
-            </p>
-          )
-        }
-      </div>
-    </div>
+    <Image
+      src={hoja02}
+      alt=""
+      class="w-20 h-20 md:w-38 md:h-38 lg:w-40 lg:h-40 -mr-5 mt-30 lg:-mr-10 lg:mt-20 rotate-90"
+    />
   </section>
+
+  <!-- Patrón decorativo sutil -->
+  <div class="absolute inset-0 opacity-10 z-10 pointer-events-none">
+    <div
+      class="absolute inset-0"
+      style="background-image: radial-gradient(circle at 2px 2px, rgb(255, 255, 255) 1px, transparent 0); background-size: 40px 40px;"
+    >
+    </div>
+  </div>
+
+  <!-- Formas decorativas -->
+  <div
+    class="absolute top-0 right-0 w-96 h-96 bg-unag-green/50 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2 z-10"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-0 w-80 h-80 bg-unag-green/50 rounded-full blur-[140px] translate-y-1/2 -translate-x-1/2 z-10"
+  >
+  </div>
+
+  <img
+    src={imagen}
+    alt="Misión y Visión"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"
+  >
+  </div>
+  <div
+    class="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center"
+  >
+    <div class="max-w-3xl lg:max-w-4xl mt-40 lg:mt-30">
+      <div
+        class="inline-block bg-unag-green/90 backdrop-blur-sm text-white px-4 py-2 rounded-sm mb-4"
+      >
+        <p class="flex justify-center items-center text-sm text-white">
+          {etiqueta}
+          {
+            subetiqueta && (
+              <>
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+                {subetiqueta}
+              </>
+            )
+          }
+        </p>
+      </div>
+      <h1 class="flex items-center gap-4 text-4xl lg:text-6xl font-black text-white mb-6 leading-tight">
+        {titulo} <span class="bg-[url('/img/unag-hoja.png')] bg-cover bg-center w-6 h-6 rotate-90 hidden lg:block"></span>
+      </h1>
+      {
+        descripcion && (
+          <p class="text-sm text-white leading-relaxed">{descripcion}</p>
+        )
+      }
+    </div>
+  </div>
+</section>

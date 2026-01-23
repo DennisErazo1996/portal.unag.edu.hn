@@ -1,0 +1,63 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderSimple from "@/components/astro/ui/header-simple.astro";
+
+const content = {
+  title: "Sistema de Admisión | UNAG",
+};
+---
+
+<Layout content={content}>
+  <HeaderSimple
+    imagen="/img/bg-default-unag.webp"
+    etiqueta="Organización"
+    subetiqueta="Direcciones Académicas"
+    titulo="Sistema de Admisión"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+  >
+    <article class="prose prose-sm max-w-none prose-unag-gray">
+      <h2 class="font-bold">
+        Dirección Académica del Sistema de Admisión (DASA)
+      </h2>
+      <p>
+        Somos una Dirección Académica perteneciente a la Vicerrectoría
+        Académica, cuya función principal es la gestión de los procesos de
+        admisión de UNAG, de una manera transparente, eficiente, inclusiva y
+        democrática, mediante métodos científicos acordes a la realidad
+        nacional, pero enmarcados en altos estándares de calidad.
+      </p>
+      <p>
+        La gestión del ingreso a la institución se realiza mediante instrumentos
+        objetivos que ofrecen una misma oportunidad de ingreso a todos los
+        aspirantes de las diferentes regiones del país, en tanto estos se
+        esfuercen para ganar un cupo. De este modo, la política de admisión de
+        la Universidad Nacional de Agricultura, aprobada por el Consejo Superior
+        Universitario, en acta CSU-002-05-2020; contempla, entre otros, los
+        siguientes principios:
+      </p>
+      <ul>
+        <li>
+          Mérito académico y vocacional, no discriminación, igualdad de
+          oportunidad y trato, acceso universal y solidaridad.
+        </li>
+        <li>
+          Selección y admisión basado en un modelo inclusivo, estratégico y de
+          méritos.
+        </li>
+        <li>
+          Los aspirantes elegidos serán una muestra representativa de todo el
+          territorio nacional, su variedad cultural y étnica, con énfasis en la
+          igualdad de género.
+        </li>
+      </ul>
+      <p>
+        Además, el proceso de selección obedece a criterios técnicos y objetivos
+        que brindan al aspirante garantía de confiabilidad, por medio del acceso
+        a la información en cualquier etapa del proceso.
+      </p>
+    </article>
+  </section>
+</Layout>

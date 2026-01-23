@@ -6,8 +6,8 @@ date: 2025-12-12
 featured: false
 attachments:
   - name: "Anexos VIII Covocatoria Interna DSIP"
-    url: "/documents/comunicados/anexos-de-la-convocatoria-viii-investigacion-e-innovacion.pdf"
-    type: "PDF"
+    url: "/documents/comunicados/anexos-de-la-convocatoria-viii-investigacion-e-innovacion.docx"
+    type: "docx"
 
 ---
 
@@ -513,6 +513,6 @@ Estas medidas aseguran el uso adecuado y responsable de los fondos institucional
 
 Los anexos correspondientes a esta convocatoria pueden descargarse en el siguiente archivo:
 
-👉 **[Descargar Anexos de la VIII Convocatoria UNAG-2026](/documents/comunicados/anexos-de-la-convocatoria-viii-investigacion-e-innovacion.pdf)**
+👉 **[Descargar Anexos de la VIII Convocatoria UNAG-2026](/documents/comunicados/anexos-de-la-convocatoria-viii-investigacion-e-innovacion.docx)**
 
 

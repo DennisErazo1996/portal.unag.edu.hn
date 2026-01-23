@@ -1,10 +1,9 @@
 ---
 import Layout from "@/layouts/main.astro";
-import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
 import DocenteCard from "@/components/astro/ui/docente-card.astro";
-import Contacto from "@/components/astro/ui/contacto.astro";
 
 import docentesFacultadCiencias from "@/consts/facultades/docentes-facultad-de-ciencias.ts";
+import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
 
 const content = {
   title: "Facultad de Ciencias | UNAG",
@@ -12,25 +11,22 @@ const content = {
 
 const decano = docentesFacultadCiencias.slice(0, 1);
 const docentes = docentesFacultadCiencias.slice(
-  1,
+  1, 
   docentesFacultadCiencias.length
 );
 ---
 
 <Layout content={content}>
-  <HeaderPages
-    imagen="/img/facultades/bg-facultad-de-ciencias.webp"
-    etiqueta="Organización"
-    subetiqueta="Facultades"
+  <HeaderFacultad 
     titulo="Facultad de Ciencias"
-    descripcion="Tiene el fin de fortalecer la actividad académica en una universidad cuyo énfasis son las Ciencias Agrarias"
+    imagen="/img/facultades/bg-facultad-de-ciencias.webp"
   />
 
   <section
     class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
   >
     <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
-      <h1 class="font-bold">MARCO CONCEPTUAL DE LA FACULTAD DE CIENCIAS</h1>
+      <h2 class="font-bold">MARCO CONCEPTUAL DE LA FACULTAD DE CIENCIAS</h2>
       <p>
         La Facultad es la <strong class="text-unag-green"
           >unidad fundamental de organización y de gestión

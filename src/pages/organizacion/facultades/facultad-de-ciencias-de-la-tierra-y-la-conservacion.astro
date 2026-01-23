@@ -1,0 +1,122 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
+import DocenteCard from "@/components/astro/ui/docente-card.astro";
+
+import docentesFacultadCienciasTierra from "@/consts/facultades/docentes-facultad-de-ciencias-de-la-tierra-y-la-conservacion.ts";
+
+const content = {
+  title: "Facultad de Ciencias de la Tierra y la Conservación | UNAG",
+};
+
+const decano = docentesFacultadCienciasTierra.slice(0, 1);
+const docentes = docentesFacultadCienciasTierra.slice(
+  1,
+  docentesFacultadCienciasTierra.length,
+);
+---
+
+<Layout content={content}>
+  <HeaderFacultad
+    titulo="Facultad de Ciencias de la Tierra y la Conservación"
+    imagen="/img/facultades/bg-facultad-ciencias-tierra-conservacion.webp"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <p>
+        La problemática ambiental de Honduras y del planeta es el resultado de
+        una complejidad de determinantes y es una situación que se ha agudizado
+        en los últimos años, impidiendo a millones de personas vivir una vida
+        digna y poniendo en riesgo a un elevado porcentaje de la biodiversidad
+        mundial. La Facultad de Ciencias de la Tierra y la Conservación está
+        comprometida en la búsqueda de soluciones a esta problemática a través
+        de una gestión efectiva del conocimiento, lo cual se evidencia en su
+        Misión y Visión.
+      </p>
+      <h2>Misión</h2>
+      <p class="bg-unag-gray/10 rounded-sm p-5">
+        Gestionar el conocimiento a través de un proceso lógico, organizado y
+        sistemático que permita innovar y contribuir en la solución de problemas
+        de la sociedad; y que posibilite la formación de profesionales líderes
+        en las disciplinas correspondientes a las ciencias de la Tierra y los
+        procesos científicos relacionados con los ecosistemas del planeta
+        Tierra, como una herramienta básica para planificar una gestión integral
+        de los recursos naturales y la protección ambiental, competentes y con
+        valores, comprometidos con la conservación ambiental y el desarrollo
+        sostenible del país; en un entorno ético y de equidad.
+      </p>
+      <h2>Visión</h2>
+      <p class="bg-unag-gray/10 p-5 rounded-sm">
+        Ser una Facultad reconocida y un referente a nivel nacional e
+        internacional en el estudio temporal y espacial de ecosistemas, desde un
+        punto de vista físico, incluyendo su interacción con los seres vivos;
+        con una planta académica consolidada y comprometida con la formación
+        integral de profesionales competentes e innovadores, acorde al
+        desarrollo equitativo y sustentable de su entorno, en beneficio de la
+        sociedad.
+      </p>
+      <p>
+        Dentro de los objetivos principales de la Facultad está la formación de
+        talentos humanos de alta calidad, capacitados en la revisión crítica de
+        literatura y en la aplicación de las metodologías actualizadas para la
+        solución de problemas relacionados con las Ciencias de la Tierra, la
+        conservación de los recursos naturales y la protección ambiental.
+        Profesionales capacitados moral e intelectualmente, integrales,
+        comprometidos con la sociedad, con la habilidad para crear conocimiento
+        y contribuir a la protección y conservación de los recursos naturales y
+        el ambiente del planeta, visto este como un sistema complejo.
+      </p>
+      <p>
+        Pare ello, se implementa un enfoque integrador fundamental en el estudio
+        del sistema tierra, haciendo énfasis en las interacciones relevantes
+        entre los procesos químicos, físicos, biológicos y geológicos,
+        analizando la perturbación que puede causar la dinámica terrestre en la
+        sociedad, con una visión integradora capaz de articular los diferentes
+        aspectos del sistema Tierra-Ambiente-Sociedad y generando un
+        conocimiento profundo del sistema Tierra-Agua-Atmósfera; mediante la
+        realización de investigación científica y aplicada en el campo de las
+        Ciencias de la Tierra y la Conservación y fortaleciendo la vinculación
+        de la Universidad Nacional de Agricultura con la sociedad, como una
+        forma de promover el desarrollo sostenible y contribuir al mejoramiento
+        de las condiciones de vida del pueblo hondureño.
+      </p>
+    </div>
+
+    <h1 class="font-bold">Personal:</h1>
+
+    {
+      decano.map((persona) => (
+        <DocenteCard
+          nombreCompleto={persona.nombreCompleto}
+          nombre={persona.nombre}
+          apellido={persona.apellido}
+          cargo={persona.cargo}
+          grado={persona.grado}
+          area={persona.area}
+          correo={persona.correo}
+        />
+      ))
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+      {
+        docentes.map((persona) => (
+          <div class="">
+            <DocenteCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              grado={persona.grado}
+              area={persona.area}
+              correo={persona.correo}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

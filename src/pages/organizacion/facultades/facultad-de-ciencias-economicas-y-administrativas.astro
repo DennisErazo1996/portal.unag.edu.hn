@@ -1,0 +1,79 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
+import DocenteCard from "@/components/astro/ui/docente-card.astro";
+
+import docentesFacultadCienciasEconomicas from "@/consts/facultades/docentes-facultad-de-ciencias-economicas.ts";
+
+const content = {
+  title: "Facultad de Ciencias Económicas y Administrativas | UNAG",
+};
+
+const decano = docentesFacultadCienciasEconomicas.slice(0, 1);
+const docentes = docentesFacultadCienciasEconomicas.slice(
+  1,
+  docentesFacultadCienciasEconomicas.length,
+);
+---
+
+<Layout content={content}>
+  <HeaderFacultad
+    titulo="Facultad de Ciencias Económicas y Administrativas"
+    imagen="/img/facultades/bg-facultad-ciencias-economicas.webp"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <p>
+        La Facultad de Ciencias Económicas y Administrativas de la Universidad Nacional de Agricultura se constituye como un conjunto de políticas, estrategias, procesos y proyectos relacionados entre sí y con el desarrollo nacional y regional, que forman un cuerpo de doctrina orientado hacia la gestión del conocimiento de las ciencias afines responsabilidad de la Facultad, hacia la búsqueda de la calidad de la Institución, sus programas y carreras.
+      </p>
+      <h2>Misión</h2>
+      <p class="bg-unag-gray/10 rounded-sm p-5">
+        Formar profesionales capaces de generar y transferir conocimiento de alto valor en materia de economía, administración y finanzas, informática, gestión de proyectos y desarrollo de agronegocios, para el sector agropecuario de Honduras y el mundo.
+      </p>
+      <h2>Visión</h2>
+      <p class="bg-unag-gray/10 p-5 rounded-sm">
+        Ser una Facultad de prestigio, reconocida a nivel nacional e internacional en gestión del conocimiento, investigación y vinculación con la sociedad en las áreas de desarrollo económico, administración y finanzas, informática, gestión de proyectos y desarrollo de agronegocios.
+      </p>
+      <p>
+        La Facultad cuenta con un selecto equipo docente multidisciplinario cuya dedicación en la gestión de conocimiento fortalecen las siguientes áreas: Economía, economía agrícola, economía ambiental, administración de empresas, emprendimiento, finanzas, formulación y evaluación de proyectos, investigación agrícola y desarrollo comunitario, mercadeo, gestión de la calidad y tecnologías de información y comunicación. Para su funcionamiento, la Facultad mantiene en su propuesta la creación de siete departamentos académicos, de los cuales dos están en función actualmente:  Economía Sectorial y Organización y Dirección Empresarial. Los cinco restantes, están definidos en el Estatuto de la Universidad: a) Departamento de Teoría Económica, b) Desarrollo Económico Rural, c) Economía del Cambio Tecnológico, d) Economía Internacional y e) Econometría.
+      </p>
+    </div>
+
+    <h1 class="font-bold">Personal:</h1>
+
+    {
+      decano.map((persona : any) => (
+        <DocenteCard
+          nombreCompleto={persona.nombreCompleto}
+          nombre={persona.nombre}
+          apellido={persona.apellido}
+          cargo={persona.cargo}
+          grado={persona.grado}
+          area={persona.area}
+          correo={persona.correo}
+        />
+      ))
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+      {
+        docentes.map((persona: any) => (
+          <div class="">
+            <DocenteCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              grado={persona.grado}
+              area={persona.area}
+              correo={persona.correo}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

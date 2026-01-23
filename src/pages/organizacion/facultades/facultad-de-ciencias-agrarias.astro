@@ -12,25 +12,42 @@ const content = {
 const decano = docentesFacultadCienciasAgrarias.slice(0, 1);
 const docentes = docentesFacultadCienciasAgrarias.slice(
   1,
-  docentesFacultadCienciasAgrarias.length
+  docentesFacultadCienciasAgrarias.length,
 );
 ---
 
 <Layout content={content}>
-  <HeaderFacultad 
+  <HeaderFacultad
     titulo="Facultad de Ciencias Agrarias"
-    imagen="/img/facultades/bg-facultad-de-ciencias.webp"
+    imagen="/img/facultades/bg-facultad-ciencias-agrarias.webp"
   />
 
   <section
     class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
   >
     <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
-      <h1 class="font-bold">MARCO CONCEPTUAL DE LA FACULTAD DE CIENCIAS</h1>
       <p>
-        La Facultad de Ciencia Agrarias pretende ser un aliado estratégico para la academia y la sociedad hondureña desde que se ofertara como espacio abierto para y de innovaciones tecnológicas, generadora de conocimientos y de discusiones académicas sobre temas de interés nacional e internacional.
+        La <strong>Facultad de Ciencia Agrarias</strong> pretende ser un aliado estratégico
+        para la academia y la sociedad hondureña desde que se ofertara como espacio
+        abierto para y de innovaciones tecnológicas, generadora de conocimientos y
+        de discusiones académicas sobre temas de interés nacional e internacional.
       </p>
-      
+      <h2>Misión</h2>
+      <p class="bg-unag-gray/10 rounded-sm p-5">
+        Que la Facultad de Ciencias Agrarias sea reconocida como una facultad
+        consolida por el nivel de formación ético, moral y académico de sus
+        profesores y egresados, la calidad con equidad y sensibilidad de la
+        formación que brinda, el impacto de su producción científica en las
+        ciencias agrarias, vinculada a la generación de respuestas innovadoras a
+        la problemática agrícola nacional y regional.
+      </p>
+      <h2>Visión</h2>
+      <p class="bg-unag-gray/10 p-5 rounded-sm">
+        Seremos la facultad de ciencias agrarias líder y de amplio reconocimiento a nivel nacional y regional porque bajo un riguroso y actualizado proceso de investigación-vinculación de las problemáticas sociales hondureñas más ingentes se generan los espacios académicos para formar profesionales competitivos capaces de ofrecer respuestas técnico-científicas y resolver las demandas de desarrollo sostenible y rentable del sector agrario.
+      </p>
+      <p>
+        Los servicios académicos, de la entonces conocida como Escuela Granja Demostrativa, fueron ofrecidos a partir del año 1952, luego de una transformación pasó a ser Escuela Nacional de Agricultura y, en el año 2002 se convierte en Universidad Nacional de Agricultura con una oferta académica única de Ingeniería Agronómica en el grado de licenciatura, desde 1994.
+      </p>
     </div>
 
     <h1 class="font-bold">Personal:</h1>
@@ -66,7 +83,5 @@ const docentes = docentesFacultadCienciasAgrarias.slice(
         ))
       }
     </div>
-
-
   </section>
 </Layout>

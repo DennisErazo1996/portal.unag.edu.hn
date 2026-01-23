@@ -1,0 +1,77 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
+import DocenteCard from "@/components/astro/ui/docente-card.astro";
+
+import docentesFacultadMedicinaVeterinaria from "@/consts/facultades/docentes-facultad-de-medicina-veterinaria-y-zootecnia.ts";
+
+const content = {
+  title: "Facultad de Medicina Veterinaria y Zootecnia | UNAG",
+};
+
+const decano = docentesFacultadMedicinaVeterinaria.slice(0, 1);
+const docentes = docentesFacultadMedicinaVeterinaria.slice(
+  1,
+  docentesFacultadMedicinaVeterinaria.length,
+);
+---
+
+<Layout content={content}>
+  <HeaderFacultad
+    titulo="Facultad de Medicina Veterinaria y Zootecnia"
+    imagen="/img/facultades/bg-facultad-medicina-veterinaria.webp"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <p>
+        La Facultad de Medicina Veterinaria y Zootécnia, creada mediante artículo 108 del estatuto, comprende la docencia, la investigación, la vinculación con la sociedad y el estado, la producción y comercialización de bienes y servicios, la adecuada gestión de sus recursos humanos y materiales en apoyo a la academia, la operatividad y el crecimiento institucional, facilitando la evaluación del quehacer universitario, como también la generación de metodologías e instrumentos socializados entre la comunidad universitaria.
+      </p>
+      <h2>Misión</h2>
+      <p class="bg-unag-gray/10 rounded-sm p-5">
+        Dar solución a problemas del sector pecuario nacional, a tráves de la formación de profesionales éticos, con capacidad científica técnica y de gestión, comprometidos con las necesidades de seguridad alimentaria, nutricional, de producción y la sanidad animal.
+      </p>
+      <h2>Visión</h2>
+      <p class="bg-unag-gray/10 p-5 rounded-sm">
+        Ser una entidad científica y académica de prestigio, reconocida a nivel nacional e internacional por ejercer el liderazgo intelectual y tecnológico en ciencias médicas veterinarias y zootécnicas, mediante la educación innovadora, investigación creativa aplicada al bienestar animal y del ser humano y la vinculación efectiva con la sociedad y el estado hondureño.
+      </p>
+      
+    </div>
+
+    <h1 class="font-bold">Personal:</h1>
+
+    {
+      decano.map((persona) => (
+        <DocenteCard
+          nombreCompleto={persona.nombreCompleto}
+          nombre={persona.nombre}
+          apellido={persona.apellido}
+          cargo={persona.cargo}
+          grado={persona.grado}
+          area={persona.area}
+          correo={persona.correo}
+        />
+      ))
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+      {
+        docentes.map((persona) => (
+          <div class="">
+            <DocenteCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              grado={persona.grado}
+              area={persona.area}
+              correo={persona.correo}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

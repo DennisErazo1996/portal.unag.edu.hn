@@ -1,0 +1,816 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
+import DocenteCard from "@/components/astro/ui/docente-card.astro";
+
+import docentesFacultadCienciasTecnologicas from "@/consts/facultades/docentes-facultad-de-ciencias-tecnologicas.ts";
+import { publicacionesRevistas } from "@/consts/facultades/publicaciones-revistas.ts";
+import { publicacionesCongresos } from "@/consts/facultades/publicaciones-congresos.ts";
+
+const content = {
+  title: "Facultad de Ciencias Tecnológicas | UNAG",
+};
+
+const decano = docentesFacultadCienciasTecnologicas.slice(0, 1);
+const docentes = docentesFacultadCienciasTecnologicas.slice(
+  1,
+  docentesFacultadCienciasTecnologicas.length,
+);
+---
+
+<Layout content={content}>
+  <HeaderFacultad
+    titulo="Facultad de Ciencias Tecnológicas"
+    imagen="/img/facultades/bg-facultad-ciencias-tecnologicas.webp"
+  />
+
+  <!-- Sección de Organización con Tabs -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-unag-dark-green mb-8">Organización</h2>
+
+      <!-- Tab Navigation -->
+      <div class="mb-8">
+        <!-- Mobile: Select dropdown -->
+        <div class="sm:hidden">
+          <select
+            id="tab-select"
+            class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-unag-green focus:border-transparent"
+          >
+            <option value="departamentos">Departamentos Académicos</option>
+            <option value="unidades">Unidades Académicas</option>
+            <option value="publicaciones">Publicaciones</option>
+          </select>
+        </div>
+
+        <!-- Desktop: Tabs -->
+        <div class="hidden sm:block border-b border-gray-200">
+          <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+            <button
+              class="tab-button border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors"
+              data-tab="departamentos"
+            >
+              Departamentos Académicos
+            </button>
+            <button
+              class="tab-button border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors"
+              data-tab="unidades"
+            >
+              Unidades Académicas
+            </button>
+            <button
+              class="tab-button border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors"
+              data-tab="publicaciones"
+            >
+              Publicaciones
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content-container">
+        <!-- Departamentos Académicos -->
+        <div class="tab-content" data-tab-content="departamentos">
+          <!-- Sub-tabs para DAA y DAIP -->
+          <div class="mb-6">
+            <!-- Mobile: Select dropdown -->
+            <div class="sm:hidden">
+              <select
+                id="subtab-select"
+                class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-unag-green focus:border-transparent"
+              >
+                <option value="daa">DAA - Departamento Académico de Alimentos</option>
+                <option value="daip">DAIP - Departamento Académico de Ingeniería de Procesos</option>
+              </select>
+            </div>
+
+            <!-- Desktop: Sub-tabs -->
+            <div class="hidden sm:flex space-x-4 border-b border-gray-200">
+              <button
+                class="sub-tab-button text-gray-700 border-b-2 border-unag-green py-2 px-4 font-medium text-sm"
+                data-subtab="daa"
+              >
+                DAA
+              </button>
+              <button
+                class="sub-tab-button text-gray-500 hover:text-gray-700 py-2 px-4 font-medium text-sm"
+                data-subtab="daip"
+              >
+                DAIP
+              </button>
+            </div>
+          </div>
+
+          <!-- DAA Content -->
+          <div class="sub-tab-content" data-subtab-content="daa">
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <h3 class="text-2xl font-bold text-unag-green mb-4">
+                Departamento Académico de Alimentos (DAA)
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <img
+                    src="https://portal.unag.edu.hn/wp-content/uploads/2020/08/daa.jpg"
+                    alt="Departamento Académico de Alimentos"
+                    class="w-full rounded-lg"
+                  />
+                </div>
+                <div>
+                  <p class="text-sm text-gray-700 mb-4">
+                    El Departamento Académico de Alimentos, es la unidad
+                    dedicada al estudio de la ciencia de los alimentos, a través
+                    de la docencia, investigación y vinculación con la sociedad,
+                    con el objeto de proponer soluciones innovadoras basadas en
+                    la ciencia y tecnología para potenciar los impactos
+                    positivos y disminuir los efectos negativos en el sector
+                    alimentario de Honduras. Tiene como principales áreas de
+                    actuación las frutas y hortalizas; granos y cereales;
+                    productos lácteos; cárnicos y derivados; productos
+                    acuícolas; seguridad alimentaria y nutricional; calidad e
+                    inocuidad de los alimentos entre otros.
+                  </p>
+                  <h4 class="font-bold text-unag-green mb-2">
+                    Líneas de investigación:
+                  </h4>
+                  <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                    <li>Alimentos de especies vegetales no convencionales</li>
+                    <li>
+                      Fitoquímica de plantas alimenticias (compuestos bioactivos)
+                    </li>
+                    <li>Manejo poscosecha de frutas y hortalizas</li>
+                    <li>Inocuidad y calidad de alimentos</li>
+                    <li>
+                      Desarrollo de alimentos a base de granos, cereales y
+                      pseudocereales
+                    </li>
+                    <li>Seguridad alimentaria y nutricional</li>
+                    <li>Desarrollo y conservación de productos acuícolas</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="bg-gray-100 rounded-lg p-4">
+                <h4 class="font-bold text-unag-green mb-3">Contacto:</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <p class="font-medium">Ph.D Héctor Alonzo Gómez</p>
+                    <p class="text-gray-600">Jefe del departamento</p>
+                    <a
+                      href="mailto:hgomez@unag.edu.hn"
+                      class="text-unag-green hover:underline"
+                    >
+                      hgomez@unag.edu.hn
+                    </a>
+                  </div>
+                  <div>
+                    <p class="font-medium">Lic. Sonia Bertalina Escalante Rosales</p>
+                    <p class="text-gray-600">Auxiliar del departamento</p>
+                    <a
+                      href="mailto:srosales@unag.edu.hn"
+                      class="text-unag-green hover:underline"
+                    >
+                      srosales@unag.edu.hn
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DAIP Content -->
+          <div class="sub-tab-content hidden" data-subtab-content="daip">
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <h3 class="text-2xl font-bold text-unag-green mb-4">
+                Departamento Académico de Ingeniería de Procesos (DAIP)
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <img
+                    src="https://portal.unag.edu.hn/wp-content/uploads/2020/08/daip.jpg"
+                    alt="Departamento Académico de Ingeniería de Procesos"
+                    class="w-full rounded-lg"
+                  />
+                </div>
+                <div>
+                  <p class="text-sm text-gray-700 mb-4">
+                    El Departamento Académico Ingeniería y Procesos, es un
+                    escenario académico que tiene como objetivo fundamental
+                    contribuir en forma efectiva al desarrollo nacional,
+                    mediante la realización de actividades de docencia,
+                    investigación aplicada y de desarrollo vinculadas a los
+                    desafíos de las empresas e instituciones, demandas del
+                    mercado y requerimientos de la sociedad. Tiene como
+                    principales áreas de actuación los procesos tecnológicos,
+                    tecnología energética, tecnología de los productos metálicos
+                    y tecnología industrial.
+                  </p>
+                  <h4 class="font-bold text-unag-green mb-2">
+                    Líneas de investigación:
+                  </h4>
+                  <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                    <li>Tecnologías emergentes</li>
+                    <li>
+                      Envases activos, recubrimientos y películas comestibles
+                    </li>
+                    <li>Secado de materiales porosos</li>
+                    <li>Ingeniería de bioprocesos</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="bg-gray-100 rounded-lg p-4">
+                <h4 class="font-bold text-unag-green mb-3">Contacto:</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <p class="font-medium">M.Sc. Jaime Onán Salgado Mejía</p>
+                    <p class="text-gray-600">Jefe del departamento</p>
+                    <a
+                      href="mailto:jasalgado@unag.edu.hn"
+                      class="text-unag-green hover:underline"
+                    >
+                      jasalgado@unag.edu.hn
+                    </a>
+                  </div>
+                  <div>
+                    <p class="font-medium">Lic. Sonia Bertalina Escalante Rosales</p>
+                    <p class="text-gray-600">Auxiliar del departamento</p>
+                    <a
+                      href="mailto:srosales@unag.edu.hn"
+                      class="text-unag-green hover:underline"
+                    >
+                      srosales@unag.edu.hn
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unidades Académicas -->
+        <div class="tab-content hidden" data-tab-content="unidades">
+          <div class="space-y-6">
+            <!-- Planta Hortofrutícola -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="order-2 md:order-1">
+                  <img
+                    src="https://portal.unag.edu.hn/wp-content/uploads/2020/08/planta-hortofruticola.jpg"
+                    alt="Planta de maquilado y procesamiento hortofrutícola"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="order-1 md:order-2 p-6">
+                  <h3 class="text-xl font-bold text-unag-green mb-3">
+                    Planta de maquilado y procesamiento hortofrutícola
+                  </h3>
+                  <p class="text-sm text-gray-700">
+                    La Planta Hortofrutícola es un centro de aprendizaje,
+                    investigación, innovación y procesamiento de frutas y
+                    hortalizas. Lugar donde se desarrolla el aprender-haciendo
+                    de la UNAG en la temática relacionada a los alimentos
+                    vegetales.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Planta de Lácteos -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-unag-green mb-3">
+                    Planta de procesamiento de lácteos
+                  </h3>
+                  <p class="text-sm text-gray-700">
+                    La planta procesadora de lácteos es un centro de
+                    aprendizaje, investigación, innovación y procesamiento de la
+                    leche y derivados. Lugar donde se desarrolla el
+                    aprender-haciendo de la UNAG en la temática relacionada a
+                    los productos lácteos.
+                  </p>
+                </div>
+                <div>
+                  <img
+                    src="https://portal.unag.edu.hn/wp-content/uploads/2020/08/planta-lacteos.jpg"
+                    alt="Planta de procesamiento de lácteos"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Planta de Bioprocesos -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="order-2 md:order-1">
+                  <img
+                    src="https://portal.unag.edu.hn/wp-content/uploads/2020/08/planta-bioprocesos.jpg"
+                    alt="Planta de bioprocesos"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <div class="order-1 md:order-2 p-6">
+                  <h3 class="text-xl font-bold text-unag-green mb-3">
+                    Planta de bioprocesos
+                  </h3>
+                  <p class="text-sm text-gray-700">
+                    La planta de bioprocesos es una sección académica destinada
+                    a la utilización de actividad catalítica celular para
+                    modificar o transformar materias primas en productos para la
+                    industria de fermentaciones; industria alimentaria y
+                    agrícola. En la actualidad está dedicada a la producción de
+                    etanol a base de caña de azúcar. Es el lugar donde se
+                    desarrolla el aprender-haciendo de la UNAG en la temática de
+                    bioprocesos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Publicaciones -->
+        <div class="tab-content hidden" data-tab-content="publicaciones">
+          <!-- Sub-tabs para Revistas y Congresos -->
+          <div class="mb-6">
+            <!-- Mobile: Select dropdown -->
+            <div class="sm:hidden">
+              <select
+                id="pub-subtab-select"
+                class="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-unag-green focus:border-transparent"
+              >
+                <option value="revistas">Publicaciones en Revistas</option>
+                <option value="congresos">Publicaciones en Congresos</option>
+              </select>
+            </div>
+
+            <!-- Desktop: Sub-tabs -->
+            <div class="hidden sm:flex space-x-4 border-b border-gray-200">
+              <button
+                class="pub-sub-tab-button text-gray-700 border-b-2 border-unag-green py-2 px-4 font-medium text-sm"
+                data-pub-subtab="revistas"
+              >
+                Publicaciones en Revistas
+              </button>
+              <button
+                class="pub-sub-tab-button text-gray-500 hover:text-gray-700 py-2 px-4 font-medium text-sm"
+                data-pub-subtab="congresos"
+              >
+                Publicaciones en Congresos
+              </button>
+            </div>
+          </div>
+
+          <!-- Revistas Content -->
+          <div class="pub-sub-tab-content" data-pub-subtab-content="revistas">
+            <div class="mb-6">
+              <!-- Búsqueda y filtros -->
+              <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <div class="flex-1">
+                  <input
+                    type="text"
+                    id="search-revistas"
+                    placeholder="Buscar por autor, título o revista..."
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-unag-green focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <select
+                    id="year-filter-revistas"
+                    class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-unag-green focus:border-transparent"
+                  >
+                    <option value="">Todos los años</option>
+                    {Array.from(new Set(publicacionesRevistas.map(p => p.year))).sort((a, b) => b - a).map(year => (
+                      <option value={year}>{year}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <!-- Lista de publicaciones -->
+              <div id="revistas-list" class="space-y-4">
+                {publicacionesRevistas.sort((a, b) => b.year - a.year).map((pub) => (
+                  <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow" data-year={pub.year}>
+                    <div class="flex items-start justify-between mb-3">
+                      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-unag-green text-white">
+                        {pub.year}
+                      </span>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-2">
+                      <span class="font-semibold text-unag-dark-green">{pub.autores}</span>
+                    </p>
+                    <h4 class="text-base font-bold text-gray-900 mb-2">{pub.titulo}</h4>
+                    <p class="text-sm text-gray-600 mb-3">
+                      <span class="italic">{pub.revista}</span>
+                    </p>
+                    {pub.url && (
+                      <a
+                        href={pub.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center text-sm text-unag-green hover:text-unag-dark-green font-medium"
+                      >
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        Ver publicación
+                      </a>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <!-- Mensaje cuando no hay resultados -->
+              <div id="no-results-revistas" class="hidden text-center py-12">
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="mt-2 text-sm font-medium text-gray-900">No se encontraron publicaciones</h3>
+                <p class="mt-1 text-sm text-gray-500">Intenta con otros términos de búsqueda</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Congresos Content -->
+          <div class="pub-sub-tab-content hidden" data-pub-subtab-content="congresos">
+            <div class="mb-6">
+              <!-- Búsqueda y filtros -->
+              <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <div class="flex-1">
+                  <input
+                    type="text"
+                    id="search-congresos"
+                    placeholder="Buscar por autor, título o evento..."
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-unag-green focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <select
+                    id="year-filter-congresos"
+                    class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-unag-green focus:border-transparent"
+                  >
+                    <option value="">Todos los años</option>
+                    {Array.from(new Set(publicacionesCongresos.map(p => p.year))).sort((a, b) => b - a).map(year => (
+                      <option value={year}>{year}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <!-- Lista de publicaciones -->
+              <div id="congresos-list" class="space-y-4">
+                {publicacionesCongresos.sort((a, b) => b.year - a.year).map((pub) => (
+                  <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow" data-year={pub.year}>
+                    <div class="flex items-start justify-between mb-3">
+                      <div class="flex gap-2">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-unag-green text-white">
+                          {pub.year}
+                        </span>
+                        {pub.tipo && (
+                          <span class={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${pub.tipo === 'oral' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'}`}>
+                            {pub.tipo === 'oral' ? 'Presentación Oral' : 'Póster'}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-2">
+                      <span class="font-semibold text-unag-dark-green">{pub.autores}</span>
+                    </p>
+                    <h4 class="text-base font-bold text-gray-900 mb-2">{pub.titulo}</h4>
+                    <div class="space-y-1 text-sm text-gray-600">
+                      <p><span class="font-medium">Evento:</span> <span class="italic">{pub.evento}</span></p>
+                      <p><span class="font-medium">Lugar:</span> {pub.lugar}</p>
+                      {pub.fecha && <p><span class="font-medium">Fecha:</span> {pub.fecha}</p>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Mensaje cuando no hay resultados -->
+              <div id="no-results-congresos" class="hidden text-center py-12">
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="mt-2 text-sm font-medium text-gray-900">No se encontraron publicaciones</h3>
+                <p class="mt-1 text-sm text-gray-500">Intenta con otros términos de búsqueda</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <p>
+        Dentro de la estructura académica de la UNAG, la Facultad de Ciencias Tecnológicas (FCT) se constituye como un conjunto de políticas, estrategias, procesos y proyectos relacionados entre sí, para cumplir en forma responsable con las exigencias propias de cada uno de sus quehaceres; docencia, investigación, vinculación, gestión académica/administrativa y producción; con el propósito fundamental de asumir la gestión del conocimiento en las áreas de, Tecnología de los alimentos, Tecnología industrial, Tecnología energética y minera, y Procesos tecnológicos; y de esta manera contribuir a encontrar soluciones viables a los problemas de pobreza, hambre, salud, bienestar y educación de la sociedad en general.
+      </p>
+
+    </div>
+
+    <h1 class="font-bold">Personal:</h1>
+
+    {
+      decano.map((persona) => (
+        <DocenteCard
+          nombreCompleto={persona.nombreCompleto}
+          nombre={persona.nombre}
+          apellido={persona.apellido}
+          cargo={persona.cargo}
+          grado={persona.grado}
+          area={persona.area}
+          correo={persona.correo}
+        />
+      ))
+    }
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+      {
+        docentes.map((persona) => (
+          <div class="">
+            <DocenteCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              grado={persona.grado}
+              area={persona.area}
+              correo={persona.correo}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  
+
+  <script>
+    // Tab functionality
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabButtons = document.querySelectorAll(".tab-button");
+      const tabContents = document.querySelectorAll(".tab-content");
+      const subTabButtons = document.querySelectorAll(".sub-tab-button");
+      const subTabContents = document.querySelectorAll(".sub-tab-content");
+      const tabSelect = document.getElementById("tab-select") as HTMLSelectElement;
+      const subtabSelect = document.getElementById("subtab-select") as HTMLSelectElement;
+
+      // Function to switch tabs
+      const switchTab = (tabName : any) => {
+        // Remove active class from all buttons
+        tabButtons.forEach((btn) => {
+          btn.classList.remove("border-unag-green", "text-unag-green");
+          btn.classList.add("border-transparent", "text-gray-500");
+        });
+
+        // Find and activate the correct button
+        const activeButton = document.querySelector(`[data-tab="${tabName}"]`);
+        if (activeButton) {
+          activeButton.classList.add("border-unag-green", "text-unag-green");
+          activeButton.classList.remove("border-transparent", "text-gray-500");
+        }
+
+        // Hide all content
+        tabContents.forEach((content) => {
+          content.classList.add("hidden");
+        });
+
+        // Show selected content
+        const selectedContent = document.querySelector(
+          `[data-tab-content="${tabName}"]`
+        );
+        if (selectedContent) {
+          selectedContent.classList.remove("hidden");
+        }
+      };
+
+      // Function to switch sub-tabs
+      const switchSubTab = (subTabName : any) => {
+        // Remove active class from all sub-buttons
+        subTabButtons.forEach((btn) => {
+          btn.classList.remove("border-unag-green", "text-gray-700", "border-b-2");
+          btn.classList.add("text-gray-500");
+        });
+
+        // Find and activate the correct sub-button
+        const activeSubButton = document.querySelector(`[data-subtab="${subTabName}"]`);
+        if (activeSubButton) {
+          activeSubButton.classList.add("border-unag-green", "text-gray-700", "border-b-2");
+          activeSubButton.classList.remove("text-gray-500");
+        }
+
+        // Hide all sub-content
+        subTabContents.forEach((content) => {
+          content.classList.add("hidden");
+        });
+
+        // Show selected sub-content
+        const selectedContent = document.querySelector(
+          `[data-subtab-content="${subTabName}"]`
+        );
+        if (selectedContent) {
+          selectedContent.classList.remove("hidden");
+        }
+      };
+
+      // Set first tab as active
+      if (tabButtons.length > 0) {
+        switchTab("departamentos");
+      }
+
+      // Main tabs click handlers
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const tabName = button.getAttribute("data-tab");
+          if (tabName) {
+            switchTab(tabName);
+            if (tabSelect) {
+              tabSelect.value = tabName;
+            }
+          }
+        });
+      });
+
+      // Mobile select handler for main tabs
+      if (tabSelect) {
+        tabSelect.addEventListener("change", (e) => {
+          const target = e.target as HTMLSelectElement;
+          if (target) {
+            switchTab(target.value);
+          }
+        });
+      }
+
+      // Sub-tabs click handlers
+      subTabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const subTabName = button.getAttribute("data-subtab");
+          if (subTabName) {
+            switchSubTab(subTabName);
+            if (subtabSelect) {
+              subtabSelect.value = subTabName;
+            }
+          }
+        });
+      });
+
+      // Mobile select handler for sub-tabs
+      if (subtabSelect) {
+        subtabSelect.addEventListener("change", (e) => {
+          const target = e.target as HTMLSelectElement;
+          if (target) {
+            switchSubTab(target.value);
+          }
+        });
+      }
+
+      // Publicaciones sub-tabs
+      const pubSubTabButtons = document.querySelectorAll(".pub-sub-tab-button");
+      const pubSubTabContents = document.querySelectorAll(".pub-sub-tab-content");
+      const pubSubtabSelect = document.getElementById("pub-subtab-select") as HTMLSelectElement;
+
+      const switchPubSubTab = (subTabName: string) => {
+        // Remove active class from all pub-sub-buttons
+        pubSubTabButtons.forEach((btn) => {
+          btn.classList.remove("border-unag-green", "text-gray-700", "border-b-2");
+          btn.classList.add("text-gray-500");
+        });
+
+        // Find and activate the correct pub-sub-button
+        const activeSubButton = document.querySelector(`[data-pub-subtab="${subTabName}"]`);
+        if (activeSubButton) {
+          activeSubButton.classList.add("border-unag-green", "text-gray-700", "border-b-2");
+          activeSubButton.classList.remove("text-gray-500");
+        }
+
+        // Hide all pub-sub-content
+        pubSubTabContents.forEach((content) => {
+          content.classList.add("hidden");
+        });
+
+        // Show selected pub-sub-content
+        const selectedContent = document.querySelector(
+          `[data-pub-subtab-content="${subTabName}"]`
+        );
+        if (selectedContent) {
+          selectedContent.classList.remove("hidden");
+        }
+      };
+
+      // Set first pub sub tab as active
+      if (pubSubTabButtons.length > 0) {
+        switchPubSubTab("revistas");
+      }
+
+      // Pub sub-tabs click handlers
+      pubSubTabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const subTabName = button.getAttribute("data-pub-subtab");
+          if (subTabName) {
+            switchPubSubTab(subTabName);
+            if (pubSubtabSelect) {
+              pubSubtabSelect.value = subTabName;
+            }
+          }
+        });
+      });
+
+      // Mobile select handler for pub sub-tabs
+      if (pubSubtabSelect) {
+        pubSubtabSelect.addEventListener("change", (e) => {
+          const target = e.target as HTMLSelectElement;
+          if (target) {
+            switchPubSubTab(target.value);
+          }
+        });
+      }
+
+      // Búsqueda y filtrado de publicaciones en revistas
+      const searchRevistas = document.getElementById("search-revistas") as HTMLInputElement;
+      const yearFilterRevistas = document.getElementById("year-filter-revistas") as HTMLSelectElement;
+      const revistasList = document.getElementById("revistas-list");
+      const noResultsRevistas = document.getElementById("no-results-revistas");
+
+      const filterRevistas = () => {
+        const searchTerm = searchRevistas?.value.toLowerCase() || '';
+        const selectedYear = yearFilterRevistas?.value || '';
+        const items = revistasList?.querySelectorAll('[data-year]') || [];
+        let visibleCount = 0;
+
+        items.forEach((item) => {
+          const text = item.textContent?.toLowerCase() || '';
+          const year = item.getAttribute('data-year');
+          const matchesSearch = text.includes(searchTerm);
+          const matchesYear = !selectedYear || year === selectedYear;
+
+          if (matchesSearch && matchesYear) {
+            item.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+
+        if (noResultsRevistas) {
+          if (visibleCount === 0) {
+            noResultsRevistas.classList.remove('hidden');
+          } else {
+            noResultsRevistas.classList.add('hidden');
+          }
+        }
+      };
+
+      if (searchRevistas) {
+        searchRevistas.addEventListener('input', filterRevistas);
+      }
+      if (yearFilterRevistas) {
+        yearFilterRevistas.addEventListener('change', filterRevistas);
+      }
+
+      // Búsqueda y filtrado de publicaciones en congresos
+      const searchCongresos = document.getElementById("search-congresos") as HTMLInputElement;
+      const yearFilterCongresos = document.getElementById("year-filter-congresos") as HTMLSelectElement;
+      const congresosList = document.getElementById("congresos-list");
+      const noResultsCongresos = document.getElementById("no-results-congresos");
+
+      const filterCongresos = () => {
+        const searchTerm = searchCongresos?.value.toLowerCase() || '';
+        const selectedYear = yearFilterCongresos?.value || '';
+        const items = congresosList?.querySelectorAll('[data-year]') || [];
+        let visibleCount = 0;
+
+        items.forEach((item) => {
+          const text = item.textContent?.toLowerCase() || '';
+          const year = item.getAttribute('data-year');
+          const matchesSearch = text.includes(searchTerm);
+          const matchesYear = !selectedYear || year === selectedYear;
+
+          if (matchesSearch && matchesYear) {
+            item.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+
+        if (noResultsCongresos) {
+          if (visibleCount === 0) {
+            noResultsCongresos.classList.remove('hidden');
+          } else {
+            noResultsCongresos.classList.add('hidden');
+          }
+        }
+      };
+
+      if (searchCongresos) {
+        searchCongresos.addEventListener('input', filterCongresos);
+      }
+      if (yearFilterCongresos) {
+        yearFilterCongresos.addEventListener('change', filterCongresos);
+      }
+    });
+  </script>
+</Layout>

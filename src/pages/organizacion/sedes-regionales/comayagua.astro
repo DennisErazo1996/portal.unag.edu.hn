@@ -1,0 +1,265 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderSimple from "@/components/astro/ui/header-simple.astro";
+import {
+  estructuraAdministrativa,
+  personalDocente,
+} from "@/consts/sedes-regionales/estructura-comayagua";
+import PersonalCard from "@/components/astro/ui/personal-card.astro";
+import carreras from "@/consts/carreras";
+import { ArrowUpRight } from "@lucide/astro";
+
+const content = {
+  title: "Sede Regional Comayagua | UNAG",
+};
+---
+
+<Layout content={content}>
+  <HeaderSimple
+    imagen="/img/bg-default-unag-02.webp"
+    etiqueta="Organización"
+    subetiqueta="Sedes Regionales"
+    titulo="Comayagua"
+  />
+
+  <section>
+    <!-- Estación Meteorológica -->
+    <div class="">
+      <div
+        class="relative bg-gradient-to-br from-unag-green via-unag-green to-unag-dark-green overflow-hidden"
+      >
+        <div class="relative p-8 md:p-12">
+          <div class="flex items-start gap-4 mb-6">
+            <!-- Icono meteorológico -->
+            <div
+              class="flex-shrink-0 w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
+            >
+              <svg
+                class="w-10 h-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                ></path>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">
+                Estación Meteorológica de Comayagua
+              </h2>
+              <p class="text-white/90 text-sm md:text-base">
+                Monitoreo en tiempo real de variables climatológicas
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-white/95 text-sm md:text-sm mb-8">
+            <p>
+              Todos sabemos que la mala distribución del agua en Honduras, es
+              uno de los retos en la producción agrícola, y para maximizar su
+              uso se requiere implementar sistemas de riego que permitan evitar
+              cualquier tipo de desperdicio, así como aplicar solamente
+              cantidades justas de agua que necesitan los cultivos según la
+              etapa fisiológica en la que se encuentren.
+            </p>
+            <p>
+              Ante este desafío generar información sobre variables
+              climatológicas para el potencial manejo de la agricultura irrigada
+              en Honduras, representa una herramienta importante para la
+              planificación, supervisión y gestión los recursos hídricos con
+              fines de producción agrícola. Así surge la idea de instalar la
+              primera estación meteorológica en la región nor-oeste de la Ciudad
+              de Comayagua.
+            </p>
+            <p>
+              La estación está al servicio de la población universitaria,
+              productores y técnicos de la zona central de Comayagua. A través
+              de una manera amigable, cualquier persona puede accesar en tiempo
+              real en cualquier parte del mundo y en la cual puede verificar a
+              cada cinco minutos la precipitación, temperatura, humedad
+              relativa, velocidad del viento, evapotranspiración, rayos
+              ultravioleta, dirección del viento, sensación térmica, punto de
+              rocio, etc.
+            </p>
+          </div>
+
+          <!-- Features grid -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center"
+            >
+              <p class="text-white font-bold text-lg">24/7</p>
+              <p class="text-white/80 text-xs">Disponibilidad</p>
+            </div>
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center"
+            >
+              <p class="text-white font-bold text-lg">Global</p>
+              <p class="text-white/80 text-xs">Acceso</p>
+            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <a
+            href="https://app.weathercloud.net/d0868789086#current"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 bg-white text-unag-dark-green text-md px-5 py-2 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+          >
+            <span>Ver datos en tiempo real</span>
+            <svg
+              class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+  >
+    <article class="prose prose-sm max-w-none prose-unag-gray">
+      <h2 class="font-bold">Misión</h2>
+      <p>
+        Institución de educación superior dedicada a la gestión del conocimiento
+        con base en criterios de calidad, pertinencia, inclusión, innovación
+        tecnológica e internacionalización en todo su accionar universitario,
+        con enfoque de aprender haciendo, desarrollando ciudadanos con
+        competencias técnicas y especializadas de las ciencias agropecuarias y
+        áreas afines; y junto a la formación en ciudadanía y convivencia social
+        contribuye a la solución de problemas prioritarios del desarrollo
+        sostenible nacional.
+      </p>
+      <h2>Visión</h2>
+      <p>
+        Una universidad reconocida internacionalmente como una institución de
+        educación transformadora, sustentada en una comunidad de aprendizaje
+        diversa y comprometida con el desarrollo humano, en valores éticos y
+        morales, demostrando calidad académica por competencias y consolidada en
+        el uso intensivo, innovador y propositivo de la ciencia y la tecnología,
+        teniendo como objetivo esencial la formación de liderazgos y
+        conocimientos sobre los cuales se sustenta el desarrollo sostenible de
+        Honduras.
+      </p>
+
+      <h2>Historia</h2>
+      <p>
+        Mediante acuerdo publicado en La Gaceta No. 33908, el 14 de diciembre de
+        2015, el Consejo Nacional de Educación resolvió determinar, que la
+        Escuela Normal Centroamérica ubicada en Aldea el Edén Comayagua, se
+        transformaría en el Centro Regional de la Universidad Nacional de
+        Agricultura. El Centro Inició operaciones en el año 2017, con la sección
+        de producción animal y producción vegetal. En el año 2019 se aprobó el
+        presupuesto que permitiría consolidar las áreas académicas,
+        administrativas y de apoyo, concretándose en el mes de septiembre la
+        contratación de un equipo multidisciplinario de 24 personas entre
+        docentes, administrativos y personal de mantenimiento que harían posible
+        el funcionamiento de esta sede. Fue aprobado de manera oficial como
+        Centro Universitario el 17 de febrero de 2020. Conscientes del rol
+        trascendental en la academia y su impacto como generador de
+        conocimiento, en junio del 2021, inició la primera carrera a nivel de
+        Licenciatura, Administración de Empresas Agropecuarias; para enero del
+        año 2022, se da inicio con la primera Ingeniería en Agroexportación en
+        el país, recibiendo así mismo la aprobación por parte de Educación
+        Superior de la carrera de Ingeniería Agronómica. Estas ofertas
+        académicas surgen en respuesta a necesidades del sector agrícola a nivel
+        nacional, basadas en un enfoque por competencias y conservando el modelo
+        didáctico de “Aprender Haciendo”.
+      </p>
+    </article>
+
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold text-unag-gray mb-8">Carreras</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        {
+          carreras.map((carrera) => {
+            if (carrera.sedes.includes("Comayagua")) {
+              return (
+                <div class="bg-green-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-2">
+                  <div class="relative group">
+                    <img
+                      src={carrera.imagen}
+                      alt={carrera.nombre}
+                      class="h-48 w-full object-cover transition-transform group-hover:scale-110"
+                    />
+                    <a
+                      href={carrera.link}
+                      target="_blank"
+                      class="absolute bottom-0 left-0 right-0 bg-green-800 text-white px-4 py-3 flex items-center justify-between hover:bg-green-700 transition-colors"
+                    >
+                      <span class="font-semibold text-[12px]">
+                        {carrera.nombre}
+                      </span>
+                      <div class="p-1 bg-unag-dark-green rounded-full">
+                        <ArrowUpRight size={18} class="flex-shrink-0" />
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              );
+            }
+          })
+        }
+      </div>
+    </div>
+
+    <!-- Estructura Organizacional -->
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold text-unag-gray mb-8">
+        Estructura Organizacional
+      </h2>
+
+      <!-- Personal Administrativo -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-15">
+        {
+          estructuraAdministrativa.map((persona) => (
+            <PersonalCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              correo={persona.correo}
+            />
+          ))
+        }
+      </div>
+
+      <!-- Personal Docente -->
+      <h3 class="text-xl font-bold text-unag-gray mb-6">Personal Docente</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          personalDocente.map((area) => (
+            <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+              <h4 class="text-base font-bold text-unag-green mb-4">
+                {area.area}
+              </h4>
+              <ul class="space-y-2">
+                {area.docentes.map((docente) => (
+                  <li class="text-sm text-gray-700 flex items-start">
+                    <span class="text-unag-green mr-2">•</span>
+                    <span>{docente}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

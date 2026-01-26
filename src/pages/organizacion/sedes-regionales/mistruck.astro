@@ -1,0 +1,408 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderSimple from "@/components/astro/ui/header-simple.astro";
+import estructuraAdministrativa from "@/consts/sedes-regionales/estructura-mistruck";
+import PersonalCard from "@/components/astro/ui/personal-card.astro";
+import carreras from "@/consts/carreras";
+import { ArrowUpRight } from "@lucide/astro";
+
+const content = {
+  title: "Sede Regional Mistruck | UNAG",
+};
+
+const director = estructuraAdministrativa.slice(0, 1);
+const personalAdministrativo = estructuraAdministrativa.slice(1);
+---
+
+<Layout content={content}>
+  <HeaderSimple
+    imagen="/img/bg-default-unag.webp"
+    etiqueta="Organización"
+    subetiqueta="Sedes Regionales"
+    titulo="Mistruck"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+  >
+    <article class="prose prose-sm max-w-none prose-unag-gray">
+      <p>
+        Enero 2023, La UNAG inicio la oferta de carreras universitarias en
+        Mistruck, comenzando con la Licenciatura en Economía Social Agraria y la
+        Ingeniería en Recursos Naturales y Ambiente. Estas carreras están
+        diseñadas para estimular el emprendimiento y el desarrollo sostenible en
+        la región, aprovechando su riqueza cultural y natural.
+      </p>
+    </article>
+
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold text-unag-gray mb-8">Carreras</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        {
+          carreras.map((carrera) => {
+            if (carrera.sedes.includes("Tomala")) {
+              return (
+                <div class="bg-green-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-2">
+                  <div class="relative group">
+                    <img
+                      src={carrera.imagen}
+                      alt={carrera.nombre}
+                      class="h-48 w-full object-cover transition-transform group-hover:scale-110"
+                    />
+                    <a
+                      href={carrera.link}
+                      target="_blank"
+                      class="absolute bottom-0 left-0 right-0 bg-green-800 text-white px-4 py-3 flex items-center justify-between hover:bg-green-700 transition-colors"
+                    >
+                      <span class="font-semibold text-[12px]">
+                        {carrera.nombre}
+                      </span>
+                      <div class="p-1 bg-unag-dark-green rounded-full">
+                        <ArrowUpRight size={18} class="flex-shrink-0" />
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              );
+            }
+          })
+        }
+      </div>
+    </div>
+
+    <!-- Actividades e Investigación -->
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold text-unag-gray mb-8">Actividades e Investigación</h2>
+      
+      <!-- Tabs -->
+      <div class="w-full">
+        <!-- Tab buttons -->
+        <div class="flex border-b border-gray-200 mb-8 overflow-x-auto">
+          <button
+            data-tab="actividades"
+            class="tab-button px-6 py-3 text-sm font-semibold border-b-2 whitespace-nowrap transition-colors border-unag-green text-unag-green"
+          >
+            Actividades
+          </button>
+          <button
+            data-tab="produccion"
+            class="tab-button px-6 py-3 text-sm font-semibold border-b-2 whitespace-nowrap transition-colors border-transparent text-gray-500 hover:text-gray-700"
+          >
+            Producción
+          </button>
+        </div>
+
+        <!-- Tab content - Actividades -->
+        <div id="actividades" class="tab-content space-y-12">
+          
+          <!-- Atención médica -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Atención médica a estudiantes</h3>
+            <p class="text-sm text-gray-700 mb-6">
+              Jornada de vacunación, vinculación-sociedad UNAG y el Centro de Salud Integral de Usupum, Puerto Lempira.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/A1.jpg" alt="Atención médica" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/A3.jpg" alt="Atención médica" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Encuentros virtuales -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Encuentros virtuales</h3>
+            <p class="text-sm text-gray-700 mb-6">
+              Estudiantes de la UNAG-Sede Regional Mistruck participaron en un encuentro virtual con los estudiantes de la Escuela Normal Superior Santiago de Colombia. Se resalta la importancia de estas iniciativas para el enriquecimiento académico y personal de los estudiantes.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/E1-1.jpg" alt="Encuentros virtuales" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/E3.jpg" alt="Encuentros virtuales" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Capacitaciones -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Capacitaciones a estudiantes</h3>
+            <p class="text-sm text-gray-700 mb-6">Muestra de suelo</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/muestra1.png" alt="Capacitaciones" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/muestra2.jpg" alt="Capacitaciones" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Fortaleciendo conocimientos -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Fortaleciendo conocimientos</h3>
+            <p class="text-sm text-gray-700 mb-6">
+              Estudiantes de la carrera de Ingeniería en Gestión Integral de los Recursos Naturales, de la UNAG- Sede Regional Mistruk, visitaron las instalaciones de ICF en Puerto Lempira, para conocer el proceso de hacer injertos en cítricos el cual permite a los estudiantes tener la experiencia y fortalecer los conocimientos en esta área.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/fort2.jpg" alt="Fortaleciendo" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/fort3.jpg" alt="Fortaleciendo" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/fort4.jpg" alt="Fortaleciendo" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/fort1.jpg" alt="Fortaleciendo" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Charla salud sexual -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Charla sobre salud sexual y reproductiva</h3>
+            <p class="text-sm text-gray-700 mb-6">Métodos anticonceptivos y enfermedades de transmisión sexual.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/charla.1.jpg" alt="Charla" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/charla.2.jpg" alt="Charla" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Investigación -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Investigación</h3>
+            <p class="text-sm text-gray-700 mb-6">
+              En el marco de nuestras iniciativas de desarrollo regional se realizan investigaciones promoviendo practicas sostenibles en el manejo adecuado de los recursos naturales. Así mismos las investigaciones son relevantes para el avance académico facilitando la transferencia de prácticas sostenibles en el desarrollo socioeconómico y cultural de la región de la Muskitia.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/investigacion1.jpg" alt="Investigación" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/investigacion2.png" alt="Investigación" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Estudiantes tesistas -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Estudiantes tesistas</h3>
+            <p class="text-sm text-gray-700 mb-6">
+              Estudiantes de la carrera Ingeniería en Gestión Integral de los Recursos Naturales de la UNAG realizaron su práctica profesional en la Sede de Mistruck junto con el programa PRAWANKA.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/tesista4.jpg" alt="Tesistas" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11//tesistas2.jpg" alt="Tesistas" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Vinculación -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Vinculación</h3>
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Capacitaciones a Productores y Productoras con un enfoque territorial</h4>
+            <p class="text-sm text-gray-700 mb-6">
+              Estas capacitaciones buscan fomentar prácticas sostenibles y mejorar la calidad de los productos agrícolas. Con el objetivo de mejorar la situación económica de las familias Miskitas, así mismo para promover prácticas sostenibles que beneficien a las comunidades del departamento de Gracias a Dios.
+            </p>
+            
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Diplomados</h4>
+            <p class="text-sm text-gray-700 mb-4">
+              En Agroecología y cambio climático con la participación de los concejos territoriales de FINZMOS, Lainasta, Truksinasta, Watiasta, Wamaklisinasta
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/diplomados1.jpg" alt="Diplomados" class="rounded-lg shadow-md w-full h-48 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/diplomados2.jpg" alt="Diplomados" class="rounded-lg shadow-md w-full h-48 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/diplomados3.jpg" alt="Diplomados" class="rounded-lg shadow-md w-full h-48 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/diplomados4.jpg" alt="Diplomados" class="rounded-lg shadow-md w-full h-48 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/diplomados5.jpg" alt="Diplomados" class="rounded-lg shadow-md w-full h-48 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/diplomados6.jpg" alt="Diplomados" class="rounded-lg shadow-md w-full h-48 object-cover">
+            </div>
+
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Diplomado en agroecología con énfasis en cacao</h4>
+            <p class="text-sm text-gray-700 mb-4">A productores y productoras del municipio de Wampusirpi.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/agroecologia1.jpg" alt="Agroecología" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/agroecologia3.jpg" alt="Agroecología" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Taller Etnobiología - Vinculación México-Honduras</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/taller1.jpg" alt="Taller" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/taller2.jpg" alt="Taller" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/taller3.jpg" alt="Taller" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/taller4.jpg" alt="Taller" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Intercambio de conocimientos</h4>
+            <p class="text-sm text-gray-700 mb-4">
+              Intercambio de conocimientos y practicas sostenibles con organizaciones gubernamentales y no gubernamentales e instituciones privadas.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/conocimiento1-2.jpg" alt="Conocimientos" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/conocimiento3.jpg" alt="Conocimientos" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/conocimiento2-1.jpg" alt="Conocimientos" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/conocimiento6.jpg" alt="Conocimientos" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Visitas de instituciones educativas</h4>
+            <div class="mb-8">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/instituciones1.jpg" alt="Instituciones" class="rounded-lg shadow-md w-full h-96 object-cover mb-4">
+              <p class="text-sm text-gray-700 mb-4">
+                Los Jóvenes del Proyecto "Tasba Pranakira 2023", de la Iglesia Católica a través de la Pastoral de la Tierra y Medioambiente, visitaron las instalaciones de la UNAG-Sede Regional Mistruck donde conocieron la oferta académica y áreas productivas.
+              </p>
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/tasba1.jpg" alt="Tasba" class="rounded-lg shadow-md w-full h-96 object-cover">
+            </div>
+
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Vinculación comunitaria</h4>
+            <p class="text-sm text-gray-700 mb-4">
+              Capacitaciones en: Huertos familiares, manejo de residuos sólidos, conservación de recursos hídricos, fomento de autosuficiencia y el desarrollo inclusivo, conservación del medio ambiente con conocimientos ancestrales.
+            </p>
+            <div class="mb-6">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/vinculacion1.jpg" alt="Vinculación" class="rounded-lg shadow-md w-full h-96 object-cover mb-4">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/vinculacion7.jpg" alt="Vinculación" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/vinculacion6.jpg" alt="Vinculación" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/vinculacion2.png" alt="Vinculación" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/vinculacion3.jpg" alt="Vinculación" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab content - Producción -->
+        <div id="produccion" class="tab-content space-y-12 hidden">
+          
+          <!-- Producción Marino Costero -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Producción Marino Costero</h3>
+            <p class="text-sm text-gray-700 mb-6">
+              Desarrollar e implementar prácticas sostenibles en la producción marino-costera que garanticen la conservación de los ecosistemas y el aprovechamiento eficiente de los recursos marinos, promoviendo la biodiversidad y el desarrollo económico local.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/Produccion-1.jpg" alt="Marino costero" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/produccion3.jpg" alt="Marino costero" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/produccion4.jpg" alt="Marino costero" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/Produccion2.jpg" alt="Marino costero" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Producción Forestal -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Producción Forestal</h3>
+            <p class="text-sm text-gray-700 mb-6">
+              Promover la gestión sostenible de los recursos forestales a través de prácticas de manejo responsable, reforestación y conservación, contribuyendo al equilibrio ecológico y al desarrollo socioeconómico.
+            </p>
+            
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Reforestación en coordinación con Escuelas, ICF y FTC</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/pro1.jpg" alt="Forestal" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/pro2.jpg" alt="Forestal" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/pro3.jpg" alt="Forestal" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/pro4.jpg" alt="Forestal" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Siembra de árboles frutales y maderables</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/arboles1.jpg" alt="Árboles" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/arboles2.jpg" alt="Árboles" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+
+            <h4 class="text-lg font-semibold text-gray-800 mb-3">Rondas contraincendios</h4>
+            <div class="mb-6">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/Imagen11.png" alt="Contraincendios" class="rounded-lg shadow-md w-full h-96 object-cover">
+            </div>
+          </div>
+
+          <!-- Producción Pecuaria -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Producción Pecuaria</h3>
+            <p class="text-sm text-gray-700 mb-6">
+              Incrementar la eficiencia y sostenibilidad en la producción pecuaria mediante la mejora genética, el bienestar animal y el manejo responsable de los recursos, contribuyendo a la seguridad alimentaria y a un menor impacto ambiental.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/pecuaria1.jpg" alt="Pecuaria" class="rounded-lg shadow-md w-full h-48 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/pecuaria2.jpg" alt="Pecuaria" class="rounded-lg shadow-md w-full h-48 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/pecuaria3.jpg" alt="Pecuaria" class="rounded-lg shadow-md w-full h-48 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/pecuaria4.jpg" alt="Pecuaria" class="rounded-lg shadow-md w-full h-48 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/pecuaria5.jpg" alt="Pecuaria" class="rounded-lg shadow-md w-full h-48 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/pecuaria6.jpg" alt="Pecuaria" class="rounded-lg shadow-md w-full h-48 object-cover">
+            </div>
+          </div>
+
+          <!-- Producción Vegetal -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Producción Vegetal</h3>
+            <p class="text-sm text-gray-700 mb-6">
+              Impulsar una producción vegetal sostenible y resiliente que optimice el uso de los recursos naturales, preserve la fertilidad del suelo y aumente la productividad de los cultivos, asegurando la seguridad alimentaria y el bienestar ambiental.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/vegetal3.jpg" alt="Vegetal" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/vegetal2.jpg" alt="Vegetal" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Plantas aromáticas y medicinales -->
+          <div>
+            <h3 class="text-xl font-bold text-unag-gray mb-4">Producción de plantas aromáticas y medicinales</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/plantas1.jpg" alt="Plantas" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/plantas2.jpg" alt="Plantas" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/plantas3.jpg" alt="Plantas" class="rounded-lg shadow-md w-full h-64 object-cover">
+              <img src="https://portal.unag.edu.hn/wp-content/uploads/2024/11/plantas4.png" alt="Plantas" class="rounded-lg shadow-md w-full h-64 object-cover">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Estructura Organizacional -->
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold text-unag-gray mb-8">
+        Estructura Organizacional
+      </h2>
+
+      <div class="mb-6">
+        {
+          director.map((persona) => (
+            <PersonalCard
+              nombreCompleto={persona.nombreCompleto}
+              cargo={persona.cargo}
+              correo={persona.correo}
+            />
+          ))
+        }
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {
+          personalAdministrativo.map((persona) => (
+            <PersonalCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              correo={persona.correo}
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    
+  </section>
+  
+  <script>
+    // Tabs functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const targetTab = button.getAttribute('data-tab');
+          
+          // Update button styles
+          tabButtons.forEach(btn => {
+            if (btn.getAttribute('data-tab') === targetTab) {
+              btn.classList.add('border-unag-green', 'text-unag-green');
+              btn.classList.remove('border-transparent', 'text-gray-500');
+            } else {
+              btn.classList.remove('border-unag-green', 'text-unag-green');
+              btn.classList.add('border-transparent', 'text-gray-500');
+            }
+          });
+          
+          // Show/hide content
+          tabContents.forEach(content => {
+            if (content.id === targetTab) {
+              content.classList.remove('hidden');
+            } else {
+              content.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
+</Layout>

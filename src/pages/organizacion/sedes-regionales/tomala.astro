@@ -1,0 +1,113 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderSimple from "@/components/astro/ui/header-simple.astro";
+import estructuraAdministrativa from "@/consts/sedes-regionales/estructura-tomala";
+import DocenteCard from "@/components/astro/ui/docente-card.astro";
+import carreras from "@/consts/carreras";
+import { ArrowUpRight } from "@lucide/astro";
+
+const content = {
+  title: "Sede Regional Tomalá | UNAG",
+};
+
+const director = estructuraAdministrativa.slice(0, 1);
+const personalAdministrativo = estructuraAdministrativa.slice(1, estructuraAdministrativa.length);
+---
+
+<Layout content={content}>
+  <HeaderSimple
+    imagen="/img/bg-default-unag.webp"
+    etiqueta="Organización"
+    subetiqueta="Sedes Regionales"
+    titulo="Tomalá"
+  />
+
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+  >
+    <article class="prose prose-sm max-w-none prose-unag-gray">
+      <p>
+        La Universidad Nacional de Agricultura (UNAG), es una comunidad académica integrada por estudiantes, docentes, graduados, personal administrativo y de apoyo; que asume la educación superior como derecho fundamental y un servicio público esencial. Entre sus fines primordiales prevalece la gestión del conocimiento para contribuir a desarrollar los sectores agrícolas nacionales y afines en su multidimensionalidad.
+      </p>
+      <p>
+        Como parte del proceso de expansión, basada en su reglamentación interna, en cumplimiento de sus funciones encomendadas y con la finalidad de incrementar su contribución al desarrollo integral de Honduras, se establece que, además de la sede principal en Catacamas, la Universidad Nacional de Agricultura crea centros regionales y unidades académicas especializadas descentralizadas en cualquier parte del territorio nacional, partiendo de una planificación estratégica que oriente su desarrollo e implementación, de esta forma se crea el Centro Regional en Tomalá departamento de Lempira.
+      </p>
+
+    </article>
+
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold text-unag-gray mb-8">Carreras</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        {
+          carreras.map((carrera) => {
+            if (carrera.sedes.includes("Tomala")) {
+              return (
+                <div class="bg-green-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-2">
+                  <div class="relative group">
+                    <img
+                      src={carrera.imagen}
+                      alt={carrera.nombre}
+                      class="h-48 w-full object-cover transition-transform group-hover:scale-110"
+                    />
+                    <a
+                      href={carrera.link}
+                      target="_blank"
+                      class="absolute bottom-0 left-0 right-0 bg-green-800 text-white px-4 py-3 flex items-center justify-between hover:bg-green-700 transition-colors"
+                    >
+                      <span class="font-semibold text-[12px]">
+                        {carrera.nombre}
+                      </span>
+                      <div class="p-1 bg-unag-dark-green rounded-full">
+                        <ArrowUpRight size={18} class="flex-shrink-0" />
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              );
+            }
+          })
+        }
+      </div>
+    </div>
+
+    <!-- Estructura Organizacional -->
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold text-unag-gray mb-8">
+        Estructura Organizacional
+      </h2>
+
+      <div>
+       
+        {
+          director.map((persona) => (
+            <DocenteCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              correo={persona.correo}
+              area={persona.perfil}
+            />
+          ))
+        }
+      </div>
+
+   
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-15">
+        {
+          personalAdministrativo.map((persona) => (
+            <DocenteCard
+              nombreCompleto={persona.nombreCompleto}
+              nombre={persona.nombre}
+              apellido={persona.apellido}
+              cargo={persona.cargo}
+              correo={persona.correo}
+              area={persona.perfil}
+            />
+          ))
+        }
+      </div>
+
+    
+</Layout>

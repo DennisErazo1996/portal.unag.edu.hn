@@ -1,0 +1,53 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderSimple from "@/components/astro/ui/header-simple.astro";
+
+const content = {
+  title: "Sistema de Vinculación Universidad Sociedad | UNAG",
+};
+---
+
+<Layout content={content}>
+  <HeaderSimple
+    imagen="/img/bg-default-unag-02.webp"
+    etiqueta="Organización"
+    subetiqueta="Direcciones Académicas"
+    titulo="Sistema de Vinculación Universidad Sociedad"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+  >
+    <article class="prose prose-sm max-w-none prose-unag-gray">
+      <h2>Función de la Dirección del Sistema de Vinculación Universidad Sociedad.</h2>
+      <p>
+        La DSVUS permitirá a la Universidad Nacional de Agricultura prestar un verdadero servicio a la sociedad mediante el estudio de la realidad nacional y la propuesta de planteamientos y proyectos que permitan soluciones a problemáticas encontradas, una diversa gama de servicios y consultorías, producción de materiales bibliográficos y una amplia labor de difusión de la ciencia que permita fomentar el régimen del buen vivir y elevar la calidad de vida de la población bajo la influencia de la UNA.
+      </p>
+      <h2>Estructura de la Dirección del Sistema de Vinculación Universidad Sociedad. </h2>
+      <p>
+        La estructura interna de la vinculación en la Universidad es la siguiente:
+      </p>
+      <ul>
+        <li>Unidad de educación para la vida.</li>
+        <li>Unidad de seguimiento al egresado.</li>
+        <li>Unidad de comunicación.</li>
+        <li>Unidad de proyectos de vinculación.</li>
+      </ul>
+     <h2>
+        Modalidades de la Vinculación Universitaria.
+     </h2>
+     <p>
+        La Vinculación se lleva a cabo con ayuda de los procesos académicos propios de la naturaleza y los fines de la Universidad, y responde a las necesidades y expectativas de la sociedad. Estos procesos se estructuran con autonomía e independencia académica, mediante actividades, proyectos, programas y planes de vinculación, que se articulan con la investigación y la docencia. La Vinculación se realiza a través de las modalidades siguientes:
+     </p>
+     <ul>
+        <li>Participación en Proyectos de Innovación y Gestión Tecnológica.</li>
+        <li>Servicios Académicos.</li>
+        <li>Educación Continua y Permanente.</li>
+        <li>Actividades de formación.</li>
+        <li>Proyectos de Creación Artística</li>
+        <li>Prácticas y pasantías universitarias.</li>
+        <li>Proyectos de Cooperación Internacional.</li>
+     </ul>
+    </article>
+  </section>
+</Layout>

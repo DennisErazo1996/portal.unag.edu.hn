@@ -1,0 +1,270 @@
+---
+import Layout from "@/layouts/main.astro";
+import HeaderSimple from "@/components/astro/ui/header-simple.astro";
+import { miembrosJDU } from "@/consts/miembros-jdu";
+
+const content = {
+  title: "Junta de Dirección Universitaria | UNAG",
+};
+---
+
+<Layout content={content}>
+  <HeaderSimple
+    imagen="/img/bg-default-unag-02.webp"
+    etiqueta="Organización"
+    titulo="Junta de Dirección Universitaria"
+  />
+
+  <section
+    class="text-unag-gray text-sm max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+  >
+    <div class="prose prose-sm prose-unag-gray max-w-none mb-12 space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div class="bg-unag-gray/10 p-6 rounded-sm">
+          <h2>Misión</h2>
+          <p>
+            Somos un órgano de gobierno administrativo, que planifica, organiza
+            y da seguimiento a la labor sustantiva de la UNAG.
+          </p>
+        </div>
+        <div class="bg-unag-gray/10 p-6 rounded-sm">
+          <h2>Visión</h2>
+          <p>
+            Que todos los procesos administrativos y académicos sean
+            transparentes y estén normados con el fin de alcanzar: niveles
+            óptimos de eficiencia, eficacia, calidad en los servicios ofrecidos
+            y gobernabilidad para una UNAG competitiva.
+          </p>
+        </div>
+      </div>
+    </div>
+    <p>
+      La Junta de Dirección Universitaria (JDU) es el órgano administrativo
+      principal de la Universidad, teniendo bajo su cargo la planificación,
+      organización, control administrativo y seguimiento de la labor sustantiva
+      de la Universidad y sus atribuciones son las siguientes:
+    </p>
+    <ul class="list-disc list-inside space-y-3 ml-4 mt-6">
+      <li>
+        Seleccionar por concurso público de méritos al Rector, Vicerrectores,
+        Secretario General, Decanos y Directores de Centros Regionales o
+        Especializados, así como su remoción, cuando el caso lo amerite;
+      </li>
+      <li>
+        Organizar la vida académica, administrativa y económica de la
+        Universidad Nacional de Agricultura;
+      </li>
+      <li>
+        Formular las políticas de desarrollo universitario, de conformidad con
+        las leyes y lineamientos del Nivel de Educación Superior para su
+        aprobación por el CSU;
+      </li>
+      <li>
+        Proponer el plan estratégico de desarrollo y fortalecimiento
+        institucional para aprobación por el CSU;
+      </li>
+      <li>
+        Proponer reformas al Estatuto de la Universidad Nacional de Agricultura
+        y su reglamento para aprobación por el CSU;
+      </li>
+      <li>
+        Aprobar disposiciones y reglamentos internos que regulen el
+        funcionamiento de la Universidad Nacional de Agricultura, sin perjuicio
+        de las atribuciones del CSU;
+      </li>
+      <li>
+        Declarar la revocatoria y vacancia del Rector, Vicerrectores, Directores
+        de Centros, y Decanos de acuerdo con las causales expresamente señaladas
+        en este Estatuto y su reglamento;
+      </li>
+      <li>
+        Evaluar y aprobar anualmente, previo a su presentación al CSU, el
+        proyecto de presupuesto, la memoria institucional, calendario e informe
+        académico de gestión, el informe de rendición de cuentas del Presupuesto
+        ejecutado, documentos que deberán ser presentados por el Rector o
+        Vicerrectores según corresponda;
+      </li>
+      <li>
+        Proponer a la asamblea la creación, fusión, reorganización, y supresión
+        de Facultades, carreras, departamentos académicos, unidades de posgrado,
+        investigación, vinculación, unidades especializadas, centros de
+        producción y experimentación, institutos y otras unidades previstas en
+        este Estatuto;
+      </li>
+      <li>
+        Aprobar el Modelo Educativo y Calendario Académico de la Universidad
+        Nacional de Agricultura;
+      </li>
+      <li>
+        Declarar en receso temporal a la Universidad Nacional de Agricultura o a
+        cualquiera de sus unidades académicas, cuando las circunstancias lo
+        requieran;
+      </li>
+      <li>
+        Acordar la creación de comisiones para el cumplimiento de sus funciones;
+      </li>
+      <li>
+        Promover el debate y pronunciarse sobre los problemas nacionales según
+        los fines y objetivos establecidos en el presente Estatuto;
+      </li>
+      <li>
+        Publicar las actas aprobadas y resoluciones de la Junta de Dirección
+        Universitaria;
+      </li>
+      <li>
+        Aprobar el Plan de Arbitrios y las reformas al mismo para su posterior
+        registro en la Dirección de Educación Superior;
+      </li>
+      <li>
+        Autorizar la suscripción de convenios y cartas de entendimiento con
+        instituciones u organismos públicos o privados, nacionales e
+        internacionales, con base en las disposiciones que establezca este
+        Estatuto y su reglamento;
+      </li>
+      <li>
+        Aceptar las herencias, legados o donaciones que se hagan a la
+        Universidad Nacional de Agricultura;
+      </li>
+      <li>
+        Conferir títulos "Honoris Causa" y otros reconocimientos y distinciones
+        para personas que se hayan distinguido en la Educación, la Ciencia,
+        Tecnología y la Cultura, de conformidad con el reglamento respectivo;
+      </li>
+      <li>
+        Actuar como tribunal de alzada para conocer y resolver los recursos de
+        apelación para declarar agotada la vía administrativa;
+      </li>
+      <li>
+        Administrar y cautelar los bienes y rentas de la Universidad Nacional de
+        Agricultura.
+      </li>
+    </ul>
+  </section>
+
+  <!-- Sección de Miembros -->
+  <section class="bg-gradient-to-b from-gray-50 to-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-unag-gray mb-8">Integrantes de la JDU</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          miembrosJDU.map((miembro) => (
+            <button
+              onclick={`openModal('modal-${miembro.id}')`}
+              class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 text-left group"
+            >
+              <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                <img
+                  src={miembro.imagen}
+                  alt={miembro.nombreCompleto}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div class="p-5">
+                <h3 class="text-base font-semibold text-unag-gray mb-1">
+                  {miembro.nombreCompleto}
+                </h3>
+                <p class="text-sm text-gray-600">{miembro.cargo}</p>
+              </div>
+              
+              <div class="bg-unag-green w-full h-1"></div>
+              <div class="bg-unag-dark-green w-full h-1"></div>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Modales -->
+  {
+    miembrosJDU.map((miembro) => (
+      <div
+        id={`modal-${miembro.id}`}
+        class="modal-backdrop fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4"
+        onclick={`closeModal('modal-${miembro.id}')`}
+      >
+        <div
+          class="modal-content bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-lg"
+          onclick="event.stopPropagation()"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-0">
+            <div class="md:col-span-2 aspect-[3/4] overflow-hidden bg-gray-100">
+              <img
+                src={miembro.imagen}
+                alt={miembro.nombreCompleto}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="md:col-span-3 p-8">
+              <button
+                onclick={`closeModal('modal-${miembro.id}')`}
+                class="float-right text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+              <h2 class="text-unag-gray mb-2">{miembro.nombreCompleto}</h2>
+              <p class="text-sm font-semibold text-unag-green mb-6">
+                {miembro.cargo}
+              </p>
+              <div class="text-sm text-gray-700 space-y-4">
+                {miembro.biografia.map((parrafo) => (
+                  <p set:html={parrafo} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+
+
+  <script is:inline>
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        const backdrop = modal;
+        const content = modal.querySelector('.modal-content');
+        
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "";
+      }
+    }
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        const modals = document.querySelectorAll('[id^="modal-"]');
+        modals.forEach((modal) => {
+          if (!modal.classList.contains("hidden")) {
+            closeModal(modal.id);
+          }
+        });
+      }
+    });
+  </script>
+</Layout>

@@ -7,6 +7,7 @@ import LinkDropdownMenu from "@/components/astro/navigation/link-dropdown-menu.a
 import DropdownMenuContainer from "@/components/astro/navigation/dropdown-menu-container.astro";
 import DropdownMenuItemWithSubmenu from "@/components/astro/navigation/dropdown-menu-item-with-submenu.astro";
 import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
+import carreras from '@/consts/carreras';
 ---
 
 
@@ -115,14 +116,11 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                         Carreras <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
-                        <LinkDropdownMenu href="/carreras/ingenieria-agronomica/">Ingeniería Agronómica</LinkDropdownMenu>
-                        <LinkDropdownMenu href="/carreras/ingenieria-gestion-integral-recursos-naturales/">Ingeniería en Gestión Integral de los Recursos Naturales</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/tecnologia-de-alimentos/">Ingeniería en Tecnología Alimentaria</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/medicina-veterinaria/">Medicina Veterinaria</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/ingenieria-en-zootecnia/">Ingeniería en Zootecnia</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/administracion-de-empresas-agropecuarias/">Administración de Empresas Agropecuarias</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/licenciatura-en-economia-social-agraria/">Licenciatura en Economía Social Agraria</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/ingenieria-en-agroexportacion/">Ingeniería en Agroexportación</LinkDropdownMenu>
+                        {
+                            carreras.map((carrera) => (
+                                <LinkDropdownMenu href={carrera.link}>{carrera.nombre}</LinkDropdownMenu>
+                            ))
+                        }
                     </DropdownMenuContainer>
                 </li>
 

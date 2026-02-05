@@ -159,9 +159,9 @@ const docentesFacultadCienciasTecnologicas : Docente[] = [
     nombre: "Jhunior",
     apellido: "Marcía",
     cargo: "Profesor Titular II",
-    grado: "",
+    grado: "M.Sc. en Procesamiento de Alimentos",
     area: "Área de desempeño profesional: Ingeniería de alimentos.",
-    correo: "",
+    correo: " jmarcia@unag.edu.hn",
   },
   {
     nombreCompleto: "Keisy Bianey Peralta Matute",
@@ -240,9 +240,9 @@ const docentesFacultadCienciasTecnologicas : Docente[] = [
     nombre: "Alba",
     apellido: "Muñoz",
     cargo: "Profesor Titular III",
-    grado: "",
+    grado: "M.Sc. En Gestión de la Calidad Total",
     area: "Área de desempeño profesional: Gestión de la calidad Total.",
-    correo: "",
+    correo: "amuñoz@unag.edu.hn",
   },
 ];
 

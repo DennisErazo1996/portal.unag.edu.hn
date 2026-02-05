@@ -2,7 +2,7 @@ const carreras = [
   {
     nombre: "Ingeniería Agronómica",
     imagen: "/img/carreras/bg-ing-agronomica.webp",
-    link: "https://portal.unag.edu.hn/ingenieria-agronomica/",
+    link: "/carreras/ingenieria-agronomica/",
     sedes: ["Comayagua", "Catacamas"],
   },
   {
@@ -14,7 +14,7 @@ const carreras = [
   {
     nombre: "Ingeniería en Tecnología Alimentaria",
     imagen: "/img/carreras/bg-ing-tecnologia-alimentaria.webp",
-    link: "https://portal.unag.edu.hn/tecnologia-de-alimentos/",
+    link: "/carreras/ingenieria-en-tecnologia-alimentaria/",
     sedes: ["Catacamas"],
   },
   {

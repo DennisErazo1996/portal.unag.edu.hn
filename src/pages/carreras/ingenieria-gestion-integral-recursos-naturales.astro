@@ -7,6 +7,7 @@ import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
 import DocenteCard from "@/components/astro/ui/docente-card.astro";
 
 import docentesCarreraRecursosNaturales from '@/consts/carreras/docentes-carrera-recursos-naturales';
+import DescargaCard from "@/components/astro/ui/descarga-card.astro";
 
 const content = {
   title: "Ingeniería en Gestión Integral de los Recursos Naturales | UNAG",
@@ -27,42 +28,16 @@ export const prerender = true;
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <aside class="lg:sticky lg:top-24 h-fit">
-          <div
-            class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden"
-          >
-            <div class="bg-unag-green text-white p-6">
-              <div class="flex items-center gap-3 mb-2">
-                <FileText size={24} />
-                <h3 class="font-bold text-lg">Documentos</h3>
-              </div>
-              <p class="text-sm text-white/90">
-                Archivos disponibles para descargar
-              </p>
-            </div>
+          
+          <DescargaCard
+            enlaces={[
+              {
+                nombre: "Plan de Estudio",
+                url: "/documents/planes-de-estudio/plan-de-ingenieria-en-gestion-integral-de-recursos-naturales.pdf",
+              },
+            ]}
+          />
 
-            <div class="p-4 space-y-3">
-              <a
-                href="/documents/planes-de-estudio/plan-de-ingenieria-en-gestion-integral-de-recursos-naturales.pdf"
-                download
-                class="flex items-center gap-3 p-4 bg-unag-light-gray/50 hover:bg-unag-light-gray rounded-xl transition-all duration-300 group border border-transparent hover:border-unag-green"
-              >
-                <div
-                  class="flex-shrink-0 w-10 h-10 bg-unag-green/10 rounded-lg flex items-center justify-center group-hover:bg-unag-green/20 transition-colors"
-                >
-                  <Download size={20} class="text-unag-green" />
-                </div>
-                <div class="flex-1 min-w-0">
-                  <p
-                    class="font-semibold text-unag-dark-green text-sm group-hover:text-unag-green transition-colors truncate"
-                  >
-                    Plan de Estudio
-                  </p>
-
-                  <p class="text-xs text-gray-500 uppercase"></p>
-                </div>
-              </a>
-            </div>
-          </div>
           <div
             class="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow mt-5"
           >

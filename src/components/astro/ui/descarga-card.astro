@@ -1,0 +1,50 @@
+---
+import { Download, FileText } from "@lucide/astro";
+
+interface Props {
+  enlaces: Array<{
+    nombre: string;
+    url: string;
+  }>;
+  formato?: string;
+}
+
+const { enlaces, formato } = Astro.props;
+---
+
+<div
+  class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden"
+>
+  <div class="bg-unag-green text-white p-6">
+    <div class="flex items-center gap-3 mb-2">
+      <FileText size={24} />
+      <h3 class="font-bold text-lg">Documentos</h3>
+    </div>
+    <p class="text-sm text-white/90">Archivos disponibles para descargar</p>
+  </div>
+
+  <div class="p-4 space-y-3">
+    {
+      enlaces.map((enlace) => (
+        <a
+          href={enlace.url}
+          download
+          class="flex items-center gap-3 p-4 bg-unag-light-gray/50 hover:bg-unag-light-gray rounded-xl transition-all duration-300 group border border-transparent hover:border-unag-green"
+        >
+          <div class="flex-shrink-0 w-10 h-10 bg-unag-green/10 rounded-lg flex items-center justify-center group-hover:bg-unag-green/20 transition-colors">
+            <Download size={20} class="text-unag-green" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-semibold text-unag-dark-green text-sm group-hover:text-unag-green transition-colors truncate">
+              {enlace.nombre}
+            </p>
+
+            {formato && (
+              <p class="text-xs text-gray-500 mt-1">Formato: {formato}</p>
+            )}
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</div>

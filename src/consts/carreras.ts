@@ -8,7 +8,7 @@ const carreras = [
   {
     nombre: "Ingeniería en Gestión Integral de los Recursos Naturales",
     imagen: "/img/carreras/bg-ing-gestion-integral-recursos-naturales.webp",
-    link: "https://portal.unag.edu.hn/ingenieria-en-gestion-integral-de-los-recursos-naturales/",
+    link: "/carreras/ingenieria-gestion-integral-recursos-naturales/",
     sedes: ["Catacamas", "Tomala"],
   },
   {

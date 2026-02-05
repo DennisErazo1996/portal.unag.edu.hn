@@ -17,6 +17,7 @@ import {
 } from "@lucide/astro";
 import { Image } from "astro:assets";
 import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
+import carreras from "@/consts/carreras";
 ---
 
 <section class="text-white text-[12px]">
@@ -416,6 +417,13 @@ import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
           </li>
           <li>
             <a
+              href="https://sys.unag.edu.hn/login_egresados"
+              target="_blank"
+              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
+              >Sistema de Egresados</a>
+          </li>
+          <li>
+            <a
               href="https://moodle.unag.edu.hn/"
               target="_blank"
               class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
@@ -445,54 +453,17 @@ import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
         <ul
           class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
         >
-          <li>
-            <a
-              href="https://portal.unag.edu.hn/ingenieria-agronomica/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Ingeniería Agronómica</a>
-          </li>
-          <li>
-            <a
-              href="/carreras/ingenieria-gestion-integral-recursos-naturales/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Ingeniería en Gestión Integral de los Recursos Naturales</a>
-          </li>
-          <li>
-            <a
-              href="https://portal.unag.edu.hn/tecnologia-de-alimentos/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Ingeniería en Tecnología Alimentaria</a>
-          </li>
-          <li>
-            <a
-              href="https://portal.unag.edu.hn/medicina-veterinaria/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Medicina Veterinaria</a>
-          </li>
-          <li>
-            <a
-              href="https://portal.unag.edu.hn/ingenieria-en-zootecnia/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Ingeniería en Zootecnia</a>
-          </li>
-          <li>
-            <a
-              href="https://portal.unag.edu.hn/administracion-de-empresas-agropecuarias/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Administración de Empresas Agropecuarias</a>
-          </li>
-          <li>
-            <a
-              href="https://portal.unag.edu.hn/licenciatura-en-economia-social-agraria/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Licenciatura en Economía Social Agraria</a>
-          </li>
-          <li>
-            <a
-              href="https://portal.unag.edu.hn/ingenieria-en-agroexportacion/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Ingeniería en Agroexportación</a>
-          </li>
+          {
+            carreras.map((carrera) => (
+              <li>
+                <a
+                  href={carrera.link}
+                  class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
+                  >{carrera.nombre}</a>
+              </li>
+            ))
+          }
+        
         </ul>
       </li>
 

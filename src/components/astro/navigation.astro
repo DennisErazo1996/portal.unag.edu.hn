@@ -94,15 +94,20 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
               
                 <li class="relative group">
                     <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
-                        ERP <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                        Plataformas <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/matricula/login" target="_blank">Ingresar ERP</LinkDropdownMenu>
+                        <LinkDropdownMenu href="https://portal.unag.edu.hn/matricula/login" target="_blank">Ingresar  
+                        </LinkDropdownMenu>
                         <LinkDropdownMenu href="https://sys.unag.edu.hn/login" target="_blank">SysUNAG</LinkDropdownMenu>
+                        <LinkDropdownMenu href="https://sys.unag.edu.hn/login_egresados" target="_blank">Sistema de Egresados</LinkDropdownMenu>
                         <LinkDropdownMenu href="https://moodle.unag.edu.hn/" target="_blank">Campus Virtual</LinkDropdownMenu>
                         <LinkDropdownMenu href="https://sed.unag.edu.hn/" target="_blank">Sistema de Educación a Distancia</LinkDropdownMenu>                        
                     </DropdownMenuContainer>
                 </li>
+
+
+
 
                
                 <li class="relative group">
@@ -110,7 +115,7 @@ import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
                         Carreras <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/ingenieria-agronomica/">Ingeniería Agronómica</LinkDropdownMenu>
+                        <LinkDropdownMenu href="/carreras/ingenieria-agronomica/">Ingeniería Agronómica</LinkDropdownMenu>
                         <LinkDropdownMenu href="/carreras/ingenieria-gestion-integral-recursos-naturales/">Ingeniería en Gestión Integral de los Recursos Naturales</LinkDropdownMenu>
                         <LinkDropdownMenu href="https://portal.unag.edu.hn/tecnologia-de-alimentos/">Ingeniería en Tecnología Alimentaria</LinkDropdownMenu>
                         <LinkDropdownMenu href="https://portal.unag.edu.hn/medicina-veterinaria/">Medicina Veterinaria</LinkDropdownMenu>

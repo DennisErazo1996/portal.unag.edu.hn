@@ -9,6 +9,7 @@ import {
   Linkedin,
 } from "@lucide/astro";
 
+import carreras from "@/consts/carreras";
 import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
 import hojaDesenfocada from "@assets/img/hojas/hoja-desenfocada.webp";
 import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
@@ -108,38 +109,14 @@ import LinkUnderline from "@/components/astro/navigation/link-underline.astro";
           Carreras
         </h2>
         <ul class="mt-5 text-start space-y-1">
-          <li>
-            <LinkUnderline href="https://portal.unag.edu.hn/ingenieria-agronomica/">Ingeniería Agronómica</LinkUnderline>
-          </li>
-          <li>
-            <LinkUnderline href="https://portal.unag.edu.hn/ingenieria-en-gestion-integral-de-los-recursos-naturales/"
-              >Ingeniería en Gestión Integral de los Recursos Naturales</LinkUnderline
-            >
-          </li>
-          <li>
-            <LinkUnderline href="https://portal.unag.edu.hn/tecnologia-de-alimentos/"
-              >Ingeniería en Tecnología Alimentaria</LinkUnderline
-            >
-          </li>
-          <li>
-            <LinkUnderline href="https://portal.unag.edu.hn/medicina-veterinaria/">Medicina Veterinaria</LinkUnderline>
-          </li>
-          <li>
-            <LinkUnderline href="https://portal.unag.edu.hn/ingenieria-en-zootecnia/">Ingeniería en Zootecnia</LinkUnderline>
-          </li>
-          <li>
-            <LinkUnderline href="https://portal.unag.edu.hn/administracion-de-empresas-agropecuarias/"
-              >Administración de Empresas Agropecuarias</LinkUnderline
-            >
-          </li>
-          <li>
-            <LinkUnderline href="https://portal.unag.edu.hn/licenciatura-en-economia-social-agraria/"
-              >Licenciatura en Economía Social Agraria</LinkUnderline
-            >
-          </li>
-          <li>
-            <LinkUnderline href="https://portal.unag.edu.hn/ingenieria-en-agroexportacion/">Ingeniería en Agroexportación</LinkUnderline>
-          </li>
+          {
+            carreras.map((carrera) => (
+              <li>
+                <LinkUnderline href={carrera.link}>{carrera.nombre}</LinkUnderline>
+              </li>
+          ))
+          }
+  
         </ul>
       </div>
 
@@ -166,7 +143,7 @@ import LinkUnderline from "@/components/astro/navigation/link-underline.astro";
 
       <div class="w-full h-fit">
         <h2 class="text-start p-1 border-b-3 border-unag-green font-bold">
-          ERP
+          Plataformas
         </h2>
         <ul class="mt-5 text-start space-y-1">
           <li>
@@ -174,6 +151,9 @@ import LinkUnderline from "@/components/astro/navigation/link-underline.astro";
           </li>
           <li>
             <LinkUnderline href="https://sys.unag.edu.hn/login" target="_blank">SysUNAG</LinkUnderline>
+          </li>
+          <li>
+            <LinkUnderline href="https://sys.unag.edu.hn/login_egresados" target="_blank">Sistema de Egresados</LinkUnderline>
           </li>
           <li>
             <LinkUnderline href="https://moodle.unag.edu.hn/" target="_blank">Campus Virtual</LinkUnderline>

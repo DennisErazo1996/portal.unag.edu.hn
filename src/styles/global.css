@@ -21,6 +21,7 @@
 }
 
 @layer utilities {
+
   *{
     font-family: var(--font-family-sans) !important;
   }

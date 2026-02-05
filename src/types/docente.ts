@@ -6,4 +6,5 @@ export type Docente = {
   grado: string;
   area: string;
   correo: string;
+  carrera?:string;
 };

@@ -1,0 +1,296 @@
+---
+import Layout from "@/layouts/main.astro";
+import { Download, FileText } from "@lucide/astro";
+import { File, FileCheck, Users } from "@lucide/astro";
+
+import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
+import DocenteCard from "@/components/astro/ui/docente-card.astro";
+import DescargaCard from "@/components/astro/ui/descarga-card.astro";
+
+import docentesCarreraMedicinaVeterinaria from "@/consts/facultades/docentes-facultad-de-medicina-veterinaria-y-zootecnia";
+
+const content = {
+  title: "Medicina Veterinaria | UNAG",
+};
+
+const docentesVeterinaria = docentesCarreraMedicinaVeterinaria.filter(
+  (docente) => docente.carrera === "veterinaria"
+);
+
+export const prerender = true;
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/carreras/bg-medicina-veterinaria.webp"
+    etiqueta="Carreras"
+    titulo="Medicina Veterinaria"
+  />
+
+  <!-- Contenido principal con sidebar -->
+  <section class="relative bg-white py-12 lg:py-16 text-unag-gray">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <aside class="lg:sticky lg:top-24 h-fit">
+          <DescargaCard
+            enlaces={[
+              {
+                nombre: "Plan de Estudio",
+                url: "/documents/planes-de-estudio/plan-de-medicina-veterinaria.pdf",
+              },
+            ]}
+          />
+
+          <div
+            class="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow mt-5"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div class="bg-unag-green/10 p-3 rounded-lg">
+                <svg
+                  class="w-6 h-6 text-unag-green"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-gray-800">Coordinación</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">
+              Contáctanos para más información
+            </p>
+            <a
+              href="mailto:ctecnologiaalimentaria@unag.edu.hn"
+              class="block text-sm text-unag-green hover:text-unag-dark-green font-medium break-words transition-colors"
+            >
+              ctecnologiaalimentaria@unag.edu.hn
+            </a>
+          </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="lg:col-span-3 space-y-12">
+          <article class="scroll-mt-24">
+            <div class="">
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <p>
+                  La Carrera de Medicina Veterinaria nace en respuesta a las
+                  necesidades del sector pecuario del país, de las demandas de
+                  los gobiernos locales y de las mismas aspiraciones de la
+                  juventud y la población hondureña y olanchana en particular.
+                  Se potencia como una alternativa para combatir la pobreza,
+                  habiendo formado a la fecha 151 profesionales conscientes de
+                  su rol protagónico en la asistencia veterinaria para la salud
+                  de los hatos ganaderos, animales de compañía y silvestres,
+                  contribuyendo a garantizar la salud pública del pueblo
+                  hondureño, así como generando empleos, promoviendo una mejor
+                  calidad de productos pecuarios para su comercialización y
+                  generando mayores divisas al país. Así mismo constituye una
+                  contribución en rubros donde el país tiene un potencial
+                  competitivo como la industria láctea, cárnica, acuícola y
+                  avícola, entre otras, actuando con responsabilidad social y
+                  ambiental.
+                </p>
+
+                <h2>Misión</h2>
+                <p class="bg-unag-gray/10 p-5 rounded-sm">
+                  Formar profesionales en el ámbito de la salud animal, velando
+                  por el control y erradicación de enfermedades zoonóticas que
+                  afectan las poblaciones animales y humanas, así como
+                  desarrollar competencias integrales y sentido de innovación en
+                  el sector alimentario, que les permitan responder a los
+                  desafíos de la sociedad.
+                </p>
+
+                <h2>Visión</h2>
+                <p class="bg-unag-gray/10 p-5 rounded-sm">
+                  La Carrera de Medicina Veterinaria en el grado de
+                  Licenciatura, será reconocida como a una oferta académica de
+                  excelencia, comprometida con los intereses de la comunidad
+                  hondureña y latinoamericana, como una opción investigativa y
+                  de previsión de la salud animal y bienestar humano, ejecución
+                  de programas y proyectos de impacto en el sector alimentario,
+                  que promuevan la cooperación intelectual, científica,
+                  tecnológica y financiera, de sistema de enseñanza superior
+                  especializado, nacionales e internacionales.
+                </p>
+
+                <p>
+                  El Médico Veterinario graduado de la Universidad Nacional de
+                  Agricultura está en la capacidad de:
+                </p>
+                <ul>
+                  <li>
+                    Resolver problemas en su campo profesional, identificando y
+                    desarrollando opciones de solución.
+                  </li>
+                  <li>
+                    Emprender e innovar proyectos profesionales con liderazgo.
+                  </li>
+                  <li>
+                    Realizar investigación científica y participativa en su
+                    campo profesional.
+                  </li>
+                  <li>
+                    Expresar ideas, argumentos y mensajes de manera clara,
+                    coherente y precisa haciendo uso del lenguaje adecuado de
+                    acuerdo con el contexto en que se desenvuelva.
+                  </li>
+                  <li>
+                    Utilizar las Tecnologías de la Información y Comunicación
+                    (TIC) de forma eficiente.
+                  </li>
+                  <li>Trabajar en equipos pro activamente.</li>
+                </ul>
+
+                <p>
+                  Así mismo, el graduado también desarrolla Competencias
+                  Específicas, que aportan a su “saber profesional,” por ello el
+                  Médico Veterinario graduado en la Universidad Nacional de
+                  Agricultura es un profesional con espíritu ético, crítico,
+                  científico y humanista que, considerando las necesidades
+                  sociales, mejora la calidad de vida del hombre y los animales
+                  a través de conocimientos y habilidades clínicas y zootécnicas
+                  para garantizar la sanidad animal de las especies domésticas y
+                  silvestres y la salud pública, utilizando las tecnologías
+                  limpias, sostenibles y renovables; interviniendo en el control
+                  y protección de los alimentos, prevención de la salud humana y
+                  del ambiente, actuando con mentalidad empresarial responsable
+                  y capacidad de gestión y liderazgo para solucionar los
+                  problemas del entorno, sustentándose en la investigación
+                  científica y transferencia tecnológica.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article id="perfil" class="scroll-mt-24">
+            <div
+              class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
+            >
+              <div class="flex items-center gap-3 mb-6">
+                <div class="bg-unag-green/10 p-3 rounded-lg">
+                  <File size={32} class="text-unag-green" />
+                </div>
+                <h2 class="text-2xl font-black text-gray-800">
+                  Perfil de la Carrera
+                </h2>
+              </div>
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <p>
+                  La Universidad Nacional de Agricultura es el único organismo
+                  de Educación Superior en Honduras, que ofrece Medicina
+                  Veterinaria, dispone de instalaciones adecuadas como los
+                  laboratorios de: anatomía, patología, histología,
+                  histopatología, microbiología, parasitología, fisiología y
+                  robótica. Cuenta con el Hospital Escuela Veterinario (HEV),
+                  dedicado a la docencia e investigación, prestando servicios
+                  médico veterinarios a la población. Brinda servicios de
+                  asistencia ambulatoria a través de la Veterinaria Móvil.
+                </p>
+                <p>
+                  El objetivo de la Carrera de Medicina Veterinaria es formar un
+                  profesional integral con valores y principios, capaz de dar
+                  solución oportuna y efectiva a los diversos problemas de la
+                  salud animal, la producción animal y la salud pública.
+                  Contribuyendo al desarrollo del sector pecuario del país
+                  mediante la formación de profesionales de la Medicina
+                  Veterinaria competitivos, perspicaces e innovadores, con un
+                  alto compromiso de preservación del medio ambiente, de
+                  sostenibilidad y equidad en la distribución de la riqueza.
+                  Involucrando sistemática e interdisciplinariamente a los
+                  estudiantes en metodologías para la investigación de procesos
+                  tecnológicos, sociales y económicos, para mejorar el bienestar
+                  de las comunidades en el marco de las transformaciones de la
+                  globalización.
+                </p>
+              </div>
+            </div>
+          </article>
+
+        
+
+          <article class="mt-15">
+            <div
+              class="bg-unag-green/10 rounded-2xl p-8 border border-gray-100"
+            >
+              <div class="flex items-center gap-3 mb-6">
+                <div class="bg-unag-dark-green/10 p-3 rounded-lg">
+                  <FileCheck size={32} class="text-unag-green" />
+                </div>
+                <h2 class="text-2xl font-black text-gray-800">Requisitos</h2>
+              </div>
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <p>
+                  El estudiante que aspire ingresar a la carrera de Medicina Veterinaria, deben tener el interés por cursar el Plan de Estudios de las Ciencias Veterinaria, para ello debe:
+                </p>
+                <ul>
+                  <li>Poseer la aptitud hacia las actividades biomédicas, el bienestar y la salud animal.</li>
+                  <li>Conocimientos básicos en Biología, Zoología, Química, Física, Estadística.</li>
+                  <li>Disciplina.</li>
+                  <li>Responsabilidad.</li>
+                  <li>Constancia para estudiar.</li>
+                  <li>Desarrollo de su inteligencia emocional con actitudes, valores morales, éticos y humanos.</li>
+                  <li>Habilidad de comunicación e interacción para un aprendizaje interactivo.</li>
+                  <li>Destrezas básicas en el manejo de tecnologías de la comunicación.</li>
+                  <li>Título de educación media.</li>
+                  <li>Aprobar la Prueba de Aptitud Académica (PAA) con la puntuación necesaria.</li>
+                  <li>Realizar el proceso de ingreso.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Docentes -->
+          <article id="docentes" class="mt-15">
+            <div class="mb-8">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="bg-unag-green/10 p-3 rounded-lg">
+                  <Users size={32} class="text-unag-green" />
+                </div>
+                <h2 class="text-2xl font-black text-gray-800">Docentes</h2>
+              </div>
+              <p class="text-gray-600 text-sm ml-16">
+                Conoce al equipo de profesionales que te guiarán en tu formación
+                académica:
+              </p>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {
+                  docentesVeterinaria.map((docente) => (
+                    <div class="mt-5">
+                      <DocenteCard
+                        nombreCompleto={docente.nombreCompleto}
+                        nombre={docente.nombre}
+                        apellido={docente.apellido}
+                        cargo={docente.cargo}
+                        grado={docente.grado}
+                        area={docente.area}
+                        correo={docente.correo}
+                      />
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </article>
+        </main>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .prose ul {
+    color: #374151;
+  }
+
+  .scroll-mt-24 {
+    scroll-margin-top: 6rem;
+  }
+</style>

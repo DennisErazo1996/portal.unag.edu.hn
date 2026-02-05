@@ -20,7 +20,7 @@ const carreras = [
   {
     nombre: "Medicina Veterinaria",
     imagen: "/img/carreras/bg-medicina-veterinaria.webp",
-    link: "https://portal.unag.edu.hn/medicina-veterinaria/",
+    link: "/carreras/medicina-veterinaria/",
     sedes: ["Catacamas"],
   },
   {

@@ -8,6 +8,7 @@ import DocenteCard from "@/components/astro/ui/docente-card.astro";
 import DescargaCard from "@/components/astro/ui/descarga-card.astro";
 
 import docentesCarreraMedicinaVeterinaria from "@/consts/facultades/docentes-facultad-de-medicina-veterinaria-y-zootecnia";
+import SedeCard from "@/components/astro/ui/sede-card.astro";
 
 const content = {
   title: "Medicina Veterinaria | UNAG",
@@ -40,6 +41,8 @@ export const prerender = true;
               },
             ]}
           />
+
+          <SedeCard sedes={["Catacamas"]} />
 
           <div
             class="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow mt-5"

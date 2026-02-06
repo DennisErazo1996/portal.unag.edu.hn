@@ -32,7 +32,7 @@ const carreras = [
   {
     nombre: "Administración de Empresas Agropecuarias",
     imagen: "/img/carreras/bg-administracion-empresas-agropecuarias.webp",
-    link: "https://portal.unag.edu.hn/administracion-de-empresas-agropecuarias/",
+    link: "/carreras/administracion-de-empresas-agropecuarias/",
     sedes: ["Comayagua", "Catacamas", "Tomala"],
   },
   {

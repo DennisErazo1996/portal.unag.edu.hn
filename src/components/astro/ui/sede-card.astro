@@ -1,0 +1,29 @@
+---
+interface Props{
+    sedes: string[]
+}
+
+import { Landmark, MapPin } from "@lucide/astro";
+
+const { sedes } = Astro.props;
+---
+
+<div
+  class="bg-unag-dark-green border-2 border-unag-light-green rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow mt-5"
+>
+  <div class="flex items-center gap-3 mb-4">
+    <div class="bg-unag-green/10 p-3 rounded-lg">
+        <MapPin class="text-unag-green" size={24} />
+    </div>
+    <h3 class="font-bold text-lg text-white">Sedes</h3>
+  </div>
+  <p class="text-sm text-white mb-3">Esta carrera está disponible en las siguientes sedes:</p>
+  {
+    sedes.map((sede : string) => (
+      <div class="flex items-center gap-2 mb-2 p-2 bg-unag-green/10 rounded-full">
+        <Landmark class="text-unag-green" size={20} />
+        <span class="text-sm text-white">{sede}</span>
+      </div>
+    ))
+  }
+</div>

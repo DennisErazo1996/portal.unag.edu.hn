@@ -1,0 +1,262 @@
+---
+import Layout from "@/layouts/main.astro";
+import { Download, FileText } from "@lucide/astro";
+import { File, FileCheck, Users } from "@lucide/astro";
+
+import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
+import DocenteCard from "@/components/astro/ui/docente-card.astro";
+import DescargaCard from "@/components/astro/ui/descarga-card.astro";
+import SedeCard from "@/components/astro/ui/sede-card.astro";
+
+import docentesCarreraAdministracionEmpresas from "@/consts/facultades/docentes-facultad-de-ciencias-economicas";
+
+const content = {
+  title: "Administración de Empresas Agropecuarias | UNAG",
+};
+
+export const prerender = true;
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/carreras/bg-administracion-empresas-agropecuarias.webp"
+    etiqueta="Carreras"
+    titulo="Administración de Empresas Agropecuarias"
+  />
+
+  <!-- Contenido principal con sidebar -->
+  <section class="relative bg-white py-12 lg:py-16 text-unag-gray">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <aside class="lg:sticky lg:top-24 h-fit">
+          <DescargaCard
+            enlaces={[
+              {
+                nombre: "Plan de Estudio",
+                url: "/documents/planes-de-estudio/plan-de-administracion-de-empresas.pdf",
+              },
+            ]}
+          />
+
+          <SedeCard sedes={["Comayagua", "Catacamas", "Tomalá"]} />
+
+          <!-- <div
+            class="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow mt-5"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div class="bg-unag-green/10 p-3 rounded-lg">
+                <svg
+                  class="w-6 h-6 text-unag-green"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-gray-800">Coordinación</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">
+              Contáctanos para más información
+            </p>
+            <a
+              href="mailto:fmvz@unag.edu.hn"
+              class="block text-sm text-unag-green hover:text-unag-dark-green font-medium break-words transition-colors"
+            >
+              fmvz@unag.edu.hn
+            </a>
+          </div> -->
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="lg:col-span-3 space-y-12">
+          <article class="scroll-mt-24">
+            <div class="">
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <h2>Misión</h2>
+                <p class="bg-unag-gray/10 p-5 rounded-sm">
+                  La carrera de Administración de Empresas Agropecuarias formas
+                  profesionales con habilidades técnicas, humanas y
+                  conceptuales, con amplia visión del mundo, responsabilidad
+                  social y compromiso ético, líderes en la gestión del
+                  conocimiento administrativo y tecnológico, capaces de
+                  emprender y gerenciar empresas contribuyendo a la solución de
+                  problemas prioritarios del desarrollo sostenible de país.
+                </p>
+
+                <h2>Visión</h2>
+                <p class="bg-unag-gray/10 p-5 rounded-sm">
+                  Formar profesionales líderes y competentes en el desarrollo
+                  sostenible del sector administrativo-agropecuario en el marco
+                  de los avances de la ciencia y la tecnología, sustentada en
+                  valores éticos, con aprendizaje permanente, innovación para
+                  generar y gerenciar empresas, comprometidos con la sociedad y
+                  el medio ambiente.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article id="perfil" class="scroll-mt-24">
+            <div
+              class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
+            >
+              <div class="flex items-center gap-3 mb-6">
+                <div class="bg-unag-green/10 p-3 rounded-lg">
+                  <File size={32} class="text-unag-green" />
+                </div>
+                <h2 class="text-2xl font-black text-gray-800">
+                  Perfil de la Carrera
+                </h2>
+              </div>
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <p>
+                  Nombre de la carrera: <strong
+                    >Administración de Empresas Agropecuarias</strong
+                  >, código: AE-530401, duración cuatro años. Con doce períodos
+                  académicos de quince semanas cada periodo en modalidad
+                  presencial en jornada nocturna y a distancia (fines de
+                  semana). Asignaturas del Plan de Estudio 57 con 196 unidades
+                  valorativas y acreditación de licenciatura en Administración
+                  de Empresas Agropecuarias.
+                </p>
+                <p>Son capacidades generales de los egresados:</p>
+                <ul>
+                  <li>
+                    Resolver problemas en su campo profesional, identificando y
+                    desarrollando opciones de solución.
+                  </li>
+                  <li>
+                    Emprender e innovar proyectos profesionales con liderazgo.
+                  </li>
+                  <li>
+                    Realizar investigación científica y participativa en su
+                    campo profesional.
+                  </li>
+                  <li>Comunicarse adecuadamente a través del idioma inglés.</li>
+                  <li>
+                    Expresar ideas, argumentos y mensajes de manera clara,
+                    coherente y precisa haciendo uso del lenguaje adecuado de
+                    acuerdo con el contexto en que se desenvuelva.
+                  </li>
+                  <li>
+                    Utilizar las Tecnologías de la Información y Comunicación
+                    (TIC) de forma eficiente.
+                  </li>
+                  <li>Trabajar en equipos proactivamente.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="mt-15">
+            <div
+              class="bg-unag-green/10 rounded-2xl p-8 border border-gray-100"
+            >
+              <div class="flex items-center gap-3 mb-6">
+                <div class="bg-unag-dark-green/10 p-3 rounded-lg">
+                  <FileCheck size={32} class="text-unag-green" />
+                </div>
+                <h2 class="text-2xl font-black text-gray-800">Requisitos</h2>
+              </div>
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <p>
+                  El estudiante que aspire ingresar a la carrera de
+                  Administración de Empresas Agropecuarias debe mostrar:
+                </p>
+                <ul>
+                  <li>
+                    Comprensión lectora (Capacidad de leer y comprender lo que
+                    se lee).
+                  </li>
+                  <li>
+                    Capacidad lógica (habiendo comprendido lo que se lee,
+                    capacidad de trasladar ese conocimiento a la solución de
+                    problemas).
+                  </li>
+                  <li>
+                    Interés por las ciencias administrativas, económicas y
+                    financieras y el sector agropecuario.
+                  </li>
+                  <li>
+                    Interés hacia las actividades del sector agropecuario, con
+                    una clara visión acerca de la importancia de la
+                    administración en las empresas, tanto agrícolas, pecuarias y
+                    agroindustriales.
+                  </li>
+                  <li>
+                    Disciplina, responsabilidad, autonomía y constancia para
+                    estudiar tanto con el acompañamiento directo del docente,
+                    como durante su trabajo independiente.
+                  </li>
+                  <li>Valores morales, éticos y humanos.</li>
+                  <li>
+                    Habilidad de comunicación e interacción para un aprendizaje
+                    colaborativo.
+                  </li>
+                  <li>
+                    Una aptitud adecuada para la lectura, juicio crítico y
+                    creativo con el fin de poder involucrarse en el proceso
+                    productivo.
+                  </li>
+                  <li>
+                    Poseer conocimiento en las áreas de: Ciencias básicas,
+                    matemáticas e inglés.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Docentes -->
+          <article id="docentes" class="mt-15">
+            <div class="mb-8">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="bg-unag-green/10 p-3 rounded-lg">
+                  <Users size={32} class="text-unag-green" />
+                </div>
+                <h2 class="text-2xl font-black text-gray-800">Docentes</h2>
+              </div>
+              <p class="text-gray-600 text-sm ml-16">
+                Conoce al equipo de profesionales que te guiarán en tu formación
+                académica:
+              </p>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {
+                  docentesCarreraAdministracionEmpresas.map((docente) => (
+                    <div class="mt-5">
+                      <DocenteCard
+                        nombreCompleto={docente.nombreCompleto}
+                        nombre={docente.nombre}
+                        apellido={docente.apellido}
+                        cargo={docente.cargo}
+                        grado={docente.grado}
+                        area={docente.area}
+                        correo={docente.correo}
+                      />
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </article>
+        </main>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .prose ul {
+    color: #374151;
+  }
+
+  .scroll-mt-24 {
+    scroll-margin-top: 6rem;
+  }
+</style>

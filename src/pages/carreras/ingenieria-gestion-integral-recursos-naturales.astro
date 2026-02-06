@@ -8,6 +8,7 @@ import DocenteCard from "@/components/astro/ui/docente-card.astro";
 
 import docentesCarreraRecursosNaturales from '@/consts/carreras/docentes-carrera-recursos-naturales';
 import DescargaCard from "@/components/astro/ui/descarga-card.astro";
+import SedeCard from "@/components/astro/ui/sede-card.astro";
 
 const content = {
   title: "Ingeniería en Gestión Integral de los Recursos Naturales | UNAG",
@@ -37,6 +38,8 @@ export const prerender = true;
               },
             ]}
           />
+
+          <SedeCard sedes={["Mistruck", "Catacamas", "Tomalá"]} />
 
           <div
             class="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow mt-5"

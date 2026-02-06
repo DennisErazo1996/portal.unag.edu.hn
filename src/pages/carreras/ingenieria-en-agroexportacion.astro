@@ -1,0 +1,294 @@
+---
+import Layout from "@/layouts/main.astro";
+import { File, FileCheck } from "@lucide/astro";
+
+import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
+import DescargaCard from "@/components/astro/ui/descarga-card.astro";
+import SedeCard from "@/components/astro/ui/sede-card.astro";
+
+const content = {
+  title: "Ingeniería en Agroexportación | UNAG",
+};
+
+export const prerender = true;
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/carreras/bg-ing-agroexportacion.webp"
+    etiqueta="Carreras"
+    titulo="Ingeniería en Agroexportación"
+  />
+
+  <!-- Contenido principal con sidebar -->
+  <section class="relative bg-white py-12 lg:py-16 text-unag-gray">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <aside class="lg:sticky lg:top-24 h-fit">
+          <DescargaCard
+            enlaces={[
+              {
+                nombre: "Plan de Estudio",
+                url: "/documents/planes-de-estudio/plan-de-ingenieria-en-agroexportacion.pdf",
+              },
+            ]}
+          />
+
+          <SedeCard sedes={["Comayagua"]} />
+
+          <!-- <div
+            class="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow mt-5"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div class="bg-unag-green/10 p-3 rounded-lg">
+                <svg
+                  class="w-6 h-6 text-unag-green"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-gray-800">Coordinación</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">
+              Contáctanos para más información
+            </p>
+            <a
+              href="mailto:fmvz@unag.edu.hn"
+              class="block text-sm text-unag-green hover:text-unag-dark-green font-medium break-words transition-colors"
+            >
+              fmvz@unag.edu.hn
+            </a>
+          </div> -->
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="lg:col-span-3 space-y-12">
+          <article class="scroll-mt-24">
+            <div class="">
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <p>
+                  La carrera de Ingeniería en Agroexportación, en el grado
+                  académico de Licenciatura, funciona bajo la dirección de la
+                  Facultad de Ciencias Económicas y Administrativas (FCEA).
+                </p>
+
+                <h2>Objetivo General</h2>
+                <p>
+                  Formar al profesional universitario graduado de la Carrera de
+                  Ingeniería en Agroexportación con las competencias,
+                  habilidades, capacidades y actitudes indispensables para
+                  responder a las exigencias y necesidades del sector
+                  agroexportador, cimentado en valores éticos y morales, respeto
+                  al entorno, con énfasis en la rentabilidad y competitividad de
+                  las empresas agroexportadoras.
+                </p>
+
+                <h2>Misión</h2>
+                <p class="bg-unag-gray/10 p-5 rounded-sm">
+                  La formación de líderes ciudadanos con habilidades productivas
+                  y comerciales, con una visión de la gestión de
+                  agroexportación, capaces de poner en práctica sus
+                  conocimientos con creatividad y espíritu crítico, utilizando
+                  la investigación y las tecnologías de la información y la
+                  comunicación, tomando como base valores éticos y morales.
+                </p>
+
+                <h2>Visión</h2>
+                <p class="bg-unag-gray/10 p-5 rounded-sm">
+                  Ser la carrera líder en el sector agroexportador, por su
+                  excelencia en el conocimiento, desarrollo y aplicación de las
+                  ciencias, así mismo la generación de investigaciones y la
+                  capacidad de innovación, respondiendo a las exigencias del
+                  mundo globalizado.
+                </p>
+
+                <h2>Area de Formación</h2>
+                <p>
+                  El Plan de Estudios de la Carrera de Ingeniería en
+                  Agroexportación está orientada a principios
+                  político-filosóficos que rigen el trabajo académico de la
+                  institución, respondiendo a la actual necesidad humana
+                  mediante la formación general y ubicándose en lo científico,
+                  material y políticamente en el medio internacional mediante la
+                  formación profesional especializada que le permita al hombre
+                  actuar hacia la transformación científica de su entorno, este
+                  plan incluye siete áreas disciplinarias conformadas de la
+                  siguientes manera: Formación General, Ciencias Ingenieriles y
+                  Aplicadas a la Agroindustria, Administración, Economía y
+                  Finanzas, Marketing y Comercialización, Comercio
+                  Internacional, Calidad y el Aprender-Haciendo.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="mt-15">
+            <div
+              class="bg-unag-green/10 rounded-2xl p-8 border border-gray-100"
+            >
+              <div class="flex items-center gap-3 mb-6">
+                <div class="bg-unag-dark-green/10 p-3 rounded-lg">
+                  <FileCheck size={32} class="text-unag-green" />
+                </div>
+                <h2 class="text-2xl font-black text-gray-800">Requisitos</h2>
+              </div>
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <p>Son requisitos para admisión de estudiantes de pregrado:</p>
+                <ul>
+                  <li>
+                    Aprobar la prueba de admisión para el nivel superior
+                    establecida por la Institución.
+                  </li>
+                  <li>
+                    Notificación de haber sido aceptado por aprobación de la
+                    Universidad Nacional de Agricultura.
+                  </li>
+                  <li>
+                    Comprobante de prueba antidoping realizado por laboratorio
+                    autorizado por la Universidad Nacional de Agricultura.
+                  </li>
+                  <li>
+                    Tarjeta de salud extendida por el Ministerio de Salud
+                    Pública.
+                  </li>
+                  <li>
+                    Certificación de Conducta emitida por la Institución donde
+                    egresó.
+                  </li>
+                  <li>
+                    Dos copias del título de educación media (ambos lados).
+                  </li>
+                  <li>Acta de graduación del nivel medio (original).</li>
+                  <li>
+                    Certificación de estudios de Educación Media original,
+                    emitida por la Institución donde egresó.
+                  </li>
+                  <li>Dos fotografías tamaño carnet.</li>
+                  <li>Partida de Nacimiento original.</li>
+                  <li>Hoja de antecedentes policiales.</li>
+                  <li>Hoja de antecedentes penales.</li>
+                  <li>
+                    Dos copias de la tarjeta de identidad (en caso de tenerla).
+                  </li>
+                  <li>
+                    Pagar las tarifas establecidas en el Plan de Arbitrios de la
+                    Universidad Nacional de Agricultura.
+                  </li>
+                  <li>
+                    Firmar carta de compromiso mediante la cual acepta
+                    voluntariamente respetar y cumplir el presente Estatuto,
+                    Reglamentos y Normas de esta Universidad.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article id="perfil" class="scroll-mt-24">
+            <div
+              class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100"
+            >
+              <div class="flex items-center gap-3 mb-6">
+                <div class="bg-unag-green/10 p-3 rounded-lg">
+                  <File size={32} class="text-unag-green" />
+                </div>
+                <h2 class="text-2xl font-black text-gray-800">
+                  Perfil de Egreso
+                </h2>
+              </div>
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <p>
+                  La carrera de Ingeniería en Agroexportación, define que los
+                  graduados están en capacidad de:
+                </p>
+
+                <ul class="list-disc list-inside space-y-2">
+                  <li>Analizar y sintetizar, trabajo en equipo.</li>
+                  <li>
+                    Interpretar y evaluar costos, precios y cotizaciones
+                    internacionales.
+                  </li>
+                  <li>
+                    Formular y evaluar proyectos de Agroexportación e
+                    investigación de mercados internacionales, así mismo los
+                    lineamientos de políticas internacionales, tendencias y
+                    estrategias para enfrentar los retos de sus homólogos.
+                  </li>
+                  <li>
+                    Brindar asesorías técnicas a instituciones públicas y
+                    empresas del sector agroexportador, utilizando estándares de
+                    calidad para productos de exportación, con el fin de cumplir
+                    con las normas internacionales y evitar castigos o
+                    penalizaciones por su no cumplimento.
+                  </li>
+                  <li>
+                    Mostrar sensibilidad a problemas de seguridad alimentaria,
+                    actuando en consecuencia en la búsqueda de alternativas
+                    viables para mejorar la calidad de vida.
+                  </li>
+                  <li>
+                    Gestionar los trámites de exportación de los productos
+                    agrícolas cumpliendo con las normativas nacionales e
+                    internacionales.
+                  </li>
+                  <li>
+                    Organizar la logística de distribución de los productos
+                    agrícolas de acuerdo al tipo de producto y destino final de
+                    exportación y monitorea el recibo de los productos por el
+                    importador.
+                  </li>
+                  <li>
+                    Gerenciar empresas agroindustriales, con el fin de buscar
+                    mecanismos para lograr la eficiencia y eficacia en las
+                    actividades de exportación, y conocer la oferta exportable
+                    atractiva.
+                  </li>
+                  <li>
+                    Manejar los requisitos de calidad e inocuidad para
+                    exportación de productos y procesos aplicables a cosecha y
+                    postcosecha de productos agrícolas, basados en las ciencias
+                    económicos, sociales, ambientales, reglamentación y
+                    tecnológicas.
+                  </li>
+                  <li>
+                    Conocer y evaluar envases y embalajes para productos
+                    agrícolas.
+                  </li>
+                  <li>Desarrollar bio-negocios internacionales.</li>
+                  <li>
+                    Conocer los procesos de transporte internacional de carga
+                    perecible, los métodos de conservación de productos
+                    agrícolas y el control de calidad en mercados
+                    internacionales.
+                  </li>
+                  <li>
+                    Evaluar el marco jurídico aplicado a la gestión de
+                    agroexportación.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </main>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .prose ul {
+    color: #374151;
+  }
+
+  .scroll-mt-24 {
+    scroll-margin-top: 6rem;
+  }
+</style>

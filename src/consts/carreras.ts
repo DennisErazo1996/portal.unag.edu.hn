@@ -44,7 +44,7 @@ const carreras = [
   {
     nombre: "Ingeniería en Agroexportación",
     imagen: "/img/carreras/bg-ing-agroexportacion.webp",
-    link: "https://portal.unag.edu.hn/ingenieria-en-agroexportacion/",
+    link: "/carreras/ingenieria-en-agroexportacion/",
     sedes: ["Comayagua", "Catacamas"],
   },
 ];

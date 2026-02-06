@@ -38,7 +38,7 @@ const carreras = [
   {
     nombre: "Licenciatura en Economía Social Agraria",
     imagen: "/img/carreras/bg-economia-social-agraria.webp",
-    link: "https://portal.unag.edu.hn/licenciatura-en-economia-social-agraria/",
+    link: "/carreras/licenciatura-en-economia-social-agraria/",
     sedes: ["Catacamas"],
   },
   {

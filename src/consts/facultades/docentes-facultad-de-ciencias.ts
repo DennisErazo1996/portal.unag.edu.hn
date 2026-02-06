@@ -29,15 +29,6 @@ const docentesFacultadCiencias : Docente[] = [
     correo: "dflores@unag.edu.hn",
   },
   {
-    nombreCompleto: "Orlando David Murillo",
-    nombre: "Orlando",
-    apellido: "Murillo",
-    cargo: "Jefe de departamento académico de Ciencias sociales y Humanidades",
-    grado: "M.Sc. en Currículum",
-    area: "Área de desempeño profesional: Ciencias Sociales",
-    correo: "omurillo@unag.edu.hn",
-  },
-  {
     nombreCompleto: "Elky Marcela Bock",
     nombre: "Elky",
     apellido: "Bock",

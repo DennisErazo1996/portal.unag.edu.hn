@@ -1,0 +1,168 @@
+---
+import Layout from "@/layouts/main.astro";
+import { File, FileCheck } from "@lucide/astro";
+
+import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
+import DescargaCard from "@/components/astro/ui/descarga-card.astro";
+import SedeCard from "@/components/astro/ui/sede-card.astro";
+
+const content = {
+  title: "Licenciatura en Economía Social Agraria | UNAG",
+};
+
+export const prerender = true;
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/carreras/bg-economia-social-agraria.webp"
+    etiqueta="Carreras"
+    titulo="Licenciatura en Economía Social Agraria"
+  />
+
+  <!-- Contenido principal con sidebar -->
+  <section class="relative bg-white py-12 lg:py-16 text-unag-gray">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <aside class="lg:sticky lg:top-24 h-fit">
+          <DescargaCard
+            enlaces={[
+              {
+                nombre: "Plan de Estudio",
+                url: "/documents/planes-de-estudio/plan-de-economia-social-agraria.pdf",
+              },
+            ]}
+          />
+
+          <SedeCard sedes={["Catacamas", "Mistruck"]} />
+
+          <!-- <div
+            class="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow mt-5"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div class="bg-unag-green/10 p-3 rounded-lg">
+                <svg
+                  class="w-6 h-6 text-unag-green"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-lg text-gray-800">Coordinación</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">
+              Contáctanos para más información
+            </p>
+            <a
+              href="mailto:fmvz@unag.edu.hn"
+              class="block text-sm text-unag-green hover:text-unag-dark-green font-medium break-words transition-colors"
+            >
+              fmvz@unag.edu.hn
+            </a>
+          </div> -->
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="lg:col-span-3 space-y-12">
+          <article class="scroll-mt-24">
+            <div class="">
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <h2>Objetivo general</h2>
+                <p class="bg-unag-gray/10 p-5 rounded-sm">
+                  Formar profesionales con competencias y habilidades para
+                  favorecer el desarrollo sostenible del país, proponiendo,
+                  analizando, evaluando y ejecutando políticas socioeconómicas
+                  que permitan fortalecer las comunidades a través de la
+                  organización productiva asociativa del sector agrario,
+                  propiciando el liderazgo, la participación comunitaria y la
+                  cohesión social con equidad de género, a fin de solucionar
+                  problemas de manera innovadora gestionando mayores y mejores
+                  oportunidades orientadas a mejorar la calidad de vida de la
+                  población.
+                </p>
+
+                <h2>Campo ocupacional del graduado</h2>
+                <p>
+                  El futuro graduado de la carrera de Economía Social Agraria en
+                  el grado de Licenciatura estará capacitado para desempeñar
+                  funciones en:
+                </p>
+                <ul>
+                  <li>
+                    El sector público, privado, organismos no gubernamentales
+                    y/o multilaterales de nivel internacional.
+                  </li>
+                  <li>Empresas e instituciones financieras y bursátiles.</li>
+                  <li>
+                    Empresas e instituciones industriales, comerciales, mineras
+                    y agropecuarias.
+                  </li>
+                  <li>Organizaciones No Gubernamentales de desarrollo.</li>
+                  <li>
+                    Empresas e instituciones de servicios académicos, de
+                    investigación y de consultoría.
+                  </li>
+                  <li>Empresas o instituciones propias.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          
+
+          <article class="mt-15">
+            <div
+              class="bg-unag-green/10 rounded-2xl p-8 border border-gray-100"
+            >
+              <div class="flex items-center gap-3 mb-6">
+                <div class="bg-unag-dark-green/10 p-3 rounded-lg">
+                  <FileCheck size={32} class="text-unag-green" />
+                </div>
+                <h2 class="text-2xl font-black text-gray-800">Requisitos</h2>
+              </div>
+              <div class="prose prose-sm max-w-none text-gray-700">
+                <p>
+                  Son requisitos para admisión de estudiantes de pregrado:
+                </p>
+                <ul>
+                  <li>Aprobar la prueba de admisión para el nivel superior establecida por la Institución.</li>
+                  <li>Notificación de haber sido aceptado por aprobación de la Universidad Nacional de Agricultura.</li>
+                  <li>Comprobante de prueba antidoping realizado por laboratorio autorizado por la Universidad Nacional de Agricultura.</li>
+                  <li>Tarjeta de salud extendida por el Ministerio de Salud Pública.</li>
+                  <li>Certificación de Conducta emitida por la Institución donde egresó.</li>
+                  <li>Dos copias del título de educación media (ambos lados).</li>
+                  <li>Acta de graduación del nivel medio (original).</li>
+                  <li>Certificación de estudios de Educación Media original, emitida por la Institución donde egresó.</li>
+                  <li>Dos fotografías tamaño carnet.</li>
+                  <li>Partida de Nacimiento original.</li>
+                  <li>Hoja de antecedentes policiales.</li>
+                  <li>Hoja de antecedentes penales.</li>
+                  <li>Dos copias de la tarjeta de identidad (en caso de tenerla).</li>
+                  <li>Pagar las tarifas establecidas en el Plan de Arbitrios de la Universidad Nacional de Agricultura.</li>
+                  <li>Firmar carta de compromiso mediante la cual acepta voluntariamente respetar y cumplir el presente Estatuto, Reglamentos y Normas de esta Universidad.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </main>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .prose ul {
+    color: #374151;
+  }
+
+  .scroll-mt-24 {
+    scroll-margin-top: 6rem;
+  }
+</style>

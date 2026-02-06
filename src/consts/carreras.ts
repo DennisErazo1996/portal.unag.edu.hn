@@ -26,7 +26,7 @@ const carreras = [
   {
     nombre: "Ingeniería en Zootecnia",
     imagen: "/img/carreras/bg-ing-zootecnia.webp",
-    link: "https://portal.unag.edu.hn/ingenieria-en-zootecnia/",
+    link: "/carreras/ingenieria-en-zootecnia/",
     sedes: ["Catacamas"],
   },
   {

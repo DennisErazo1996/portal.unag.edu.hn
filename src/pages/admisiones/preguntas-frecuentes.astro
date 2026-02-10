@@ -1,0 +1,123 @@
+---
+import Layout from '@/layouts/main.astro';
+import HeaderPages from '@/components/astro/ui/header-bg-pages.astro';
+import Accordeon from '@/components/astro/ui/accordeon.astro';
+import carreras from '@/consts/carreras';
+
+const content = {
+    title: 'Preguntas Frecuentes | UNAG'
+}
+
+export const prerender = true;
+
+---
+
+<Layout content={content}>
+    <HeaderPages
+        imagen="/img/bg-default-unag.webp"
+        etiqueta="Admisiones"
+        titulo="Preguntas Frecuentes"
+        descripcion="Encuentra respuestas a las preguntas más comunes sobre el proceso de admisión, requisitos y más en la Universidad Nacional de Agricultura."
+    />
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="prose prose-sm max-w-none space-y-4">
+            
+            <Accordeon etiqueta="¿Cuáles son los requisitos para ingresar a la Universidad Nacional de Agricultura?">
+                <ul class="list-disc list-inside text-gray-600">
+                    <li>Realizar proceso de admisión.</li>
+                    <li>Mediante Prueba de Aptitud Académica.</li>
+                    <li>Mediante Proceso de Admisión interno de la UNAG.</li>
+                </ul>
+            </Accordeon>
+
+            <Accordeon etiqueta="¿Cuáles son los requisitos para participar en el proceso de admisión?">
+                <ul class="list-disc list-inside text-gray-600">
+                    <li>Ser egresado o estar cursando el último año de secundaria (bachillerato).</li>
+                    <li>No haber realizado el proceso más de dos veces.</li>
+                    <li>No tener código de matrícula en la UNAG.</li>
+                    <li>No haber sido expulsado de ninguna universidad de Honduras o extranjera.</li>
+                    <li>No ser estudiante actual de la UNAG.</li>
+                    <li>No ser egresado de la UNAG.</li>
+                    <li>No tener antecedentes penales o policiales.</li>
+                    <li>No pertenecer a ningún grupo antisocial o pandilla.</li>
+                    <li>Realizar el proceso de inscripción en las fechas convocadas por la UNAG o por la Universidad Nacional Autónoma de Honduras, UNAH.</li>
+                    <li>Si ha realizado la PAA para otra universidad hace dos años, o menos, puede pedir que se transfiera su nota de puntos para la UNAG y escribir una solicitud de participación en el proceso de admisión al correo: admisiones@unag.edu.hn donde especifique su información de contacto, su lugar de procedencia y las carreras de su interés en primera y segunda opción. Dicha solicitud y traslado de puntos de PAA, debe hacerse ocho días antes de las fechas convocadas por la UNAG para la realización de entrevistas, las cuales están estipuladas en el calendario de cada proceso de admisión convocado por la UNAG.</li>
+                    <li>Para competir por un cupo en la UNAG, los aspirantes deben haber cumplido con todas las etapas estipuladas: examen de conocimiento (PAA o examen de la UNAG), prueba psicométrica, prueba de integridad y entrevista.</li>
+                </ul>
+            </Accordeon>
+
+            <Accordeon etiqueta="¿Cuáles son los Requisitos para ser Admitido en la Universidad Nacional de Agricultura?">
+                <ul class="list-disc list-inside text-gray-600">
+                    <li>Realizar el proceso de admisión como lo indica en calendario.</li>
+                    <li>Obtener los resultados requeridos para obtener un cupo.</li>
+                    <li>Quedarse en la carrera que fue admitido, NO existe cambio de carrera para los admitidos.</li>
+                </ul>
+            </Accordeon>
+
+            <Accordeon etiqueta="¿Qué Oferta Académica ofrece la UNAG?">
+                <ul class="list-disc list-inside text-gray-600">
+                    {
+                        carreras.map((carrera) => (
+                            <li><a href={carrera.link} class="text-unag-green hover:underline">{carrera.nombre}</a></li>
+                        ))
+                    }
+                </ul>
+            </Accordeon>
+
+            <Accordeon etiqueta="¿Cuáles son las carreras de Modalidad de Internado Campus Catacamas?">
+                <ul class="list-disc list-inside text-gray-600">
+                    <li><a href="/carreras/ingenieria-agronomica" class="text-unag-green hover:underline">Ingeniería Agronómica</a></li>
+                    <li><a href="/carreras/ingenieria-en-recursos-naturales" class="text-unag-green hover:underline">Ingeniería en Gestión Integral de los Recursos Naturales</a></li>
+                    <li><a href="/carreras/ingenieria-en-tecnologia-alimentaria" class="text-unag-green hover:underline">Ingeniería en Tecnología Alimentaria</a></li>
+                    <li><a href="/carreras/medicina-veterinaria" class="text-unag-green hover:underline">Medicina Veterinaria</a></li>
+                    <li><a href="/carreras/ingenieria-en-zootecnia" class="text-unag-green hover:underline">Ingeniería en Zootecnia</a></li>
+                </ul>
+            </Accordeon>
+
+            <Accordeon etiqueta="¿Cuáles son las carreras de Modalidad de Externado Campus Catacamas?">
+                <ul class="list-disc list-inside text-gray-600">
+                    <li><a href="/carreras/licenciatura-en-economia-social-agraria" class="text-unag-green hover:underline">Licenciatura en Economía Social Agraria</a></li>
+                    <li><a href="/carreras/administracion-de-empresas-agropecuarias" class="text-unag-green hover:underline">Administración de Empresas Agropecuarias</a></li>
+                </ul>
+            </Accordeon>
+
+            <Accordeon etiqueta="¿Cuáles son las carreras de Modalidad Externado Centro Regional Comayagua?">
+                <ul class="list-disc list-inside text-gray-600">
+                    <li><a href="/carreras/ingenieria-en-recursos-naturales" class="text-unag-green hover:underline">Ingeniería en Gestión Integral de los Recursos Naturales</a></li>
+                    <li><a href="/carreras/ingenieria-en-agroexportacion" class="text-unag-green hover:underline">Ingeniería en Agroexportación</a></li>
+                </ul>
+            </Accordeon>
+
+            <Accordeon etiqueta="¿Cuáles son las carreras de Modalidad Externado Centro Regional de Tomalá?">
+                <ul class="list-disc list-inside text-gray-600">
+                    <li><a href="/carreras/ingenieria-en-recursos-naturales" class="text-unag-green hover:underline">Ingeniería en Gestión Integral de los Recursos Naturales</a></li>
+                    <li><a href="/carreras/administracion-de-empresas-agropecuarias" class="text-unag-green hover:underline">Administración de Empresas Agropecuarias</a></li>
+                </ul>
+            </Accordeon>
+
+            <Accordeon etiqueta="¿Cuál es el proceso de selección para ser admitido?">
+                <p>Selección estratificada de las mejores notas según la demanda de cada Carrera y el número de cupos definidos para esta.</p>
+            </Accordeon>
+
+            <Accordeon etiqueta="¿Cómo aplicar a una Beca en la Universidad Nacional de Agricultura?">
+                <p>Inmediatamente después que la oficina de Admisiones emita su carta de aceptación para una carrera interna, usted tiene una beca.</p>
+                <p class="mt-2 font-semibold">Cobertura total de la Beca:</p>
+                <ul class="list-disc list-inside text-gray-600">
+                    <li>Alojamiento</li>
+                    <li>Alimentación</li>
+                    <li>Internet en las áreas de estudio</li>
+                    <li>Biblioteca</li>
+                    <li>Servicios básicos de salud, odontología</li>
+                    <li>Servicio de Lavandería</li>
+                    <li>Servicio de barbería</li>
+                </ul>
+            </Accordeon>
+
+            <Accordeon etiqueta="¿Cuál es el Compromiso Económico que debe cubrir el padre de familia?">
+                <p>Todo estudiante becario tiene la responsabilidad obligatoria de efectuar un pago simbólico de Lps. 3,605.00 (TRES MIL SEISCIENTOS CINCO LEMPIRAS EXACTOS) como aporte a gastos de funcionamiento y matrícula, por cada período académico, contemplado en el Plan de Arbitrios.</p>
+            </Accordeon>
+
+        </div>
+    </section>
+</Layout>   

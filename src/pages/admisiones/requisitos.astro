@@ -1,0 +1,37 @@
+---
+import Layout from '@/layouts/main.astro';
+import HeaderPages from '@/components/astro/ui/header-bg-pages.astro';
+import Accordeon from '@/components/astro/ui/accordeon.astro';
+import carreras from '@/consts/carreras';
+
+const content = {
+    title: 'Requisitos | UNAG'
+}
+
+export const prerender = true;
+
+---
+
+<Layout content={content}>
+    <HeaderPages
+        imagen="/img/bg-default-unag-02.webp"
+        etiqueta="Admisiones"
+        titulo="Requisitos"
+        descripcion="Conoce los requisitos necesarios para ingresar a la Universidad Nacional de Agricultura, incluyendo el proceso de admisión, documentación requerida y criterios de selección."
+    />
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="prose prose-sm max-w-none space-y-4">
+            
+            <Accordeon etiqueta="¿Cuáles son los requisitos para ingresar a la Universidad Nacional de Agricultura?">
+                <ul class="list-disc list-inside text-gray-600">
+                    <li>Realizar proceso de admisión.</li>
+                    <li>Mediante Prueba de Aptitud Académica.</li>
+                    <li>Mediante Proceso de Admisión interno de la UNAG.</li>
+                </ul>
+            </Accordeon>
+
+
+        </div>
+    </section>
+</Layout>   

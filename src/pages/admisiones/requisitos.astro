@@ -20,18 +20,130 @@ export const prerender = true;
         descripcion="Conoce los requisitos necesarios para ingresar a la Universidad Nacional de Agricultura, incluyendo el proceso de admisión, documentación requerida y criterios de selección."
     />
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="prose prose-sm max-w-none space-y-4">
-            
-            <Accordeon etiqueta="¿Cuáles son los requisitos para ingresar a la Universidad Nacional de Agricultura?">
-                <ul class="list-disc list-inside text-gray-600">
-                    <li>Realizar proceso de admisión.</li>
-                    <li>Mediante Prueba de Aptitud Académica.</li>
-                    <li>Mediante Proceso de Admisión interno de la UNAG.</li>
-                </ul>
-            </Accordeon>
-
-
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16 text-unag-gray">
+        
+        <!-- Política de Admisión -->
+        <div class="max-w-4xl mx-auto text-center space-y-4">
+            <h2 class="text-3xl font-bold text-gray-900">Política de Admisión</h2>
+            <p class="text-sm text-gray-600 leading-relaxed">
+                La Universidad Nacional de Agricultura ha implementado una nueva política de admisión la cual se ejecutó en 2020 y en adelante será parte del proceso de admisión institucional, para garantizar que el estudiantado represente a toda la rosa geográfica nacional y todas las variantes del ser hondureño.
+            </p>
+            <div class="bg-gray-50 text-gray-800 py-3 px-6 rounded-full inline-block text-sm mt-4 border border-gray-200">
+                Para participar en cualquier proceso de admisión de la UNAG, debe cumplir los siguientes requisitos:
+            </div>
         </div>
+
+        <!-- Lista de Requisitos -->
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white rounded-3xl shadow-lg shadow-gray-200/50 border border-gray-100 p-8 sm:p-12">
+                <ul class="space-y-4">
+                    {[
+                        "Ser egresado o estar cursando el último año de secundaria (bachillerato).",
+                        "No haber realizado el proceso más de dos veces.",
+                        "No tener código de matrícula en la UNAG.",
+                        "No haber sido expulsado de ninguna universidad de Honduras o extranjera.",
+                        "No ser estudiante actual de la UNAG.",
+                        "No ser egresado de la UNAG.",
+                        "No tener antecedentes penales o policiales.",
+                        "No pertenecer a ningún grupo antisocial o pandilla.",
+                        "Realizar el proceso de inscripción en las fechas convocadas por la UNAG o por la Universidad Nacional Autónoma de Honduras, UNAH."
+                    ].map(req => (
+                        <li class="flex items-start gap-2 p-1 rounded-xl hover:bg-green-50/50 transition-colors group">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            </div>
+                            <span class="text-gray-700 font-medium text-sm">{req}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Transferencia PAA -->
+        <div class="max-w-4xl mx-auto bg-unag-green/10 rounded-2xl p-8 border border-blue-100 flex flex-col md:flex-row gap-6 items-start">
+             <div class="flex-shrink-0 p-3 bg-unag-dark-green text-white rounded-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>
+             </div>
+             <div class="space-y-3">
+                <h3 class="text-xl font-bold text-unag-dark-green">¿Realizó la PAA en otra universidad?</h3>
+                <p class="text-unag-dark-green leading-relaxed text-sm">
+                    Si ha realizado la PAA para otra universidad hace <span class="font-semibold">dos años o menos</span>, puede pedir que se transfiera su nota de puntos para la UNAG y escribir una solicitud de participación en el proceso de admisión al correo: <a href="mailto:admisiones@unag.edu.hn" class="underline decoration-2 hover:text-blue-600 font-semibold">admisiones@unag.edu.hn</a>.
+                </p>
+                <div class="text-sm text-unag-dark-green font-medium">
+                    Debe especificar su información de contacto, su lugar de procedencia y las carreras de su interés en primera y segunda opción.
+                    <span class="block mt-1 font-bold">* Dicha solicitud debe hacerse quince días antes de las fechas convocadas por la UNAG.</span>
+                </div>
+             </div>
+        </div>
+
+        <!-- Contacto Grid -->
+        <div class="border-t border-gray-200 pt-16 text-unag-gray">
+            <h3 class="text-2xl font-bold text-gray-900 mb-2 text-center">Consultas por Facultad y Sede</h3>
+            <p class="text-center mb-12 max-w-2xl mx-auto text-sm">
+                Para evacuar dudas o consultar información específica, comuníquese en horario de 8:00 a.m. a 5:00 p.m., de lunes a viernes.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                    {
+                        title: "Medicina Veterinaria e Ingeniaría en Zootecnia",
+                        tel: "(+504) 8963-6041",
+                        telLink: "89636041",
+                        email: "admisionesfmvz@unag.edu.hn"
+                    },
+                    {
+                        title: "Administración de Empresas, Economía Agrícola e Ing. Agroexportación",
+                        tel: "(+504) 9895-4073",
+                        telLink: "98954073",
+                        email: "mguillen@unag.edu.hn"
+                    },
+                    {
+                        title: "Ingeniería en Tecnología Alimentaria",
+                        tel: "(+504) 8896-3712",
+                        telLink: "88963712",
+                        email: "fsanchez@unag.edu.hn"
+                    },
+                    {
+                        title: "Ing. Gestión Integral de Recursos Naturales",
+                        tel: "(+504) 9607-2969",
+                        telLink: "50496072969",
+                        email: "igirn@unag.edu.hn"
+                    },
+                    {
+                        title: "Ingeniería Agronómica",
+                        email: "coordinacionia@unag.edu.hn"
+                    },
+                    {
+                        title: "Centro Regional de Comayagua",
+                        tel: "(+504) 9736-6720",
+                        telLink: "97366720",
+                        email: "jvega@unag.edu.hn"
+                    },
+                    {
+                        title: "Centro Regional de Tomalá",
+                        tel: "(+504) 8791-0538",
+                        telLink: "87910538",
+                        email: "rmorales@unag.edu.hn"
+                    }
+                ].map(contact => (
+                    <article class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-md hover:bg-white transition-all duration-300">
+                        <h4 class="font-bold text-gray-900 mb-4 min-h-[3rem]">{contact.title}</h4>
+                        <div class="space-y-3 text-sm">
+                            {contact.tel && (
+                                <a href={`tel:${contact.telLink}`} class="flex items-center gap-2 text-gray-600 hover:text-green-700 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                    {contact.tel}
+                                </a>
+                            )}
+                            <a href={`mailto:${contact.email}`} class="flex items-center gap-2 text-gray-600 hover:text-green-700 transition-colors break-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                {contact.email}
+                            </a>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </div>
+
     </section>
 </Layout>   

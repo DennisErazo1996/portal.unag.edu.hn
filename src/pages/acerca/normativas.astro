@@ -3,6 +3,7 @@ import Layout from '@/layouts/main.astro';
 import HeaderPages from '@/components/astro/ui/header-bg-pages.astro';
 import { FileText, Download, Eye } from 'lucide-react';
 import normativas from '@/consts/normativas';
+import ArchivoCard from '@/components/astro/ui/archivo-card.astro';
 
 const content = {
     title: 'Normativas | UNAG'
@@ -27,48 +28,12 @@ export const prerender = true;
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {normativas.map((doc) => (
-                <div class="group relative bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col h-full overflow-hidden">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-unag-green transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300"></div>
-                    
-                    <div class="p-6 flex-grow">
-                        <div class="w-12 h-12 rounded-lg bg-unag-overlay-green text-unag-green flex items-center justify-center mb-4 group-hover:bg-unag-green group-hover:text-white transition-colors duration-300">
-                            <FileText className="w-6 h-6" />
-                        </div>
-                        
-                        <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-unag-green transition-colors">
-                            {doc.title}
-                        </h3>
-                        
-                        <p class="text-sm text-gray-500 mb-4 line-clamp-3">
-                            {doc.description}
-                        </p>
-                        
-                        <span class="inline-block px-2 py-1 bg-gray-50 text-xs font-medium text-gray-500 rounded-md">
-                            {doc.date}
-                        </span>
-                    </div>
-
-                    <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
-                        <a 
-                            href={doc.file} 
-                            class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-unag-green transition-colors"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <Eye className="w-4 h-4" />
-                            <span>Ver</span>
-                        </a>
-                        
-                        <a 
-                            href={doc.file} 
-                            class="flex items-center gap-2 text-sm font-medium text-white bg-unag-green hover:bg-unag-dark-green px-3 py-1.5 rounded-md transition-colors shadow-sm"
-                            download
-                        >
-                            <Download className="w-4 h-4" />
-                            <span>Descargar</span>
-                        </a>
-                    </div>
-                </div>
+                <ArchivoCard 
+                    titulo={doc.title} 
+                    descripcion={doc.description} 
+                    fecha={doc.date} 
+                    archivo={doc.file} 
+                />
             ))}
         </div>
         

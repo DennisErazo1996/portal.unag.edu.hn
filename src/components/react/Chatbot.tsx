@@ -1,8 +1,10 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Loader2, User, Bot } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2, User, Bot, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
+import { sileo, Toaster } from 'sileo';
+
 
 interface Message {
   role: 'user' | 'model';
@@ -75,6 +77,28 @@ export default function Chatbot() {
   useEffect(() => {
     scrollToBottom();
   }, [messages, isOpen]);
+
+  const clearChat = () => {
+    sileo.action({
+      fill: 'black',
+      duration: 3000,
+      styles: {
+        title: 'text-white!',
+        button: 'bg-unag-green! text-white!',
+        badge: 'bg-unag-green! text-white!',
+      },
+      title: '¿Deseas eliminar el historial del chat?',
+      button: {
+        title: 'Eliminar',
+        onClick: () => {
+          const initialMessage: Message = { role: 'model', text: '¡Hola! Soy el asistente virtual de la UNAG. ¿En qué puedo ayudarte hoy?' };
+          setMessages([initialMessage]);
+          localStorage.removeItem('chat_history');
+          sileo.success({ title: 'Historial eliminado', fill: 'black' });
+        }
+      }
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -154,12 +178,22 @@ export default function Chatbot() {
               </p>
             </div>
           </div>
-          <button 
-            onClick={() => setIsOpen(false)}
-            className="hover:bg-white/20 p-1 rounded-full transition-colors"
-          >
-            <X size={18} />
-          </button>
+          <div className="flex items-center gap-1">
+            <button 
+              onClick={clearChat}
+              className="hover:bg-white/20 p-1.5 rounded-full transition-colors"
+              title="Vaciar chat"
+            >
+              <Trash2 size={16} />
+            </button>
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="hover:bg-white/20 p-1.5 rounded-full transition-colors"
+              title="Cerrar"
+            >
+              <X size={18} />
+            </button>
+          </div>
         </div>
 
         {/* Messages Area */}
@@ -254,6 +288,7 @@ export default function Chatbot() {
           <MessageCircle size={28} />
         </button>
       </div>
+      <Toaster position="top-center" />
     </div>
   );
 }

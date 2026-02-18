@@ -1,111 +1,134 @@
 import type { APIRoute } from 'astro';
-import OpenAI from 'openai';
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
+import { getChatProvider, type ChatMessage, type ProviderType } from '@/lib/chat-providers';
 
 export const prerender = false;
 
+// Cache para la base de conocimientos (se carga una sola vez)
+let knowledgeCache: { base: string; calendario: string; siteContent: string } | null = null;
+
+async function loadKnowledgeBase() {
+  if (knowledgeCache) return knowledgeCache;
+
+  const basePath = path.join(process.cwd(), 'src', 'data');
+  
+  let base = '';
+  let calendario = '';
+  let siteContent = '';
+
+  try {
+    base = await fs.readFile(path.join(basePath, 'unag-knowledge.md'), 'utf-8');
+  } catch (error) {
+    console.warn('No se pudo cargar la base de conocimientos:', error);
+  }
+
+  try {
+    calendario = await fs.readFile(path.join(basePath, 'calendario_academico.md'), 'utf-8');
+  } catch (error) {
+    console.warn('No se pudo cargar el calendario académico:', error);
+  }
+
+  try {
+    siteContent = await fs.readFile(path.join(basePath, 'site-content.md'), 'utf-8');
+  } catch (error) {
+    console.warn('No se pudo cargar el contenido del sitio:', error);
+  }
+
+  knowledgeCache = { base, calendario, siteContent };
+  return knowledgeCache;
+}
+
+function buildSystemPrompt(knowledge: { base: string; calendario: string; siteContent: string }): string {
+  return `
+    Eres un asistente virtual útil y amigable para la Universidad Nacional de Agricultura (UNAG) de Honduras.
+    Tu objetivo es ayudar a estudiantes, aspirantes y visitantes con información sobre la universidad.
+    
+    Instrucciones clave:
+    1. Solo responde preguntas relacionadas con la UNAG (carreras, admisiones, historia, ubicación, vida estudiantil, etc.).
+    2. Si te preguntan sobre otros temas no relacionados, responde amablemente que solo puedes asistir con información de la UNAG.
+    3. Mantén un tono profesional, motivador y cortés.
+    4. La UNAG está ubicada en Catacamas, Olancho.
+    5. Sé conciso pero informativo.
+    6. Responde preguntas relacionadas con la agricultura.
+    7. Busca primeramente información localmente y luego en internet si no la sabes.
+    8. Prioriza información actualizada del calendario académico oficial.
+    9. Usa información del sitio web oficial https://portal.unag.edu.hn/ cuando sea necesario.
+    10. No puedes generar documentos como pdfs, solo puedes proporcionar texto plano.
+    11. Usa buena ortografía y gramática en tus respuestas en español.
+    12. Cuando te pregunten por páginas específicas, usa la información del contenido del sitio.
+
+    INFORMACIÓN OFICIAL DE LA UNAG:
+    ${knowledge.base}
+
+    CALENDARIO ACADÉMICO OFICIAL:
+    ${knowledge.calendario}
+
+    CONTENIDO DEL SITIO WEB:
+    ${knowledge.siteContent}
+  `;
+}
+
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const apiKey = import.meta.env.OPENAI_API_KEY;
-
-    if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'OPENAI_API_KEY is not set' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    const openai = new OpenAI({
-      apiKey: apiKey,
-    });
-
     const body = await request.json();
-    const { message } = body;
+    const { messages, provider = 'openai' } = body as { 
+      messages?: ChatMessage[]; 
+      provider?: ProviderType;
+    };
 
-    if (!message) {
-      return new Response(JSON.stringify({ error: 'Message is required' }), {
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      return new Response(JSON.stringify({ error: 'Messages are required' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    // Cargar la base de conocimientos de la UNAG
-    const knowledgeBasePath = path.join(process.cwd(), 'src', 'data', 'unag-knowledge.md');
-    let knowledgeBase = '';
-    try {
-      knowledgeBase = fs.readFileSync(knowledgeBasePath, 'utf-8');
-    } catch (error) {
-      console.warn('No se pudo cargar la base de conocimientos:', error);
-    }
+    // Cargar base de conocimientos (con cache)
+    const knowledge = await loadKnowledgeBase();
+    const systemPrompt = buildSystemPrompt(knowledge);
 
-    const calendarioAcademicoPath = path.join(process.cwd(), 'src', 'data', 'calendario_academico.md');
-    let calendarioAcademico = '';
-    try {
-      calendarioAcademico = fs.readFileSync(calendarioAcademicoPath, 'utf-8');
-    } catch (error) {
-      console.warn('No se pudo cargar el calendario académico:', error);
-    }
+    // Obtener el provider correcto usando el factory
+    const chatProvider = getChatProvider(provider);
 
-    
-
-    const systemPrompt = `
-      Eres un asistente virtual útil y amigable para la Universidad Nacional de Agricultura (UNAG) de Honduras.
-      Tu objetivo es ayudar a estudiantes, aspirantes y visitantes con información sobre la universidad.
-      
-      Instrucciones clave:
-      1. Solo responde preguntas relacionadas con la UNAG (carreras, admisiones, historia, ubicación, vida estudiantil, etc.).
-      2. Si te preguntan sobre otros temas no relacionados, responde amablemente que solo puedes asistir con información de la UNAG.
-      3. Mantén un tono profesional, motivador y cortés.
-      4. La UNAG está ubicada en Catacamas, Olancho.
-      5. Sé conciso pero informativo.
-      6. Responde preguntas relacionadas con la agricultura.
-      7. Busca primeramente informacion localmente y luego en internet si no la sabes.
-      8. Prioriza infromación actualizada del calendario académico oficial.
-      9. Usa informacion del sitio web oficial https://unag.edu.hn/ cuando sea necesario.
-      10. No puedes generar documentos como pdfs, solo puedes proporcionar texto plano.
-
-      Aquí tienes información adicional y la del calendario académico oficial para ayudarte a responder mejor las preguntas:
-
-      INFORMACIÓN OFICIAL DE LA UNAG:
-      ${knowledgeBase}
-
-      CALENDARIO ACADÉMICO OFICIAL:
-      ${calendarioAcademico}
-    `;
-
-    const completion = await openai.chat.completions.create({
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "assistant", content: "Entendido. Soy el asistente virtual de la UNAG. Estoy listo para ayudar con información sobre la universidad, sus carreras, admisiones y más. ¿En qué puedo ayudarte hoy?" },
-        { role: "user", content: message }
-      ],
-      // Usando modelo con búsqueda web integrada
-      model: "gpt-5-nano",
+    const reply = await chatProvider({
+      systemPrompt,
+      messages,
     });
 
-    const text = completion.choices[0].message.content;
-
-    return new Response(JSON.stringify({ reply: text }), {
+    return new Response(JSON.stringify({ reply }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
 
   } catch (error: any) {
     console.error('Error in chat API:', error);
-    
-    // Check for 429 error specifically (OpenAI also uses 429)
-    if (error.status === 429) {
-       return new Response(JSON.stringify({ 
-         error: 'Quota exceeded. Please try again later.',
-         code: 'QUOTA_EXCEEDED'
-       }), {
+
+    // Error de quota (429)
+    if (error.status === 429 || error.message?.includes('quota')) {
+      return new Response(JSON.stringify({ 
+        error: 'Quota exceeded. Please try again later.',
+        code: 'QUOTA_EXCEEDED'
+      }), {
         status: 429,
         headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    return new Response(JSON.stringify({ error: error.message || 'Internal Server Error', stack: error.stack }), {
+    // Error de API key no configurada
+    if (error.message?.includes('API_KEY')) {
+      return new Response(JSON.stringify({ 
+        error: error.message,
+        code: 'API_KEY_MISSING'
+      }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    return new Response(JSON.stringify({ 
+      error: error.message || 'Internal Server Error'
+    }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });

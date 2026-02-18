@@ -94,10 +94,10 @@ export default function Chatbot() {
         content: msg.text
       }));
 
-      const response = await fetch('/api/chat-openai', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: apiMessages }),
+        body: JSON.stringify({ messages: apiMessages, provider: 'openai' }),
       });
 
       const data = await response.json();

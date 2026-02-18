@@ -79,9 +79,9 @@ export default function Chatbot() {
   }, [messages, isOpen]);
 
   const clearChat = () => {
-    sileo.action({
+    const toastId = sileo.action({
       fill: 'black',
-      duration: 3000,
+      duration: null,
       styles: {
         title: 'text-white!',
         button: 'bg-unag-green! text-white!',
@@ -91,6 +91,7 @@ export default function Chatbot() {
       button: {
         title: 'Eliminar',
         onClick: () => {
+          sileo.dismiss(toastId);
           const initialMessage: Message = { role: 'model', text: '¡Hola! Soy el asistente virtual de la UNAG. ¿En qué puedo ayudarte hoy?' };
           setMessages([initialMessage]);
           localStorage.removeItem('chat_history');

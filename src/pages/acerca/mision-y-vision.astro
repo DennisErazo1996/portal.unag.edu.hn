@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/main.astro";
 import misionVision from "@/consts/mision-vision";
 import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
@@ -6,8 +8,6 @@ import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
 const content = {
   title: "Misión y Visión | UNAG",
 };
-
-export const prerender = true;
 ---
 
 <Layout content={content}>

@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/main.astro";
 import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
 import DocenteCard from "@/components/astro/ui/docente-card.astro";
@@ -8,8 +10,6 @@ import docentesFacultadCienciasEconomicas from "@/consts/facultades/docentes-fac
 const content = {
   title: "Facultad de Ciencias Económicas y Administrativas | UNAG",
 };
-
-export const prerender = true;
 
 const decano = docentesFacultadCienciasEconomicas.slice(0, 1);
 const docentes = docentesFacultadCienciasEconomicas.slice(

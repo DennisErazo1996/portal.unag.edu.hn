@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/main.astro";
 import HeaderSimple from "@/components/astro/ui/header-simple.astro";
 import {
@@ -8,8 +10,6 @@ import {
 import PersonalCard from "@/components/astro/ui/personal-card.astro";
 import carreras from "@/consts/carreras";
 import { ArrowUpRight } from "@lucide/astro";
-
-export const prerender = true;
 
 const content = {
   title: "Sede Regional Comayagua | UNAG",

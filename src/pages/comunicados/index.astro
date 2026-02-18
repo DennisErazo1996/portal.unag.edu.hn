@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/main.astro';
 import { MoveRight, Calendar, Tag, Star } from '@lucide/astro';
@@ -19,9 +21,6 @@ const comunicados = (await getCollection('comunicados')).sort(
 const content = {
   title: "Comunicados | UNAG",
 };
-
-
-export const prerender = true;
 ---
 
 <Layout content={content}>

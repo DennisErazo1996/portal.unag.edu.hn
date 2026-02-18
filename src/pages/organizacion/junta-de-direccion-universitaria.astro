@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/main.astro";
 import HeaderSimple from "@/components/astro/ui/header-simple.astro";
 import { miembrosJDU } from "@/consts/miembros-jdu";
@@ -6,8 +8,6 @@ import { miembrosJDU } from "@/consts/miembros-jdu";
 const content = {
   title: "Junta de Dirección Universitaria | UNAG",
 };
-
-export const prerender = true;
 ---
 
 <Layout content={content}>

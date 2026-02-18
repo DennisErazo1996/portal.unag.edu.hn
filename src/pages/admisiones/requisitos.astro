@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from '@/layouts/main.astro';
 import HeaderPages from '@/components/astro/ui/header-bg-pages.astro';
 import Accordeon from '@/components/astro/ui/accordeon.astro';
@@ -7,9 +9,6 @@ import carreras from '@/consts/carreras';
 const content = {
     title: 'Requisitos | UNAG'
 }
-
-export const prerender = true;
-
 ---
 
 <Layout content={content}>

@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/main.astro';
 import { Calendar, Tag, ArrowLeft, Download, FileText, Star } from '@lucide/astro';
@@ -27,8 +29,6 @@ const content = {
 };
 
 const hasAttachments = comunicado.data.attachments && comunicado.data.attachments.length > 0;
-
-export const prerender = true;
 
 ---
 

@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/main.astro";
 import { File, FileCheck } from "@lucide/astro";
 
@@ -9,8 +11,6 @@ import SedeCard from "@/components/astro/ui/sede-card.astro";
 const content = {
   title: "Licenciatura en Economía Social Agraria | UNAG",
 };
-
-export const prerender = true;
 ---
 
 <Layout content={content}>

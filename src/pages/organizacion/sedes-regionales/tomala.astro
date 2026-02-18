@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/main.astro";
 import HeaderSimple from "@/components/astro/ui/header-simple.astro";
 import estructuraAdministrativa from "@/consts/sedes-regionales/estructura-tomala";
@@ -9,8 +11,6 @@ import { ArrowUpRight } from "@lucide/astro";
 const content = {
   title: "Sede Regional Tomalá | UNAG",
 };
-
-export const prerender = true;
 
 const director = estructuraAdministrativa.slice(0, 1);
 const personalAdministrativo = estructuraAdministrativa.slice(1, estructuraAdministrativa.length);

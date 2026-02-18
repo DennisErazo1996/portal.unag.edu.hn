@@ -88,7 +88,7 @@ export const POST: APIRoute = async ({ request }) => {
         { role: "system", content: systemPrompt },
         ...messages
       ],
-      model: "gpt-5-nano",
+      model: "gpt-4o-mini",
     });
 
     const text = completion.choices[0].message.content;

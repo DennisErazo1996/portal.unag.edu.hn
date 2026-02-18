@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/main.astro";
 import { Download, FileText } from "@lucide/astro";
 import { File, FileCheck, Users } from "@lucide/astro";
@@ -13,8 +15,6 @@ import docentesCarreraAdministracionEmpresas from "@/consts/facultades/docentes-
 const content = {
   title: "Administración de Empresas Agropecuarias | UNAG",
 };
-
-export const prerender = true;
 ---
 
 <Layout content={content}>

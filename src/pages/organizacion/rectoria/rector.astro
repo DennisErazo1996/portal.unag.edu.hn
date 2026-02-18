@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/main.astro";
 import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
 import { Quote, Mail, Phone } from "lucide-react";
@@ -6,8 +8,6 @@ import { Quote, Mail, Phone } from "lucide-react";
 const content = {
   title: "Rector | UNAG",
 };
-
-export const prerender = true;
 
 const rectorInfo = {
   name: "M. Sc. Víctor Javier González",

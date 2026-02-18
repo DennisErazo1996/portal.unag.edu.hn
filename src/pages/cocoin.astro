@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from '@/layouts/main.astro';
 import HeaderPages from '@/components/astro/ui/header-bg-pages.astro';
 import cocoinDocumentos from '@/consts/cocoin';
@@ -8,9 +10,6 @@ import Accordeon from '@/components/astro/ui/accordeon.astro';
 const content = {
     title: 'COCOIN | UNAG'
 }
-
-export const prerender = true;
-
 ---
 
 <Layout content={content}>

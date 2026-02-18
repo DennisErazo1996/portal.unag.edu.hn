@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/main.astro";
 import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
 import DocenteCard from "@/components/astro/ui/docente-card.astro";
@@ -10,8 +12,6 @@ import { publicacionesCongresos } from "@/consts/facultades/publicaciones-congre
 const content = {
   title: "Facultad de Ciencias Tecnológicas | UNAG",
 };
-
-export const prerender = true;
 
 const decano = docentesFacultadCienciasTecnologicas.slice(0, 1);
 const docentes = docentesFacultadCienciasTecnologicas.slice(

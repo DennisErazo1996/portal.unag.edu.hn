@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from "@/layouts/main.astro";
 import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
 import carreras from "@/consts/carreras.ts";
@@ -6,8 +8,6 @@ import carreras from "@/consts/carreras.ts";
 const content = {
   title: "Nuestra Historia | UNAG",
 };
-
-export const prerender = true;
 ---
 
 <Layout content={content}>

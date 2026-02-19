@@ -154,7 +154,7 @@ const hasAttachments = comunicado.data.attachments && comunicado.data.attachment
         <!-- Content Column -->
         <div class="lg:order-1">
           <!-- Description -->
-          <p class="text-sm text-gray-700 mb-8 p-6 bg-unag-light-gray/50 rounded-2xl border-l-4 border-unag-green">
+          <p class="text-sm text-gray-700 mb-8 p-6 dark:text-gray-100 dark:bg-unag-dark-green bg-unag-light-gray/50 rounded-2xl border-l-4 border-unag-green">
             {comunicado.data.description}
           </p>
 
@@ -194,6 +194,7 @@ const hasAttachments = comunicado.data.attachments && comunicado.data.attachment
             prose-td:border-gray-300
             prose-td:p-3
             text-unag-gray
+            
           ">
             <Content />
           </div>

@@ -9,18 +9,15 @@ export default function AccessibilityDock() {
   const [isDark, setIsDark] = useState(false);
   const [language, setLanguage] = useState<Language>('es');
 
-  // Initialize theme from localStorage or system preference
+  // Initialize theme from localStorage
   useEffect(() => {
     const stored = localStorage.getItem('theme');
     if (stored === 'dark') {
       setIsDark(true);
       document.documentElement.classList.add('dark');
-    } else if (stored === 'light') {
+    } else {
       setIsDark(false);
       document.documentElement.classList.remove('dark');
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
     }
 
     // Initialize language

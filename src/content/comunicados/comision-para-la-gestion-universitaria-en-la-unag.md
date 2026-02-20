@@ -5,6 +5,10 @@ category: "Aviso"
 date: 2026-02-19
 order: 1
 featured: true
+attachments:
+  - name: "Comunicado CG-UNAG-19022026"
+    url: "/documents/comunicados/comunicado-cg-unag-19022026-oficial.pdf"
+    type: "PDF"
 
 ---
 

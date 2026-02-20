@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-import type { Swiper as SwiperType } from 'swiper';
-import { ArrowUpRight, MoveRight } from 'lucide-react';
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+import { ArrowUpRight, MoveRight } from "lucide-react";
 
 interface Comunicado {
   slug: string;
@@ -20,15 +20,17 @@ interface ComunicadosSectionProps {
   comunicados: Comunicado[];
 }
 
-
-export default function ComunicadosSection({ comunicados }: ComunicadosSectionProps) {
+export default function ComunicadosSection({
+  comunicados,
+}: ComunicadosSectionProps) {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 
   const formatDate = (date: Date) => {
-    return new Date(date).toLocaleDateString('es-HN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(date).toLocaleDateString("es-HN", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "UTC",
     });
   };
 
@@ -39,20 +41,22 @@ export default function ComunicadosSection({ comunicados }: ComunicadosSectionPr
           <div>
             <div className="inline-flex items-center gap-2 bg-unag-green/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
               <div className="w-2 h-2 bg-unag-green rounded-full animate-pulse"></div>
-              <p className="text-sm font-semibold text-unag-dark-green">Últimas publicaciones</p>
+              <p className="text-sm font-semibold text-unag-dark-green">
+                Últimas publicaciones
+              </p>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 mb-6">
-            COMUNICADOS
+              COMUNICADOS
             </h2>
           </div>
           <div className="hover:bg-unag-dark-green hover:text-white px-3  hover:rounded-full  transition-all duration-300">
             <a
-            href="/comunicados"
-            className="hidden md:flex items-center gap-2 hover:text-white transition-colors text-unag-dark-green group"
-          >
-            Ver todos los comunicados
-            <MoveRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </a>
+              href="/comunicados"
+              className="hidden md:flex items-center gap-2 hover:text-white transition-colors text-unag-dark-green group"
+            >
+              Ver todos los comunicados
+              <MoveRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </div>
 
@@ -63,8 +67,8 @@ export default function ComunicadosSection({ comunicados }: ComunicadosSectionPr
           slidesPerGroup={1}
           pagination={{
             clickable: true,
-            bulletClass: 'swiper-pagination-bullet',
-            bulletActiveClass: 'swiper-pagination-bullet-active',
+            bulletClass: "swiper-pagination-bullet",
+            bulletActiveClass: "swiper-pagination-bullet-active",
             renderBullet: (index, className) => {
               return `<button class="${className}" aria-label="Ir a página ${index + 1}"></button>`;
             },
@@ -100,7 +104,7 @@ export default function ComunicadosSection({ comunicados }: ComunicadosSectionPr
                       {comunicado.data.category}
                     </span>
                     <div className="bg-unag-green p-2 rounded-full">
-                        <ArrowUpRight className="w-5 h-5 text-white group-hover:text-unag-light-green transition-colors" />
+                      <ArrowUpRight className="w-5 h-5 text-white group-hover:text-unag-light-green transition-colors" />
                     </div>
                   </div>
 

@@ -164,13 +164,17 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+
+  section.bg-white, section.bg-white * {
+    @apply dark:!bg-background dark:!text-white;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
+
+
 
 /* Animaciones personalizadas para carrusel */
 @keyframes fadeInUp {

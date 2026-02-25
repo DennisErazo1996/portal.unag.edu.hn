@@ -52,18 +52,18 @@ const añosDesdesFundacion = añoActual - añoFundacion;
 	>
 		<!-- Círculos con animación flotante -->
 		<div
-			class="pointer-events-none w-100 h-100 lg:w-200 lg:h-200 bg-unag-overlay-green rounded-full animate-float"
+			class="pointer-events-none w-100 h-100 lg:w-200 lg:h-200 bg-unag-overlay-green dark:bg-unag-green rounded-full animate-float"
 		>
 		</div>
 		
 		
 		<div
-			class="absolute pointer-events-none left-0 -translate-x-20 w-100 h-100 lg:w-[90vh] lg:h-[90vh] rounded-full bg-transparent border border-unag-dark-green animate-float-reverse"
+			class="absolute pointer-events-none left-0 -translate-x-20 w-100 h-100 lg:w-[90vh] lg:h-[90vh] rounded-full bg-transparent border border-unag-dark-green dark:border-unag-green animate-float-reverse"
 		>
 		</div>
 		
 		<div
-		class="absolute pointer-events-none right-0 translate-x-20 w-100 h-100 lg:w-[90vh] lg:h-[90vh] rounded-full bg-transparent border border-unag-dark-green animate-float"
+		class="absolute pointer-events-none right-0 translate-x-20 w-100 h-100 lg:w-[90vh] lg:h-[90vh] rounded-full bg-transparent border border-unag-dark-green dark:border-unag-green animate-float"
 		>
 		</div>
 		<!-- Círculos con animación flotante -->
@@ -76,7 +76,7 @@ const añosDesdesFundacion = añoActual - añoFundacion;
 				{añosDesdesFundacion}
 			</p>
 			<p
-				class="absolute pointer-events-none select-none translate-x-20 lg:translate-x-35 translate-y-10 text-[50px] lg:text-[110px] leading-none texto-lema text-unag-light-green top-0"
+				class="absolute pointer-events-none select-none translate-x-20 lg:translate-x-35 translate-y-10 text-[50px] lg:text-[110px] leading-none texto-lema text-unag-light-green dark:text-white top-0"
 			>
 				años
 			</p>
@@ -87,7 +87,7 @@ const añosDesdesFundacion = añoActual - añoFundacion;
 		
 		<div class="absolute flex items-center gap-5 lg:gap-15 scale-90 lg:scale-120 mt-0 lg:mt-20">
 			<div class="flex flex-col items-center gap-2 group">
-				<p class="bg-unag-green text-white p-2 rounded-full w-fit px-5">
+				<p class="bg-unag-green dark:bg-unag-dark-green text-white p-2 rounded-full w-fit px-5">
 					Estudio
 				</p>
 				<Image 
@@ -104,12 +104,12 @@ const añosDesdesFundacion = añoActual - añoFundacion;
 					class="w-50 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" 
 					loading="lazy"
 				/>
-				<p class="bg-unag-green text-white p-2 rounded-full w-fit px-5">
+				<p class="bg-unag-green dark:bg-unag-dark-green text-white p-2 rounded-full w-fit px-5">
 					Trabajo
 				</p>
 			</div>
 			<div class="flex flex-col items-center gap-2 group">
-				<p class="bg-unag-green text-white p-2 rounded-full w-fit px-5">
+				<p class="bg-unag-green dark:bg-unag-dark-green text-white p-2 rounded-full w-fit px-5">
 					Disciplina
 				</p>
 				<Image 
@@ -122,7 +122,7 @@ const añosDesdesFundacion = añoActual - añoFundacion;
 		</div>
 	</section>
 
-	<section class="relative w-full py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-white to-unag-overlay-green/20 overflow-hidden">
+	<section class="relative w-full py-16 lg:py-24 overflow-hidden">
 		
 		<div class="absolute inset-0 opacity-5">
 			<div class="absolute top-10 right-10 w-72 h-72 bg-unag-green rounded-full blur-3xl"></div>
@@ -134,12 +134,12 @@ const añosDesdesFundacion = añoActual - añoFundacion;
 			<div class="flex flex-col items-center text-center mb-16">
 				<div class="inline-flex items-center gap-2 bg-unag-green/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
 					<div class="w-2 h-2 bg-unag-green rounded-full animate-pulse"></div>
-					<p class="text-sm font-semibold text-unag-dark-green">Oferta Académica</p>
+					<p class="text-sm font-semibold text-unag-dark-green dark:text-white">Oferta Académica</p>
 				</div>
-				<h2 class="text-4xl md:text-5xl lg:text-5xl font-black text-unag-dark-green mb-4 leading-none">
+				<h2 class="text-4xl md:text-5xl lg:text-5xl font-black text-unag-dark-green dark:text-unag-green mb-4 leading-none">
 					NUESTROS POSGRADOS
 				</h2>
-				<p class="text-gray-600 max-w-2xl text-sm">
+				<p class="text-gray-600 dark:text-white max-w-2xl text-sm">
 					Programas de excelencia académica para profesionales que buscan especializarse y liderar en el sector agrícola
 				</p>
 			</div>

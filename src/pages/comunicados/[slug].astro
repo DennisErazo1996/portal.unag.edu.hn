@@ -45,7 +45,7 @@ const hasAttachments = comunicado.data.attachments && comunicado.data.attachment
         decoding="async"
         class="w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 dark:from-black/90 dark:via-black/80 dark:to-black/60"></div>
     </div>
 
     <!-- Content Overlay -->
@@ -102,9 +102,9 @@ const hasAttachments = comunicado.data.attachments && comunicado.data.attachment
         <!-- Sidebar (only if attachments exist) - Shows first on mobile -->
         {hasAttachments && (
           <aside class="lg:sticky lg:top-24 h-fit lg:order-2">
-            <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+            <div class="bg-white dark:bg-background rounded-2xl shadow-lg border border-gray-200 dark:border-unag-green overflow-hidden">
               
-              <div class="bg-unag-green text-white p-6">
+              <div class="bg-unag-green dark:bg-unag-dark-green text-white p-6">
                 <div class="flex items-center gap-3 mb-2">
                   <FileText size={24} />
                   <h3 class="font-bold text-lg">Documentos</h3>
@@ -118,17 +118,17 @@ const hasAttachments = comunicado.data.attachments && comunicado.data.attachment
                   <a
                     href={attachment.url}
                     download
-                    class="flex items-center gap-3 p-4 bg-unag-light-gray/50 hover:bg-unag-light-gray rounded-xl transition-all duration-300 group border border-transparent hover:border-unag-green"
+                    class="flex items-center gap-3 p-4 dark:bg-unag-dark-green bg-unag-light-gray/50 hover:bg-unag-light-gray rounded-xl transition-all duration-300 group border border-transparent hover:border-unag-green"
                   >
                     <div class="flex-shrink-0 w-10 h-10 bg-unag-green/10 rounded-lg flex items-center justify-center group-hover:bg-unag-green/20 transition-colors">
                       <Download size={20} class="text-unag-green" />
                     </div>
                     <div class="flex-1 min-w-0 overflow-hidden">
-                      <p class="font-semibold text-unag-dark-green text-sm group-hover:text-unag-green transition-colors w-50 overflow-hidden text-ellipsis whitespace-nowrap">
+                      <p class="font-semibold text-unag-dark-green dark:text-white text-sm group-hover:text-unag-green transition-colors w-50 overflow-hidden text-ellipsis whitespace-nowrap">
                         {attachment.name}
                       </p>
                       {attachment.type && (
-                        <p class="text-xs text-gray-500 uppercase">{attachment.type}</p>
+                        <p class="text-xs text-gray-500 dark:text-white uppercase">{attachment.type}</p>
                       )}
                     </div>
                   </a>
@@ -194,18 +194,22 @@ const hasAttachments = comunicado.data.attachments && comunicado.data.attachment
             prose-td:border-gray-300
             prose-td:p-3
             text-unag-gray
-            
+            dark:prose-p:text-white
+            dark:prose-strong:text-unag-green
+            dark:prose-h2:text-unag-green
+            dark:prose-h3:text-unag-green
+            dark:prose-h1:text-unag-green
           ">
             <Content />
           </div>
 
           <!-- Footer Info -->
-          <div class="mt-12 p-6 text-sm bg-unag-light-gray rounded-2xl">
-            <h3 class="font-bold text-unag-dark-green mb-2">¿Necesitas más información?</h3>
-            <p class="text-gray-700 mb-4">
+          <div class="mt-12 p-6 text-sm bg-unag-light-gray dark:bg-unag-dark-green rounded-2xl">
+            <h3 class="font-bold text-unag-dark-green dark:text-white mb-2">¿Necesitas más información?</h3>
+            <p class="text-gray-700 dark:text-white mb-4">
               Para consultas adicionales, comunícate con nosotros:
             </p>
-            <div class="flex flex-col gap-2 text-gray-700">
+            <div class="flex flex-col gap-2 text-gray-700 dark:text-white">
               <p>📧 Email: info@unag.edu.hn</p>
               <!-- <p>📞 Teléfono: +504 2799-4500</p> -->
               <p>📍 Catacamas, Olancho, Honduras</p>

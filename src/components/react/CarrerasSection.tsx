@@ -89,17 +89,17 @@ export default function CarrerasSection() {
   const visibleCarreras = carreras.slice(startIndex, startIndex + carrerasPerPage);
 
   return (
-    <section className="bg-white text-green-900 lg:py-20 lg:mb-20">
+    <section className="dark:bg-background text-green-900 lg:py-20 lg:mb-20">
       {/* Encabezado */}
       <div className="max-w-6xl mx-auto px-4 py-10">
         <div className="inline-flex items-center gap-2 bg-unag-green/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
 					<div className="w-2 h-2 bg-unag-green rounded-full animate-pulse"></div>
-					<p className="text-sm font-semibold text-unag-dark-green">Oferta Académica</p>
+					<p className="text-sm font-semibold text-unag-dark-green dark:text-white">Oferta Académica</p>
 				</div>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 mb-2 leading-none">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 dark:text-unag-green mb-2 leading-none">
           NUESTRAS CARRERAS DE GRADO
         </h2>
-        <p className="text-sm text-gray-600 mb-8 w-full leading-none">
+        <p className="text-sm text-gray-600 dark:text-white mb-8 w-full leading-none">
           8 carreras de grado diseñadas para formar líderes en el sector agrícola y agroindustrial del país.
         </p>
 
@@ -146,12 +146,12 @@ export default function CarrerasSection() {
                       <a
                         href={carrera.link}
                         target="_blank"
-                        className="absolute bottom-0 left-0 right-0 bg-green-800 text-white px-4 py-3 flex items-center justify-between hover:bg-green-700 transition-colors"
+                        className="absolute bottom-0 left-0 right-0 bg-green-800 dark:bg-unag-dark-green text-white px-4 py-3 flex items-center justify-between hover:bg-green-700 transition-colors"
                       >
                         <span className="font-semibold text-[12px]">
                           {carrera.nombre}
                         </span>
-                        <div className="p-1 bg-unag-dark-green rounded-full">
+                        <div className="p-1 bg-unag-dark-green dark:bg-unag-green rounded-full">
                             <ArrowUpRight size={18} className="flex-shrink-0" />
                         </div>
                       </a>

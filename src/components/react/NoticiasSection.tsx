@@ -79,16 +79,16 @@ export default function NoticiasSection() {
 
   if (loading) {
     return (
-      <section className="py-20 bg-white text-[12px]">
+      <section className="py-20 dark:bg-background text-[12px]">
         <div className="container mx-auto px-4">
           {/* Encabezado Skeleton */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-3">
-              <div className="w-6 h-6 bg-gray-200 rounded animate-pulse"></div>
-              <div className="w-24 h-4 bg-gray-200 rounded animate-pulse"></div>
+              <div className="w-6 h-6 bg-gray-200 dark:bg-unag-dark-green rounded animate-pulse"></div>
+              <div className="w-24 h-4 bg-gray-200 dark:bg-unag-dark-green rounded animate-pulse"></div>
             </div>
-            <div className="w-64 h-10 bg-gray-200 rounded mx-auto mb-3 animate-pulse"></div>
-            <div className="w-40 h-6 bg-gray-200 rounded mx-auto animate-pulse"></div>
+            <div className="w-64 h-10 bg-gray-200 dark:bg-unag-dark-green rounded mx-auto mb-3 animate-pulse"></div>
+            <div className="w-40 h-6 bg-gray-200 dark:bg-unag-dark-green rounded mx-auto animate-pulse"></div>
           </div>
 
           {/* Grid Skeleton */}
@@ -96,17 +96,17 @@ export default function NoticiasSection() {
             {[...Array(6)].map((_, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg"
+                className="bg-white dark:bg-unag-dark-green rounded-2xl overflow-hidden shadow-lg"
               >
                 {/* Imagen Skeleton */}
-                <div className="h-48 bg-gray-200 animate-pulse"></div>
+                <div className="h-48 bg-gray-200 dark:bg-g animate-pulse"></div>
                 
                 {/* Contenido Skeleton */}
                 <div className="p-6">
                   <div className="space-y-3">
-                    <div className="h-6 bg-gray-200 rounded animate-pulse"></div>
-                    <div className="h-6 bg-gray-200 rounded w-3/4 animate-pulse"></div>
-                    <div className="h-4 bg-gray-200 rounded w-1/2 animate-pulse mt-4"></div>
+                    <div className="h-6 bg-gray-200 dark:bg-background rounded animate-pulse"></div>
+                    <div className="h-6 bg-gray-200 dark:bg-background rounded w-3/4 animate-pulse"></div>
+                    <div className="h-4 bg-gray-200 dark:bg-background rounded w-1/2 animate-pulse mt-4"></div>
                   </div>
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function NoticiasSection() {
 
           {/* Botón Skeleton */}
           <div className="text-center">
-            <div className="inline-block w-56 h-12 bg-gray-200 rounded-full animate-pulse"></div>
+            <div className="inline-block w-56 h-12 bg-gray-200 dark:bg-unag-dark-green rounded-full animate-pulse"></div>
           </div>
         </div>
       </section>
@@ -124,7 +124,7 @@ export default function NoticiasSection() {
 
   if (error) {
     return (
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-background">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center min-h-[400px]">
             <Newspaper className="w-16 h-16 text-gray-400 mb-4" />
@@ -136,18 +136,18 @@ export default function NoticiasSection() {
   }
 
   return (
-    <section className="lg:py-15 bg-white text-[12px] scale-90">
+    <section className="lg:py-15 dark:bg-background text-[12px] scale-90">
       <div className="container mx-auto px-4">
         {/* Encabezado */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-3">
             <Newspaper className="w-6 h-6 text-unag-green" />
-            <p className="text-sm text-gray-600 uppercase tracking-wide">Blog UNAG</p>
+            <p className="text-sm text-gray-600 dark:text-white uppercase tracking-wide">Blog UNAG</p>
           </div>
-          <h2 className="text-4xl font-bold text-unag-dark-green mb-3">
+          <h2 className="text-4xl font-bold text-unag-dark-green dark:text-unag-green mb-3">
             Últimas Noticias
           </h2>
-          <p className="text-gray-600 text-sm max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-white text-sm max-w-2xl mx-auto">
             Mantente al día con las últimas novedades y eventos de nuestra comunidad universitaria
           </p>
         </div>
@@ -160,7 +160,7 @@ export default function NoticiasSection() {
               href={noticia.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="group block bg-white dark:bg-unag-dark-green rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
             >
               {/* Imagen */}
               <div className="relative h-48 overflow-hidden">
@@ -176,7 +176,7 @@ export default function NoticiasSection() {
               </div>
 
               {/* Contenido */}
-              <div className="p-6 bg-unag-dark-green flex flex-col">
+              <div className="p-6 bg-unag-dark-green dark:bg-unag-dark-green flex flex-col">
                 <h3 
                   className="text-lg font-bold text-white mb-2 line-clamp-2 transition-colors capitalize min-h-[3.5rem]"
                   dangerouslySetInnerHTML={{ __html: noticia.title.rendered }}

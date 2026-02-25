@@ -83,9 +83,9 @@ const {
 			})();
 		</script>
 	</head>
-	<body class="min-h-screen flex flex-col bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
+	<body class="min-h-screen flex flex-col text-zinc-900 dark:text-zinc-100 transition-colors duration-300 dark:bg-background">
 		
-		<div id="loading-screen" class="fixed inset-0 bg-unag-dark-green z-[10000] flex items-center justify-center transition-opacity duration-500">
+		<div id="loading-screen" class="fixed inset-0 bg-unag-dark-green dark:bg-background z-[10000] flex items-center justify-center transition-opacity duration-500">
 			<div class="relative">
 				
 				<div class="flower-spinner">
@@ -100,12 +100,12 @@ const {
 
 		<Header />
 
-	<main class="flex-1">
+	<main class="flex-1 dark:bg-background">
 		<slot />
 	</main>
 
 	<Chatbot client:load />
-	<!-- <AccessibilityDock client:load /> -->
+	<AccessibilityDock client:load />
 	<!-- <EstadisticasButton /> -->
 	<ScrollToTop />
 

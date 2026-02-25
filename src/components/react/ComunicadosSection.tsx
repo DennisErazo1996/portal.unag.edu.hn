@@ -35,24 +35,24 @@ export default function ComunicadosSection({
   };
 
   return (
-    <section id="comunicados" className="py-30 bg-unag-light-gray">
+    <section id="comunicados" className="py-30 bg-unag-light-gray/50 dark:bg-background">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 bg-unag-green/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 bg-unag-green/10 dark:bg-unag-green/30 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
               <div className="w-2 h-2 bg-unag-green rounded-full animate-pulse"></div>
-              <p className="text-sm font-semibold text-unag-dark-green">
+              <p className="text-sm font-semibold light:text-unag-dark-green dark:text-white">
                 Últimas publicaciones
               </p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-unag-dark-green dark:text-unag-green mb-6">
               COMUNICADOS
             </h2>
           </div>
-          <div className="hover:bg-unag-dark-green hover:text-white px-3  hover:rounded-full  transition-all duration-300">
+          <div className="hover:bg-unag-dark-green dark:hover:bg-unag-green hover:text-white px-4 py-2 hover:rounded-full transition-all duration-300">
             <a
               href="/comunicados"
-              className="hidden md:flex items-center gap-2 hover:text-white transition-colors text-unag-dark-green group"
+              className="hidden md:flex items-center gap-2 hover:text-white transition-colors text-unag-dark-green dark:text-white group"
             >
               Ver todos los comunicados
               <MoveRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -1,39 +1,34 @@
-
 /* @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"); */
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Nothing+You+Could+Do&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Nothing+You+Could+Do&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
-
-
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-family-sans: 'Montserrat', sans-serif;  
+  --font-family-sans: "Montserrat", sans-serif;
   --color-unag-green: #1ba333;
   --color-unag-dark-green: #00371d;
-  --color-unag-light-green: #6CC836;
+  --color-unag-light-green: #6cc836;
   --color-unag-yellow: #ffcc00;
-  --color-unag-overlay-green: #E5FFD5;
+  --color-unag-overlay-green: #e5ffd5;
   --color-unag-gray: #303030;
   --color-unag-light-gray: #dedcdc;
 }
 
 @layer utilities {
-
-  *{
+  * {
     font-family: var(--font-family-sans) !important;
   }
   .texto-lema {
-    font-family: 'Nothing You Could Do', sans-serif !important;
+    font-family: "Nothing You Could Do", sans-serif !important;
   }
 
   ::selection {
     background: var(--color-unag-green);
-    color: #ffffff; 
+    color: #ffffff;
   }
-
 
   ::-moz-selection {
     background: var(--color-unag-green);
@@ -41,19 +36,17 @@
   }
 
   ::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--color-unag-dark-green); 
+    background: var(--color-unag-dark-green);
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--color-unag-green); 
+    background-color: var(--color-unag-green);
     border-radius: 10px;
   }
-
-  
 }
 
 @theme inline {
@@ -164,12 +157,20 @@
 }
 
 @layer base {
-
-  section.bg-white, section.bg-gray-50{
+  section.bg-white,
+  section.bg-gray-50 {
     @apply dark:!bg-background dark:!text-white;
   }
 
-  .prose p, article, section.text-unag-gray, blockquote footer, ul li, div.sub-tab-content div.bg-white p, div.tab-content div.bg-white p {
+  .prose p,
+  article,
+  section.text-unag-gray,
+  blockquote footer,
+  ul li,
+  div.sub-tab-content div.bg-white p,
+  #revistas-list p span,
+  #congresos-list p span,
+  div.tab-content div.bg-white p {
     @apply dark:!text-white;
   }
 
@@ -177,15 +178,25 @@
     @apply dark:!bg-unag-dark-green dark:!text-white;
   }
 
-  div.prose p strong, article strong, details strong, p.font-bold, ul li strong, div.prose h3, div.prose h2 {
+  div.prose p strong,
+  article strong,
+  details strong,
+  p.font-bold,
+  ul li strong,
+  div.prose h3,
+  #revistas-list h4,
+  #congresos-list h4,
+  div.prose h2 {
     @apply dark:!text-unag-green;
   }
 
-  div.sub-tab-content div.bg-white, div.bg-gray-100, div.tab-content div.bg-white {
+  div.sub-tab-content div.bg-white,
+  div.bg-gray-100,
+  div.tab-content div.bg-white {
     @apply dark:!bg-unag-dark-green dark:!text-white;
   }
 
-  div.border-b.border-gray-200{
+  div.border-b.border-gray-200 {
     @apply dark:!border-unag-light-green;
   }
 
@@ -193,8 +204,6 @@
     @apply bg-background text-foreground;
   }
 }
-
-
 
 /* Animaciones personalizadas para carrusel */
 @keyframes fadeInUp {
@@ -218,7 +227,8 @@
 }
 
 @keyframes pulse-scale {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -262,4 +272,3 @@
   transform: translate3d(0, 0, 0);
   z-index: 10;
 }
-

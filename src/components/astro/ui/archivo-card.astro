@@ -12,7 +12,7 @@ const { titulo, descripcion, fecha, archivo } = Astro.props;
 
 ---
 
-<div class="group relative bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col h-full overflow-hidden">
+<div class="group relative bg-white dark:bg-background rounded-xl shadow-sm border border-gray-100 dark:border-unag-green hover:shadow-lg transition-all duration-300 flex flex-col h-full overflow-hidden">
     <div class="absolute top-0 left-0 w-1 h-full bg-unag-green transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300"></div>
     
     <div class="p-6 flex-grow">
@@ -20,27 +20,27 @@ const { titulo, descripcion, fecha, archivo } = Astro.props;
             <FileText class="w-6 h-6" />
         </div>
         
-        <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-unag-green transition-colors">
+        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-unag-green transition-colors">
             {titulo}
         </h3>
         
         {descripcion && (
-            <p class="text-sm text-gray-500 mb-4 line-clamp-3">
+            <p class="text-sm text-gray-500 dark:text-white mb-4 line-clamp-3">
                 {descripcion}
             </p>
         )}
         
         {fecha && (
-            <span class="inline-block px-2 py-1 bg-gray-50 text-xs font-medium text-gray-500 rounded-md">
+            <span class="inline-block px-2 py-1 bg-gray-50 dark:bg-unag-green dark:text-white text-xs font-medium text-gray-500 rounded-md">
                 {fecha}
             </span>
         )}
     </div>
 
-    <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
+    <div class="px-6 py-4 bg-gray-50 dark:bg-unag-dark-green border-t border-gray-100 dark:border-unag-green flex justify-between items-center">
         <a 
             href={archivo} 
-            class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-unag-green transition-colors"
+            class="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-white hover:text-unag-green transition-colors"
             target="_blank"
             rel="noopener noreferrer"
         >

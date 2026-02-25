@@ -28,11 +28,11 @@ const rectorInfo = {
   <section
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-30 relative z-2"
   >
-    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden dark:border-unag-green dark:border">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-0">
         <!-- Sidebar / Photo Section -->
         <div
-          class="lg:col-span-4 bg-gray-50 p-8 flex flex-col items-center text-center border-r border-gray-100"
+          class="lg:col-span-4 bg-gray-50 p-8 flex flex-col items-center text-center border-r border-gray-100 dark:bg-background dark:border-unag-green"
         >
           <div
             class="relative w-64 h-80 rounded-xl overflow-hidden shadow-lg mb-6 group bg-white"
@@ -44,7 +44,7 @@ const rectorInfo = {
             <img src="/img/rector-victor.webp" alt={rectorInfo.name} class="w-full h-full object-cover" />
           </div>
 
-          <h2 class="text-2xl font-bold text-unag-dark-green mb-2">
+          <h2 class="text-2xl font-bold text-unag-dark-green dark:text-white mb-2">
             {rectorInfo.name}
           </h2>
           <p class="text-unag-green font-medium mb-6 text-sm leading-tight">
@@ -52,9 +52,9 @@ const rectorInfo = {
           </p>
 
           <div
-            class="w-full space-y-4 text-left p-4 bg-white rounded-lg border border-gray-100 shadow-sm"
+            class="w-full space-y-4 text-left p-4 bg-white dark:bg-unag-dark-green rounded-lg border border-gray-100 dark:border-unag-green shadow-sm"
           >
-            <div class="flex items-center gap-3 text-gray-600">
+            <div class="flex items-center gap-3 text-gray-600 dark:text-white">
               <Mail className="w-5 h-5 text-unag-green" />
               <a
                 href={`mailto:${rectorInfo.email}`}
@@ -66,11 +66,11 @@ const rectorInfo = {
         </div>
 
         <!-- Main Content / Message Section -->
-        <div class="lg:col-span-8 p-8 lg:p-12">
+        <div class="lg:col-span-8 p-8 lg:p-12 dark:bg-unag-dark-green">
           <div class="mb-8">
             <div class="flex items-start gap-4 mb-6">
               <Quote className="w-12 h-12 text-unag-green shrink-0" />
-              <h3 class="text-3xl font-bold text-gray-800 mt-2">
+              <h3 class="text-3xl font-bold text-gray-800 dark:text-white mt-2">
                 Mensaje a la Comunidad Universitaria
               </h3>
             </div>
@@ -129,14 +129,14 @@ const rectorInfo = {
           </div>
 
           <div
-            class="mt-12 pt-8 border-t border-gray-100 flex items-center justify-between"
+            class="mt-12 pt-8 border-t border-gray-100 dark:border-unag-green flex items-center justify-between"
           >
             <div class="flex flex-col">
               <span
-                class="text-xs text-gray-500 uppercase tracking-widest font-bold"
+                class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold"
                 >Gestión Rectoral</span
               >
-              <span class="text-xl font-bold text-unag-dark-green"
+              <span class="text-xl font-bold text-unag-dark-green dark:text-unag-light-green"
                 >2023 - 2026</span
               >
             </div>

@@ -165,8 +165,20 @@
 
 @layer base {
 
-  section.bg-white, section.bg-white * {
+  section.bg-white{
     @apply dark:!bg-background dark:!text-white;
+  }
+
+  .prose p, article, section.text-unag-gray, blockquote footer, ul li {
+    @apply dark:!text-white;
+  }
+
+  blockquote {
+    @apply dark:!bg-unag-dark-green dark:!text-white;
+  }
+
+  div.prose p strong, article strong, details strong, p.font-bold, ul li strong, div.prose h3, div.prose h2 {
+    @apply dark:!text-unag-green;
   }
 
   body {

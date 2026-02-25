@@ -3,7 +3,7 @@ const {dias, horas} = Astro.props;
 ---
 
 <div
-  class="bg-unag-overlay-green/30 border border-unag-green/20 rounded-xl p-6 mb-12 flex flex-col md:flex-row items-center justify-between gap-6"
+  class="bg-unag-overlay-green/30 dark:bg-unag-dark-green border border-unag-green/20 rounded-xl p-6 mb-12 flex flex-col md:flex-row items-center justify-between gap-6"
 >
   <div class="flex items-center gap-4">
     <div class="bg-white p-3 rounded-full shadow-sm text-unag-green">
@@ -21,10 +21,10 @@ const {dias, horas} = Astro.props;
       >
     </div>
     <div>
-      <h3 class="font-bold text-lg text-unag-dark-green">
+      <h3 class="font-bold text-lg text-unag-dark-green dark:text-white">
         Horario de Atención
       </h3>
-      <p class="text-unag-gray text-sm">
+      <p class="text-unag-gray text-sm dark:text-unag-green">
         Estamos disponibles para atender sus consultas
       </p>
     </div>
@@ -35,7 +35,7 @@ const {dias, horas} = Astro.props;
         class="block text-xs font-bold text-unag-green uppercase tracking-wide lg:text-end"
         >{dias}</span
       >
-      <span class="text-gray-800 font-medium">{horas}</span>
+      <span class="text-gray-800 font-medium dark:text-white">{horas}</span>
     </div>
   </div>
 </div>

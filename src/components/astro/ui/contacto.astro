@@ -2,16 +2,16 @@
 const {departamento, correo} = Astro.props;
 ---
 <div
-  class="bg-gray-50 border-t border-gray-100 p-8 rounded-xl shadow-sm text-center"
+  class="bg-gray-50 dark:bg-background border-t dark:border-unag-green border-gray-100 p-8 rounded-xl shadow-sm text-center"
 >
-  <h3 class="text-lg font-bold text-unag-dark-green mb-2">Contacto</h3>
-  <p class="text-gray-600 mb-4">
+  <h3 class="text-lg font-bold text-unag-dark-green dark:text-unag-green mb-2">Contacto</h3>
+  <p class="text-gray-600 dark:text-white mb-4">
     Si desea ponerse en contacto con {departamento} de la Universidad
     Nacional de Agricultura, puede escribirnos:
   </p>
   <a
     href={`mailto:${correo}`}
-    class="inline-flex items-center gap-2 text-unag-green font-bold hover:text-unag-dark-green transition-colors bg-white px-4 py-2 rounded-lg border border-unag-green/30 shadow-sm hover:shadow-md"
+    class="inline-flex items-center gap-2 text-unag-green font-bold hover:text-unag-dark-green transition-colors bg-white px-4 py-2 rounded-lg border border-unag-green/30 shadow-sm hover:shadow-md dark:bg-unag-dark-green"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

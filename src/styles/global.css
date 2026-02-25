@@ -165,11 +165,11 @@
 
 @layer base {
 
-  section.bg-white{
+  section.bg-white, section.bg-gray-50{
     @apply dark:!bg-background dark:!text-white;
   }
 
-  .prose p, article, section.text-unag-gray, blockquote footer, ul li {
+  .prose p, article, section.text-unag-gray, blockquote footer, ul li, div.sub-tab-content div.bg-white p, div.tab-content div.bg-white p {
     @apply dark:!text-white;
   }
 
@@ -179,6 +179,14 @@
 
   div.prose p strong, article strong, details strong, p.font-bold, ul li strong, div.prose h3, div.prose h2 {
     @apply dark:!text-unag-green;
+  }
+
+  div.sub-tab-content div.bg-white, div.bg-gray-100, div.tab-content div.bg-white {
+    @apply dark:!bg-unag-dark-green dark:!text-white;
+  }
+
+  div.border-b.border-gray-200{
+    @apply dark:!border-unag-light-green;
   }
 
   body {

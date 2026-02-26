@@ -26,9 +26,9 @@ const content = {
 
   <section>
     <!-- Estación Meteorológica -->
-    <div class="">
+    <div id="estacionMeteorologica">
       <div
-        class="relative bg-gradient-to-br from-unag-green via-unag-green to-unag-dark-green overflow-hidden"
+        class="relative bg-gradient-to-br from-unag-green via-unag-green to-unag-dark-green dark:from-unag-dark-green dark:via-unag-dark-green dark:to-unag-dark-green overflow-hidden"
       >
         <div class="relative p-8 md:p-12">
           <div class="flex items-start gap-4 mb-6">
@@ -111,7 +111,7 @@ const content = {
             href="https://app.weathercloud.net/d0868789086#current"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-3 bg-white text-unag-dark-green text-md px-5 py-2 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+          class="inline-flex items-center gap-3 bg-white text-unag-dark-green text-md px-5 py-2 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group dark:bg-unag-green dark:text-white"
           >
             <span>Ver datos en tiempo real</span>
             <svg
@@ -246,7 +246,7 @@ const content = {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {
           personalDocente.map((area) => (
-            <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+            <div class="bg-gray-50 dark:bg-unag-dark-green border border-gray-200 dark:border-unag-light-green rounded-lg p-6">
               <h4 class="text-base font-bold text-unag-green mb-4">
                 {area.area}
               </h4>

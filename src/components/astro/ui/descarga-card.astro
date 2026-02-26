@@ -13,9 +13,9 @@ const { enlaces, formato } = Astro.props;
 ---
 
 <div
-  class="bg-white rounded-2xl shadow-lg border border-gray-200 dark:border-unag-green overflow-hidden"
+  class="bg-white rounded-2xl shadow-lg border border-gray-200 dark:bg-background dark:border-unag-green overflow-hidden"
 >
-  <div class="bg-unag-green text-white p-6">
+  <div class="bg-unag-green dark:bg-unag-dark-green text-white p-6">
     <div class="flex items-center gap-3 mb-2">
       <FileText size={24} />
       <h3 class="font-bold text-lg">Documentos</h3>
@@ -29,13 +29,13 @@ const { enlaces, formato } = Astro.props;
         <a
           href={enlace.url}
           download
-          class="flex items-center gap-3 p-4 bg-unag-light-gray/50 hover:bg-unag-light-gray rounded-xl transition-all duration-300 group border border-transparent hover:border-unag-green"
+          class="flex items-center gap-3 p-4 bg-unag-light-gray/50 dark:bg-unag-dark-green hover:bg-unag-light-gray rounded-xl transition-all duration-300 group border border-transparent hover:border-unag-green"
         >
           <div class="flex-shrink-0 w-10 h-10 bg-unag-green/10 rounded-lg flex items-center justify-center group-hover:bg-unag-green/20 transition-colors">
             <Download size={20} class="text-unag-green" />
           </div>
           <div class="flex-1 min-w-0">
-            <p class="font-semibold text-unag-dark-green text-sm group-hover:text-unag-green transition-colors truncate">
+            <p class="font-semibold text-unag-dark-green dark:text-white text-sm group-hover:text-unag-green transition-colors truncate">
               {enlace.nombre}
             </p>
 

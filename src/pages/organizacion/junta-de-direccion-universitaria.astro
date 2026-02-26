@@ -144,16 +144,16 @@ const content = {
   </section>
 
   <!-- Sección de Miembros -->
-  <section class="bg-gradient-to-b from-gray-50 to-white py-16">
+  <section class="bg-unag-gray/5 dark:bg-background py-16 mb-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-unag-gray mb-8">Integrantes de la JDU</h2>
+      <h2 class="text-unag-gray dark:text-unag-green mb-8">Integrantes de la JDU</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           miembrosJDU.map((miembro) => (
             <button
               onclick={`openModal('modal-${miembro.id}')`}
-              class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 text-left group"
+              class="bg-white rounded-lg dark:border dark:border-unag-green overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 text-left group dark:bg-unag-dark-green dark:text-white"
             >
               <div class="aspect-[4/3] overflow-hidden bg-gray-100">
                 <img
@@ -163,10 +163,10 @@ const content = {
                 />
               </div>
               <div class="p-5">
-                <h3 class="text-base font-semibold text-unag-gray mb-1">
+                <h3 class="text-base font-semibold text-unag-gray dark:text-white mb-1">
                   {miembro.nombreCompleto}
                 </h3>
-                <p class="text-sm text-gray-600">{miembro.cargo}</p>
+                <p class="text-sm text-gray-600 dark:text-white">{miembro.cargo}</p>
               </div>
               
               <div class="bg-unag-green w-full h-1"></div>
@@ -187,11 +187,11 @@ const content = {
         onclick={`closeModal('modal-${miembro.id}')`}
       >
         <div
-          class="modal-content bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-lg"
+          class="modal-content bg-white dark:bg-background rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-lg"
           onclick="event.stopPropagation()"
         >
           <div class="grid grid-cols-1 md:grid-cols-5 gap-0">
-            <div class="md:col-span-2 aspect-[3/4] overflow-hidden bg-gray-100">
+            <div class="md:col-span-2 aspect-[3/4] overflow-hidden bg-gray-100 dark:border dark:border-unag-green dark:border-2 dark:rounded-tl-lg">
               <img
                 src={miembro.imagen}
                 alt={miembro.nombreCompleto}
@@ -217,11 +217,11 @@ const content = {
                   />
                 </svg>
               </button>
-              <h2 class="text-unag-gray mb-2">{miembro.nombreCompleto}</h2>
+              <h2 class="text-unag-gray dark:text-unag-green mb-2">{miembro.nombreCompleto}</h2>
               <p class="text-sm font-semibold text-unag-green mb-6">
                 {miembro.cargo}
               </p>
-              <div class="text-sm text-gray-700 space-y-4">
+              <div class="text-sm text-gray-700 dark:text-white space-y-4">
                 {miembro.biografia.map((parrafo) => (
                   <p set:html={parrafo} />
                 ))}

@@ -158,7 +158,7 @@
 
 @layer base {
   section.bg-white,
-  section.bg-gray-50 {
+  section.bg-gray-50, article#perfil div {
     @apply dark:!bg-background dark:!text-white;
   }
 
@@ -170,6 +170,9 @@
   div.sub-tab-content div.bg-white p,
   #revistas-list p span,
   #congresos-list p span,
+  div#actividades p,
+  div#produccion p,
+  article.mt-15 p,
   div.tab-content div.bg-white p {
     @apply dark:!text-white;
   }
@@ -186,19 +189,28 @@
   div.prose h3,
   #revistas-list h4,
   #congresos-list h4,
-  div.prose h2 {
+  article.prose h2,
+  div.mt-16 h2,
+  div#actividades h4,
+  div#produccion h4,
+  div#produccion h3,
+  article#perfil div h2,
+
+  article.mt-15 h2,
+  div.prose h2, div#actividades h3{
     @apply dark:!text-unag-green;
   }
 
   div.sub-tab-content div.bg-white,
   div.bg-gray-100,
-  div.tab-content div.bg-white {
+  div.tab-content div.bg-white, article.mt-15 div.rounded-2xl.p-8.border.border-gray-100 {
     @apply dark:!bg-unag-dark-green dark:!text-white;
   }
 
   div.border-b.border-gray-200 {
     @apply dark:!border-unag-light-green;
   }
+
 
   body {
     @apply bg-background text-foreground;

@@ -59,14 +59,14 @@ export default function AccessibilityDock() {
     >
       <div
         className={cn(
-          "bg-zinc-900 dark:bg-zinc-800 rounded-full shadow-lg border border-zinc-700 transition-all duration-300 ease-in-out overflow-hidden flex items-center",
+          "dakr:bg-zinc-900 bg-unag-dark-green dark:bg-zinc-800 rounded-full  shadow-lg border border-unag-green transition-all duration-300 ease-in-out overflow-hidden flex items-center",
           isExpanded ? "px-2 py-2 gap-1" : "p-2"
         )}
       >
         {/* Collapsed indicator */}
         <button
           className={cn(
-            "w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-700 transition-all duration-200",
+            "w-8 h-8 rounded-full flex items-center justify-center text-white dark:text-white hover:text-white hover:bg-zinc-700 transition-all duration-200",
             isExpanded && "hidden"
           )}
           aria-label="Abrir opciones de accesibilidad"
@@ -82,7 +82,7 @@ export default function AccessibilityDock() {
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            className="w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-yellow-400 hover:bg-zinc-700 transition-all duration-200"
+            className="w-8 h-8 rounded-full flex items-center justify-center text-white hover:text-white hover:bg-unag-green transition-all duration-200"
             aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
             title={isDark ? "Modo claro" : "Modo oscuro"}
           >
@@ -90,7 +90,7 @@ export default function AccessibilityDock() {
           </button>
 
           {/* Divider */}
-          <div className="w-px h-5 bg-zinc-600" />
+          <div className="w-px h-5 bg-white" />
 
           {/* Language toggle */}
           {/* <button
@@ -104,7 +104,7 @@ export default function AccessibilityDock() {
           </button> */}
 
           {/* Collapse indicator */}
-          <ChevronRight size={14} className="text-zinc-500 ml-1" />
+          <ChevronRight size={14} className="text-white ml-1" />
         </div>
       </div>
     </div>

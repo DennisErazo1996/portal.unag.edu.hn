@@ -227,15 +227,15 @@ function StatCard({ item, index, isVisible }: {
   return (
     <div
       className={`rounded-2xl p-6 text-center flex flex-col justify-center items-center transition-all duration-500 ${
-        index % 2 === 0 ? "bg-green-700" : "bg-green-600"
+        index % 2 === 0 ? "bg-green-700 dark:bg-background" : "bg-green-600 dark:bg-background"
       } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <ArrowUpRight size={18} className="text-white mb-2" />
-      <p className="text-2xl md:text-3xl font-bold text-white tabular-nums">
+      <ArrowUpRight size={18} className="text-white mb-2 dark:text-white" />
+      <p className="text-2xl md:text-3xl font-bold text-white tabular-nums dark:text-white">
         {item.prefijo}{animatedValue.toLocaleString()}
       </p>
-      <p className="text-sm md:text-base text-white/90">
+      <p className="text-sm md:text-base text-white/90 dark:text-white">
         {item.etiqueta}
       </p>
     </div>

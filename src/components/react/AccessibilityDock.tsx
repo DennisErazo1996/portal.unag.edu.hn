@@ -20,12 +20,10 @@ export default function AccessibilityDock() {
       document.documentElement.classList.remove('dark');
     }
 
-    // Initialize language
-    const storedLang = localStorage.getItem('language') as Language;
-    if (storedLang) {
-      setLanguage(storedLang);
-      document.documentElement.lang = storedLang;
-    }
+    // Detect language from current URL
+    const currentPath = window.location.pathname;
+    const detectedLang: Language = currentPath.startsWith('/en/') || currentPath === '/en' ? 'en' : 'es';
+    setLanguage(detectedLang);
   }, []);
 
   const toggleTheme = () => {
@@ -42,13 +40,29 @@ export default function AccessibilityDock() {
   };
 
   const toggleLanguage = () => {
-    const newLang: Language = language === 'es' ? 'en' : 'es';
-    setLanguage(newLang);
-    localStorage.setItem('language', newLang);
-    document.documentElement.lang = newLang;
-    
-    // Dispatch custom event for components to react to language change
-    window.dispatchEvent(new CustomEvent('languageChange', { detail: newLang }));
+    const currentPath = window.location.pathname;
+    let newPath: string;
+
+    if (language === 'es') {
+      // Switching to English: add /en prefix
+      if (currentPath === '/') {
+        newPath = '/en';
+      } else {
+        newPath = `/en${currentPath}`;
+      }
+    } else {
+      // Switching to Spanish: remove /en prefix
+      if (currentPath === '/en' || currentPath === '/en/') {
+        newPath = '/';
+      } else if (currentPath.startsWith('/en/')) {
+        newPath = currentPath.substring(3); // Remove '/en'
+      } else {
+        newPath = currentPath;
+      }
+    }
+
+    // Navigate to the new language version
+    window.location.href = newPath;
   };
 
   return (
@@ -93,15 +107,15 @@ export default function AccessibilityDock() {
           <div className="w-px h-5 bg-white" />
 
           {/* Language toggle */}
-          {/* <button
+          <button
             onClick={toggleLanguage}
-            className="h-8 px-2 rounded-full flex items-center gap-1 text-zinc-400 hover:text-white hover:bg-zinc-700 transition-all duration-200 text-xs font-medium"
+            className="h-8 px-2 rounded-full flex items-center gap-1 text-white hover:text-white hover:bg-unag-green transition-all duration-200 text-xs font-medium"
             aria-label={language === 'es' ? "Switch to English" : "Cambiar a Español"}
             title={language === 'es' ? "English" : "Español"}
           >
             <Globe size={16} />
             <span className="uppercase">{language}</span>
-          </button> */}
+          </button>
 
           {/* Collapse indicator */}
           <ChevronRight size={14} className="text-white ml-1" />

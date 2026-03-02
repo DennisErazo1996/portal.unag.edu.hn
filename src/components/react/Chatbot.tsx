@@ -5,6 +5,36 @@ import { cn } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
 import { sileo, Toaster } from 'sileo';
 
+const translations = {
+  es: {
+    initialMessage: "¡Hola! Soy el asistente virtual de la UNAG. ¿En qué puedo ayudarte hoy?",
+    assistantName: "Asistente UNAG",
+    online: "En línea",
+    clearChat: "Vaciar chat",
+    closeChat: "Cerrar",
+    openChat: "Abrir chat",
+    placeholder: "Escribe tu pregunta...",
+    tooltip: "Hola, ¿en qué puedo ayudarte?",
+    confirmDelete: "¿Deseas eliminar el historial del chat?",
+    delete: "Eliminar",
+    deletedSuccess: "Historial eliminado",
+    errorMessage: "Lo siento, hubo un error al procesar tu mensaje. Por favor intenta de nuevo."
+  },
+  en: {
+    initialMessage: "Hello! I'm UNAG's virtual assistant. How can I help you today?",
+    assistantName: "UNAG Assistant",
+    online: "Online",
+    clearChat: "Clear chat",
+    closeChat: "Close",
+    openChat: "Open chat",
+    placeholder: "Ask your question...",
+    tooltip: "Hi, how can I help you?",
+    confirmDelete: "Do you want to delete the chat history?",
+    delete: "Delete",
+    deletedSuccess: "History deleted",
+    errorMessage: "Sorry, there was an error processing your message. Please try again."
+  }
+};
 
 interface Message {
   role: 'user' | 'model';
@@ -42,12 +72,29 @@ const Typewriter = ({ text, onComplete, onUpdate }: { text: string, onComplete?:
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [lang, setLang] = useState<'es' | 'en'>('es');
+  const t = translations[lang];
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', text: '¡Hola! Soy el asistente virtual de la UNAG. ¿En qué puedo ayudarte hoy?' }
+    { role: 'model', text: t.initialMessage }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Detect language from URL
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const detectedLang = currentPath.startsWith('/en/') || currentPath === '/en' ? 'en' : 'es';
+    setLang(detectedLang);
+  }, []);
+
+  // Update initial message when language changes
+  useEffect(() => {
+    const savedMessages = localStorage.getItem('chat_history');
+    if (!savedMessages) {
+      setMessages([{ role: 'model', text: t.initialMessage }]);
+    }
+  }, [lang]);
 
   // Load messages from local storage
   useEffect(() => {
@@ -87,15 +134,15 @@ export default function Chatbot() {
         button: 'bg-unag-green! text-white!',
         badge: 'bg-unag-green! text-white!',
       },
-      title: '¿Deseas eliminar el historial del chat?',
+      title: t.confirmDelete,
       button: {
-        title: 'Eliminar',
+        title: t.delete,
         onClick: () => {
           sileo.dismiss(toastId);
-          const initialMessage: Message = { role: 'model', text: '¡Hola! Soy el asistente virtual de la UNAG. ¿En qué puedo ayudarte hoy?' };
+          const initialMessage: Message = { role: 'model', text: t.initialMessage };
           setMessages([initialMessage]);
           localStorage.removeItem('chat_history');
-          sileo.success({ title: 'Historial eliminado', fill: 'black' });
+          sileo.success({ title: t.deletedSuccess, fill: 'black' });
         }
       }
     });
@@ -134,7 +181,7 @@ export default function Chatbot() {
       setMessages(prev => [...prev, { role: 'model', text: data.reply, animate: true }]);
     } catch (error) {
       console.error('Error sending message:', error);
-      setMessages(prev => [...prev, { role: 'model', text: 'Lo siento, hubo un error al procesar tu mensaje. Por favor intenta de nuevo.' }]);
+      setMessages(prev => [...prev, { role: 'model', text: t.errorMessage }]);
     } finally {
       setIsLoading(false);
     }
@@ -172,10 +219,10 @@ export default function Chatbot() {
               <Bot size={20} />
             </div>
             <div>
-              <h3 className="font-bold text-sm">Asistente UNAG</h3>
+              <h3 className="font-bold text-sm">{t.assistantName}</h3>
               <p className="text-xs text-emerald-100 flex items-center gap-1">
                 <span className="w-1.5 h-1.5 bg-green-300 rounded-full animate-pulse"></span>
-                En línea
+                {t.online}
               </p>
             </div>
           </div>
@@ -183,14 +230,14 @@ export default function Chatbot() {
             <button 
               onClick={clearChat}
               className="hover:bg-white/20 p-1.5 rounded-full transition-colors"
-              title="Vaciar chat"
+              title={t.clearChat}
             >
               <Trash2 size={16} />
             </button>
             <button 
               onClick={() => setIsOpen(false)}
               className="hover:bg-white/20 p-1.5 rounded-full transition-colors"
-              title="Cerrar"
+              title={t.closeChat}
             >
               <X size={18} />
             </button>
@@ -252,7 +299,7 @@ export default function Chatbot() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Escribe tu pregunta..."
+            placeholder={t.placeholder}
             className="flex-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-unag-green border-transparent"
           />
           <button
@@ -275,7 +322,7 @@ export default function Chatbot() {
           )}
         >
           <div className="absolute text-sm right-[-6px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white dark:bg-zinc-800 border-t border-r border-zinc-200 dark:border-zinc-700 rotate-45"></div>
-          Hola, ¿en qué puedo ayudarte?
+          {t.tooltip}
         </div>
 
         <button
@@ -284,7 +331,7 @@ export default function Chatbot() {
             "bg-unag-green hover:bg-unag-dark-green text-white p-3 lg:p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center",
             isOpen ? "rotate-90 opacity-0 pointer-events-none absolute right-0" : "rotate-0 opacity-100 animate-pulse-scale hover:animate-none"
           )}
-          aria-label="Abrir chat"
+          aria-label={t.openChat}
         >
           <MessageCircle size={28} />
         </button>

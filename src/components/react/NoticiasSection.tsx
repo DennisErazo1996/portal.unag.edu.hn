@@ -1,6 +1,27 @@
 import { useState, useEffect } from 'react';
 import { Newspaper, ExternalLink } from 'lucide-react';
 
+const translations = {
+  es: {
+    badge: "Blog UNAG",
+    title: "Últimas Noticias",
+    subtitle: "Manténte al día con las últimas novedades y eventos de nuestra comunidad universitaria",
+    readMore: "Leer más",
+    viewAll: "Ver todas las noticias",
+    errorLoading: "Error al cargar las noticias",
+    unknownError: "Error desconocido"
+  },
+  en: {
+    badge: "UNAG Blog",
+    title: "Latest News",
+    subtitle: "Stay up to date with the latest news and events from our university community",
+    readMore: "Read more",
+    viewAll: "View all news",
+    errorLoading: "Error loading news",
+    unknownError: "Unknown error"
+  }
+};
+
 interface WordPressPost {
   title: {
     rendered: string;
@@ -19,6 +40,15 @@ export default function NoticiasSection() {
   const [noticias, setNoticias] = useState<PostWithImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [lang, setLang] = useState<'es' | 'en'>('es');
+  const t = translations[lang];
+
+  // Detect language from URL
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const detectedLang = currentPath.startsWith('/en/') || currentPath === '/en' ? 'en' : 'es';
+    setLang(detectedLang);
+  }, []);
 
   useEffect(() => {
     const fetchNoticias = async () => {
@@ -29,7 +59,7 @@ export default function NoticiasSection() {
         );
         
         if (!response.ok) {
-          throw new Error('Error al cargar las noticias');
+          throw new Error(t.errorLoading);
         }
 
         const posts: WordPressPost[] = await response.json();
@@ -59,7 +89,7 @@ export default function NoticiasSection() {
 
         setNoticias(postsWithImages);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Error desconocido');
+        setError(err instanceof Error ? err.message : t.unknownError);
       } finally {
         setLoading(false);
       }
@@ -70,7 +100,8 @@ export default function NoticiasSection() {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('es-HN', {
+    const locale = lang === 'en' ? 'en-US' : 'es-HN';
+    return date.toLocaleDateString(locale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -142,13 +173,13 @@ export default function NoticiasSection() {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-3">
             <Newspaper className="w-6 h-6 text-unag-green" />
-            <p className="text-sm text-gray-600 dark:text-white uppercase tracking-wide">Blog UNAG</p>
+            <p className="text-sm text-gray-600 dark:text-white uppercase tracking-wide">{t.badge}</p>
           </div>
           <h2 className="text-4xl font-bold text-unag-dark-green dark:text-unag-green mb-3">
-            Últimas Noticias
+            {t.title}
           </h2>
           <p className="text-gray-600 dark:text-white text-sm max-w-2xl mx-auto">
-            Mantente al día con las últimas novedades y eventos de nuestra comunidad universitaria
+            {t.subtitle}
           </p>
         </div>
 
@@ -185,7 +216,7 @@ export default function NoticiasSection() {
                   {formatDate(noticia.date)}
                 </p>
                 <div className="flex items-center gap-2 text-sm text-unag-green font-medium mt-auto">
-                  <span>Leer más</span>
+                  <span>{t.readMore}</span>
                   <svg 
                     className="w-4 h-4 transition-transform group-hover:translate-x-1" 
                     fill="none" 
@@ -208,7 +239,7 @@ export default function NoticiasSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-unag-green hover:bg-unag-dark-green text-white font-semibold px-8 py-3 rounded-full transition-colors duration-300 group"
           >
-            Ver todas las noticias
+            {t.viewAll}
             <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

@@ -1,6 +1,6 @@
 # Contenido del Sitio Web UNAG
   
-> Archivo generado automáticamente el 2026-02-18T18:03:24.788Z
+> Archivo generado automáticamente el 2026-03-02T21:24:32.052Z
 > Este archivo es utilizado por el chatbot para responder preguntas sobre el sitio.
 
 ---
@@ -10,7 +10,7 @@
 La **Universidad Nacional de Agricultura (UNAG)** es una institución de educación superior pública de Honduras, 
 ubicada en Catacamas, Olancho. Fue fundada en 1950 y es la única universidad del país especializada en ciencias agrícolas.
 
-**Sitio web oficial:** https://unag.edu.hn
+**Sitio web oficial:** https://portal.unag.edu.hn
 
 ---
 
@@ -125,6 +125,14 @@ general:
 
 Después de haber concluido la etapa de evaluación y calificación de los p...
 
+### Comisión para la Gestión Universitaria en la UNAG
+La Comisión tiene una labor excepcional, proporcional y temporal.
+## COMUNICADO OFICIAL
+
+**A la comunidad universitaria de la UNAG y a la sociedad hondureña:**
+
+**CONSIDERANDO:** Que mediante Decreto No. 9-2026, publicado en el Diario Oficial La Gaceta No. 37,069 de fecha 13 de febrero de 2026, el Congreso Nacional de la República decretó en su Artículo 1: “Créase una Comisión para la Gestión Universitaria en la Universidad Nacional de Agricultura (UNAG)… La Comisión tiene una labor excepcional, proporcional y temporal, asumiendo las funciones propias que ...
+
 ### Comunicado No. JDU-UNAG-004-2026
 Agilización de la transferencia de los fondos correspondientes al último trimestre del ejercicio fiscal 2025 y al presupuesto del año 2026
 La **Junta de Dirección Universitaria (JDU)** de la **Universidad Nacional de Agricultura (UNAG)**, por este medio **COMUNICA** a la comunidad universitaria lo siguiente:
@@ -148,6 +156,12 @@ La Secretaría General de la Universidad Nacional de Agricultura, a través de l
 - Copia de DNI
 - Formato de solicitud de reconocimiento (llenar de forma digital)
 - Recibos de ...
+
+### Informe de Gestión Rectoral 2023-2026
+Principales logros, avances estratégicos y resultados alcanzados 2023-2026.
+En ejercicio de mis atribuciones como **Rector** y en el marco de la presente gestión institucional, me es grato presentar a ustedes el **INFORME RECTORAL DE GESTIÓN UNIVERSITARIA** el cual se adjunta, correspondiente al período de nombramiento febrero 2023 – febrero 2026.
+
+El presente informe sintetiza los principales logros, avances estratégicos y resultados alcanzados en las distintas áreas académicas y administrativas. Los resultados que hoy se presentan son producto del trabajo en equipo ...
 
 ### Proceso de votación programado para el 30 de noviembre
 Celebración del proceso de votación programado para el domingo 30 de noviembre de 2025

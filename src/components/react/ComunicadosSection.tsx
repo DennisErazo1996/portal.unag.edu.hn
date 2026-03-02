@@ -1,8 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { ArrowUpRight, MoveRight } from "lucide-react";
+
+const translations = {
+  es: {
+    badge: "Últimas publicaciones",
+    title: "COMUNICADOS",
+    viewAll: "Ver todos los comunicados",
+    goToPage: "Ir a página",
+    categories: {
+      "Convocatorias": "Convocatorias",
+      "Avisos": "Avisos",
+      "Noticias": "Noticias",
+      "Eventos": "Eventos",
+      "Académico": "Académico",
+      "Administrativo": "Administrativo"
+    }
+  },
+  en: {
+    badge: "Latest Publications",
+    title: "ANNOUNCEMENTS",
+    viewAll: "View all announcements",
+    goToPage: "Go to page",
+    categories: {
+      "Convocatorias": "Calls",
+      "Avisos": "Notices",
+      "Noticias": "News",
+      "Eventos": "Events",
+      "Académico": "Academic",
+      "Administrativo": "Administrative"
+    }
+  }
+};
 
 interface Comunicado {
   slug: string;
@@ -24,14 +55,28 @@ export default function ComunicadosSection({
   comunicados,
 }: ComunicadosSectionProps) {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const [lang, setLang] = useState<'es' | 'en'>('es');
+  const t = translations[lang];
+
+  // Detect language from URL
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const detectedLang = currentPath.startsWith('/en/') || currentPath === '/en' ? 'en' : 'es';
+    setLang(detectedLang);
+  }, []);
 
   const formatDate = (date: Date) => {
-    return new Date(date).toLocaleDateString("es-HN", {
+    const locale = lang === 'en' ? 'en-US' : 'es-HN';
+    return new Date(date).toLocaleDateString(locale, {
       year: "numeric",
       month: "long",
       day: "numeric",
       timeZone: "UTC",
     });
+  };
+
+  const translateCategory = (category: string): string => {
+    return t.categories[category as keyof typeof t.categories] || category;
   };
 
   return (
@@ -42,19 +87,19 @@ export default function ComunicadosSection({
             <div className="inline-flex items-center gap-2 bg-unag-green/10 dark:bg-unag-green/30 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
               <div className="w-2 h-2 bg-unag-green rounded-full animate-pulse"></div>
               <p className="text-sm font-semibold light:text-unag-dark-green dark:text-white">
-                Últimas publicaciones
+                {t.badge}
               </p>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-unag-dark-green dark:text-unag-green mb-6">
-              COMUNICADOS
+              {t.title}
             </h2>
           </div>
           <div className="hover:bg-unag-dark-green dark:hover:bg-unag-green hover:text-white px-4 py-2 hover:rounded-full transition-all duration-300">
             <a
-              href="/comunicados"
+              href={lang === 'en' ? '/en/comunicados' : '/comunicados'}
               className="hidden md:flex items-center gap-2 hover:text-white transition-colors text-unag-dark-green dark:text-white group"
             >
-              Ver todos los comunicados
+              {t.viewAll}
               <MoveRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
@@ -70,7 +115,7 @@ export default function ComunicadosSection({
             bulletClass: "swiper-pagination-bullet",
             bulletActiveClass: "swiper-pagination-bullet-active",
             renderBullet: (index, className) => {
-              return `<button class="${className}" aria-label="Ir a página ${index + 1}"></button>`;
+              return `<button class="${className}" aria-label="${t.goToPage} ${index + 1}"></button>`;
             },
           }}
           breakpoints={{
@@ -93,7 +138,7 @@ export default function ComunicadosSection({
           {comunicados.map((comunicado) => (
             <SwiperSlide key={comunicado.slug}>
               <a
-                href={`/comunicados/${comunicado.slug}`}
+                href={lang === 'en' ? `/en/comunicados/${comunicado.slug}` : `/comunicados/${comunicado.slug}`}
                 className="block bg-unag-dark-green rounded-3xl h-[280px]"
               >
                 <div className="p-6 h-full flex flex-col">
@@ -101,7 +146,7 @@ export default function ComunicadosSection({
                     <span
                       className={` text-unag-dark-green bg-unag-light-green font-extrabold text-xs font-semibold px-3 py-1 rounded-full`}
                     >
-                      {comunicado.data.category}
+                      {translateCategory(comunicado.data.category)}
                     </span>
                     <div className="bg-unag-green p-2 rounded-full">
                       <ArrowUpRight className="w-5 h-5 text-white group-hover:text-unag-light-green transition-colors" />
@@ -126,10 +171,10 @@ export default function ComunicadosSection({
         </Swiper>
 
         <a
-          href="/comunicados"
+          href={lang === 'en' ? '/en/comunicados' : '/comunicados'}
           className="md:hidden flex items-center justify-center gap-2 text-unag-dark-green hover:text-unag-light-green transition-colors group mt-8"
         >
-          Ver todos los comunicados
+          {t.viewAll}
           <MoveRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </a>
       </div>

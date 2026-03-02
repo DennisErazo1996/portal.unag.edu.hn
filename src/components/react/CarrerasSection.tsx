@@ -4,6 +4,37 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import carreras from "@/consts/carreras";
 import stats from "@/consts/estadisticas";
 
+const translations = {
+  es: {
+    badge: "Oferta Académica",
+    title: "NUESTRAS CARRERAS DE GRADO",
+    description: "8 carreras de grado diseñadas para formar líderes en el sector agrícola y agroindustrial del país.",
+    prevPage: "Página anterior",
+    nextPage: "Página siguiente",
+    viewMore: "Ver más",
+    statsLabels: {
+      "Estudiantes": "Estudiantes",
+      "Egresados": "Egresados",
+      "Centros Regionales": "Centros Regionales",
+      "Docentes y Personal": "Docentes y Personal"
+    }
+  },
+  en: {
+    badge: "Academic Offerings",
+    title: "OUR UNDERGRADUATE PROGRAMS",
+    description: "8 undergraduate programs designed to train leaders in the country's agricultural and agro-industrial sector.",
+    prevPage: "Previous page",
+    nextPage: "Next page",
+    viewMore: "View more",
+    statsLabels: {
+      "Estudiantes": "Students",
+      "Egresados": "Graduates",
+      "Centros Regionales": "Regional Centers",
+      "Docentes y Personal": "Faculty and Staff"
+    }
+  }
+};
+
 
 
 
@@ -39,10 +70,18 @@ export default function CarrerasSection() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isStatsVisible, setIsStatsVisible] = useState(false);
+  const [lang, setLang] = useState<'es' | 'en'>('es');
   const statsRef = useRef<HTMLDivElement>(null);
   const carrerasPerPage = 3;
   const totalPages = Math.ceil(carreras.length / carrerasPerPage);
+  const t = translations[lang];
 
+  // Detect language from URL
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const detectedLang = currentPath.startsWith('/en/') || currentPath === '/en' ? 'en' : 'es';
+    setLang(detectedLang);
+  }, []);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -94,13 +133,13 @@ export default function CarrerasSection() {
       <div className="max-w-6xl mx-auto px-4 py-10">
         <div className="inline-flex items-center gap-2 bg-unag-green/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
 					<div className="w-2 h-2 bg-unag-green rounded-full animate-pulse"></div>
-					<p className="text-sm font-semibold text-unag-dark-green dark:text-white">Oferta Académica</p>
+					<p className="text-sm font-semibold text-unag-dark-green dark:text-white">{t.badge}</p>
 				</div>
         <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 dark:text-unag-green mb-2 leading-none">
-          NUESTRAS CARRERAS DE GRADO
+          {t.title}
         </h2>
         <p className="text-sm text-gray-600 dark:text-white mb-8 w-full leading-none">
-          8 carreras de grado diseñadas para formar líderes en el sector agrícola y agroindustrial del país.
+          {t.description}
         </p>
 
         {/* Carrusel */}
@@ -110,7 +149,7 @@ export default function CarrerasSection() {
             onClick={handlePrev}
             disabled={isAnimating}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-5 bg-white hover:bg-green-50 rounded-full p-3 shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:hover:scale-100 hidden md:block"
-            aria-label="Página anterior"
+            aria-label={t.prevPage}
           >
             <ChevronLeft size={24} className="text-green-900" />
           </button>
@@ -120,7 +159,7 @@ export default function CarrerasSection() {
             onClick={handleNext}
             disabled={isAnimating}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-5 bg-white hover:bg-green-50 rounded-full p-3 shadow-lg transition-all hover:scale-110 disabled:opacity-50 disabled:hover:scale-100 hidden md:block"
-            aria-label="Página siguiente"
+            aria-label={t.nextPage}
           >
             <ChevronRight size={24} className="text-green-900" />
           </button>
@@ -208,6 +247,8 @@ export default function CarrerasSection() {
               item={item} 
               index={i} 
               isVisible={isStatsVisible}
+              lang={lang}
+              translations={t.statsLabels}
             />
           ))}
         </div>
@@ -217,12 +258,15 @@ export default function CarrerasSection() {
 }
 
 
-function StatCard({ item, index, isVisible }: { 
+function StatCard({ item, index, isVisible, lang, translations }: { 
   item: { valor: number; etiqueta: string; prefijo: string }; 
   index: number;
   isVisible: boolean;
+  lang: 'es' | 'en';
+  translations: Record<string, string>;
 }) {
   const animatedValue = useCountUp(item.valor, 2000, isVisible);
+  const translatedLabel = translations[item.etiqueta] || item.etiqueta;
   
   return (
     <div
@@ -236,7 +280,7 @@ function StatCard({ item, index, isVisible }: {
         {item.prefijo}{animatedValue.toLocaleString()}
       </p>
       <p className="text-sm md:text-base text-white/90 dark:text-white">
-        {item.etiqueta}
+        {translatedLabel}
       </p>
     </div>
   );

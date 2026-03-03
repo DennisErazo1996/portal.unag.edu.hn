@@ -1,0 +1,197 @@
+---
+import { Check, ChevronRight } from '@lucide/astro';
+
+interface Props {
+  numero: string;
+  proceso: string;
+  fechaInscripcion: string;
+  fechaPrueba: string;
+  costo: string;
+  localidades: string[];
+}
+
+const { numero, proceso, fechaInscripcion, fechaPrueba, costo, localidades } = Astro.props;
+---
+
+<div class="mb-5">
+  <!-- Proceso en Vigencia -->
+  <div class="relative mb-12">
+    <div
+      class="relative group overflow-hidden rounded-3xl border border-green-500/40 bg-unag-gray/9 dark:bg-unag-dark-green p-12"
+    >
+
+      <div class="relative">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <div class="w-3 h-3 rounded-full dark:bg-yellow-400 bg-unag-green animate-pulse"></div>
+          <span
+            class="text-xs font-bold tracking-widest uppercase dark:text-yellow-400 text-unag-dark-green"
+            >Próximo proceso</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Contenido -->
+          <div>
+            <div class="flex items-end gap-4 mb-6">
+              <div
+                class="w-20 h-20 rounded-2xl dark:bg-unag-yellow bg-unag-green flex items-center justify-center"
+              >
+                <span class="font-extrabold text-green-950 text-2xl"
+                  >{numero}</span
+                >
+              </div>
+              <div>
+                <p class="text-sm dark:text-unag-yellow text-unag-dark-green font-medium">{proceso}</p>
+                <h3 class="text-4xl font-extrabold dark:text-white text-unag-dark-green">
+                  Proceso de Admisión
+                </h3>
+              </div>
+            </div>
+
+            <p class="dark:text-green-100/80 text-unag-gray text-sm leading-relaxed mb-8 max-w-md">
+              Comienza tu registro ahora en la ventana actual. Este es el
+              momento ideal para asegurar tu lugar en la Universidad Nacional de
+              Agricultura.
+            </p>
+
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start gap-3">
+                <div
+                  class="flex-shrink-0 w-5 h-5 rounded-full bg-unag-green/20 border border-unag-green/40 flex items-center justify-center mt-1"
+                >
+                  <Check class="w-3 h-3 text-unag-dark-green" />
+                </div>
+                <div>
+                  <p class="text-sm font-semibold dark:text-white text-unag-gray">Inscripción</p>
+                  <p class="text-xs dark:text-green-300/70 text-unag-dark-green">{fechaInscripcion}</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div
+                  class="flex-shrink-0 w-5 h-5 rounded-full bg-unag-green/20 border border-unag-green/40 flex items-center justify-center mt-1"
+                >
+                   <Check class="w-3 h-3 text-unag-dark-green" />
+                </div>
+                <div>
+                  <p class="text-sm font-semibold dark:text-white text-unag-gray">
+                    Fecha de Prueba
+                  </p>
+                  <p class="text-xs dark:text-green-300/70 text-unag-dark-green">{fechaPrueba}</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div
+                  class="flex-shrink-0 w-5 h-5 rounded-full bg-unag-green/20 border border-unag-green/40 flex items-center justify-center mt-1"
+                >
+                   <Check class="w-3 h-3 text-unag-dark-green" />
+                </div>
+                <div>
+                  <p class="text-sm font-semibold dark:text-white text-unag-gray">Costo</p>
+                  <p class="text-xs dark:text-green-300/70 text-unag-dark-green">{costo}</p>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="#inscripcion"
+              class="inline-flex items-center gap-2.5 bg-unag-dark-green dark:bg-unag-yellow hover:from-yellow-400 hover:to-yellow-300 text-white font-bold text-sm tracking-wide px-8 py-3 rounded-full hover:shadow-yellow-400/50 hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <span>Inscribirse Ahora</span>
+              <ChevronRight class="w-4 h-4" />
+            </a>
+          </div>
+
+          <!-- Timeline visual -->
+          <div class="lg:pl-8">
+            <div class="space-y-6">
+              <div class="relative">
+                <div
+                  class="absolute left-0 top-0 bottom-0 w-0.5 bg-unag-green"
+                >
+                </div>
+                <div class="pl-8">
+                  <div
+                    class="absolute left-0 top-0 w-4 h-4 rounded-full bg-unag-green border-2 border-unag-light-green -translate-x-1.5"
+                  >
+                  </div>
+                  <span class="text-xs dark:text-yellow-400/70 text-unag-green font-semibold"
+                    >Paso 1</span
+                  >
+                  <p class="dark:text-white text-unag-dark-green font-semibold mt-1">
+                    Registro e Inscripción
+                  </p>
+                  <p class="text-xs dark:text-green-300/60 text-unag-gray text-unag-dark-green mt-1">
+                    Completa todos tus datos personales
+                  </p>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div
+                  class="absolute left-0 top-0 bottom-0 w-0.5 bg-unag-green"
+                >
+                </div>
+                <div class="pl-8">
+                  <div
+                    class="absolute left-0 top-0 w-4 h-4 rounded-full bg-unag-green border-2 border-unag-light-green -translate-x-1.5"
+                  >
+                  </div>
+                  <span class="text-xs dark:text-yellow-400/70 text-unag-green font-semibold"
+                    >Paso 2</span
+                  >
+                  <p class="dark:text-white text-unag-dark-green font-semibold mt-1">Pago del Derecho</p>
+                  <p class="text-xs dark:text-green-300/60 text-unag-gray mt-1">
+                    Realiza el pago de L200
+                  </p>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div
+                  class="absolute left-0 top-0 bottom-0 w-0.5 bg-unag-green"
+                >
+                </div>
+                <div class="pl-8">
+                  <div
+                    class="absolute left-0 top-0 w-4 h-4 rounded-full bg-unag-green border-2 border-unag-light-green -translate-x-1.5"
+                  >
+                  </div>
+                  <span class="text-xs dark:text-yellow-400/70 text-unag-green font-semibold"
+                    >Paso 3</span
+                  >
+                  <p class="dark:text-white text-unag-dark-green font-semibold mt-1">Presentar Prueba</p>
+                  <p class="text-xs dark:text-green-300/60 text-unag-gray mt-1">
+                    {fechaPrueba}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Localidades -->
+        <div class="mt-12 pt-8 border-t border-green-500/20">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-5 h-5 text-unag-dark-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <h4 class="text-sm font-bold tracking-widest uppercase dark:text-yellow-400 text-unag-dark-green">
+              Localidades Disponibles
+            </h4>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
+            {localidades.map((loc) => (
+              <div class="flex items-start gap-2 text-sm dark:text-green-100/80 text-unag-gray">
+                <span class="text-yellow-400/60 mt-1">•</span>
+                <span>{loc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

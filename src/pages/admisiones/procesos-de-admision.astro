@@ -10,7 +10,7 @@ import AdmisionCard from "@/components/astro/ui/admision-card.astro";
 import ProcesoVigente from "@/components/astro/ui/proceso-vigente.astro";
 
 const content = {
-  title: "Requisitos | UNAG",
+  title: "Procesos de Admisión | UNAG",
 };
 ---
 
@@ -23,7 +23,7 @@ const content = {
   />
 
   <section class="max-w-full mx-auto space-y-16 text-unag-gray mb-15">
-    <section class="relative py-24 px-6 overflow-hidden bg-white dark:bg-unag-dark-green">
+    <section class="relative pt-10 lg:py-24 px-6 overflow-hidden bg-white dark:bg-unag-dark-green">
     <!-- Fondo decorativo -->
     <div
       class="absolute inset-0 bg-[linear-gradient(rgba(46,138,58,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(46,138,58,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(46,138,58,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(46,138,58,0.07)_1px,transparent_1px)] bg-[size:48px_48px]"
@@ -40,7 +40,7 @@ const content = {
 
     <div class="relative max-w-full mx-auto">
       <!-- Grid de dos columnas -->
-      <div class="grid grid-cols-1 px-10 lg:grid-cols-2 gap-12 items-start">
+      <div class="grid grid-cols-1 lg:px-10 lg:grid-cols-2 gap-12 items-start">
         <!-- Columna 1: Proceso en Vigencia -->
         <div>
           <ProcesoVigente
@@ -91,13 +91,13 @@ const content = {
           <div class="space-y-4">
             <!-- Matemáticas -->
             <div
-              class="group relative bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-green-400 dark:hover:border-green-600/40 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm"
+              class="group relative bg-unag-gray/8 dark:bg-white/[0.04] border border-unag-green dark:border-white/[0.08] rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-green-400 dark:hover:border-green-600/40 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm"
             >
               
 
               <div class="flex items-center gap-3 mb-4 relative">
                 <div
-                  class="shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-green-600 to-green-500 dark:from-green-700 dark:to-green-500 flex items-center justify-center shadow-lg shadow-green-600/30 dark:shadow-green-700/40"
+                  class="shrink-0 w-10 h-10 rounded-lg bg-unag-green flex items-center justify-center shadow-lg "
                 >
                   <Pi class="text-white"/>
                 </div>
@@ -122,7 +122,7 @@ const content = {
                     "Factorización de funciones",
                   ].map((tema) => (
                     <li class="flex items-start gap-2 text-xs text-unag-gray dark:text-white/70 leading-snug">
-                      <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-green-500 group-hover:bg-green-600 dark:group-hover:bg-green-400 transition-colors" />
+                      <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-unag-green dark:bg-green-500 group-hover:bg-green-600 dark:group-hover:bg-green-400 transition-colors" />
                       {tema}
                     </li>
                   ))
@@ -132,12 +132,12 @@ const content = {
 
             <!-- Ciencias Naturales -->
             <div
-              class="group relative bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 dark:hover:border-green-600/40 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm"
+              class="group relative bg-unag-gray/8 dark:bg-white/[0.04] border border-unag-green dark:border-white/[0.08] rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 dark:hover:border-green-600/40 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm"
             >
 
               <div class="flex items-center gap-3 mb-4 relative">
                 <div
-                  class="shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-600 to-emerald-500 dark:from-emerald-700 dark:to-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-600/30 dark:shadow-emerald-700/40"
+                  class="shrink-0 w-10 h-10 rounded-lg bg-unag-dark-green flex items-center justify-center shadow-lg "
                 >
                   <Sprout class="text-white"/>
                 </div>
@@ -159,7 +159,7 @@ const content = {
                     "Química de nivel de ciclo común",
                   ].map((tema) => (
                     <li class="flex items-start gap-2 text-xs text-unag-gray dark:text-white/70 leading-snug">
-                      <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-500 group-hover:bg-emerald-600 dark:group-hover:bg-emerald-400 transition-colors" />
+                      <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-unag-green dark:bg-emerald-500 group-hover:bg-emerald-600 dark:group-hover:bg-emerald-400 transition-colors" />
                       {tema}
                     </li>
                   ))
@@ -169,18 +169,18 @@ const content = {
 
             <!-- Español -->
             <div
-              class="group relative bg-amber-50 dark:bg-green-800/[0.12] border border-amber-200 dark:border-green-700/35 rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 dark:hover:border-green-500 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm dark:shadow-[0_0_0_1px_rgba(46,138,58,0.2)]"
+              class="group relative bg-unag-gray/8 dark:bg-green-800/[0.12] border border-unag-green dark:border-green-700/35 rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 dark:hover:border-green-500 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm dark:shadow-[0_0_0_1px_rgba(46,138,58,0.2)]"
             >
 
               <div class="flex items-center gap-3 mb-4 relative">
                 <div
-                  class="shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-amber-400 dark:from-yellow-600 dark:to-yellow-400 flex items-center justify-center shadow-lg shadow-amber-500/30 dark:shadow-yellow-500/40"
+                  class="shrink-0 w-10 h-10 rounded-lg bg-unag-green flex items-center justify-center "
                 >
                   <BookText class="text-white"/>
                 </div>
                 <div>
                   <span
-                    class="block text-xs font-medium tracking-widest uppercase text-amber-600 dark:text-yellow-400/90"
+                    class="block text-xs font-medium tracking-widest uppercase text-unag-green dark:text-yellow-400/90"
                     >Área</span
                   >
                   <h3 class="font-bold text-gray-900 dark:text-white tracking-tight">Español</h3>
@@ -196,7 +196,7 @@ const content = {
                     "Cultura general",
                   ].map((tema) => (
                     <li class="flex items-start gap-2 text-xs text-gray-700 dark:text-white/70 leading-snug">
-                      <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-amber-500 dark:bg-yellow-400 group-hover:bg-amber-600 dark:group-hover:bg-yellow-300 transition-colors" />
+                      <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-unag-green dark:bg-yellow-400 group-hover:bg-amber-600 dark:group-hover:bg-yellow-300 transition-colors" />
                       {tema}
                     </li>
                   ))

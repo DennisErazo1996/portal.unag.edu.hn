@@ -11,6 +11,7 @@ interface Props {
 }
 
 const { numero, proceso, fechaInscripcion, fechaPrueba, costo, localidades } = Astro.props;
+
 ---
 
 <div class="mb-5">
@@ -94,13 +95,54 @@ const { numero, proceso, fechaInscripcion, fechaPrueba, costo, localidades } = A
               </div>
             </div>
 
-            <a
+            <!-- <a
+              id="inscribirse-btn"
               href="#inscripcion"
-              class="inline-flex items-center gap-2.5 bg-unag-dark-green dark:bg-unag-yellow hover:from-yellow-400 hover:to-yellow-300 text-white font-bold text-sm tracking-wide px-8 py-3 rounded-full hover:shadow-yellow-400/50 hover:-translate-y-0.5 transition-all duration-200"
+              class="hidden inline-flex items-center gap-2.5 bg-unag-dark-green dark:bg-unag-yellow hover:from-yellow-400 hover:to-yellow-300 text-white font-bold text-sm tracking-wide px-8 py-3 rounded-full hover:shadow-yellow-400/50 hover:-translate-y-0.5 transition-all duration-200"
             >
               <span>Inscribirse Ahora</span>
               <ChevronRight class="w-4 h-4" />
-            </a>
+            </a> -->
+
+            <!-- <div id="countdown-container" class="mt-10">
+              <div class="space-y-2 mb-6">
+                <p class="text-xs font-bold tracking-widest uppercase text-unag-dark-green dark:text-unag-yellow">
+                  Tiempo para el inicio
+                </p>
+              </div>
+              <div class="grid grid-cols-5 gap-2 sm:gap-3">
+               
+                <div class="flex flex-col items-center">
+                  <div class="w-full aspect-square rounded-lg bg-unag-green/10 dark:bg-unag-green/20 border border-unag-green/30 dark:border-unag-green/40 flex items-center justify-center hover:border-unag-green/60 dark:hover:border-unag-green/70 transition-all duration-300">
+                    <h2 id="days" class="text-xl sm:text-2xl md:text-3xl font-bold text-unag-green dark:text-unag-yellow">00</h2>
+                  </div>
+                  <p class="text-xs font-semibold text-unag-dark-green dark:text-white mt-2">Días</p>
+                </div>
+                
+                
+                <div class="flex flex-col items-center">
+                  <div class="w-full aspect-square rounded-lg bg-unag-green/10 dark:bg-unag-green/20 border border-unag-green/30 dark:border-unag-green/40 flex items-center justify-center hover:border-unag-green/60 dark:hover:border-unag-green/70 transition-all duration-300">
+                    <h2 id="hours" class="text-xl sm:text-2xl md:text-3xl font-bold text-unag-green dark:text-unag-yellow">00</h2>
+                  </div>
+                  <p class="text-xs font-semibold text-unag-dark-green dark:text-white mt-2">Horas</p>
+                </div>
+              
+                <div class="flex flex-col items-center">
+                  <div class="w-full aspect-square rounded-lg bg-unag-green/10 dark:bg-unag-green/20 border border-unag-green/30 dark:border-unag-green/40 flex items-center justify-center hover:border-unag-green/60 dark:hover:border-unag-green/70 transition-all duration-300">
+                    <h2 id="minutes" class="text-xl sm:text-2xl md:text-3xl font-bold text-unag-green dark:text-unag-yellow">00</h2>
+                  </div>
+                  <p class="text-xs font-semibold text-unag-dark-green dark:text-white mt-2">Min</p>
+                </div>
+                
+             
+                <div class="flex flex-col items-center">
+                  <div class="w-full aspect-square rounded-lg bg-unag-green/10 dark:bg-unag-green/20 border border-unag-green/30 dark:border-unag-green/40 flex items-center justify-center hover:border-unag-green/60 dark:hover:border-unag-green/70 transition-all duration-300">
+                    <h2 id="seconds" class="text-xl sm:text-2xl md:text-3xl font-bold text-unag-green dark:text-unag-yellow">00</h2>
+                  </div>
+                  <p class="text-xs font-semibold text-unag-dark-green dark:text-white mt-2">Seg</p>
+                </div>
+              </div>
+            </div>  -->
           </div>
 
           <!-- Timeline visual -->
@@ -195,3 +237,69 @@ const { numero, proceso, fechaInscripcion, fechaPrueba, costo, localidades } = A
     </div>
   </div>
 </div>
+
+
+<script>
+
+    let countdownInterval: any;
+
+    function timer () {
+        const currentDate = new Date();
+        const targetDateObj = new Date("march 04 2026 13:38:00");
+        const distance = targetDateObj.getTime() - currentDate.getTime();
+
+        // Si el tiempo ha pasado, detener el countdown
+        if (distance <= 0) {
+            clearInterval(countdownInterval);
+            
+            // Mostrar ceros
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+
+            if (daysEl) daysEl.innerHTML = '0';
+            if (hoursEl) hoursEl.innerHTML = '0';
+            if (minutesEl) minutesEl.innerHTML = '0';
+            if (secondsEl) secondsEl.innerHTML = '0';
+            
+            // Mostrar el botón
+            const btnEl = document.getElementById('inscribirse-btn');
+            if (btnEl) {
+                btnEl.classList.remove('hidden');
+                btnEl.style.display = 'inline-flex';
+            }
+            document.querySelectorAll('#countdown-container').forEach(el => el.classList.add('hidden'));
+            return;
+        }
+
+        // Mantener el botón oculto mientras el countdown está activo
+        const btnEl = document.getElementById('inscribirse-btn');
+        if (btnEl) {
+            btnEl.classList.add('hidden');
+            btnEl.style.display = 'none';
+        }
+
+        // Calculate total days from now until target date
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+        // Calculate remaining hours, minutes, and seconds
+        const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((distance / (1000 * 60)) % 60);
+        const seconds = Math.floor((distance / 1000) % 60);
+
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        if (daysEl) daysEl.innerHTML = String(days);
+        if (hoursEl) hoursEl.innerHTML = String(hours);
+        if (minutesEl) minutesEl.innerHTML = String(minutes);
+        if (secondsEl) secondsEl.innerHTML = String(seconds);
+    }
+
+    // Ejecutar timer inmediatamente y luego cada segundo
+    //timer();
+    //countdownInterval = setInterval(timer, 1000);
+</script>

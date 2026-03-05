@@ -1,6 +1,6 @@
 # Contenido del Sitio Web UNAG
   
-> Archivo generado automáticamente el 2026-03-02T21:34:25.127Z
+> Archivo generado automáticamente el 2026-03-05T17:01:01.136Z
 > Este archivo es utilizado por el chatbot para responder preguntas sobre el sitio.
 
 ---
@@ -212,6 +212,7 @@ diciembre 2025
 
 ### Admisiones
 - Preguntas Frecuentes (/admisiones/preguntas-frecuentes)
+- Procesos De Admision (/admisiones/procesos-de-admision)
 - Requisitos (/admisiones/requisitos)
 
 ### Carreras

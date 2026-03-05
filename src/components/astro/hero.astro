@@ -67,13 +67,46 @@ import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
     </div>
   </div>
 
+  <div class="hero-slide active absolute inset-0 bg-[url('/img/slide-aprender-haciendo-03.jpg')] dark:bg-[url('/img/bg-default-unag.webp')] bg-center bg-no-repeat bg-cover flex pt-55 pl-3 lg:pl-20">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/30 to-black/10 dark:from-black/90 dark:via-black/40 dark:to-black/30"></div>
+    <div id="hojas-hero">
+      <div
+        class="absolute z-1 bottom-30 lg:translate-y-0 lg:bottom-10 -translate-x-20 lg:-translate-x-50 select-none rellax"
+      >
+        <Image
+          class="w-30 lg:w-65"
+          loading="lazy"
+          src={hojaDesenfocada}
+          alt="UNAG Logo"
+          aria-hidden="true"
+          decoding="async"
+          fetchpriority="low"
+        />
+      </div>
+      <div class="absolute z-1 right-0 lg:right-10 translate-x-20 rotate-180 translate-y-8 lg:translate-y-0 select-none rellax">
+        <Image
+          class="w-30 lg:w-40"
+          loading="lazy"
+          src={hojaDesencadda02}
+          alt="UNAG Logo"
+          aria-hidden="true"
+          decoding="async"
+          fetchpriority="low"
+        />
+      </div>
+    </div>
+
+    <div class="absolute inset-0 bg-black/40 z-0"></div>
+    
+  </div>
+
   
 
   <!-- Navegación con dots -->
   <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-3">
     <button class="hero-dot active w-2 h-2 lg:w-3 lg:h-3 rounded-full bg-white transition-all duration-300" data-slide="0"></button>
-    <!-- <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300" data-slide="1"></button>
-    <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300" data-slide="2"></button> -->
+    <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300" data-slide="1"></button>
+    <!-- <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300" data-slide="2"></button> -->
   </div>
 
   <!-- Acceso Rápido -->

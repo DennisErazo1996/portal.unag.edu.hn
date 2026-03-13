@@ -16,6 +16,7 @@ import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
 import LinkUnderline from "@/components/astro/navigation/link-underline.astro";
 
 
+const year = new Date().getFullYear();
 
 ---
 
@@ -169,7 +170,7 @@ import LinkUnderline from "@/components/astro/navigation/link-underline.astro";
 
     <div class="flex justify-center mt-15">
       <p class="mt-10">
-        ©2025 Universidad Nacional de Agricultura - Todos los derechos
+        ©{year} Universidad Nacional de Agricultura - Todos los derechos
         reservados. <br />
         <a
           class="text-unag-light-green"

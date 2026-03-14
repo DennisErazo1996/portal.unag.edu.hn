@@ -7,7 +7,7 @@ order: 1
 featured: true
 attachments:
   - name: "Convocatoria pública para miembros de la JDU"
-    url: "/documents/formatos/aviso-convocatoria-publica-miembros-jdu.pdf"
+    url: "/documents/comunicados/aviso-convocatoria-publica-miembros-jdu.pdf"
     type: "PDF"
 
 ---

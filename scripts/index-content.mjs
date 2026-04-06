@@ -311,7 +311,7 @@ async function main() {
 La **Universidad Nacional de Agricultura (UNAG)** es una institución de educación superior pública de Honduras, 
 ubicada en Catacamas, Olancho. Fue fundada en 1950 y es la única universidad del país especializada en ciencias agrícolas.
 
-**Sitio web oficial:** https://portal.unag.edu.hn
+**Sitio web oficial:** https://unag.edu.hn
 
 ---
 

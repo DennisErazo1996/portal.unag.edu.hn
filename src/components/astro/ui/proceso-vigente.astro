@@ -8,9 +8,10 @@ interface Props {
   fechaPrueba: string;
   costo: string;
   localidades: string[];
+  fechaPago: string;
 }
 
-const { numero, proceso, fechaInscripcion, fechaPrueba, costo, localidades } = Astro.props;
+const { numero, proceso, fechaInscripcion, fechaPrueba, costo, localidades, fechaPago } = Astro.props;
 
 ---
 
@@ -185,7 +186,7 @@ const { numero, proceso, fechaInscripcion, fechaPrueba, costo, localidades } = A
                   >
                   <p class="dark:text-white text-unag-dark-green font-semibold mt-1">Pago del Derecho</p>
                   <p class="text-xs dark:text-green-300/60 text-unag-gray mt-1">
-                    Realiza el pago de L200
+                    Realiza el pago de L200 | <strong>{fechaPago}</strong>
                   </p>
                 </div>
               </div>

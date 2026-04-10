@@ -1,6 +1,6 @@
 # Contenido del Sitio Web UNAG
   
-> Archivo generado automáticamente el 2026-03-05T17:01:01.136Z
+> Archivo generado automáticamente el 2026-04-10T04:18:43.179Z
 > Este archivo es utilizado por el chatbot para responder preguntas sobre el sitio.
 
 ---
@@ -10,7 +10,7 @@
 La **Universidad Nacional de Agricultura (UNAG)** es una institución de educación superior pública de Honduras, 
 ubicada en Catacamas, Olancho. Fue fundada en 1950 y es la única universidad del país especializada en ciencias agrícolas.
 
-**Sitio web oficial:** https://portal.unag.edu.hn
+**Sitio web oficial:** https://unag.edu.hn
 
 ---
 
@@ -98,19 +98,13 @@ La **Junta de Dirección Universitaria (JDU)**, como órgano principal administr
 
 Para aquellos postulantes que hayan participado en la **Primera Convocatoria** y qu...
 
-### Ceremonia de Graduación, diciembre 2025
+### Ceremonia de Graduación, mayo 2026
 Información importante sobre la ceremonia de graduación. Recepción de documentos.
 ## Ceremonia de Graduación
 
-Se informa a los estudiantes de **lV año de todas las carreras** que hayan
-completado su **Plan de Estudios** y esten interesados en participar en la
-ceremonia de graduaci6n programada para el 12 de diciembre de 2025,
-que la recepción de documentos para trámite de graduación se
-realizará del **lunes 20 de octubre al viernes 14 de noviembre de 2025**,
-siendo esta la fecha límite para la entrega de documentos en la
-Secretaría General.
-
-Se adjuntan los **format...
+Se informa a los estudiantes de **IV año de todas las carreras** que hayan **completado su Plan de Estudios** y estén interesados en participar en la **ceremonia de graduación programada para el 29 de mayo de 2026**, que la **recepción de documentos para trámite de graduación** se realizará **del lunes 6 de abril al miércoles 6 de mayo de 2026**, siendo esta la **fecha límite** para la entrega de documentos en la **Secretaría General**.
+ 
+Se adjuntan los **formato...
 
 ### Comunicado JDU-UNAG-002-2026 para ocupar el cargo de Rector de la Universidad Nacional de Agricultura
 Cargo de Rector de la Universidad Nacional de Agricultura
@@ -138,6 +132,10 @@ Agilización de la transferencia de los fondos correspondientes al último trime
 La **Junta de Dirección Universitaria (JDU)** de la **Universidad Nacional de Agricultura (UNAG)**, por este medio **COMUNICA** a la comunidad universitaria lo siguiente:
 
 Que actualmente, esta Junta de Dirección, en un esfuerzo conjunto y coordinado con la **Rectoría**, se encuentra realizando **gestiones directas y de carácter urgente** ante la **Secretaría de Estado en el Despacho de Finanzas (SEFIN)**, con el propósito de agilizar la **transferencia de los fondos correspondientes al último...
+
+### Concurso público de méritos para la selección y nombramiento de la Junta de Dirección Universitaria
+La comisión para la Gestión Universitaria de la Universidad Nacional de Agricultura
+La **Comisión de Gestión Universitaria de la Universidad Nacional de Agricultura (CG-UNAG)**, en el marco de las atribuciones otorgadas mediante Decreto Legislativo No. 9-2026, publicado en el Diario Oficial La Gaceta el 13 de febrero de 2026, el cual le confiere la potestad de asumir las funciones de máximo órgano de dirección y gobierno; y en aplicación estricta de la normativa interna institucional contenida en el Estatuto de la Universidad Nacional de Agricultura, específicamente en su Artíc...
 
 ### Convocatoria JDU-UNAG-001-2025 para ocupar el cargo de Rector de la Universidad Nacional de Agricultura
 Cargo de Rector de la Universidad Nacional de Agricultura

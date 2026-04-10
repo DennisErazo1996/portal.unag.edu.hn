@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Globe, Settings, ChevronRight } from 'lucide-react';
+import { Sun, Moon, Settings, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type Language = 'es' | 'en';
@@ -26,17 +26,56 @@ export default function AccessibilityDock() {
     setLanguage(detectedLang);
   }, []);
 
-  const toggleTheme = () => {
+  const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
     const newIsDark = !isDark;
-    setIsDark(newIsDark);
-    
-    if (newIsDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+
+    const applyTheme = () => {
+      setIsDark(newIsDark);
+      if (newIsDark) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    };
+
+    const supportsViewTransition = typeof document.startViewTransition === 'function';
+
+    if (!supportsViewTransition) {
+      applyTheme();
+      return;
     }
+
+    const hasPointerPosition = event.clientX !== 0 || event.clientY !== 0;
+    const x = hasPointerPosition ? event.clientX : window.innerWidth / 2;
+    const y = hasPointerPosition ? event.clientY : window.innerHeight / 2;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = document.startViewTransition(applyTheme);
+
+    transition.ready
+      .then(() => {
+        const clipPath = [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${endRadius}px at ${x}px ${y}px)`,
+        ];
+
+        document.documentElement.animate(
+          { clipPath },
+          {
+            duration: 550,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            pseudoElement: '::view-transition-new(root)',
+          }
+        );
+      })
+      .catch(() => {
+        // Ignore transition preparation errors and keep the theme change applied.
+      });
   };
 
   const toggleLanguage = () => {

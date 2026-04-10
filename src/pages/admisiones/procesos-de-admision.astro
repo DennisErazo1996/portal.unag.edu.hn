@@ -1,13 +1,18 @@
 ---
 export const prerender = true;
 
-import {BookText, Pi, Sprout} from "@lucide/astro"
+import { BookText, Pi, Sprout, NotebookPen, FolderOpen } from "@lucide/astro";
 
 import Layout from "@/layouts/main.astro";
 import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
 
 import AdmisionCard from "@/components/astro/ui/admision-card.astro";
 import ProcesoVigente from "@/components/astro/ui/proceso-vigente.astro";
+import {
+  simulacroCiencias,
+  simulacroLenguaje,
+  simulacroMatematicas,
+} from "@/consts/simulacros-admision";
 
 const content = {
   title: "Procesos de Admisión | UNAG",
@@ -23,354 +28,503 @@ const content = {
   />
 
   <section class="max-w-full mx-auto space-y-16 text-unag-gray mb-15">
-    <section class="relative pt-10 lg:py-24 px-6 overflow-hidden bg-white dark:bg-unag-dark-green">
-    <!-- Fondo decorativo -->
-    <div
-      class="absolute inset-0 bg-[linear-gradient(rgba(46,138,58,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(46,138,58,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(46,138,58,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(46,138,58,0.07)_1px,transparent_1px)] bg-[size:48px_48px]"
+    <section
+      class="relative pt-10 lg:py-24 px-6 overflow-hidden bg-white dark:bg-unag-dark-green"
     >
-    </div>
-    <div
-      class="absolute -top-32 -left-24 w-[500px] h-[500px] rounded-full bg-green-700/10 dark:bg-green-700/20 blur-[80px]"
-    >
-    </div>
-    <div
-      class="absolute -bottom-16 -right-16 w-96 h-96 rounded-full bg-yellow-400/5 dark:bg-yellow-400/10 blur-[80px]"
-    >
-    </div>
-
-    <div class="relative max-w-full mx-auto">
-      <!-- Grid de dos columnas -->
-      <div class="grid grid-cols-1 lg:px-10 lg:grid-cols-2 gap-12 items-start">
-        <!-- Columna 1: Proceso en Vigencia -->
-        <div>
-          <ProcesoVigente
-            numero="01"
-            proceso="Primer"
-            fechaInscripcion="20/04/26 — 10/05/26"
-            fechaPrueba="06/06/2026",
-            fechaPago="22/04/26 — 17/05/26",
-            costo="L200 derecho a prueba"
-            localidades={[
-              "Campus Central, Catacamas",
-              "Sede Comayagua",
-              "Sede Tomalá",
-              "Puerto Lempira, Gracias a Dios",
-              "Sede Marcala",
-              "Sede Trojes",
-              "La Ceiba, Atlántida",
-              "Santa Bárbara, Santa Bárbara",
-              "Danlí, El Paraíso",
-              "Choluteca, Choluteca",
-              "Tocoa, Colón",
-              "El Progreso, Yoro",
-              "Gracias, Lempira",
-              "La Lima, Cortés",
-              "Nacaome, Valle",
-            ]}
-          />
-        </div>
-
-        <!-- Columna 2: Temario -->
-        <div>
-          <div class="text-center mb-12">
-            <span
-              class="inline-block text-xs font-bold tracking-[0.25em] uppercase text-unag-dark-green dark:text-yellow-400 bg-unag-green/10 dark:bg-yellow-400/10 border border-unag-green dark:border-yellow-400/30 px-4 py-1.5 rounded-full mb-5"
-            >
-              Prueba de Admisión
-            </span>
-            <h2
-              class="font-extrabold text-3xl md:text-4xl text-gray-900 dark:text-white tracking-tight leading-tight mb-3"
-            >
-              Temario del <span class="text-unag-green">Examen</span>
-            </h2>
-            <p class="text-unag-gray dark:text-green-100/60 text-sm max-w-md mx-auto leading-relaxed">
-              Prepárate con los temas que se evalúan en la prueba de admisión.
-            </p>
-          </div>
-
-          <!-- Grid de materias -->
-          <div class="space-y-4">
-            <!-- Matemáticas -->
-            <div
-              class="group relative bg-unag-gray/8 dark:bg-white/[0.04] border border-unag-green dark:border-white/[0.08] rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-green-400 dark:hover:border-green-600/40 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm"
-            >
-              
-
-              <div class="flex items-center gap-3 mb-4 relative">
-                <div
-                  class="shrink-0 w-10 h-10 rounded-lg bg-unag-green flex items-center justify-center shadow-lg "
-                >
-                  <Pi class="text-white"/>
-                </div>
-                <div>
-                  <span
-                    class="block text-xs font-medium tracking-widest uppercase text-green-600 dark:text-green-400/70"
-                    >Área</span
-                  >
-                  <h3 class="font-bold text-gray-900 dark:text-white tracking-tight">Matemáticas</h3>
-                </div>
-              </div>
-
-              <ul class="space-y-1.5">
-                {
-                  [
-                    "Razonamiento lógico",
-                    "Álgebra",
-                    "Geometría",
-                    "Estadística elemental",
-                    "Aritmética",
-                    "Polinomios",
-                    "Factorización de funciones",
-                  ].map((tema) => (
-                    <li class="flex items-start gap-2 text-xs text-unag-gray dark:text-white/70 leading-snug">
-                      <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-unag-green dark:bg-green-500 group-hover:bg-green-600 dark:group-hover:bg-green-400 transition-colors" />
-                      {tema}
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-
-            <!-- Ciencias Naturales -->
-            <div
-              class="group relative bg-unag-gray/8 dark:bg-white/[0.04] border border-unag-green dark:border-white/[0.08] rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 dark:hover:border-green-600/40 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm"
-            >
-
-              <div class="flex items-center gap-3 mb-4 relative">
-                <div
-                  class="shrink-0 w-10 h-10 rounded-lg bg-unag-dark-green flex items-center justify-center shadow-lg "
-                >
-                  <Sprout class="text-white"/>
-                </div>
-                <div>
-                  <span
-                    class="block text-xs font-medium tracking-widest uppercase text-emerald-600 dark:text-green-400/70"
-                    >Área</span
-                  >
-                  <h3 class="font-bold text-gray-900 dark:text-white tracking-tight">
-                    Ciencias Naturales
-                  </h3>
-                </div>
-              </div>
-
-              <ul class="space-y-1.5">
-                {
-                  [
-                    "Biología de nivel de ciclo común",
-                    "Química de nivel de ciclo común",
-                  ].map((tema) => (
-                    <li class="flex items-start gap-2 text-xs text-unag-gray dark:text-white/70 leading-snug">
-                      <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-unag-green dark:bg-emerald-500 group-hover:bg-emerald-600 dark:group-hover:bg-emerald-400 transition-colors" />
-                      {tema}
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-
-            <!-- Español -->
-            <div
-              class="group relative bg-unag-gray/8 dark:bg-green-800/[0.12] border border-unag-green dark:border-green-700/35 rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 dark:hover:border-green-500 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm dark:shadow-[0_0_0_1px_rgba(46,138,58,0.2)]"
-            >
-
-              <div class="flex items-center gap-3 mb-4 relative">
-                <div
-                  class="shrink-0 w-10 h-10 rounded-lg bg-unag-green flex items-center justify-center "
-                >
-                  <BookText class="text-white"/>
-                </div>
-                <div>
-                  <span
-                    class="block text-xs font-medium tracking-widest uppercase text-unag-green dark:text-yellow-400/90"
-                    >Área</span
-                  >
-                  <h3 class="font-bold text-gray-900 dark:text-white tracking-tight">Español</h3>
-                </div>
-              </div>
-
-              <ul class="space-y-1.5">
-                {
-                  [
-                    "Comprensión lectora",
-                    "Ortografía",
-                    "Sinónimos y antónimos",
-                    "Cultura general",
-                  ].map((tema) => (
-                    <li class="flex items-start gap-2 text-xs text-gray-700 dark:text-white/70 leading-snug">
-                      <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-unag-green dark:bg-yellow-400 group-hover:bg-amber-600 dark:group-hover:bg-yellow-300 transition-colors" />
-                      {tema}
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <section class="relative py-24 px-6 overflow-hidden">
       <!-- Fondo decorativo -->
       <div
-        class="absolute inset-0 bg-[linear-gradient(rgba(46,138,58,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(46,138,58,0.07)_1px,transparent_1px)] bg-[size:48px_48px]"
+        class="absolute inset-0 bg-[linear-gradient(rgba(46,138,58,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(46,138,58,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(46,138,58,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(46,138,58,0.07)_1px,transparent_1px)] bg-[size:48px_48px]"
       >
       </div>
       <div
-        class="absolute -top-32 -left-24 w-[500px] h-[500px] rounded-full bg-green-700/20 blur-[80px]"
+        class="absolute -top-32 -left-24 w-[500px] h-[500px] rounded-full bg-green-700/10 dark:bg-green-700/20 blur-[80px]"
       >
       </div>
       <div
-        class="absolute -bottom-16 -right-16 w-96 h-96 rounded-full bg-yellow-400/10 blur-[80px]"
+        class="absolute -bottom-16 -right-16 w-96 h-96 rounded-full bg-yellow-400/5 dark:bg-yellow-400/10 blur-[80px]"
       >
       </div>
 
-      <div class="relative max-w-7xl mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-16">
-          <span
-            class="inline-block text-xs font-bold tracking-[0.25em] uppercase dark:text-yellow-400 dark:bg-yellow-400/10 border dark:border-yellow-400/30 px-4 py-1.5 rounded-full mb-5 bg-unag-dark-green/10 border-unag-green text-unag-green"
-          >
-            2026
-          </span>
-          <h2
-            class="font-extrabold text-5xl md:text-6xl text-unag-dark-green dark:text-white tracking-tight leading-tight mb-4"
-          >
-            Calendario de <span class="text-unag-green">Admisión</span>
-          </h2>
-          <p
-            class="dark:text-green-100/60 text-unag-gray text-sm max-w-xl mx-auto leading-relaxed"
-          >
-            Elige el proceso que mejor se adapte a tu calendario y da el primer
-            paso hacia tu futuro profesional.
-          </p>
+      <div class="relative max-w-full mx-auto">
+        <!-- Grid de dos columnas -->
+        <div
+          class="grid grid-cols-1 lg:px-10 lg:grid-cols-2 gap-12 items-start"
+        >
+          <!-- Columna 1: Proceso en Vigencia -->
+          <div>
+            <ProcesoVigente
+              numero="01"
+              proceso="Primer"
+              fechaInscripcion="20/04/26 — 10/05/26"
+              fechaPrueba="06/06/2026"
+              ,
+              fechaPago="22/04/26 — 17/05/26"
+              ,
+              costo="L200 derecho a prueba"
+              localidades={[
+                "Campus Central, Catacamas",
+                "Sede Comayagua",
+                "Sede Tomalá",
+                "Puerto Lempira, Gracias a Dios",
+                "Sede Marcala",
+                "Sede Trojes",
+                "La Ceiba, Atlántida",
+                "Santa Bárbara, Santa Bárbara",
+                "Danlí, El Paraíso",
+                "Choluteca, Choluteca",
+                "Tocoa, Colón",
+                "El Progreso, Yoro",
+                "Gracias, Lempira",
+                "La Lima, Cortés",
+                "Nacaome, Valle",
+              ]}
+            />
+          </div>
+
+          <!-- Columna 2: Temario -->
+          <div>
+            <div class="text-center mb-12">
+              <span
+                class="inline-block text-xs font-bold tracking-[0.25em] uppercase text-unag-dark-green dark:text-yellow-400 bg-unag-green/10 dark:bg-yellow-400/10 border border-unag-green dark:border-yellow-400/30 px-4 py-1.5 rounded-full mb-5"
+              >
+                Prueba de Admisión
+              </span>
+              <h2
+                class="font-extrabold text-3xl md:text-4xl text-gray-900 dark:text-white tracking-tight leading-tight mb-3"
+              >
+                Temario del <span class="text-unag-green">Examen</span>
+              </h2>
+              <p
+                class="text-unag-gray dark:text-green-100/60 text-sm max-w-md mx-auto leading-relaxed"
+              >
+                Prepárate con los temas que se evalúan en la prueba de admisión.
+              </p>
+            </div>
+
+            <!-- Grid de materias -->
+            <div class="space-y-4">
+              <!-- Matemáticas -->
+              <div
+                class="group relative bg-unag-gray/8 dark:bg-white/[0.04] border border-unag-green dark:border-white/[0.08] rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-green-400 dark:hover:border-green-600/40 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm"
+              >
+                <div class="grid md:grid-cols-2 grid-cols-1">
+                  <div>
+                    <div class="flex items-center gap-3 mb-4 relative">
+                      <div
+                        class="shrink-0 w-10 h-10 rounded-lg bg-unag-green flex items-center justify-center shadow-lg"
+                      >
+                        <Pi class="text-white" />
+                      </div>
+                      <div>
+                        <span
+                          class="block text-xs font-medium tracking-widest uppercase text-green-600 dark:text-green-400/70"
+                          >Área</span
+                        >
+                        <h3
+                          class="font-bold text-gray-900 dark:text-white tracking-tight"
+                        >
+                          Matemáticas
+                        </h3>
+                      </div>
+                    </div>
+
+                    <ul class="space-y-1.5">
+                      {
+                        [
+                          "Razonamiento lógico",
+                          "Álgebra",
+                          "Geometría",
+                          "Estadística elemental",
+                          "Aritmética",
+                          "Polinomios",
+                          "Factorización de funciones",
+                        ].map((tema) => (
+                          <li class="flex items-start gap-2 text-xs text-unag-gray dark:text-white/70 leading-snug">
+                            <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-unag-green dark:bg-green-500 group-hover:bg-green-600 dark:group-hover:bg-green-400 transition-colors" />
+                            {tema}
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+
+                  <div class="flex items-end flex-col">
+                    <h3
+                      class="font-bold text-gray-900 dark:text-white tracking-tight text-sm mt-3 lg:mt-0"
+                    >
+                      Simulacros de prueba:
+                    </h3>
+                    <div
+                      class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 mt-3"
+                    >
+                      {
+                        simulacroMatematicas.map((simulacro) => (
+                          <a
+                            href={simulacro.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <div class="bg-unag-dark-green transition-colors hover:border-unag-yellow  text-[10px] w-full h-full p-2 border-unag-light-green border-1 rounded-sm text-white flex gap-2 flex-col">
+                              <NotebookPen class="text-unag-light-green w-5" />{" "}
+                              {simulacro.nombre}
+                            </div>
+                          </a>
+                        ))
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ciencias Naturales -->
+              <div
+                class="group relative bg-unag-gray/8 dark:bg-white/[0.04] border border-unag-green dark:border-white/[0.08] rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 dark:hover:border-green-600/40 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm"
+              >
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                  <div>
+                    <div class="flex items-center gap-3 mb-4 relative">
+                      <div
+                        class="shrink-0 w-10 h-10 rounded-lg bg-unag-dark-green flex items-center justify-center shadow-lg"
+                      >
+                        <Sprout class="text-white" />
+                      </div>
+                      <div>
+                        <span
+                          class="block text-xs font-medium tracking-widest uppercase text-emerald-600 dark:text-green-400/70"
+                          >Área</span
+                        >
+                        <h3
+                          class="font-bold text-gray-900 dark:text-white tracking-tight"
+                        >
+                          Ciencias Naturales
+                        </h3>
+                      </div>
+                    </div>
+
+                    <ul class="space-y-1.5">
+                      {
+                        [
+                          "Biología de nivel de ciclo común",
+                          "Química de nivel de ciclo común",
+                        ].map((tema) => (
+                          <li class="flex items-start gap-2 text-xs text-unag-gray dark:text-white/70 leading-snug">
+                            <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-unag-green dark:bg-emerald-500 group-hover:bg-emerald-600 dark:group-hover:bg-emerald-400 transition-colors" />
+                            {tema}
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+
+                  <div class="flex items-end flex-col">
+                    <h3
+                      class="font-bold text-gray-900 dark:text-white tracking-tight text-sm mt-3 lg:mt-0"
+                    >
+                      Simulacros de prueba:
+                    </h3>
+                    <div
+                      class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 mt-3"
+                    >
+                      <div></div>
+                      <div></div>
+                      {
+                        simulacroCiencias.map((simulacro) => (
+                          <a
+                            href={simulacro.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <div class="bg-unag-dark-green transition-colors hover:border-unag-yellow  text-[10px] w-full h-full p-2 border-unag-light-green border-1 rounded-sm text-white flex gap-2 flex-col">
+                              <NotebookPen class="text-unag-light-green w-5" />{" "}
+                              {simulacro.nombre}
+                            </div>
+                          </a>
+                        ))
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Español -->
+              <div
+                class="group relative bg-unag-gray/8 dark:bg-green-800/[0.12] border border-unag-green dark:border-green-700/35 rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 dark:hover:border-green-500 hover:shadow-md dark:hover:shadow-2xl dark:hover:shadow-green-950/50 backdrop-blur-sm dark:shadow-[0_0_0_1px_rgba(46,138,58,0.2)]"
+              >
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                  <div>
+                    <div class="flex items-center gap-3 mb-4 relative">
+                      <div
+                        class="shrink-0 w-10 h-10 rounded-lg bg-unag-green flex items-center justify-center"
+                      >
+                        <BookText class="text-white" />
+                      </div>
+                      <div>
+                        <span
+                          class="block text-xs font-medium tracking-widest uppercase text-unag-green dark:text-yellow-400/90"
+                          >Área</span
+                        >
+                        <h3
+                          class="font-bold text-gray-900 dark:text-white tracking-tight"
+                        >
+                          Español
+                        </h3>
+                      </div>
+                    </div>
+
+                    <ul class="space-y-1.5">
+                      {
+                        [
+                          "Comprensión lectora",
+                          "Ortografía",
+                          "Sinónimos y antónimos",
+                          "Cultura general",
+                        ].map((tema) => (
+                          <li class="flex items-start gap-2 text-xs text-gray-700 dark:text-white/70 leading-snug">
+                            <span class="shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-unag-green dark:bg-yellow-400 group-hover:bg-amber-600 dark:group-hover:bg-yellow-300 transition-colors" />
+                            {tema}
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+
+                  <div class="flex items-end flex-col">
+                    <h3
+                      class="font-bold text-gray-900 dark:text-white tracking-tight text-sm mt-3 lg:mt-0"
+                    >
+                      Simulacros de prueba:
+                    </h3>
+                    <div
+                      class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 mt-3"
+                    >
+                      <div></div>
+                      {
+                        simulacroLenguaje.map((simulacro) => (
+                          <a
+                            href={simulacro.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <div class="bg-unag-dark-green transition-colors hover:border-unag-yellow  text-[10px] w-full h-full p-2 border-unag-light-green border-1 rounded-sm text-white flex gap-2 flex-col">
+                              <NotebookPen class="text-unag-light-green w-5" />{" "}
+                              {simulacro.nombre}
+                            </div>
+                          </a>
+                        ))
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Grid de procesos -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-          <!-- PRIMER PROCESO -->
-          <AdmisionCard
-            numero="01"
-            proceso="Primer"
-            fechas={[
-              {
-                fecha: "20/04/26 — 10/05/26",
-                descripcion: "Inscripción",
-                marcado: false,
-              },
-              {
-                fecha: "22/04/26 — 17/05/26",
-                descripcion: "Pago L200 derecho a prueba de admisión",
-                marcado: false,
-              },
-              {
-                fecha: "06/06/2026",
-                descripcion: "Aplicación de la prueba",
-                marcado: true,
-              },
-              {
-                fecha: "23/06/26",
-                descripcion: "Entrega de resultados",
-                marcado: false,
-              },
-              {
-                fecha: "16/11/26 — 27/11/26",
-                descripcion: "Notificación de admitido",
-                marcado: false,
-              },
-            ]}
-            localidades={[
-              "Campus Central, Catacamas",
-              "Sede Comayagua",
-              "Sede Tomalá",
-              "Puerto Lempira, Gracias a Dios",
-              "Sede Marcala",
-              "Sede Trojes",
-              "La Ceiba, Atlántida",
-              "Santa Bárbara, Santa Bárbara",
-              "Danlí, El Paraíso",
-              "Choluteca, Choluteca",
-              "Tocoa, Colón",
-              "El Progreso, Yoro",
-              "Gracias, Lempira",
-              "La Lima, Cortés",
-              "Nacaome, Valle",
-            ]}
-          />
+        <section class="px-6 mt-15 lg:mt-5 mb-10">
+          <div class="max-w-7xl mx-auto">
+            <div
+              class="relative overflow-hidden rounded-2xl border border-unag-light-green/40 bg-unag-dark-green p-6 md:p-8 shadow-[0_18px_50px_-20px_rgba(0,55,29,0.65)]"
+            >
+              <div
+                class="absolute -top-10 -right-10 h-36 w-36 rounded-full bg-white/15 blur-2xl"
+              >
+              </div>
+              <div
+                class="absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-unag-yellow/25 blur-3xl"
+              >
+              </div>
 
-          <!-- SEGUNDO PROCESO -->
-          <AdmisionCard
-            numero="02"
-            proceso="Segundo"
-            fechas={[
-              {
-                fecha: "22/06/26 — 13/07/26",
-                descripcion: "Inscripción",
-                marcado: false,
-              },
-              {
-                fecha: "24/06/26 — 15/07/26",
-                descripcion: "Pago L200 derecho a prueba de admisión",
-                marcado: false,
-              },
-              {
-                fecha: "08/08/2026",
-                descripcion: "Aplicación de la prueba",
-                marcado: true,
-              },
-              {
-                fecha: "08/09/26",
-                descripcion: "Entrega de resultados",
-                marcado: false,
-              },
-              {
-                fecha: "16/11/26 — 27/11/26",
-                descripcion: "Notificación de admitido",
-                marcado: false,
-              },
-            ]}
-            localidades={[
-              "Campus Central, Catacamas",
-              "Sede Comayagua",
-              "Sede Tomalá",
-              "Puerto Lempira, Gracias a Dios",
-              "Sede Marcala",
-              "Sede Trojes",
-            ]}
-          />
+              <div
+                class="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+              >
+                <div class="space-y-1">
+                  <p
+                    class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80"
+                  >
+                    Material de Apoyo
+                  </p>
+                  <h1 class="text-lg font-extrabold text-white tracking-tight">
+                    Guia y archivos para aspirantes
+                  </h1>
+                  <p class="text-sm text-white/90">
+                    Accede a recursos oficiales para prepararte mejor para la
+                    prueba de admision.
+                  </p>
+                </div>
 
-          <!-- TERCER PROCESO -->
-          <AdmisionCard
-            numero="03"
-            proceso="Tercer"
-            fechas={[
-              {
-                fecha: "14/09/26 — 25/09/26",
-                descripcion: "Inscripción",
-                marcado: false,
-              },
-              {
-                fecha: "16/09/26 — 30/09/26",
-                descripcion: "Pago L200 derecho a prueba de admisión",
-                marcado: false,
-              },
-              {
-                fecha: "24/10/2026",
-                descripcion: "Aplicación de la prueba",
-                marcado: true,
-              },
-              {
-                fecha: "16/11/26 — 27/11/26",
-                descripcion: "Entrega de resultados y Notificación de admitido",
-                marcado: false,
-              },
-            ]}
-            localidades={["Campus Central, Catacamas", "Sede Comayagua"]}
-          />
-        </div>
+                <a
+                  href="https://drive.google.com/drive/folders/1NLg3KOTSeOXvnQziHgMSqEnMahE16MuZ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-unag-dark-green transition-all duration-300 hover:translate-y-[-1px] hover:bg-unag-yellow focus:outline-none focus-visible:ring-2 focus-visible:ring-unag-yellow"
+                >
+                  <FolderOpen class="h-4 w-4" />
+                  Ver Archivos de Apoyo
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="relative py-30 px-6 overflow-hidden">
+          <!-- Fondo decorativo -->
+          <div
+            class="absolute inset-0 bg-[linear-gradient(rgba(46,138,58,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(46,138,58,0.07)_1px,transparent_1px)] bg-[size:48px_48px]"
+          >
+          </div>
+
+          <div
+            class="absolute -bottom-16 -right-16 w-96 h-96 rounded-full bg-yellow-400/10 blur-[80px]"
+          >
+          </div>
+
+          <div class="relative max-w-7xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-16">
+              <span
+                class="inline-block text-xs font-bold tracking-[0.25em] uppercase dark:text-yellow-400 dark:bg-yellow-400/10 border dark:border-yellow-400/30 px-4 py-1.5 rounded-full mb-5 bg-unag-dark-green/10 border-unag-green text-unag-green"
+              >
+                2027
+              </span>
+              <h2
+                class="font-extrabold text-5xl md:text-6xl text-unag-dark-green dark:text-white tracking-tight leading-tight mb-4"
+              >
+                Calendario de <span class="text-unag-green">Admisión</span>
+              </h2>
+              <p
+                class="dark:text-green-100/60 text-unag-gray text-sm max-w-xl mx-auto leading-relaxed"
+              >
+                Elige el proceso que mejor se adapte a tu calendario y da el
+                primer paso hacia tu futuro profesional.
+              </p>
+            </div>
+
+            <!-- Grid de procesos -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+              <!-- PRIMER PROCESO -->
+              <AdmisionCard
+                numero="01"
+                proceso="Primer"
+                fechas={[
+                  {
+                    fecha: "20/04/26 — 10/05/26",
+                    descripcion: "Inscripción",
+                    marcado: false,
+                  },
+                  {
+                    fecha: "22/04/26 — 17/05/26",
+                    descripcion: "Pago L200 derecho a prueba de admisión",
+                    marcado: false,
+                  },
+                  {
+                    fecha: "06/06/2026",
+                    descripcion: "Aplicación de la prueba",
+                    marcado: true,
+                  },
+                  {
+                    fecha: "23/06/26",
+                    descripcion: "Entrega de resultados",
+                    marcado: false,
+                  },
+                  {
+                    fecha: "16/11/26 — 27/11/26",
+                    descripcion: "Notificación de admitido",
+                    marcado: false,
+                  },
+                ]}
+                localidades={[
+                  "Campus Central, Catacamas",
+                  "Sede Comayagua",
+                  "Sede Tomalá",
+                  "Puerto Lempira, Gracias a Dios",
+                  "Sede Marcala",
+                  "Sede Trojes",
+                  "La Ceiba, Atlántida",
+                  "Santa Bárbara, Santa Bárbara",
+                  "Danlí, El Paraíso",
+                  "Choluteca, Choluteca",
+                  "Tocoa, Colón",
+                  "El Progreso, Yoro",
+                  "Gracias, Lempira",
+                  "La Lima, Cortés",
+                  "Nacaome, Valle",
+                ]}
+              />
+
+              <!-- SEGUNDO PROCESO -->
+              <AdmisionCard
+                numero="02"
+                proceso="Segundo"
+                fechas={[
+                  {
+                    fecha: "22/06/26 — 13/07/26",
+                    descripcion: "Inscripción",
+                    marcado: false,
+                  },
+                  {
+                    fecha: "24/06/26 — 15/07/26",
+                    descripcion: "Pago L200 derecho a prueba de admisión",
+                    marcado: false,
+                  },
+                  {
+                    fecha: "08/08/2026",
+                    descripcion: "Aplicación de la prueba",
+                    marcado: true,
+                  },
+                  {
+                    fecha: "08/09/26",
+                    descripcion: "Entrega de resultados",
+                    marcado: false,
+                  },
+                  {
+                    fecha: "16/11/26 — 27/11/26",
+                    descripcion: "Notificación de admitido",
+                    marcado: false,
+                  },
+                ]}
+                localidades={[
+                  "Campus Central, Catacamas",
+                  "Sede Comayagua",
+                  "Sede Tomalá",
+                  "Puerto Lempira, Gracias a Dios",
+                  "Sede Marcala",
+                  "Sede Trojes",
+                ]}
+              />
+
+              <!-- TERCER PROCESO -->
+              <AdmisionCard
+                numero="03"
+                proceso="Tercer"
+                fechas={[
+                  {
+                    fecha: "14/09/26 — 25/09/26",
+                    descripcion: "Inscripción",
+                    marcado: false,
+                  },
+                  {
+                    fecha: "16/09/26 — 30/09/26",
+                    descripcion: "Pago L200 derecho a prueba de admisión",
+                    marcado: false,
+                  },
+                  {
+                    fecha: "24/10/2026",
+                    descripcion: "Aplicación de la prueba",
+                    marcado: true,
+                  },
+                  {
+                    fecha: "16/11/26 — 27/11/26",
+                    descripcion:
+                      "Entrega de resultados y Notificación de admitido",
+                    marcado: false,
+                  },
+                ]}
+                localidades={["Campus Central, Catacamas", "Sede Comayagua"]}
+              />
+            </div>
+          </div>
+        </section>
       </div>
     </section>
-  </section>
-</Layout>
+  </section></Layout
+>

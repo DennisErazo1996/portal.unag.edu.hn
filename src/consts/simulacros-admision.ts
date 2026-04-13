@@ -12,7 +12,7 @@ export const simulacroMatematicas = [
         url: "https://gemini.google.com/share/63af0693c70d"
     },
     {
-        nombre: "Lógica",
+        nombre: "Geometría",
         url: "https://gemini.google.com/share/35140dcb95da"
     },
 ];

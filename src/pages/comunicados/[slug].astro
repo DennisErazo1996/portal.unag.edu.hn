@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '@/layouts/main.astro';
 import { Calendar, Tag, ArrowLeft, Download, FileText, Star } from '@lucide/astro';
 import categoryColors from '@/consts/category-colors';
@@ -16,14 +16,14 @@ interface Props {
 export async function getStaticPaths() {
   const comunicados = await getCollection('comunicados');
   return comunicados.map((comunicado: any) => ({
-    params: { slug: comunicado.slug },
+    params: { slug: comunicado.id },
     props: { comunicado },
   }));
 }
 
 
 const { comunicado } = Astro.props;
-const { Content } = await comunicado.render();
+const { Content } = await render(comunicado);
 const content = {
   title: `${comunicado.data.title} | UNAG`,
 };

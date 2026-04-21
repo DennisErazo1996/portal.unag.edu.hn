@@ -1,12 +1,14 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const comunicadosCollection = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/comunicados' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     category: z.enum(['Convocatoria', 'Aviso', 'Graduación', 'Licitación', 'Académico']),
-    date: z.date(),
+    date: z.coerce.date(),
     order: z.number().optional(), // Orden de publicación (mayor = más reciente) para desempate en misma fecha
     image: z.string().optional(),
     featured: z.boolean().default(false),
@@ -19,5 +21,5 @@ const comunicadosCollection = defineCollection({
 });
 
 export const collections = {
-  'comunicados': comunicadosCollection,
+  comunicados: comunicadosCollection,
 };

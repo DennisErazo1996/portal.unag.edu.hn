@@ -36,7 +36,7 @@ const translations = {
 };
 
 interface Comunicado {
-  slug: string;
+  id: string;
   data: {
     title: string;
     description: string;
@@ -136,9 +136,9 @@ export default function ComunicadosSection({
           className="comunicados-swiper"
         >
           {comunicados.map((comunicado) => (
-            <SwiperSlide key={comunicado.slug}>
+            <SwiperSlide key={comunicado.id}>
               <a
-                href={lang === 'en' ? `/en/comunicados/${comunicado.slug}` : `/comunicados/${comunicado.slug}`}
+                href={lang === 'en' ? `/en/comunicados/${comunicado.id}` : `/comunicados/${comunicado.id}`}
                 className="block bg-unag-dark-green rounded-3xl h-[280px]"
               >
                 <div className="p-6 h-full flex flex-col">

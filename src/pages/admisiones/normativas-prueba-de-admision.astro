@@ -1,0 +1,267 @@
+---
+export const prerender = true;
+
+import {
+  AlarmClock,
+  BadgeCheck,
+  BookOpenText,
+  CalendarClock,
+  ClipboardList,
+  Eraser,
+  FileBadge,
+  FileText,
+  Info,
+  Lightbulb,
+  LogOut,
+  Pencil,
+  ShieldAlert,
+  TimerOff,
+  UserCheck,
+  VolumeX,
+} from '@lucide/astro';
+import Layout from '@/layouts/main.astro';
+import HeaderPages from '@/components/astro/ui/header-bg-pages.astro';
+
+const content = {
+    title: 'Normativas Prueba de Admisión | UNAG'
+};
+
+const punctualidad = [
+    {
+        icon: AlarmClock,
+        title: 'Llegada al campus',
+        detail: 'Preséntese a las 7:00 a.m. puntual.'
+    },
+    {
+        icon: TimerOff,
+        title: 'Cierre de acceso',
+        detail: 'No se permitirá el ingreso una vez iniciada la prueba.'
+    }
+];
+
+const documentos = [
+    { icon: BadgeCheck, text: 'Credencial validada' },
+    { icon: FileBadge, text: 'DNI, pasaporte o partida de nacimiento' },
+    { icon: FileText, text: 'Recibo de pago original' }
+];
+
+const materiales = [
+    { icon: Pencil, text: 'Lápiz grafito HB o N° 2' },
+    { icon: Eraser, text: 'Borrador' },
+    { icon: Pencil, text: 'Sacapuntas' }
+];
+
+const protocolo = [
+    {
+        icon: BookOpenText,
+        title: 'Instrucciones',
+        detail: 'Escuche al aplicador antes de abrir el folleto.'
+    },
+    {
+        icon: ClipboardList,
+        title: 'Hoja de respuestas',
+        detail: 'Marque los círculos de forma oscura y completa.'
+    },
+    {
+        icon: VolumeX,
+        title: 'Silencio y conducta',
+        detail: 'Cero comunicación. Intentos de copia anulan la prueba.'
+    },
+    {
+        icon: LogOut,
+        title: 'Salida',
+        detail: 'Solo podrá retirarse con la autorización del aplicador.'
+    }
+];
+
+const consejos = [
+    'Descanse bien la noche anterior y tome un desayuno ligero.',
+    'Ubique su aula con antelación en los listados publicados.',
+    'Siga las normas de conducta indicadas por personal de la UNAG.'
+];
+---
+
+<Layout content={content}>
+    <HeaderPages
+        imagen="/img/bg-default-unag-02.webp"
+        etiqueta="Admisiones"
+        titulo="Normativas Prueba de Admisión"
+        descripcion="Encuentra las normativas y regulaciones relacionadas con la prueba de admisión en la Universidad Nacional de Agricultura."
+    />
+
+    <section class="bg-white py-16 lg:py-24 dark:bg-neutral-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
+                <span class="inline-flex items-center gap-2 rounded-full border border-unag-light-green bg-unag-dark-green px-4 py-2 text-[11px] font-bold uppercase tracking-[0.28em] text-white">
+                    <Info class="w-4 h-4" />
+                    Día de evaluación
+                </span>
+                <h2 class="mt-5 text-2xl sm:text-2xl lg:text-4xl font-black uppercase tracking-tight text-unag-dark-green dark:text-white">
+                    Instructivo UNAG
+                </h2>
+                <p class="mt-4 text-sm sm:text-base text-unag-gray/80 dark:text-white/75">
+                    Normativas para el día de la evaluación. Revise con anticipación cada indicación para presentarse correctamente a la prueba de admisión.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+                <article class="rounded-lg border border-unag-green/40 bg-[#084528] p-6 lg:p-8 text-white xl:col-span-4">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-unag-green text-unag-dark-green font-black text-lg">01</span>
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.24em] text-unag-light-green">Bloque</p>
+                            <h3 class="text-2xl font-bold uppercase tracking-tight">Puntualidad</h3>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5">
+                        {punctualidad.map(({ icon: Icon, title, detail }) => (
+                            <div class="flex gap-4 rounded-lg border border-white/8 bg-black/8 p-4">
+                                <div class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-unag-green/14 text-unag-light-green">
+                                    <Icon class="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold uppercase text-unag-light-green">{title}</h4>
+                                    <p class="mt-1 text-sm leading-relaxed text-white/88">{detail}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </article>
+
+                <article class="rounded-lg border border-unag-green bg-[#0b4c2d] p-6 lg:p-8 text-white xl:col-span-4">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-unag-green text-unag-dark-green font-black text-lg">02</span>
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.24em] text-unag-light-green">Obligatorio</p>
+                            <h3 class="text-2xl font-bold uppercase tracking-tight">Documentos</h3>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        {documentos.map(({ icon: Icon, text }) => (
+                            <div class="flex items-center gap-3 rounded-lg border border-unag-green/40 bg-unag-dark-green/45 px-4 py-4">
+                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-unag-green/14 text-unag-light-green">
+                                    <Icon class="w-5 h-5" />
+                                </div>
+                                <p class="text-sm font-medium text-white/92">{text}</p>
+                            </div>
+                        ))}
+                    </div>
+                </article>
+
+                <article class="rounded-lg border border-unag-green/40 bg-[#084528] p-6 lg:p-8 text-white xl:col-span-4">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-unag-green text-unag-dark-green font-black text-lg">03</span>
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.24em] text-unag-light-green">Permitido</p>
+                            <h3 class="text-2xl font-bold uppercase tracking-tight">Materiales</h3>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="rounded-lg border border-unag-green/40 bg-unag-dark-green/45 p-4">
+                            <div class="flex items-center gap-3 text-sm font-semibold text-white sm:text-base">
+                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-unag-green/14 text-unag-light-green">
+                                    <Pencil class="w-5 h-5" />
+                                </div>
+                                <span>Lápiz grafito HB o N°2</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            {materiales.slice(1).map(({ icon: Icon, text }) => (
+                                <div class="rounded-lg border border-unag-green/35 bg-unag-dark-green/45 px-4 py-4 text-center text-sm font-semibold text-white/92">
+                                    <div class="mb-2 flex justify-center text-unag-light-green">
+                                        <Icon class="w-5 h-5" />
+                                    </div>
+                                    {text}
+                                </div>
+                            ))}
+                        </div>
+
+                        <div class="rounded-lg border border-unag-yellow/30 bg-unag-yellow/12 px-4 py-4 text-sm font-bold tracking-wide text-unag-yellow">
+                            Prohibido: calculadoras y papel adicional.
+                        </div>
+                    </div>
+                </article>
+
+                <article class="rounded-lg border border-unag-green/40 bg-[#0b4c2d] p-6 lg:p-8 text-white xl:col-span-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-unag-green text-unag-dark-green font-black text-lg">04</span>
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.24em] text-unag-light-green">Durante la prueba</p>
+                            <h3 class="text-2xl font-bold uppercase tracking-tight">Protocolo en aula</h3>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {protocolo.map(({ icon: Icon, title, detail }) => (
+                            <div class="rounded-lg border border-unag-green/35 bg-unag-dark-green/40 p-4 lg:p-5">
+                                <div class="flex items-start gap-4">
+                                    <div class="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-unag-green/14 text-unag-light-green">
+                                        <Icon class="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <h4 class="text-base font-bold text-white">{title}</h4>
+                                        <p class="mt-1 text-sm text-white/80 leading-relaxed">{detail}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </article>
+
+                <article class="rounded-lg border border-unag-yellow bg-[#084528] p-6 lg:p-8 text-white xl:col-span-4">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-unag-yellow text-unag-dark-green">
+                            <Lightbulb class="w-6 h-6" />
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.24em] text-unag-yellow/80">Recomendaciones</p>
+                            <h3 class="text-2xl font-bold uppercase tracking-tight">Consejos</h3>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        {consejos.map((consejo) => (
+                            <div class="flex gap-3 rounded-lg border border-unag-yellow/20 bg-unag-dark-green/35 p-4">
+                                <div class="mt-1 text-unag-yellow">
+                                    <UserCheck class="w-5 h-5" />
+                                </div>
+                                <p class="text-sm text-white/88 leading-relaxed">{consejo}</p>
+                            </div>
+                        ))}
+                    </div>
+                </article>
+            </div>
+
+            <div class="mt-6 rounded-lg border border-unag-yellow/35 bg-[#0b4c2d] px-6 py-7 lg:px-8 lg:py-8">
+                <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                    <div class="flex items-start gap-4">
+                        <div class="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-unag-yellow text-unag-dark-green">
+                            <ShieldAlert class="w-6 h-6" />
+                        </div>
+                        <div>
+                            <p class="text-sm font-black uppercase tracking-[0.18em] text-unag-yellow">Dispositivos electrónicos prohibidos</p>
+                            <p class="mt-2 text-sm leading-relaxed text-white/84">
+                                No se permite portar: celulares, relojes inteligentes (smartwatches), tabletas o audífonos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="rounded-lg bg-unag-yellow px-5 py-4 text-sm font-bold uppercase leading-snug text-unag-dark-green lg:max-w-xl">
+                        Sanción: anulación inmediata si se detecta cualquier dispositivo electrónico.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 flex items-start gap-3 rounded-lg border border-unag-light-gray bg-unag-overlay-green/30 px-5 py-4 text-sm text-unag-gray dark:border-white/10 dark:bg-white/5 dark:text-white/75">
+                <CalendarClock class="mt-0.5 w-5 h-5 shrink-0 text-unag-light-green" />
+                <p>
+                    Revise esta información antes de asistir. Presentarse con los documentos y materiales correctos evita retrasos y observaciones durante el ingreso.
+                </p>
+            </div>
+        </div>
+    </section>
+</Layout>   

@@ -1,6 +1,6 @@
 # Contenido del Sitio Web UNAG
   
-> Archivo generado automáticamente el 2026-04-10T04:18:43.179Z
+> Archivo generado automáticamente el 2026-04-21T22:09:47.259Z
 > Este archivo es utilizado por el chatbot para responder preguntas sobre el sitio.
 
 ---
@@ -97,6 +97,19 @@ La **Junta de Dirección Universitaria (JDU)**, como órgano principal administr
 ## 1. Documentación de los participantes en la Primera Convocatoria
 
 Para aquellos postulantes que hayan participado en la **Primera Convocatoria** y qu...
+
+### Aclaratoria púplica para selección y nombramiento de la JDU
+Atención a las consultas formuladas por personas interesadas en participar en el concurso público de méritos para la selección de la JDU
+## Aclaración pública
+
+En atención a las consultas formuladas por personas interesadas en participar en el
+concurso público de méritos para la selección y nombramiento de los miembros de la
+Junta de Dirección Universitaria de la Universidad Nacional de Agricultura (UNAG), se
+hace constar lo siguiente:
+
+Que, con el propósito de garantizar la correcta interpretación de los requisitos
+documentales establecidos en la convocatoria, se aclara que todas las declaraciones
+juradas exigidas como ...
 
 ### Ceremonia de Graduación, mayo 2026
 Información importante sobre la ceremonia de graduación. Recepción de documentos.
@@ -209,9 +222,11 @@ diciembre 2025
 - Normativas (/acerca/normativas)
 
 ### Admisiones
+- Normativas Prueba De Admision (/admisiones/normativas-prueba-de-admision)
 - Preguntas Frecuentes (/admisiones/preguntas-frecuentes)
 - Procesos De Admision (/admisiones/procesos-de-admision)
 - Requisitos (/admisiones/requisitos)
+- Validacion De Pago (/admisiones/validacion-de-pago)
 
 ### Carreras
 - Administracion De Empresas Agropecuarias (/carreras/administracion-de-empresas-agropecuarias)

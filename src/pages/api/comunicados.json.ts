@@ -11,7 +11,7 @@ export const GET: APIRoute = async () => {
       return (b.data.order ?? 0) - (a.data.order ?? 0);
     })
     .map((entry) => ({
-      slug: entry.slug,
+      slug: entry.id,
       title: entry.data.title,
       description: entry.data.description,
       category: entry.data.category,
@@ -19,7 +19,7 @@ export const GET: APIRoute = async () => {
       featured: entry.data.featured,
       image: entry.data.image ?? null,
       attachments: entry.data.attachments ?? [],
-      url: `/comunicados/${entry.slug}`,
+      url: `/comunicados/${entry.id}`,
     }));
 
   return new Response(JSON.stringify({ data }), {

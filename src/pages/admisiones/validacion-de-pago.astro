@@ -1,0 +1,595 @@
+---
+export const prerender = true;
+
+import {
+  AlertTriangle,
+  ArrowRight,
+  BadgeCheck,
+  Building2,
+  Clock3,
+  CreditCard,
+  FileBadge2,
+  Landmark,
+  LaptopMinimal,
+  ShieldAlert,
+} from "@lucide/astro";
+
+import Layout from "@/layouts/main.astro";
+import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
+
+const content = {
+  title: "Validación de Pago | UNAG",
+};
+
+const steps = [
+  {
+    number: "01",
+    title: "Obtener ID",
+    description: "Genera tu identificador de inscripción antes de pagar.",
+  },
+  {
+    number: "02",
+    title: "Realizar pago",
+    description: "Usa Banco Atlántida con tu ID de 5 dígitos.",
+  },
+  {
+    number: "03",
+    title: "Credencial validada",
+    description: "La credencial se habilita después de la validación.",
+  },
+];
+
+const idInstructions = [
+  'Ingresa nuevamente al enlace de inscripción en:',
+  "Introduce tu número de identidad sin guiones ni espacios.",
+  'Presiona el botón "Consultar".',
+  "Anota tu ID de inscripción de 5 dígitos.",
+];
+
+const validationRules = [
+  "No se validarán pagos realizados fuera de los plazos calendarizados.",
+  "No se validarán pagos realizados con el número de identidad (DNI).",
+  "No se validarán pagos con ID de procesos anteriores o inactivos.",
+  "Debes esperar 24 horas tras inscribirte para que el banco reconozca el ID.",
+];
+
+const presencialSteps = [
+  "Solicita un pago de Caja Empresarial para la Universidad Nacional de Agricultura.",
+  'Elige el rubro de "Admisiones".',
+  "Dicta tu ID de inscripción. No uses tu DNI.",
+];
+
+const onlineSteps = [
+  "Menú Pagos > Servicios.",
+  "Categoría: Instituciones Educativas.",
+  "Institución: UNIVERSIDAD NAC. AGRICULTURA.",
+];
+
+const invoiceData = [
+  "Servicio: Admisiones.",
+  "ID: Tus 5 dígitos de inscripción.",
+  "Verifica tu nombre antes de pagar.",
+  "Guarda el comprobante digital.",
+];
+---
+
+<Layout content={content}>
+  <HeaderPages
+    imagen="/img/bg-default-unag.webp"
+    etiqueta="Admisiones"
+    titulo="Validación de Pago"
+    descripcion="Sigue el proceso completo para obtener tu ID, pagar el derecho a la prueba y descargar tu credencial validada."
+  />
+
+  <section class="bg-white dark:bg-background">
+    <div class="mx-auto max-w-full lg:max-w-[85%] px-4 py-14 sm:px-6 lg:px-8 lg:py-18">
+      <div class="space-y-8">
+        <section
+          class="overflow-hidden rounded-lg border border-unag-light-gray bg-white shadow-sm dark:border-white/10 dark:bg-card"
+        >
+          <div
+            class="border-b border-unag-light-gray bg-unag-dark-green px-6 py-8 text-white lg:px-10 lg:py-10 dark:border-white/10"
+          >
+            <div
+              class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between"
+            >
+              <div class="max-w-3xl space-y-4">
+                <span
+                  class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/8 px-3 py-1 text-sm font-semibold "
+                >
+                  Pago del derecho a la prueba de admisión
+                </span>
+                <div class="space-y-2">
+                  <h2 class="text-lg font-extrabold tracking-tight sm:text-3xl lg:text-2xl">
+                    Genera tu ID, paga en Banco Atlántida y descarga tu credencial.
+                  </h2>
+                  <p class="max-w-2xl text-sm leading-7 text-white/80 lg:text-sm">
+                    Sigue estos tres pasos para completar el proceso de pago del derecho a la prueba de admisión. Usa siempre tu ID de inscripción de 5 dígitos — nunca tu número de identidad.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="w-full rounded-lg border border-white/15 bg-white/8 p-5 backdrop-blur-sm lg:max-w-xs"
+              >
+                <p class="text-sm font-semibold tracking-[0.18em] text-white/70">
+                  Costo total:
+                </p>
+                <p class="mt-2 text-4xl font-black tracking-tight text-unag-yellow">
+                  L. 200.00
+                </p>
+                <p class="mt-3 text-sm leading-6 text-white/75">
+                  Disponible exclusivamente en Banco Atlántida y asociado a tu
+                  ID de inscripción.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid gap-4 p-4 sm:grid-cols-2 sm:p-6 lg:grid-cols-3 lg:p-8">
+            {
+              steps.map((step) => (
+                <article
+                  class="rounded-lg border border-unag-light-gray bg-white p-5 shadow-[0_8px_24px_rgba(0,55,29,0.05)] dark:border-white/10 dark:bg-background"
+                >
+                  <div class="flex items-start gap-4">
+                    <span
+                      class="inline-flex h-11 w-11  items-center justify-center rounded-lg text-sm font-extrabold text-unag-dark-green dark:bg-unag-dark-green dark:text-white"
+                    >
+                      {step.number}
+                    </span>
+                    <div class="space-y-1">
+                      <h3 class="text-lg font-bold text-unag-dark-green dark:text-white">
+                        {step.title}
+                      </h3>
+                      <p class="text-sm leading-6 text-unag-gray/80 dark:text-white/70">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </section>
+
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+          <div class="space-y-8">
+            <section
+              class="rounded-lg border border-unag-light-gray bg-white p-6 shadow-sm dark:border-white/10 dark:bg-[color:var(--card)] lg:p-8"
+            >
+              <div
+                class="flex flex-col gap-4 border-b border-unag-light-gray pb-6 dark:border-white/10 lg:flex-row lg:items-end lg:justify-between"
+              >
+                <div class="space-y-3">
+                  <span
+                    class="inline-flex items-center gap-2 rounded-lg bg-unag-overlay-green px-3 py-1 text-sm font-semibold uppercase tracking-[0.18em] text-unag-dark-green dark:bg-unag-dark-green dark:text-white"
+                  >
+                    <FileBadge2 class="h-4 w-4" />
+                    Paso 1
+                  </span>
+                  <div>
+                    <h2 class="text-2xl font-extrabold tracking-tight text-unag-dark-green dark:text-white">
+                      Obtención de tu ID de inscripción
+                    </h2>
+                    <p class="mt-2 max-w-2xl text-sm leading-7 text-unag-gray/80 dark:text-white/70">
+                      Es indispensable generar tu identificador único antes de
+                      cualquier trámite bancario.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="w-fit rounded-lg border border-unag-light-gray bg-unag-overlay-green px-4 py-3 text-sm font-semibold text-unag-dark-green dark:border-white/10 dark:bg-unag-dark-green dark:text-white"
+                >
+                  ID válido: <span class="font-extrabold">5 dígitos</span>
+                </div>
+              </div>
+
+              <div class="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)]">
+                <article
+                  class="min-w-0 rounded-lg border border-unag-light-gray bg-white p-6 dark:border-white/10 dark:bg-background"
+                >
+                  <div class="mb-5 flex items-center gap-3">
+                    <div
+                      class="flex h-11 w-11 items-center justify-center rounded-lg bg-unag-dark-green text-white"
+                    >
+                      <ArrowRight class="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-bold text-unag-dark-green dark:text-white">
+                        Instrucciones
+                      </h3>
+                    </div>
+                  </div>
+
+                  <ol class="space-y-4">
+                    {
+                      idInstructions.map((item, index) => (
+                        <li class="flex min-w-0 gap-4">
+                          <span
+                            class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-unag-light-gray text-sm font-bold text-unag-dark-green dark:border-white/10 dark:text-white"
+                          >
+                            {index + 1}
+                          </span>
+                          <p class="text-sm leading-7 text-unag-gray/90 dark:text-white/75">
+                            {item}
+                          </p>
+                        </li>
+                      ))
+                    }
+                  </ol>
+                </article>
+
+                <article
+                  class="rounded-lg border border-red-200 bg-red-50 p-6 dark:border-red-500/30 dark:bg-red-950/10"
+                >
+                  <div class="mb-5 flex items-center gap-3">
+                    <div
+                      class="flex h-11 w-11 items-center justify-center rounded-lg bg-white text-red-600 shadow-sm dark:bg-red-500/10"
+                    >
+                      <ShieldAlert class="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-bold text-red-700 dark:text-red-300">
+                        Restricciones de Validación
+                      </h3>
+                    </div>
+                  </div>
+
+                  <ul class="space-y-3">
+                    {
+                      validationRules.map((rule) => (
+                        <li class="flex gap-3 text-sm leading-7 text-red-700/90 dark:text-red-200/90">
+                          <span class="mt-2 h-2 w-2 shrink-0 rounded-lg bg-red-500"></span>
+                          <span>{rule}</span>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </article>
+              </div>
+
+              <div
+                class="mt-6 rounded-lg border border-unag-light-gray bg-unag-overlay-green px-5 py-4 dark:border-white/10 dark:bg-unag-dark-green"
+              >
+                <p class="text-sm leading-7 text-unag-dark-green dark:text-white/80">
+                  <span class="font-extrabold">Política de pago:</span> todo
+                  pago fuera de fecha, realizado con DNI o con IDs obsoletos
+                  será invalidado por el sistema sin responsabilidad de la UNAG.
+                </p>
+              </div>
+            </section>
+
+            <section
+              class="rounded-lg border border-unag-light-gray bg-white p-6 shadow-sm dark:border-white/10 dark:bg-[color:var(--card)] lg:p-8"
+            >
+              <div class="space-y-3">
+                <span
+                  class="inline-flex items-center gap-2 rounded-lg bg-unag-overlay-green px-3 py-1 text-sm font-semibold uppercase tracking-[0.18em] text-unag-dark-green dark:bg-unag-dark-green dark:text-white"
+                >
+                  <CreditCard class="h-4 w-4" />
+                  Paso 2
+                </span>
+                <h2 class="text-2xl font-extrabold tracking-tight text-unag-dark-green dark:text-white">
+                  Selecciona tu método de pago
+                </h2>
+                <p class="max-w-2xl text-sm leading-7 text-unag-gray/80 dark:text-white/70">
+                  Disponible únicamente en <strong>Banco Atlántida</strong>.
+                  Asegúrate de usar tu ID de 5 dígitos.
+                </p>
+              </div>
+
+              <div
+                class="mt-6 flex flex-col gap-3 rounded-lg border border-unag-light-gray bg-unag-overlay-green p-3 dark:border-white/10 dark:bg-background sm:flex-row"
+              >
+                <button
+                  type="button"
+                  class="payment-tab inline-flex flex-1 items-center justify-center gap-2 rounded-lg px-5 py-4 text-sm font-bold transition-colors"
+                  data-payment-tab="presencial"
+                  data-active="true"
+                  aria-pressed="true"
+                >
+                  <Landmark class="h-4 w-4" />
+                  Pago presencial
+                </button>
+                <button
+                  type="button"
+                  class="payment-tab inline-flex flex-1 items-center justify-center gap-2 rounded-lg px-5 py-4 text-sm font-bold transition-colors"
+                  data-payment-tab="en-linea"
+                  data-active="false"
+                  aria-pressed="false"
+                >
+                  <LaptopMinimal class="h-4 w-4" />
+                  Pago en línea
+                </button>
+              </div>
+
+              <div class="mt-6 space-y-6">
+                <article
+                  class="payment-panel rounded-lg border border-unag-light-gray bg-white p-6 dark:border-white/10 dark:bg-background"
+                  data-payment-panel="presencial"
+                >
+                  <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+                    <div>
+                      <div class="mb-5 flex items-center gap-3">
+                        <div
+                          class="flex h-11 w-11 items-center justify-center rounded-lg bg-unag-dark-green text-white"
+                        >
+                          <Building2 class="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h3 class="text-lg font-bold text-unag-dark-green dark:text-white">
+                            Agencia o Agente Atlántida
+                          </h3>
+                        </div>
+                      </div>
+
+                      <ol class="space-y-4">
+                        {
+                          presencialSteps.map((item, index) => (
+                            <li class="flex gap-4">
+                              <span
+                                class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-unag-yellow text-sm font-black text-unag-dark-green"
+                              >
+                                {index + 1}
+                              </span>
+                              <p class="text-sm leading-7 text-unag-gray/90 dark:text-white/75">
+                                {item}
+                              </p>
+                            </li>
+                          ))
+                        }
+                      </ol>
+                    </div>
+
+                    <aside
+                      class="rounded-lg border border-unag-light-gray bg-unag-overlay-green p-5 dark:border-white/10 dark:bg-unag-dark-green"
+                    >
+                      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-unag-green dark:text-white/70">
+                        Recomendación
+                      </p>
+                      <p class="mt-3 text-sm leading-7 text-unag-dark-green dark:text-white/80">
+                        Conserva tu comprobante; puede ser necesario
+                        presentarlo el día de la prueba.
+                      </p>
+                    </aside>
+                  </div>
+                </article>
+
+                <article
+                  class="payment-panel hidden rounded-lg border border-unag-light-gray bg-white p-6 dark:border-white/10 dark:bg-background"
+                  data-payment-panel="en-linea"
+                >
+                  <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+                    <div>
+                      <div class="mb-5 flex items-center gap-3">
+                        <div
+                          class="flex h-11 w-11 items-center justify-center rounded-lg bg-unag-dark-green text-white"
+                        >
+                          <LaptopMinimal class="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h3 class="text-lg font-bold text-unag-dark-green dark:text-white">
+                            Atlántida Online / Móvil
+                          </h3>
+                        </div>
+                      </div>
+
+                      <ol class="space-y-4">
+                        {
+                          onlineSteps.map((item, index) => (
+                            <li class="flex gap-4">
+                              <span
+                                class="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-unag-light-gray text-sm font-black text-unag-dark-green dark:border-white/10 dark:text-white"
+                              >
+                                {index + 1}
+                              </span>
+                              <p class="text-sm leading-7 text-unag-gray/90 dark:text-white/75">
+                                {item}
+                              </p>
+                            </li>
+                          ))
+                        }
+                      </ol>
+                    </div>
+
+                    <aside
+                      class="rounded-lg border border-unag-light-gray bg-white p-5 shadow-[0_8px_24px_rgba(0,55,29,0.05)] dark:border-white/10 dark:bg-[color:var(--card)]"
+                    >
+                      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-unag-green">
+                        Datos de factura
+                      </p>
+
+                      <ul class="mt-4 space-y-3">
+                        {
+                          invoiceData.map((item) => (
+                            <li class="flex gap-3 text-sm  text-unag-gray/90 dark:text-white/75">
+                              <span class="mt-2 h-2 w-2 shrink-0 rounded-lg bg-unag-green"></span>
+                              <span>{item}</span>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    </aside>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section
+              class="rounded-lg border border-unag-light-gray bg-white p-6 shadow-sm dark:border-white/10 dark:bg-[color:var(--card)] lg:p-8"
+            >
+              <div class="space-y-3">
+                <span
+                  class="inline-flex items-center gap-2 rounded-lg bg-unag-overlay-green px-3 py-1 text-sm font-semibold uppercase tracking-[0.18em] text-unag-dark-green dark:bg-unag-dark-green dark:text-white"
+                >
+                  <BadgeCheck class="h-4 w-4" />
+                  Paso 3
+                </span>
+                <h2 class="text-2xl font-extrabold tracking-tight text-unag-dark-green dark:text-white">
+                  Validación y Credencial
+                </h2>
+                <p class="max-w-2xl text-sm leading-7 text-unag-gray/80 dark:text-white/70">
+                  El proceso finaliza con la descarga de tu Credencial Validada.
+                </p>
+              </div>
+
+              <div class="mt-6 grid gap-5">
+                <article
+                  class="rounded-lg border border-blue-200 bg-blue-50 p-5 dark:border-blue-500/30 dark:bg-blue-950/10"
+                >
+                  <div class="flex gap-4">
+                    <div
+                      class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white text-blue-600 shadow-sm dark:bg-blue-500/10"
+                    >
+                      <Clock3 class="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-bold text-unag-dark-green dark:text-white">
+                        Validación automática
+                      </h3>
+                      <p class="mt-2 text-sm leading-7 text-unag-gray/90 dark:text-white/75">
+                        El sistema procesará tu pago. Revisa el portal de
+                        admisión periódicamente.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <article
+                  class="rounded-lg border border-red-200 bg-red-50 p-5 dark:border-red-500/30 dark:bg-red-950/10"
+                >
+                  <div class="flex gap-4">
+                    <div
+                      class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white text-red-600 shadow-sm dark:bg-red-500/10"
+                    >
+                      <AlertTriangle class="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-bold text-red-700 dark:text-red-300">
+                        Requisito de prueba
+                      </h3>
+                      <p class="mt-2 text-sm leading-7 text-red-700/90 dark:text-red-200/90">
+                        Sin la credencial impresa no podrás realizar la prueba.
+                        <strong>Nota:</strong> Es necesario que guardes bien tu
+                        comprobante de pago, ya que <strong>puede solicitársele
+                        al momento de la prueba</strong> para validar tu ingreso.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+
+              </div>
+            </section>
+          </div>
+
+          <aside class="space-y-6">
+            <div
+              class="rounded-lg border border-unag-light-gray bg-white p-6 shadow-sm dark:border-white/10 dark:bg-[color:var(--card)] lg:sticky lg:top-28"
+            >
+              <p class="text-sm uppercase tracking-[0.2em] text-unag-green">
+                Resumen rápido
+              </p>
+              <h2 class="mt-2 text-xl font-extrabold tracking-tight text-unag-dark-green dark:text-white">
+                Lo esencial del proceso
+              </h2>
+
+              <div class="mt-6 space-y-4">
+                <div
+                  class="rounded-lg border border-unag-light-gray p-4 dark:border-white/10"
+                >
+                  <p class="text-sm font-semibold uppercase text-unag-green">
+                    Banco
+                  </p>
+                  <p class="text-sm font-regular text-unag-dark-green dark:text-white">
+                    Banco Atlántida
+                  </p>
+                </div>
+
+                <div
+                  class="rounded-lg border border-unag-light-gray p-4 dark:border-white/10"
+                >
+                  <p class="text-sm font-semibold uppercase text-unag-green">
+                    Identificador
+                  </p>
+                  <p class="text-sm font-regular text-unag-dark-green dark:text-white">
+                    ID de inscripción de 5 dígitos
+                  </p>
+                </div>
+
+                <div
+                  class="rounded-lg border border-unag-light-gray p-4 dark:border-white/10"
+                >
+                  <p class="text-sm font-semibold uppercase text-unag-green">
+                    Comprobante
+                  </p>
+                  <p class="text-sm font-regular text-unag-dark-green dark:text-white">
+                    Debe conservarse hasta el día de la prueba
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="mt-6 rounded-lg border border-unag-light-gray bg-unag-overlay-green p-5 dark:border-white/10 dark:bg-unag-dark-green"
+              >
+                <div class="flex items-start gap-3">
+                  <div
+                    class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-unag-dark-green text-white dark:bg-white/10 dark:text-white"
+                  >
+                    <Clock3 class="h-5 w-5" />
+                  </div>
+                  <p class="text-sm leading-7 text-unag-dark-green dark:text-white/80">
+                    Espera hasta <span class="font-extrabold">24 horas</span>
+                    después de inscribirte para que el banco reconozca tu ID.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style is:inline>
+    .payment-tab {
+      background: transparent;
+      color: var(--color-unag-dark-green);
+    }
+
+    .dark .payment-tab {
+      color: white;
+    }
+
+    .payment-tab[data-active="true"] {
+      background: var(--color-unag-dark-green);
+      color: white;
+      box-shadow: 0 10px 24px rgba(0, 55, 29, 0.12);
+    }
+  </style>
+
+  <script is:inline>
+    const tabs = document.querySelectorAll("[data-payment-tab]");
+    const panels = document.querySelectorAll("[data-payment-panel]");
+
+    const setActiveTab = (target) => {
+      tabs.forEach((tab) => {
+        const isActive = tab.dataset.paymentTab === target;
+        tab.setAttribute("aria-pressed", String(isActive));
+        tab.dataset.active = String(isActive);
+      });
+
+      panels.forEach((panel) => {
+        panel.classList.toggle("hidden", panel.dataset.paymentPanel !== target);
+      });
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => setActiveTab(tab.dataset.paymentTab));
+    });
+
+    setActiveTab("presencial");
+  </script>
+</Layout>

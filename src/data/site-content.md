@@ -1,6 +1,6 @@
 # Contenido del Sitio Web UNAG
   
-> Archivo generado automáticamente el 2026-04-22T15:34:17.869Z
+> Archivo generado automáticamente el 2026-04-22T20:09:27.979Z
 > Este archivo es utilizado por el chatbot para responder preguntas sobre el sitio.
 
 ---
@@ -222,6 +222,7 @@ diciembre 2025
 - Normativas (/acerca/normativas)
 
 ### Admisiones
+- Etapas Del Proceso De Admision (/admisiones/etapas-del-proceso-de-admision)
 - Normativas Prueba De Admision (/admisiones/normativas-prueba-de-admision)
 - Preguntas Frecuentes (/admisiones/preguntas-frecuentes)
 - Procesos De Admision (/admisiones/procesos-de-admision)

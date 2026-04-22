@@ -40,10 +40,14 @@ const steps = [
 ];
 
 const idInstructions = [
-  'Ingresa nuevamente al enlace de inscripción en:',
-  "Introduce tu número de identidad sin guiones ni espacios.",
-  'Presiona el botón "Consultar".',
-  "Anota tu ID de inscripción de 5 dígitos.",
+  {
+    text: "Ingresa nuevamente al enlace de inscripción:",
+    url: "https://portal.unag.edu.hn/matricula/admisiones",
+    cta: "Ir a inscripción",
+  },
+  { text: "Introduce tu número de identidad sin guiones ni espacios." },
+  { text: 'Presiona el botón "Consultar".' },
+  { text: "Anota tu ID de inscripción de 5 dígitos." },
 ];
 
 const validationRules = [
@@ -212,9 +216,24 @@ const invoiceData = [
                           >
                             {index + 1}
                           </span>
-                          <p class="text-sm leading-7 text-unag-gray/90 dark:text-white/75">
-                            {item}
-                          </p>
+                          <div class="space-y-2">
+                            <p class="text-sm leading-7 text-unag-gray/90 dark:text-white/75">
+                              {item.text}
+                            </p>
+
+                            {
+                              item.url && (
+                                <a
+                                  href={item.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  class="inline-flex items-center rounded-lg border border-unag-green bg-unag-overlay-green px-3 py-1.5 text-xs font-semibold text-unag-dark-green transition-colors hover:bg-unag-green hover:text-white dark:border-white/20 dark:bg-unag-dark-green dark:text-white dark:hover:bg-unag-green"
+                                >
+                                  {item.cta}
+                                </a>
+                              )
+                            }
+                          </div>
                         </li>
                       ))
                     }

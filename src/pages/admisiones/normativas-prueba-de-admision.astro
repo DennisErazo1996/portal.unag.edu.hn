@@ -85,12 +85,12 @@ const consejos = [
     <HeaderPages
         imagen="/img/bg-default-unag-02.webp"
         etiqueta="Admisiones"
-        titulo="Normativas Prueba de Admisión"
+        titulo="Instrucciones para el Día de la Prueba"
         descripcion="Encuentra las normativas y regulaciones relacionadas con la prueba de admisión en la Universidad Nacional de Agricultura."
     />
 
     <section class="bg-white py-16 lg:py-24 dark:bg-neutral-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[85%] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
                 <span class="inline-flex items-center gap-2 rounded-full border border-unag-light-green bg-unag-dark-green px-4 py-2 text-[11px] font-bold uppercase tracking-[0.28em] text-white">
                     <Info class="w-4 h-4" />
@@ -161,7 +161,7 @@ const consejos = [
 
                     <div class="space-y-4">
                         <div class="rounded-lg border border-unag-green/40 bg-unag-dark-green/45 p-4">
-                            <div class="flex items-center gap-3 text-sm font-semibold text-white sm:text-base">
+                            <div class="flex items-center gap-3 text-sm font-regular text-white sm:text-sm">
                                 <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-unag-green/14 text-unag-light-green">
                                     <Pencil class="w-5 h-5" />
                                 </div>
@@ -195,7 +195,7 @@ const consejos = [
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {protocolo.map(({ icon: Icon, title, detail }) => (
                             <div class="rounded-lg border border-unag-green/35 bg-unag-dark-green/40 p-4 lg:p-5">
                                 <div class="flex items-start gap-4">
@@ -223,7 +223,7 @@ const consejos = [
                         </div>
                     </div>
 
-                    <div class="space-y-4">
+                    <div class="space-y-3">
                         {consejos.map((consejo) => (
                             <div class="flex gap-3 rounded-lg border border-unag-yellow/20 bg-unag-dark-green/35 p-4">
                                 <div class="mt-1 text-unag-yellow">

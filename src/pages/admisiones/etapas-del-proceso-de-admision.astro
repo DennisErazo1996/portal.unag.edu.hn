@@ -103,9 +103,9 @@ const stages = [
                     </p>
                 </div>
 
-                <div class="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-5">
+                <div class="mt-5 grid grid-cols-2 gap-2 lg:gap-3 lg:grid-cols-5">
                     {['Registro', 'Pago', 'Aplicación', 'Resultados', 'Notificación'].map((label, idx) => (
-                        <div class="rounded-lg border border-unag-light-gray bg-white px-3 py-2 text-center text-sm font-semibold text-unag-dark-green dark:border-white/10 dark:bg-background dark:text-white/85">
+                        <div class={`rounded-lg border ${idx == 4 ? 'col-span-2' : 'col-span-1'} lg:col-span-1  border-unag-light-gray bg-unag-light-gray px-3 py-2 text-center text-sm font-semibold text-unag-dark-green dark:border-white/10 dark:bg-background dark:text-white/85`}>
                             <span class="mr-1 text-unag-green">{idx + 1}.</span>{label}
                         </div>
                     ))}

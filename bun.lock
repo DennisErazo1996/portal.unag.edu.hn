@@ -10,7 +10,7 @@
         "@astrojs/vercel": "^10.0.4",
         "@fontsource/montserrat": "^5.2.8",
         "@google/generative-ai": "^0.24.1",
-        "@lucide/astro": "^0.545.0",
+        "@lucide/astro": "^1.8.0",
         "@tailwindcss/typography": "^0.5.19",
         "@tailwindcss/vite": "^4.1.14",
         "@types/react": "^19.2.2",
@@ -217,7 +217,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
-    "@lucide/astro": ["@lucide/astro@0.545.0", "", { "peerDependencies": { "astro": "^4 || ^5" } }, "sha512-uhBiJCVXH+YmZdiTncV3I8e2gA4iqA/YLCKyMfxl1pWLleyrJWrQY5Avmt1qKjtYEMah0uJiQzaYtaeekaCdCw=="],
+    "@lucide/astro": ["@lucide/astro@1.11.0", "", { "peerDependencies": { "astro": "^4 || ^5 || ^6" } }, "sha512-b9AA35k3L/DR9J9OoGWIHks4dtMzcDo9P0sZEEDmFxIy0qqw+rKMt3TLk+YEoXppcqXMK/DTM1tIfuaH+frX/w=="],
 
     "@mapbox/node-pre-gyp": ["@mapbox/node-pre-gyp@2.0.3", "", { "dependencies": { "consola": "^3.2.3", "detect-libc": "^2.0.0", "https-proxy-agent": "^7.0.5", "node-fetch": "^2.6.7", "nopt": "^8.0.0", "semver": "^7.5.3", "tar": "^7.4.0" }, "bin": { "node-pre-gyp": "bin/node-pre-gyp" } }, "sha512-uwPAhccfFJlsfCxMYTwOdVfOz3xqyj8xYL3zJj8f0pb30tLohnnFPhLuqp4/qoEz8sNxe4SESZedcBojRefIzg=="],
 

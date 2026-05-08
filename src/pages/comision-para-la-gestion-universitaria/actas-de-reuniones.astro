@@ -1,0 +1,42 @@
+---
+export const prerender = true;
+
+import Layout from '@/layouts/main.astro';
+import HeaderPages from '@/components/astro/ui/header-bg-pages.astro';
+import { actasCgu } from '@/consts/actas-cgu';
+import ArchivoCard from '@/components/astro/ui/archivo-card.astro';
+
+const content = {
+    title: 'Actas de Reuniones - CGU | UNAG'
+}
+---
+
+<Layout content={content}>
+    <HeaderPages
+        imagen="/img/bg-default-unag.webp"
+        etiqueta="CGU"
+        titulo="Actas de Reuniones"
+        descripcion="Las actas de reuniones de la Comisión para la Gestión Universitaria (CGU) son documentos oficiales que registran los temas discutidos, las decisiones tomadas y las acciones acordadas durante las reuniones."
+        
+    />
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="mb-12 max-w-7xl mx-auto">
+            <p class="text-unag-dark-green dark:text-white mb-4 text-sm"> Estas actas son fundamentales para mantener un registro transparente y accesible de las actividades y decisiones de la CGU, permitiendo a los miembros de la comunidad universitaria estar informados sobre el progreso y las iniciativas relacionadas con la gestión universitaria.</p>
+        </div>
+
+        <div class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {actasCgu.map((doc) => (
+                    <ArchivoCard 
+                        titulo={doc.title} 
+                        fecha={doc.date} 
+                        archivo={doc.url} 
+                    />
+                ))}
+            </div>
+        </div>
+        
+        
+    </section>
+</Layout>   

@@ -99,7 +99,8 @@ export default function autoTranslateIntegration(): AstroIntegration {
         let translatedCount = 0;
         let skippedCount = 0;
 
-        await runWithConcurrency(sourceFiles, 4, async (sourceFile) => {
+        logger.info(`[auto-translate] Translating ${sourceFiles.length} pages (sequential to respect API rate limits)...`);
+        await runWithConcurrency(sourceFiles, 1, async (sourceFile) => {
           const relativePath = toPosixPath(path.relative(distDir, sourceFile));
           const targetFile = path.join(distDir, 'en', relativePath);
 

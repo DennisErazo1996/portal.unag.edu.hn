@@ -176,23 +176,24 @@ async function requestTranslations(openai: OpenAI, payload: string[]): Promise<s
   const systemPrompt =
     'You translate Spanish website text to English. Preserve meaning, capitalization, punctuation, and spacing. Do not add explanations. Return only a valid JSON array of strings. Keep placeholders like __KEEP_0__ unchanged.';
 
-  const attempts = TRANSLATION_FREE_MODELS.map((model) =>
-    openai.chat.completions
-      .create({
+  for (const model of TRANSLATION_FREE_MODELS) {
+    try {
+      const completion = await openai.chat.completions.create({
         model,
         temperature: 0,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: JSON.stringify(payload) },
         ],
-      })
-      .then((completion) => {
-        const rawContent = completion.choices[0]?.message?.content ?? '[]';
-        return parseJsonArray(rawContent);
-      })
-  );
+      });
+      const rawContent = completion.choices[0]?.message?.content ?? '[]';
+      return parseJsonArray(rawContent);
+    } catch (err) {
+      console.warn(`[auto-translate] Model "${model}" failed: ${String(err).slice(0, 160)}`);
+    }
+  }
 
-  return Promise.any(attempts);
+  throw new Error('[auto-translate] All translation models failed for this chunk.');
 }
 
 export async function translateTexts(texts: string[]): Promise<string[]> {
@@ -220,7 +221,7 @@ export async function translateTexts(texts: string[]): Promise<string[]> {
   const missing = uniqueTexts.filter((text) => cache[text] === undefined);
 
   if (missing.length > 0) {
-    const chunks = chunkArray(missing, 40);
+    const chunks = chunkArray(missing, 20);
 
     for (const chunk of chunks) {
       const masked = chunk.map((text) => maskProtectedSegments(text));

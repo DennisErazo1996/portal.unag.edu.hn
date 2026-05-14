@@ -157,7 +157,7 @@ function chunkArray<T>(items: T[], size: number): T[][] {
 
 async function requestTranslations(openai: OpenAI, payload: string[]): Promise<string[]> {
   const completion = await openai.chat.completions.create({
-    model: 'gpt-4.1-mini',
+    model: 'nvidia/nemotron-3-super-120b-a12b:free',
     temperature: 0,
     messages: [
       {
@@ -183,12 +183,19 @@ export async function translateTexts(texts: string[]): Promise<string[]> {
     return [];
   }
 
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) {
-    throw new Error('OPENAI_API_KEY is not set');
+    throw new Error('OPENROUTER_API_KEY is not set');
   }
 
-  const openai = new OpenAI({ apiKey });
+  const openai = new OpenAI({
+    apiKey,
+    baseURL: 'https://openrouter.ai/api/v1',
+    defaultHeaders: {
+      'HTTP-Referer': 'https://portal.unag.edu.hn',
+      'X-Title': 'UNAG Portal Translator',
+    },
+  });
 
   const uniqueTexts = Array.from(new Set(texts));
   const missing = uniqueTexts.filter((text) => cache[text] === undefined);

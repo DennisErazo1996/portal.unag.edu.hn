@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { getChatProvider, type ChatMessage, type ProviderType } from '@/lib/chat-providers';
 
-export const prerender = true;
+export const prerender = false;
 
 // Cache para la base de conocimientos (se carga una sola vez)
 let knowledgeCache: { base: string; calendario: string; siteContent: string } | null = null;

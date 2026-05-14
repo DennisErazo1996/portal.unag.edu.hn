@@ -6,7 +6,7 @@ export type ChatMessage = {
   content: string;
 };
 
-export type ProviderType = 'openai' | 'gemini';
+export type ProviderType = 'openai' | 'gemini' | 'deepseek';
 
 interface ProviderConfig {
   systemPrompt: string;
@@ -72,10 +72,51 @@ async function createGeminiCompletion(config: ProviderConfig): Promise<string> {
   return response.text();
 }
 
+// OpenRouter free tier — race all models in parallel, use fastest successful response
+const OPENROUTER_FREE_MODELS = [
+  'ring-2.6-1t:free',
+  'nvidia/nemotron-3-super-120b-a12b:free',
+  'google/gemma-4-31b-it:free',
+  'openai/gpt-oss-120b:free',
+  'nvidia/nemotron-3-nano-30b-a3b:free',
+];
+
+async function createDeepSeekCompletion(config: ProviderConfig): Promise<string> {
+  const apiKey = import.meta.env.OPENROUTER_API_KEY;
+
+  if (!apiKey) {
+    throw new Error('OPENROUTER_API_KEY is not set');
+  }
+
+  const client = new OpenAI({
+    apiKey,
+    baseURL: 'https://openrouter.ai/api/v1',
+    defaultHeaders: {
+      'HTTP-Referer': 'https://portal.unag.edu.hn',
+      'X-Title': 'UNAG Portal Chatbot',
+    },
+  });
+
+  const requests = OPENROUTER_FREE_MODELS.map((model) =>
+    client.chat.completions
+      .create({
+        messages: [
+          { role: 'system', content: config.systemPrompt },
+          ...config.messages,
+        ],
+        model,
+      })
+      .then((completion) => completion.choices[0].message.content || '')
+  );
+
+  return Promise.any(requests);
+}
+
 // Factory
 export const chatProviders: Record<ProviderType, (config: ProviderConfig) => Promise<string>> = {
   openai: createOpenAICompletion,
   gemini: createGeminiCompletion,
+  deepseek: createDeepSeekCompletion,
 };
 
 export function getChatProvider(provider: ProviderType = 'openai') {

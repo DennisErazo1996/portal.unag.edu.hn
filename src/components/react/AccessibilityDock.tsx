@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Settings, ChevronRight } from 'lucide-react';
+import { Sun, Moon, Settings, ChevronRight, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type Language = 'es' | 'en';
@@ -146,7 +146,7 @@ export default function AccessibilityDock() {
           <div className="w-px h-5 bg-white" />
 
           {/* Language toggle */}
-          {/* <button
+          <button
             onClick={toggleLanguage}
             className="h-8 px-2 rounded-full flex items-center gap-1 text-white hover:text-white hover:bg-unag-green transition-all duration-200 text-xs font-medium"
             aria-label={language === 'es' ? "Switch to English" : "Cambiar a Español"}
@@ -154,7 +154,7 @@ export default function AccessibilityDock() {
           >
             <Globe size={16} />
             <span className="uppercase">{language}</span>
-          </button> */}
+          </button>
 
           {/* Collapse indicator */}
           <ChevronRight size={14} className="text-white ml-1" />

@@ -26,6 +26,8 @@ Enero – Abril / Mayo
 
 21 enero: Inicio de actividades académicas
 
+4 – 6 febrero: Matrícula extraordinaria
+
 📚 Eventos Académicos
 
 10 febrero:
@@ -94,7 +96,7 @@ Mayo – Agosto
 
 5 – 9 mayo: Pago de matrícula
 
-11 – 15 mayo: Matrícula ordinaria
+11 – 18 mayo: Matrícula ordinaria
 
 14 mayo: Seminario del Himno Nacional (graduación mayo 2026)
 
@@ -132,6 +134,8 @@ Reposición primera evaluación
 
 15 – 21 junio: Primera evaluación parcial
 
+6 – 10 julio: Solicitudes de examen de suficiencia
+
 13 – 19 julio: Segunda evaluación parcial
 
 20 – 26 julio:
@@ -139,6 +143,10 @@ Reposición primera evaluación
 Reposición segunda evaluación
 
 Registro de calificaciones
+
+27 julio – 3 agosto: Solicitudes de reingreso tercer período
+
+28 – 29 julio: Aplicación de examen de suficiencia
 
 10 – 16 agosto: Tercera evaluación parcial
 
@@ -197,6 +205,10 @@ Graduación Centro Regional Tomalá
 26 septiembre – 4 octubre: Feriado Morazánico
 
 5 octubre: Retorno estudiantes sistema interno
+
+15 – 16 octubre: Primer Congreso de Innovación Alimentaria
+
+16 octubre: Foro Universitario sobre la Gestión del Riesgo de Desastre y Cambio Climático
 
 🧪 Evaluaciones
 

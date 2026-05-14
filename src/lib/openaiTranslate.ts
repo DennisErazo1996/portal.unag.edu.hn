@@ -11,6 +11,7 @@ const COMMON_UPPERCASE_WORDS = new Set(['DE', 'LA', 'EL', 'Y', 'DEL', 'EN', 'A',
 let cacheLoaded = false;
 let cache: Record<string, string> = {};
 let dirty = false;
+let writeCachePending: Promise<void> = Promise.resolve();
 
 type MaskResult = {
   text: string;
@@ -124,12 +125,21 @@ async function writeCacheAtomic() {
   if (!dirty) {
     return;
   }
-
-  await fs.mkdir(CACHE_DIR, { recursive: true });
-  const tempFile = `${CACHE_FILE}.tmp`;
-  await fs.writeFile(tempFile, JSON.stringify(cache, null, 2), 'utf-8');
-  await fs.rename(tempFile, CACHE_FILE);
-  dirty = false;
+  // Serialize concurrent writes to avoid ENOENT race condition when
+  // multiple workers call this simultaneously with the same temp filename.
+  writeCachePending = writeCachePending
+    .then(async () => {
+      if (!dirty) return;
+      await fs.mkdir(CACHE_DIR, { recursive: true });
+      const tempFile = `${CACHE_FILE}.tmp`;
+      await fs.writeFile(tempFile, JSON.stringify(cache, null, 2), 'utf-8');
+      await fs.rename(tempFile, CACHE_FILE);
+      dirty = false;
+    })
+    .catch(() => {
+      // Cache write failure is non-fatal; the next build will re-translate.
+    });
+  return writeCachePending;
 }
 
 function parseJsonArray(raw: string): string[] {

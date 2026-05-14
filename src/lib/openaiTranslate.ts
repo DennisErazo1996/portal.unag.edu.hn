@@ -5,6 +5,13 @@ import OpenAI from 'openai';
 const CACHE_DIR = path.join(process.cwd(), '.cache');
 const CACHE_FILE = path.join(CACHE_DIR, 'i18n.json');
 
+const TRANSLATION_FREE_MODELS = [
+  'nvidia/nemotron-3-super-120b-a12b:free',
+  'google/gemma-4-31b-it:free',
+  'openai/gpt-oss-120b:free',
+  'nvidia/nemotron-3-nano-30b-a3b:free',
+];
+
 const BRAND_TERMS = ['UNAG', 'IAIP', 'ONADICI', 'SysUNAG', 'Moodle'];
 const COMMON_UPPERCASE_WORDS = new Set(['DE', 'LA', 'EL', 'Y', 'DEL', 'EN', 'A', 'AL', 'LOS', 'LAS', 'UN', 'UNA']);
 
@@ -166,24 +173,26 @@ function chunkArray<T>(items: T[], size: number): T[][] {
 }
 
 async function requestTranslations(openai: OpenAI, payload: string[]): Promise<string[]> {
-  const completion = await openai.chat.completions.create({
-    model: 'nvidia/nemotron-3-super-120b-a12b:free',
-    temperature: 0,
-    messages: [
-      {
-        role: 'system',
-        content:
-          'You translate Spanish website text to English. Preserve meaning, capitalization, punctuation, and spacing. Do not add explanations. Return only a valid JSON array of strings. Keep placeholders like __KEEP_0__ unchanged.',
-      },
-      {
-        role: 'user',
-        content: JSON.stringify(payload),
-      },
-    ],
-  });
+  const systemPrompt =
+    'You translate Spanish website text to English. Preserve meaning, capitalization, punctuation, and spacing. Do not add explanations. Return only a valid JSON array of strings. Keep placeholders like __KEEP_0__ unchanged.';
 
-  const rawContent = completion.choices[0]?.message?.content ?? '[]';
-  return parseJsonArray(rawContent);
+  const attempts = TRANSLATION_FREE_MODELS.map((model) =>
+    openai.chat.completions
+      .create({
+        model,
+        temperature: 0,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: JSON.stringify(payload) },
+        ],
+      })
+      .then((completion) => {
+        const rawContent = completion.choices[0]?.message?.content ?? '[]';
+        return parseJsonArray(rawContent);
+      })
+  );
+
+  return Promise.any(attempts);
 }
 
 export async function translateTexts(texts: string[]): Promise<string[]> {

@@ -13,6 +13,8 @@ Una universidad reconocida internacionalmente como una institución de educació
 
 ## Autoridades
 
+- **Rector:** Ph. D. Roy Donald Menjivar — rectoria@unag.edu.hn
+
 ## Carreras Universitarias
 
 La UNAG ofrece las siguientes carreras de pregrado:

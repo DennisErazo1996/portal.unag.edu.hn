@@ -132,27 +132,6 @@ async function indexCarreras() {
   return output + '\n';
 }
 
-async function indexComunicados() {
-  const comunicadosDir = path.join(SRC, 'content', 'comunicados');
-  const files = await getFilesRecursive(comunicadosDir, '.md');
-  
-  if (files.length === 0) return '';
-  
-  let output = '## Comunicados Oficiales\n\n';
-  
-  for (const file of files) {
-    const content = await readFileContent(file);
-    if (!content) continue;
-    
-    const { title, description, body } = extractMarkdownContent(content);
-    output += `### ${title || path.basename(file, '.md')}\n`;
-    if (description) output += `${description}\n`;
-    output += `${body.substring(0, 500)}...\n\n`;
-  }
-  
-  return output;
-}
-
 async function indexNormativas() {
   const content = await readFileContent(path.join(SRC, 'consts', 'normativas.ts'));
   if (!content) return '';
@@ -251,7 +230,7 @@ async function indexAutoridades() {
   
   // Rector
   output += '### Rector\n';
-  output += '- **Nombre:** M. Sc. Víctor Javier González\n';
+  output += '- **Nombre:** Ph. D. Roy Donald Menjivar\n';
   output += '- **Cargo:** Rector de la Universidad Nacional de Agricultura\n';
   output += '- **Correo:** rectoria@unag.edu.hn\n';
   output += '- **Página:** /organizacion/rectoria/rector\n\n';
@@ -339,12 +318,9 @@ ubicada en Catacamas, Olancho. Fue fundada en 1950 y es la única universidad de
   console.log('📜 Indexando normativas...');
   content += await indexNormativas();
   
-  console.log('📰 Indexando comunicados...');
-  content += await indexComunicados();
-  
   console.log('📄 Indexando páginas...');
   content += await indexPages();
-  
+
   // Guardar archivo
   await fs.writeFile(OUTPUT_FILE, content, 'utf-8');
   

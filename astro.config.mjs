@@ -10,7 +10,14 @@ const enableAutoTranslate = process.env.ENABLE_AUTO_TRANSLATE === 'true';
 export default defineConfig({
   site: 'https://unag.edu.hn',
   output: 'static',
-  adapter: vercel(),
+  adapter: vercel({
+    maxDuration: 60,
+    includeFiles: [
+      'src/data/unag-knowledge.md',
+      'src/data/calendario_academico.md',
+      'src/data/site-content.md',
+    ],
+  }),
   vite: {
     plugins: [tailwindcss()]
   },

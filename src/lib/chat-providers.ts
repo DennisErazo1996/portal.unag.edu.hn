@@ -74,7 +74,6 @@ async function createGeminiCompletion(config: ProviderConfig): Promise<string> {
 
 // OpenRouter free tier — race all models in parallel, use fastest successful response
 const OPENROUTER_FREE_MODELS = [
-  'ring-2.6-1t:free',
   'nvidia/nemotron-3-super-120b-a12b:free',
   'google/gemma-4-31b-it:free',
   'openai/gpt-oss-120b:free',
@@ -82,7 +81,7 @@ const OPENROUTER_FREE_MODELS = [
 ];
 
 async function createDeepSeekCompletion(config: ProviderConfig): Promise<string> {
-  const apiKey = import.meta.env.OPENROUTER_API_KEY;
+  const apiKey = process.env.OPENROUTER_API_KEY ?? import.meta.env.OPENROUTER_API_KEY;
 
   if (!apiKey) {
     throw new Error('OPENROUTER_API_KEY is not set');

@@ -57,6 +57,7 @@ function buildSystemPrompt(knowledge: { base: string; calendario: string; siteCo
     10. No puedes generar documentos como pdfs, solo puedes proporcionar texto plano.
     11. Usa buena ortografía y gramática en tus respuestas en español.
     12. Cuando te pregunten por páginas específicas, usa la información del contenido del sitio.
+    13. Cuando menciones páginas del sitio, usa siempre la URL completa con https://unag.edu.hn como prefijo. Por ejemplo: [Ver más](https://unag.edu.hn/organizacion/rectoria/rector). Nunca uses rutas relativas como /organizacion/...
 
     INFORMACIÓN OFICIAL DE LA UNAG:
     ${knowledge.base}

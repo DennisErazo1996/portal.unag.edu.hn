@@ -3,7 +3,21 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Loader2, User, Bot, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
+import type { Components } from 'react-markdown';
 import { sileo, Toaster } from 'sileo';
+
+const markdownComponents: Components = {
+  a: ({ href, children }) => (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-unag-green underline hover:opacity-80 break-words"
+    >
+      {children}
+    </a>
+  ),
+};
 
 const translations = {
   es: {
@@ -65,7 +79,7 @@ const Typewriter = ({ text, onComplete, onUpdate }: { text: string, onComplete?:
 
   return (
     <div className="prose prose-sm dark:prose-invert max-w-none [&>p]:mb-2 [&>p:last-child]:mb-0 [&>ul]:list-disc [&>ul]:pl-4 [&>ol]:list-decimal [&>ol]:pl-4">
-      <ReactMarkdown>{displayText}</ReactMarkdown>
+      <ReactMarkdown components={markdownComponents}>{displayText}</ReactMarkdown>
     </div>
   );
 };
@@ -272,7 +286,7 @@ export default function Chatbot() {
                   <Typewriter text={msg.text} onUpdate={scrollToBottom} />
                 ) : (
                   <div className="prose prose-sm dark:prose-invert max-w-none [&>p]:mb-2 [&>p:last-child]:mb-0 [&>ul]:list-disc [&>ul]:pl-4 [&>ol]:list-decimal [&>ol]:pl-4">
-                    <ReactMarkdown>{msg.text}</ReactMarkdown>
+                    <ReactMarkdown components={markdownComponents}>{msg.text}</ReactMarkdown>
                   </div>
                 )}
               </div>

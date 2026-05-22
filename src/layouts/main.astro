@@ -16,6 +16,7 @@ import Chatbot from "@/components/react/Chatbot";
 import AccessibilityDock from "@/components/react/AccessibilityDock";
 import EstadisticasButton from "@/components/astro/estadisticas-button.astro";
 import ScrollToTop from "@/components/astro/scroll-to-top.astro";
+import PopUpDasaace from "@/components/react/PopUpDasaace";
 
 const { content } = Astro.props;
 
@@ -104,7 +105,8 @@ const {
 	<main class="flex-1 dark:bg-background">
 		<slot />
 	</main>
-
+	
+	<PopUpDasaace client:only />
 	<Chatbot client:load />
 	<AccessibilityDock client:load />
 	<!-- <EstadisticasButton /> -->

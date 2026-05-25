@@ -121,7 +121,7 @@ const PopUpDasaace = () => {
               <CuentaRegresiva
                 year={'2026'}
                 month={'september'}
-                day={'31'}
+                day={'20'}
               />
             </div>
             <div className="flex w-full justify-center mt-4">

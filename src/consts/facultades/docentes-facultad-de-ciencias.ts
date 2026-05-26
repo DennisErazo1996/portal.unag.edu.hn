@@ -1,4 +1,5 @@
 import type { Docente } from "@/types/docente";
+import type { Departamento } from "@/types/departamento";
 
 const docentesFacultadCiencias : Docente[] = [
   {
@@ -58,3 +59,46 @@ const docentesFacultadCiencias : Docente[] = [
 ];
 
 export default docentesFacultadCiencias;
+
+export const departamentosCiencias: Departamento[] = [
+  {
+    id: "biologia",
+    nombre: "Biología y Microbiología",
+    logo: "/img/facultades/facultad-ciencias/microbiologia-unag.png",
+    placeholder: "BM",
+    descripcion:
+      "Departamento dedicado al estudio de los seres vivos, los microorganismos y sus interacciones con el entorno. Forma profesionales con sólidas bases en ciencias biológicas orientadas a la investigación y la salud.",
+  },
+  {
+    id: "quimica",
+    nombre: "Química",
+    logo: "/img/facultades/facultad-ciencias/depto-quimica.png",
+    placeholder: "Q",
+    descripcion:
+      "Departamento enfocado en el estudio de la materia, sus propiedades, composición y transformaciones. Ofrece formación teórica y práctica en química general, analítica y aplicada.",
+  },
+  {
+    id: "damfi",
+    nombre: "Matemática, Física e Informática",
+    logo: "/img/facultades/facultad-ciencias/damfi-unag.png",
+    placeholder: "MFI",
+    descripcion:
+      "Departamento que integra las ciencias exactas con la tecnología de la información. Promueve el pensamiento lógico-matemático y el desarrollo de competencias computacionales en sus estudiantes.",
+  },
+  {
+    id: "letras",
+    nombre: "Letras y Lenguas",
+    logo: "/img/facultades/facultad-ciencias/depto-letras.png",
+    placeholder: "LL",
+    descripcion:
+      "Departamento comprometido con el estudio del lenguaje, la literatura y las ciencias de la comunicación. Cultiva la expresión oral y escrita, la investigación lingüística y la apreciación literaria.",
+  },
+  {
+    id: "sociales",
+    nombre: "Sociales y Humanidades",
+    logo: null,
+    placeholder: "SH",
+    descripcion:
+      "Departamento orientado al análisis crítico de la sociedad, la historia y la cultura. Forma profesionales con visión humanista capaces de comprender y transformar su entorno social.",
+  },
+];

@@ -3,19 +3,17 @@ export const prerender = true;
 
 import Layout from "@/layouts/main.astro";
 import DocenteCard from "@/components/astro/ui/docente-card.astro";
-
-import docentesFacultadCiencias from "@/consts/facultades/docentes-facultad-de-ciencias.ts";
 import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
+import DepartamentosCiencias from "@/components/react/DepartamentosCiencias.tsx";
+
+import docentesFacultadCiencias, { departamentosCiencias } from "@/consts/facultades/docentes-facultad-de-ciencias.ts";
 
 const content = {
   title: "Facultad de Ciencias | UNAG",
 };
 
-const decano = docentesFacultadCiencias.slice(0, 1);
-const docentes = docentesFacultadCiencias.slice(
-  1, 
-  docentesFacultadCiencias.length
-);
+const decana = docentesFacultadCiencias[0];
+const secretaria = docentesFacultadCiencias[1];
 ---
 
 <Layout content={content}>
@@ -130,40 +128,31 @@ const docentes = docentesFacultadCiencias.slice(
       </p>
     </div>
 
-    <h1 class="font-bold">Personal:</h1>
-
-    {
-      decano.map((persona) => (
-        <DocenteCard
-          nombreCompleto={persona.nombreCompleto}
-          nombre={persona.nombre}
-          apellido={persona.apellido}
-          cargo={persona.cargo}
-          grado={persona.grado}
-          area={persona.area}
-          correo={persona.correo}
-        />
-      ))
-    }
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
-      {
-        docentes.map((persona) => (
-          <div class="">
-            <DocenteCard
-              nombreCompleto={persona.nombreCompleto}
-              nombre={persona.nombre}
-              apellido={persona.apellido}
-              cargo={persona.cargo}
-              grado={persona.grado}
-              area={persona.area}
-              correo={persona.correo}
-            />
-          </div>
-        ))
-      }
+    <h1 class="font-bold mb-4">Personal:</h1>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mb-4">
+      <DocenteCard
+        nombreCompleto={decana.nombreCompleto}
+        nombre={decana.nombre}
+        apellido={decana.apellido}
+        cargo={decana.cargo}
+        grado={decana.grado}
+        area={decana.area}
+        correo={decana.correo}
+      />
+      <DocenteCard
+        nombreCompleto={secretaria.nombreCompleto}
+        nombre={secretaria.nombre}
+        apellido={secretaria.apellido}
+        cargo={secretaria.cargo}
+        grado={secretaria.grado}
+        area={secretaria.area}
+        correo={secretaria.correo}
+      />
     </div>
 
-
+    <DepartamentosCiencias
+      client:load
+      departamentos={departamentosCiencias}
+    />
   </section>
 </Layout>

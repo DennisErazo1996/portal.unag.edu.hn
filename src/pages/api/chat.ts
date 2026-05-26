@@ -2,6 +2,10 @@ import type { APIRoute } from 'astro';
 import fs from 'fs/promises';
 import path from 'path';
 import { getChatProvider, type ChatMessage, type ProviderType } from '@/lib/chat-providers';
+import { checkRateLimit, getClientIp } from '@/lib/rate-limiter';
+
+const MAX_MESSAGES = 20;
+const MAX_MESSAGE_LENGTH = 1000;
 
 export const prerender = false;
 
@@ -71,6 +75,30 @@ function buildSystemPrompt(knowledge: { base: string; calendario: string; siteCo
 }
 
 export const POST: APIRoute = async ({ request }) => {
+  // Rate limiting
+  const ip = getClientIp(request);
+  const { allowed, remaining, resetInMs } = checkRateLimit(ip);
+
+  if (!allowed) {
+    const retryAfter = Math.ceil(resetInMs / 1000);
+    return new Response(
+      JSON.stringify({
+        error: 'Too many requests. Please wait before sending another message.',
+        code: 'RATE_LIMITED',
+        retryAfterSeconds: retryAfter,
+      }),
+      {
+        status: 429,
+        headers: {
+          'Content-Type': 'application/json',
+          'Retry-After': String(retryAfter),
+          'X-RateLimit-Limit': '10',
+          'X-RateLimit-Remaining': '0',
+        },
+      }
+    );
+  }
+
   try {
     const body = await request.json();
     const { messages, provider = 'openai' } = body as { 
@@ -83,6 +111,24 @@ export const POST: APIRoute = async ({ request }) => {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
+    }
+
+    // Validate message count and content length
+    if (messages.length > MAX_MESSAGES) {
+      return new Response(
+        JSON.stringify({ error: `Message history exceeds the ${MAX_MESSAGES}-message limit.` }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const oversized = messages.some(
+      (m) => typeof m.content !== 'string' || m.content.length > MAX_MESSAGE_LENGTH
+    );
+    if (oversized) {
+      return new Response(
+        JSON.stringify({ error: `Each message must be under ${MAX_MESSAGE_LENGTH} characters.` }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
     }
 
     // Cargar base de conocimientos (con cache)
@@ -99,7 +145,11 @@ export const POST: APIRoute = async ({ request }) => {
 
     return new Response(JSON.stringify({ reply }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-RateLimit-Limit': '10',
+        'X-RateLimit-Remaining': String(remaining),
+      },
     });
 
   } catch (error: any) {

@@ -32,7 +32,9 @@ const translations = {
     confirmDelete: "¿Deseas eliminar el historial del chat?",
     delete: "Eliminar",
     deletedSuccess: "Historial eliminado",
-    errorMessage: "Lo siento, hubo un error al procesar tu mensaje. Por favor intenta de nuevo."
+    errorMessage: "Lo siento, hubo un error al procesar tu mensaje. Por favor intenta de nuevo.",
+    rateLimitMessage: (seconds: number) =>
+      `Has enviado demasiados mensajes. Por favor espera ${seconds} segundos antes de continuar.`,
   },
   en: {
     initialMessage: "Hello! I'm UNAG's virtual assistant. How can I help you today?",
@@ -46,8 +48,10 @@ const translations = {
     confirmDelete: "Do you want to delete the chat history?",
     delete: "Delete",
     deletedSuccess: "History deleted",
-    errorMessage: "Sorry, there was an error processing your message. Please try again."
-  }
+    errorMessage: "Sorry, there was an error processing your message. Please try again.",
+    rateLimitMessage: (seconds: number) =>
+      `Too many messages sent. Please wait ${seconds} seconds before continuing.`,
+  },
 };
 
 interface Message {
@@ -187,6 +191,12 @@ export default function Chatbot() {
       });
 
       const data = await response.json();
+
+      if (response.status === 429) {
+        const seconds = data.retryAfterSeconds ?? 60;
+        setMessages(prev => [...prev, { role: 'model', text: t.rateLimitMessage(seconds) }]);
+        return;
+      }
 
       if (data.error) {
         throw new Error(data.error);

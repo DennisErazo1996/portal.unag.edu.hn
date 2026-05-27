@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 .vercel
 .env*.local
+
+# superpowers session data
+.superpowers/

@@ -6,7 +6,9 @@ import DocenteCard from "@/components/astro/ui/docente-card.astro";
 import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
 import DepartamentosCiencias from "@/components/react/DepartamentosCiencias.tsx";
 
-import docentesFacultadCiencias, { departamentosCiencias } from "@/consts/facultades/docentes-facultad-de-ciencias.ts";
+import docentesFacultadCiencias, {
+  departamentosCiencias,
+} from "@/consts/facultades/docentes-facultad-de-ciencias.ts";
 
 const content = {
   title: "Facultad de Ciencias | UNAG",
@@ -17,7 +19,7 @@ const secretaria = docentesFacultadCiencias[1];
 ---
 
 <Layout content={content}>
-  <HeaderFacultad 
+  <HeaderFacultad
     titulo="Facultad de Ciencias"
     imagen="/img/facultades/bg-facultad-de-ciencias.webp"
   />
@@ -108,13 +110,12 @@ const secretaria = docentesFacultadCiencias[1];
         >; para lo cual se han constituido cinco Departamentos Académicos, según
         áreas afines; estos son:
       </p>
-      <ul>
-        <li>Departamento Académico de Biología y Microbiología</li>
-        <li>Departamento Académico de Química</li>
-        <li>Departamento Académico de Matemática, Física e Informática</li>
-        <li>Departamento Académico de Letras y Lenguas</li>
-        <li>Departamento Académico de Sociales y Humanidades</li>
-      </ul>
+
+      <DepartamentosCiencias
+        client:load
+        departamentos={departamentosCiencias}
+      />
+      
       <p>
         La Facultad de Ciencias sirve el componente de formación general de
         todas las carreras; el que, en promedio equivale a un <strong
@@ -149,10 +150,5 @@ const secretaria = docentesFacultadCiencias[1];
         correo={secretaria.correo}
       />
     </div>
-
-    <DepartamentosCiencias
-      client:load
-      departamentos={departamentosCiencias}
-    />
   </section>
 </Layout>

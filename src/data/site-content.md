@@ -1,6 +1,6 @@
 # Contenido del Sitio Web UNAG
   
-> Archivo generado automáticamente el 2026-05-26T22:27:46.157Z
+> Archivo generado automáticamente el 2026-05-27T15:40:07.387Z
 > Este archivo es utilizado por el chatbot para responder preguntas sobre el sitio.
 
 ---

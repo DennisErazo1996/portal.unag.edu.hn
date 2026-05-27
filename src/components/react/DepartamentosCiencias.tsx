@@ -13,20 +13,17 @@ export default function DepartamentosCiencias({ departamentos }: Props) {
   return (
     <div className="mt-14">
       {/* Encabezado */}
-      <div className="flex items-center gap-4 mb-8">
+      <div className="flex items-center gap-4">
         <div className="w-1 h-10 bg-unag-green shrink-0" />
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-unag-green mb-0.5">
-            Facultad de Ciencias
-          </p>
-          <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white leading-none">
+          <p className=" font-extrabold text-gray-900 dark:text-white tracking-[0.18em] uppercase text-sm">
             Departamentos Académicos
-          </h2>
+          </p>
         </div>
       </div>
 
       {/* Grid de tarjetas */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-8 mb-5">
         {departamentos.map((dept, i) => {
           const isActive = selectedId === dept.id;
           return (

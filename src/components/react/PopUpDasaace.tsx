@@ -22,7 +22,7 @@ const PopUpDasaace = () => {
   const [hasImageError, setHasImageError] = useState(false);
 
   useEffect(function initPopup() {
-    //if (!shouldShowPopup()) return;
+    if (!shouldShowPopup()) return;
     markPopupShown();
     setIsOpen(true);
     requestAnimationFrame(() => requestAnimationFrame(() => setIsVisible(true)));
@@ -81,7 +81,7 @@ const PopUpDasaace = () => {
           <div className="relative h-[250px] sm:h-[300px] bg-unag-dark-green">
             {!hasImageError ? (
               <img
-                src={'/img/dasaace-animation-loop.gif'}
+                src={'/img/dasaace-animation-loop-2.gif'}
                 alt="Animacion de DASAACE"
                 className="h-full w-full object-cover"
                 onError={handleImageError}

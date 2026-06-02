@@ -1,7 +1,5 @@
----
+﻿---
 import {
-  Menu,
-  X,
   ChevronDown,
   Home,
   Newspaper,
@@ -14,10 +12,25 @@ import {
   UserPlus,
   FlaskConical,
   Award,
+  X,
 } from "@lucide/astro";
 import { Image } from "astro:assets";
 import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
+import NAV_ITEMS from '@/consts/navigation';
+import type { NavDropdown } from '@/types/navigation';
 import carreras from "@/consts/carreras";
+
+const ICON_MAP = {
+  Home, Newspaper, Info, Building2, Server,
+  GraduationCap, BookOpen, Eye, UserPlus, FlaskConical, Award,
+} as const;
+
+type IconName = keyof typeof ICON_MAP;
+
+function getIcon(name: string | undefined): IconName | null {
+  if (!name || !(name in ICON_MAP)) return null;
+  return name as IconName;
+}
 ---
 
 <section class="text-white text-[12px]">
@@ -47,595 +60,100 @@ import carreras from "@/consts/carreras";
         <X size={24} />
       </button>
     </div>
-    <ul
-      class="flex flex-col p-4 gap-1 overflow-y-auto max-h-[calc(100vh-100px)] text-white"
-    >
-      <!-- Inicio -->
-      <li>
-        <a
-          href="/"
-          class="flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <Home size={20} />
-          <span>Inicio</span>
-        </a>
-      </li>
+    <ul class="flex flex-col p-4 gap-1 overflow-y-auto max-h-[calc(100vh-100px)] text-white">
+      {NAV_ITEMS.map((item) => {
+        const iconName = getIcon(item.icon);
+        const IconComponent = iconName ? ICON_MAP[iconName] : null;
 
-      <!-- Noticias -->
-      <li>
-        <a
-          href="https://portal.blog.unag.edu.hn"
-          class="flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <Newspaper size={20} />
-          <span>Noticias</span>
-        </a>
-      </li>
+        if (item.type === 'link') {
+          return (
+            <li>
+              <a
+                href={item.href}
+                target={item.target}
+                class="flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
+              >
+                {IconComponent && <IconComponent size={20} />}
+                <span>{item.label}</span>
+              </a>
+            </li>
+          );
+        }
 
-      <!-- Dropdown móvil: Acerca -->
-      <li>
-        <button
-          class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <div class="flex items-center gap-3">
-            <Info size={20} />
-            <span>Acerca</span>
-          </div>
-          <ChevronDown size={18} class="transition-transform duration-300" />
-        </button>
-        <ul
-          class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-        >
-          <li>
-            <a
-              href="/acerca/mision-y-vision"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Misión y Visión</a>
-          </li>
-          <li>
-            <a
-              href="/acerca/historia"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Historia</a>
-          </li>
-          <li>
-            <a
-              href="/acerca/normativas"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Normativas</a>
-          </li>
-        </ul>
-      </li>
+        if (item.type === 'carreras') {
+          return (
+            <li>
+              <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+                <div class="flex items-center gap-3">
+                  {IconComponent && <IconComponent size={20} />}
+                  <span>Carreras</span>
+                </div>
+                <ChevronDown size={18} class="transition-transform duration-300" />
+              </button>
+              <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                {carreras.map((carrera) => (
+                  <li>
+                    <a href={carrera.link} class="block py-2 pl-11 hover:text-unag-yellow transition-colors">
+                      {carrera.nombre}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          );
+        }
 
-      <!-- Dropdown móvil: Organización -->
-      <li>
-        <button
-          class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <div class="flex items-center gap-3">
-            <Building2 size={20} />
-            <span>Organización</span>
-          </div>
-          <ChevronDown size={18} class="transition-transform duration-300" />
-        </button>
-        <ul
-          class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-        >
+        const dropdown = item as NavDropdown;
+        return (
           <li>
-            <button
-              class="mobile-submenu-toggle w-full flex items-center justify-between py-2 pl-11 hover:text-unag-yellow transition-colors"
-            >
-              <span>Rectoría</span>
-              <ChevronDown
-                size={14}
-                class="transition-transform duration-300"
-              />
+            <button class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium">
+              <div class="flex items-center gap-3">
+                {IconComponent && <IconComponent size={20} />}
+                <span>{dropdown.label}</span>
+              </div>
+              <ChevronDown size={18} class="transition-transform duration-300" />
             </button>
-            <ul
-              class="mobile-submenu-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-            >
-              <li>
-                <a
-                  href="/organizacion/rectoria/rector"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Rector</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/rectoria/unidad-de-transparencia"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Unidad de Transparencia</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/rectoria/unidad-de-genero/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Unidad de Género</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/rectoria/comisionado-universitario-de-derechos-humanos/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Comisionado Universitario de Derechos Humanos</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/rectoria/asesoria-legal/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Asesoría Legal</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/rectoria/sepeg/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >SEPEG</a>
-              </li>
-              <li>
-                <a
-                  href="https://setic.unag.edu.hn"
-                  target="_blank"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >SETIC</a>
-              </li>
-              <!-- <li>
-                <a
-                  href="https://portal.unag.edu.hn/segre/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >SEGRE</a>
-              </li> -->
-              <li>
-                <a
-                  href="/organizacion/rectoria/seapi/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >SEAPI</a>
-              </li>
+            <ul class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+              {dropdown.children.map((child) => {
+                if (child.type === 'group') {
+                  return (
+                    <li>
+                      <button class="mobile-submenu-toggle w-full flex items-center justify-between py-2 pl-11 hover:text-unag-yellow transition-colors">
+                        <span>{child.title}</span>
+                        <ChevronDown size={14} class="transition-transform duration-300" />
+                      </button>
+                      <ul class="mobile-submenu-content max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                        {child.children.map((link) => (
+                          <li>
+                            <a
+                              href={link.href}
+                              target={link.target}
+                              class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
+                            >
+                              {link.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  );
+                }
+                return (
+                  <li>
+                    <a
+                      href={child.href}
+                      target={child.target}
+                      class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
+                    >
+                      {child.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </li>
-          <li>
-            <button
-              class="mobile-submenu-toggle w-full flex items-center justify-between py-2 pl-11 hover:text-unag-yellow transition-colors"
-            >
-              <span>Vicerrectorías</span>
-              <ChevronDown
-                size={14}
-                class="transition-transform duration-300"
-              />
-            </button>
-            <ul
-              class="mobile-submenu-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-            >
-              <li>
-                <a
-                  href="/organizacion/vicerrectorias/vicerrectoria-academica/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Vicerrectoría Académica</a>
-              </li>
-              <li>
-                <a
-                  href="https://portal.internacionalizacion.unag.edu.hn/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Vicerrectoría de Internacionalización</a>
-              </li>
-              <li>
-                <a
-                  href="https://vve.unag.edu.hn/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Vicerrectoría de Vida Estudiantil</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a
-              href="/organizacion/secretaria-general/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Secretaría General</a>
-          </li>
-          <li>
-            <button
-              class="mobile-submenu-toggle w-full flex items-center justify-between py-2 pl-11 hover:text-unag-yellow transition-colors"
-            >
-              <span>Facultades</span>
-              <ChevronDown
-                size={14}
-                class="transition-transform duration-300"
-              />
-            </button>
-            <ul
-              class="mobile-submenu-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-            >
-              <li>
-                <a
-                  href="/organizacion/facultades/facultad-de-ciencias/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Facultad de Ciencias</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/facultades/facultad-de-ciencias-agrarias/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Facultad de Ciencias Agrarias</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/facultades/facultad-de-ciencias-de-la-tierra-y-la-conservacion/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Facultad de Ciencias de la Tierra y la Conservación</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/facultades/facultad-de-ciencias-tecnologicas/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Facultad de Ciencias Tecnológicas</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/facultades/facultad-de-medicina-veterinaria-y-zootecnia/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Facultad de Medicina Veterinaria y Zootecnia</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/facultades/facultad-de-ciencias-economicas-y-administrativas/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Facultad de Ciencias Económicas y Administrativas</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <button
-              class="mobile-submenu-toggle w-full flex items-center justify-between py-2 pl-11 hover:text-unag-yellow transition-colors"
-            >
-              <span>Direcciones Académicas</span>
-              <ChevronDown
-                size={14}
-                class="transition-transform duration-300"
-              />
-            </button>
-            <ul
-              class="mobile-submenu-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-            >
-              <li>
-                <a
-                  href="https://dasdie.unag.edu.hn/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Sistema de Docencia e Innovación Educativa</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/direcciones-academicas/sistema-de-admision/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Sistema de Admisión</a>
-              </li>
-              <li>
-                <a
-                  href="https://dasaace.unag.edu.hn/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Sistema de Autoevaluación para la Acreditación de la Calidad
-                  Educativa</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/direcciones-academicas/sistema-academico-de-cultura-artes-y-deportes/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Sistema Académico de Cultura, Artes y Deportes</a>
-              </li>
-              <!-- <li>
-                <a
-                  href="https://portal.unag.edu.hn/sistema-de-carrera-docente/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Sistema de Carrera Docente</a>
-              </li>
-              <li>
-                <a
-                  href="https://portal.unag.edu.hn/sistema-de-desarrollo-tecnologico/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Sistema de Desarrollo Tecnológico</a>
-              </li> -->
-              <li>
-                <a
-                  href="/organizacion/direcciones-academicas/sistema-de-investigacion-y-posgrado/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Sistema de Investigación y Postgrado</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/direcciones-academicas/sistema-de-vinculacion-universidad-sociedad/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Sistema de Vinculación Universidad Sociedad</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <button
-              class="mobile-submenu-toggle w-full flex items-center justify-between py-2 pl-11 hover:text-unag-yellow transition-colors"
-            >
-              <span>Sedes Regionales</span>
-              <ChevronDown
-                size={14}
-                class="transition-transform duration-300"
-              />
-            </button>
-            <ul
-              class="mobile-submenu-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-            >
-              <li>
-                <a
-                  href="/organizacion/sedes-regionales/comayagua/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Comayagua</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/sedes-regionales/tomala/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Tomalá</a>
-              </li>
-              <li>
-                <a
-                  href="/organizacion/sedes-regionales/mistruck/"
-                  class="block py-1.5 pl-16 hover:text-unag-yellow transition-colors"
-                  >Mistruck</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a
-              href="/organizacion/junta-de-direccion-universitaria/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Junta de Dirección Universitaria</a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Dropdown móvil: ERP -->
-      <li>
-        <button
-          class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <div class="flex items-center gap-3">
-            <Server size={20} />
-            <span>Plataformas</span>
-          </div>
-          <ChevronDown size={18} class="transition-transform duration-300" />
-        </button>
-        <ul
-          class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-        >
-          <li>
-            <a
-              href="https://erp.unag.edu.hn/"
-              target="_blank"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Ingresar ERP</a>
-          </li>
-          <li>
-            <a
-              href="https://sys.unag.edu.hn/login"
-              target="_blank"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >SysUNAG</a>
-          </li>
-          <li>
-            <a
-              href="https://sys.unag.edu.hn/login_graduados"
-              target="_blank"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Sistema de Graduados</a>
-          </li>
-          <li>
-            <a
-              href="https://moodle.unag.edu.hn/"
-              target="_blank"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Campus Virtual</a>
-          </li>
-          <li>
-            <a
-              href="https://sed.unag.edu.hn/"
-              target="_blank"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Sistema de Educación a Distancia</a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Dropdown móvil: Carreras -->
-      <li>
-        <button
-          class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <div class="flex items-center gap-3">
-            <GraduationCap size={20} />
-            <span>Carreras</span>
-          </div>
-          <ChevronDown size={18} class="transition-transform duration-300" />
-        </button>
-        <ul
-          class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-        >
-          {
-            carreras.map((carrera) => (
-              <li>
-                <a
-                  href={carrera.link}
-                  class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-                  >{carrera.nombre}</a>
-              </li>
-            ))
-          }
-        
-        </ul>
-      </li>
-
-      <!-- Dropdown móvil: Biblioteca -->
-      <li>
-        <button
-          class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <div class="flex items-center gap-3">
-            <BookOpen size={20} />
-            <span>Biblioteca</span>
-          </div>
-          <ChevronDown size={18} class="transition-transform duration-300" />
-        </button>
-        <ul
-          class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-        >
-          <li>
-            <a
-              href="https://biblioteca-intra.unag.edu.hn:8000/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Catálogo</a>
-          </li>
-          <li>
-            <a
-              href="https://portal.unag.edu.hn/recursos-descargables/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Recursos Descargables</a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Dropdown móvil: Transparencias -->
-      <li>
-        <button
-          class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <div class="flex items-center gap-3">
-            <Eye size={20} />
-            <span>Transparencias</span>
-          </div>
-          <ChevronDown size={18} class="transition-transform duration-300" />
-        </button>
-        <ul
-          class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-        >
-          <li>
-            <a
-              href="https://portalunico.iaip.gob.hn/#/portal=371"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Portal IAIP</a>
-          </li>
-          <li>
-            <a
-              href="https://sielho.iaip.gob.hn/solicitud/solicitante/registrar/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >SIELHO IAIP</a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Dropdown móvil: Admisión -->
-      <li>
-        <button
-          class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <div class="flex items-center gap-3">
-            <UserPlus size={20} />
-            <span>Admisión</span>
-          </div>
-          <ChevronDown size={18} class="transition-transform duration-300" />
-        </button>
-        <ul
-          class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-        >
-          <li>
-            <a
-              href="/admisiones/procesos-de-admision"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Procesos de Admisión</a>
-          </li>
-          <li>
-            <a
-              href="/admisiones/etapas-del-proceso-de-admision"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Etapas del Proceso de Admisión</a>
-          </li>
-          <li>
-            <a
-              href="/admisiones/normativas-prueba-de-admision"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Instrucciones para el Día de la Prueba</a>
-          </li>
-          <li>
-            <a
-              href="/admisiones/validacion-de-pago"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Validación del Pago</a>
-          </li>
-          <li>
-            <a
-              href="/admisiones/requisitos"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Requisitos</a>
-          </li>
-          <li>
-            <a
-              href="/admisiones/preguntas-frecuentes"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Preguntas Frecuentes</a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Dropdown móvil: COCOIN -->
-      <li>
-        <button
-          class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <div class="flex items-center gap-3">
-            <FlaskConical size={20} />
-            <span>COCOIN</span>
-          </div>
-          <ChevronDown size={18} class="transition-transform duration-300" />
-        </button>
-        <ul
-          class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-        >
-          <li>
-            <a
-              href="/cocoin/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Componentes</a>
-          </li>
-          <li>
-            <a
-              href="https://www.onadici.gob.hn/"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >ONADICI</a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Dropdown móvil: Comisión CACN -->
-      <li>
-        <button
-          class="mobile-dropdown-toggle w-full flex items-center justify-between py-2.5 px-3 rounded-lg hover:bg-unag-green/30 hover:text-unag-yellow transition-all font-medium"
-        >
-          <div class="flex items-center gap-3">
-            <Award size={20} />
-            <span>CGU</span>
-          </div>
-          <ChevronDown size={18} class="transition-transform duration-300" />
-        </button>
-        <ul
-          class="mobile-dropdown-content max-h-0 overflow-hidden transition-all duration-300 ease-out"
-        >
-
-          <li>
-            <a
-              href="/comision-para-la-gestion-universitaria/actas-de-reuniones"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Actas de Reuniones</a>
-          </li>
-          <li>
-            <a
-              href="/documents/cgu/decreto-cgu-2026.pdf"
-              class="block py-2 pl-11 hover:text-unag-yellow transition-colors"
-              >Decreto No. 9-2026</a>
-          </li>
-        </ul>
-      </li>
+        );
+      })}
     </ul>
   </div>
 </section>

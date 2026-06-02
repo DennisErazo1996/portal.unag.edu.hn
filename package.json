@@ -11,6 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.9",
     "@astrojs/node": "^10.0.5",
     "@astrojs/react": "^5.0.3",
     "@fontsource/montserrat": "^5.2.8",
@@ -36,7 +37,8 @@
     "sileo": "^0.1.4",
     "swiper": "^12.0.3",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.14"
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@astrojs/vercel": "^10.0.7",

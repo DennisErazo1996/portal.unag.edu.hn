@@ -1,12 +1,14 @@
 ---
 import { Image } from "astro:assets";
-import { Menu, X, ChevronDown } from "@lucide/astro";
+import { Menu, ChevronDown } from "@lucide/astro";
 
 import logoUnagBlanco from "@assets/img/logo-unag-blanco.png";
 import LinkDropdownMenu from "@/components/astro/navigation/link-dropdown-menu.astro";
 import DropdownMenuContainer from "@/components/astro/navigation/dropdown-menu-container.astro";
 import DropdownMenuItemWithSubmenu from "@/components/astro/navigation/dropdown-menu-item-with-submenu.astro";
 import SubmenuLink from "@/components/astro/navigation/submenu-link.astro";
+import NAV_ITEMS from '@/consts/navigation';
+import type { NavDropdown } from '@/types/navigation';
 import carreras from '@/consts/carreras';
 ---
 
@@ -26,162 +28,57 @@ import carreras from '@/consts/carreras';
         </div>
         <div class="flex items-center bg-unag-green h-13 p-5 overflow-visible relative border-b-4 border-r-4 border-unag-dark-green">
             <ul class="flex gap-5">
-                <li><a href="/" class="hover:text-unag-yellow transition-colors">Inicio</a></li> 
-                <li><a href="https://portal.blog.unag.edu.hn" class="hover:text-unag-yellow transition-colors">Noticias</a></li>
-                
-                
-                <li class="relative group">
-                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
-                        Acerca <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
-                    </button>
-                    <DropdownMenuContainer>
-                        <LinkDropdownMenu href="/acerca/mision-y-vision">Misión y Visión</LinkDropdownMenu>
-                        <LinkDropdownMenu href="/acerca/historia/">Historia</LinkDropdownMenu>
-                        <!-- <LinkDropdownMenu href="https://portal.unag.edu.hn/experiencia-academica/">Experiencia Académica</LinkDropdownMenu> -->
-                        <LinkDropdownMenu href="/acerca/normativas">Normativas</LinkDropdownMenu>
-                    </DropdownMenuContainer>
-                </li>
+              {NAV_ITEMS.map((item) => {
+                if (item.type === 'link') {
+                  return (
+                    <li>
+                      <a href={item.href} target={item.target} class="hover:text-unag-yellow transition-colors">
+                        {item.label}
+                      </a>
+                    </li>
+                  );
+                }
 
-                
-                <li class="relative group">
-                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
-                        Organización <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
-                    </button>
-                    <DropdownMenuContainer>
-                        <DropdownMenuItemWithSubmenu title="Rectoría">
-                            <SubmenuLink href="/organizacion/rectoria/rector">Rector</SubmenuLink>
-                            <SubmenuLink href="/organizacion/rectoria/unidad-de-transparencia">Unidad de Transparencia</SubmenuLink>
-                            <SubmenuLink href="/organizacion/rectoria/unidad-de-genero/">Unidad de Género</SubmenuLink>
-                            <SubmenuLink href="/organizacion/rectoria/comisionado-universitario-de-derechos-humanos/">Comisionado Universitario de Derechos Humanos</SubmenuLink>
-                            <SubmenuLink href="/organizacion/rectoria/asesoria-legal/">Asesoría Legal</SubmenuLink>
-                            <SubmenuLink href="/organizacion/rectoria/sepeg/">SEPEG</SubmenuLink>
-                            <SubmenuLink href="https://setic.unag.edu.hn" target="_blank">SETIC</SubmenuLink>
-                            <!-- <SubmenuLink href="https://portal.unag.edu.hn/segre/">SEGRE</SubmenuLink> -->
-                            <SubmenuLink href="/organizacion/rectoria/seapi/">SEAPI</SubmenuLink>
-                        </DropdownMenuItemWithSubmenu>
-                        <DropdownMenuItemWithSubmenu title="Vicerrectorías">
-                            <SubmenuLink href="/organizacion/vicerrectorias/vicerrectoria-academica/">Vicerrectoría Académica</SubmenuLink>
-                            <SubmenuLink href="https://portal.internacionalizacion.unag.edu.hn/">Vicerrectoría de Internacionalización</SubmenuLink>
-                            <SubmenuLink href="https://vve.unag.edu.hn/">Vicerrectoría de Vida Estudiantil</SubmenuLink>
-                        </DropdownMenuItemWithSubmenu>
-                        <LinkDropdownMenu href="/organizacion/secretaria-general/">Secretaría General</LinkDropdownMenu>
-                        <DropdownMenuItemWithSubmenu title="Facultades">
-                            <SubmenuLink href="/organizacion/facultades/facultad-de-ciencias/">Facultad de Ciencias</SubmenuLink>
-                            <SubmenuLink href="/organizacion/facultades/facultad-de-ciencias-agrarias/">Facultad de Ciencias Agrarias</SubmenuLink>
-                            <SubmenuLink href="/organizacion/facultades/facultad-de-ciencias-de-la-tierra-y-la-conservacion/">Facultad de Ciencias de la Tierra y la Conservación</SubmenuLink>
-                            <SubmenuLink href="/organizacion/facultades/facultad-de-ciencias-tecnologicas/">Facultad de Ciencias Tecnológicas</SubmenuLink>
-                            <SubmenuLink href="/organizacion/facultades/facultad-de-medicina-veterinaria-y-zootecnia/">Facultad de Medicina Veterinaria y Zootecnia</SubmenuLink>
-                            <SubmenuLink href="/organizacion/facultades/facultad-de-ciencias-economicas-y-administrativas/">Facultad de Ciencias Económicas y Administrativas</SubmenuLink>
-                        </DropdownMenuItemWithSubmenu>
-                        <DropdownMenuItemWithSubmenu title="Direcciones Académicas">
-                            <SubmenuLink href="https://dasdie.unag.edu.hn/">Sistema de Docencia e Innovación Educativa</SubmenuLink>
-                            <SubmenuLink href="/organizacion/direcciones-academicas/sistema-de-admision/">Sistema de Admisión</SubmenuLink>
-                            <SubmenuLink href="https://dasaace.unag.edu.hn/">Sistema de Autoevaluación para la Acreditación de la Calidad Educativa</SubmenuLink>
-                            <SubmenuLink href="/organizacion/direcciones-academicas/sistema-academico-de-cultura-artes-y-deportes/">Sistema Académico de Cultura, Artes y Deportes</SubmenuLink>
-                            <!-- <SubmenuLink href="https://portal.unag.edu.hn/sistema-de-carrera-docente/">Sistema de Carrera Docente</SubmenuLink>
-                            <SubmenuLink href="https://portal.unag.edu.hn/sistema-de-desarrollo-tecnologico/">Sistema de Desarrollo Tecnológico</SubmenuLink> -->
-                            <SubmenuLink href="/organizacion/direcciones-academicas/sistema-de-investigacion-y-posgrado/">Sistema de Investigación y Postgrado</SubmenuLink>
-                            <SubmenuLink href="/organizacion/direcciones-academicas/sistema-de-vinculacion-universidad-sociedad/">Sistema de Vinculación Universidad Sociedad</SubmenuLink>
-                        </DropdownMenuItemWithSubmenu>
-                        <DropdownMenuItemWithSubmenu title="Sedes Regionales">
-                            <SubmenuLink href="/organizacion/sedes-regionales/comayagua/">Comayagua</SubmenuLink>
-                            <SubmenuLink href="/organizacion/sedes-regionales/tomala/">Tomalá</SubmenuLink>
-                            <SubmenuLink href="/organizacion/sedes-regionales/mistruck/">Mistruck</SubmenuLink>
-                        </DropdownMenuItemWithSubmenu>
-                        <LinkDropdownMenu href="/organizacion/junta-de-direccion-universitaria/">Junta de Dirección Universitaria</LinkDropdownMenu>
-                    </DropdownMenuContainer>
-                </li>
-
-              
-                <li class="relative group">
-                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
-                        Plataformas <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
-                    </button>
-                    <DropdownMenuContainer>
-                        <LinkDropdownMenu href="https://unag.erponline.services/" target="_blank">Ingresar  
-                        </LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://sys.unag.edu.hn/login" target="_blank">SysUNAG</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://sys.unag.edu.hn/login_graduados" target="_blank">Sistema de Graduados</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://moodle.erponline.services/" target="_blank">Campus Virtual</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://sed.unag.edu.hn/" target="_blank">Sistema de Educación a Distancia</LinkDropdownMenu>                        
-                    </DropdownMenuContainer>
-                </li>
-
-
-
-
-               
-                <li class="relative group">
-                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                if (item.type === 'carreras') {
+                  return (
+                    <li class="relative group">
+                      <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
                         Carreras <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
+                      </button>
+                      <DropdownMenuContainer>
+                        {carreras.map((carrera) => (
+                          <LinkDropdownMenu href={carrera.link}>{carrera.nombre}</LinkDropdownMenu>
+                        ))}
+                      </DropdownMenuContainer>
+                    </li>
+                  );
+                }
+
+                const dropdown = item as NavDropdown;
+                return (
+                  <li class="relative group">
+                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
+                      {dropdown.label} <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
                     </button>
                     <DropdownMenuContainer>
-                        {
-                            carreras.map((carrera) => (
-                                <LinkDropdownMenu href={carrera.link}>{carrera.nombre}</LinkDropdownMenu>
-                            ))
+                      {dropdown.children.map((child) => {
+                        if (child.type === 'group') {
+                          return (
+                            <DropdownMenuItemWithSubmenu title={child.title}>
+                              {child.children.map((link) => (
+                                <SubmenuLink href={link.href} target={link.target}>{link.label}</SubmenuLink>
+                              ))}
+                            </DropdownMenuItemWithSubmenu>
+                          );
                         }
+                        return (
+                          <LinkDropdownMenu href={child.href} target={child.target}>{child.label}</LinkDropdownMenu>
+                        );
+                      })}
                     </DropdownMenuContainer>
-                </li>
-
-                
-                <li class="relative group">
-                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
-                        Biblioteca <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
-                    </button>
-                    <DropdownMenuContainer>
-                        <LinkDropdownMenu href="https://biblioteca-intra.unag.edu.hn:8000/">Catálogo</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://portal.unag.edu.hn/recursos-descargables/">Recursos Descargables</LinkDropdownMenu>
-                    </DropdownMenuContainer>
-                </li>
-
-                
-                <li class="relative group">
-                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
-                        Transparencias <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
-                    </button>
-                    <DropdownMenuContainer>
-                        <LinkDropdownMenu href="https://portalunico.iaip.gob.hn/#/portal=371">Portal IAIP</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://sielho.iaip.gob.hn/solicitud/solicitante/registrar/">SIELHO IAIP</LinkDropdownMenu>
-                    </DropdownMenuContainer>
-                </li>
-
-                
-                <li class="relative group">
-                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
-                        Admisión <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
-                    </button>
-                    <DropdownMenuContainer>
-                        <LinkDropdownMenu href="/admisiones/procesos-de-admision">Procesos de Admisión</LinkDropdownMenu>
-                        <LinkDropdownMenu href="/admisiones/etapas-del-proceso-de-admision/">Etapas del Proceso de Admisión</LinkDropdownMenu>
-                        <LinkDropdownMenu href="/admisiones/validacion-de-pago">Validación de Pago</LinkDropdownMenu>
-                        <LinkDropdownMenu href="/admisiones/normativas-prueba-de-admision">Instrucciones para el Día de la Prueba</LinkDropdownMenu>
-                        <LinkDropdownMenu href="/admisiones/requisitos/">Requisitos</LinkDropdownMenu>
-                        <LinkDropdownMenu href="/admisiones/preguntas-frecuentes">Preguntas Frecuentes</LinkDropdownMenu>
-                    </DropdownMenuContainer>
-                </li>
-
-                
-                <li class="relative group">
-                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
-                        COCOIN <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
-                    </button>
-                    <DropdownMenuContainer>
-                        <LinkDropdownMenu href="/cocoin/">Componentes</LinkDropdownMenu>
-                        <LinkDropdownMenu href="https://www.onadici.gob.hn/">ONADICI</LinkDropdownMenu>
-                    </DropdownMenuContainer>
-                </li>
-
-                
-                <li class="relative group">
-                    <button class="flex items-center gap-1 hover:text-unag-yellow transition-colors">
-                        CGU <ChevronDown size={14} class="transition-transform group-hover:rotate-180 duration-300" />
-                    </button>
-                    <DropdownMenuContainer>
-                        <LinkDropdownMenu href="/comision-para-la-gestion-universitaria/actas-de-reuniones">Actas de Reuniones</LinkDropdownMenu>
-                        <LinkDropdownMenu href="/documents/cgu/decreto-cgu-2026.pdf">Decreto No. 9-2026</LinkDropdownMenu>
-                    </DropdownMenuContainer>
-                </li>
+                  </li>
+                );
+              })}
             </ul>
         </div>
     </div>

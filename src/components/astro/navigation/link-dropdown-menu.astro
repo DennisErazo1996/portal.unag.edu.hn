@@ -1,9 +1,10 @@
 ---
-const { href } = Astro.props;
+const { href, target } = Astro.props;
 ---
 
 <a
   href={href}
+  target={target}
   class="block px-5 py-3 w-fit hover:bg-unag-dark-green dark:hover:bg-unag-green hover:rounded-full hover:text-white transition-all duration-200 transform hover:translate-x-1"
   ><slot /></a
 >

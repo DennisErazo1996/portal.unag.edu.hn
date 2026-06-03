@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
 import { ArrowUpRight, MoveRight } from "lucide-react";
 
 const translations = {
@@ -54,8 +53,12 @@ interface ComunicadosSectionProps {
 export default function ComunicadosSection({
   comunicados,
 }: ComunicadosSectionProps) {
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
+  const MOBILE_BREAKPOINT = 640;
+  const MOBILE_MAX_COMUNICADOS = 5;
   const [lang, setLang] = useState<'es' | 'en'>('es');
+  const [isMobile, setIsMobile] = useState<boolean>(() =>
+    typeof window !== "undefined" ? window.innerWidth < MOBILE_BREAKPOINT : false
+  );
   const t = translations[lang];
 
   // Detect language from URL
@@ -63,6 +66,19 @@ export default function ComunicadosSection({
     const currentPath = window.location.pathname;
     const detectedLang = currentPath.startsWith('/en/') || currentPath === '/en' ? 'en' : 'es';
     setLang(detectedLang);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const formatDate = (date: Date) => {
@@ -78,6 +94,10 @@ export default function ComunicadosSection({
   const translateCategory = (category: string): string => {
     return t.categories[category as keyof typeof t.categories] || category;
   };
+
+  const visibleComunicados = isMobile
+    ? comunicados.slice(0, MOBILE_MAX_COMUNICADOS)
+    : comunicados;
 
   return (
     <section id="comunicados" className="py-30 bg-unag-light-gray/50 dark:bg-background">
@@ -132,10 +152,9 @@ export default function ComunicadosSection({
               slidesPerGroup: 4,
             },
           }}
-          onSwiper={setSwiperInstance}
           className="comunicados-swiper"
         >
-          {comunicados.map((comunicado) => (
+          {visibleComunicados.map((comunicado) => (
             <SwiperSlide key={comunicado.id}>
               <a
                 href={lang === 'en' ? `/en/comunicados/${comunicado.id}` : `/comunicados/${comunicado.id}`}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 
 import CuentaRegresiva from "@/components/react/CuentaRegresiva";
 
@@ -64,7 +64,7 @@ const PopUpDasaace = () => {
       }`}
     >
       <div
-        className={`relative w-full max-w-2xl overflow-hidden rounded-[1.5rem] border border-unag-green/20 bg-white shadow-2xl dark:bg-background scale-100 lg:scale-80 transition-all duration-300 ${
+        className={`relative w-full max-w-2xl overflow-hidden rounded-[1.5rem] border border-unag-green/20 bg-white shadow-2xl dark:bg-background scale-90 lg:scale-75 transition-all duration-300 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
@@ -78,7 +78,7 @@ const PopUpDasaace = () => {
         </button>
 
         <div className="flex flex-col">
-          <div className="relative h-[250px] sm:h-[300px] bg-unag-dark-green">
+          <div className="relative h-[250px] sm:h-[400px] bg-unag-dark-green">
             {!hasImageError ? (
               <img
                 src={'/img/dasaace-animation-loop-2.gif'}
@@ -96,9 +96,9 @@ const PopUpDasaace = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-unag-dark-green/70 via-transparent to-transparent" />
           </div>
 
-          <div className="bg-unag-dark-green h-10 w-full flex items-center justify-center">
+          {/* <div className="bg-unag-dark-green h-10 w-full flex items-center justify-center">
             <p className="text-white text-[11px] lg:text-[13px]">“Yo remo con determinación a la acreditación”</p>
-          </div>
+          </div> */}
 
           <div className="relative p-4 sm:p-5">
             
@@ -118,20 +118,23 @@ const PopUpDasaace = () => {
             </p>
 
             <div className="w-70 mx-auto">
+              <p className="text-center text-sm text-unag-dark-green dark:text-white/75 mt-5 font-semibold">
+                La visita de los pares evaluadores externo está cada vez más cerca, ¡prepárate!
+              </p>
               <CuentaRegresiva
                 year={'2026'}
                 month={'september'}
                 day={'20'}
               />
             </div>
-            <div className="flex w-full justify-center mt-4">
+            <div className="flex w-full justify-center mt-4 mb-4">
               <a
                 href="https://dasaace.unag.edu.hn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex w-full items-center justify-center rounded-sm bg-unag-green px-4 py-2 text-sm text-white transition-colors duration-200 hover:bg-unag-dark-green sm:w-auto"
               >
-                Ir a DASAACE
+                Descubre Más <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </div>
           </div>

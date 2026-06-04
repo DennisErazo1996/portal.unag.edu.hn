@@ -48,7 +48,7 @@ const NAV_ITEMS: NavItem[] = [
         title: 'Vicerrectorías',
         children: [
           { type: 'link', label: 'Vicerrectoría Académica', href: '/organizacion/vicerrectorias/vicerrectoria-academica/' },
-          { type: 'link', label: 'Vicerrectoría de Internacionalización', href: 'https://portal.internacionalizacion.unag.edu.hn/', target: '_blank' },
+          { type: 'link', label: 'Vicerrectoría de Internacionalización', href: 'https://vri.unag.edu.hn/', target: '_blank' },
           { type: 'link', label: 'Vicerrectoría de Vida Estudiantil', href: 'https://vve.unag.edu.hn/', target: '_blank' },
         ],
       },

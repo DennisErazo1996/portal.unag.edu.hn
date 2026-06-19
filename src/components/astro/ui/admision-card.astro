@@ -5,14 +5,19 @@ interface Props{
     proceso: string;
     fechas: { fecha: string; descripcion: string; marcado?: boolean }[];
     localidades: string[];
+    finalizado?: boolean;
 }
 
-const { numero, proceso, fechas, localidades } = Astro.props;
+const { numero, proceso, fechas, localidades, finalizado = false } = Astro.props;
 
 ---
 
 <article
-  class="group relative border border-white/[0.08] rounded-2xl p-8 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-green-600/40 hover:shadow-2xl hover:shadow-green-950/50 backdrop-blur-sm bg-unag-dark-green"
+  class={`group relative border rounded-2xl p-8 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl backdrop-blur-sm bg-unag-dark-green ${
+    finalizado
+      ? 'border-white/[0.04] hover:border-white/[0.08] hover:shadow-gray-950/30 opacity-60'
+      : 'border-white/[0.08] hover:border-green-600/40 hover:shadow-green-950/50'
+  }`}
 >
 
   <!-- Cabecera -->
@@ -30,6 +35,11 @@ const { numero, proceso, fechas, localidades } = Astro.props;
       <h3 class="font-extrabold text-2xl text-white tracking-tight">
         Admisión
       </h3>
+      {finalizado && (
+        <span class="inline-block mt-2 text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-white/10 text-white/40 border border-white/10">
+          Proceso finalizado
+        </span>
+      )}
     </div>
   </div>
 

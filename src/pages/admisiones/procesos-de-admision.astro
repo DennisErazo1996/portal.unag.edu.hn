@@ -79,12 +79,12 @@ const content = {
           <!-- Columna 1: Proceso en Vigencia -->
           <div>
             <ProcesoVigente
-              numero="01"
-              proceso="Primer"
-              fechaInscripcion="20/04/26 — 10/05/26"
-              fechaPrueba="06/06/2026"
+              numero="02"
+              proceso="Segundo"
+              fechaInscripcion="22/06/26 — 13/07/26"
+              fechaPrueba="08/08/2026"
               ,
-              fechaPago="22/04/26 — 17/05/26"
+              fechaPago="24/06/26 — 15/07/26"
               ,
               costo="L200 derecho a prueba"
               localidades={[
@@ -94,15 +94,6 @@ const content = {
                 "Puerto Lempira, Gracias a Dios",
                 "Sede Marcala",
                 "Sede Trojes",
-                "La Ceiba, Atlántida",
-                "Casa Quemada, Santa Bárbara",
-                "Danlí, El Paraíso",
-                "Choluteca, Choluteca",
-                "Tocoa, Colón",
-                "El Progreso, Yoro",
-                "Gracias, Lempira",
-                "Poterillos, Cortés",
-                "Nacaome, Valle",
               ]}
             />
           </div>
@@ -394,16 +385,7 @@ const content = {
 
         <section class="relative py-30 px-6 overflow-hidden">
           <!-- Fondo decorativo -->
-          <div
-            class="absolute inset-0 bg-[linear-gradient(rgba(46,138,58,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(46,138,58,0.07)_1px,transparent_1px)] bg-[size:48px_48px]"
-          >
-          </div>
-
-          <div
-            class="absolute -bottom-16 -right-16 w-96 h-96 rounded-full bg-yellow-400/10 blur-[80px]"
-          >
-          </div>
-
+          
           <div class="relative max-w-7xl mx-auto">
             <!-- Header -->
             <div class="text-center mb-16">
@@ -429,6 +411,7 @@ const content = {
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
               <!-- PRIMER PROCESO -->
               <AdmisionCard
+                finalizado={true}
                 numero="01"
                 proceso="Primer"
                 fechas={[

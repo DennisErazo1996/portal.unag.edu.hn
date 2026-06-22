@@ -22,7 +22,7 @@ const PopUpDasaace = () => {
   const [hasImageError, setHasImageError] = useState(false);
 
   useEffect(function initPopup() {
-    //if (!shouldShowPopup()) return;
+    if (!shouldShowPopup()) return;
     markPopupShown();
     setIsOpen(true);
     requestAnimationFrame(() => requestAnimationFrame(() => setIsVisible(true)));

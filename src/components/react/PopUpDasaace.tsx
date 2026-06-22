@@ -22,7 +22,7 @@ const PopUpDasaace = () => {
   const [hasImageError, setHasImageError] = useState(false);
 
   useEffect(function initPopup() {
-    if (!shouldShowPopup()) return;
+    //if (!shouldShowPopup()) return;
     markPopupShown();
     setIsOpen(true);
     requestAnimationFrame(() => requestAnimationFrame(() => setIsVisible(true)));
@@ -110,7 +110,7 @@ const PopUpDasaace = () => {
             </div>
 
             <h2 className="mt-3 max-w-xl text-xl font-extrabold leading-tight text-unag-dark-green dark:text-white sm:text-2xl">
-              La unag con mira a la acreditacion institucional
+              La UNAG con mira a la Acreditación Institucional
             </h2>
 
             <p className="mt-2 max-w-xl text-sm leading-6 text-unag-gray dark:text-white/75">

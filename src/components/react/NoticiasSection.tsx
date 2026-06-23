@@ -22,28 +22,49 @@ const translations = {
   }
 };
 
-interface WordPressPost {
-  title: {
-    rendered: string;
+const STRAPI_BASE = 'https://posts.unag.edu.hn';
+const BLOG_BASE = 'https://blog.unag.edu.hn';
+const FALLBACK_IMAGE = 'https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg';
+
+interface StrapiImage {
+  url: string;
+  formats?: {
+    small?: { url: string };
+    thumbnail?: { url: string };
   };
-  featured_media: number;
-  link: string;
-  categories: number[];
-  date: string;
 }
 
-interface PostWithImage extends WordPressPost {
-  imageUrl?: string;
+interface StrapiPost {
+  id: number;
+  title: string;
+  slug: string;
+  description: string | null;
+  date: string | null;
+  author: string | null;
+  image: StrapiImage | null;
+}
+
+interface Noticia {
+  title: string;
+  date: string | null;
+  link: string;
+  imageUrl: string;
+}
+
+function resolveImageUrl(image: StrapiImage | null): string {
+  if (!image) return FALLBACK_IMAGE;
+  const path = image.formats?.small?.url || image.formats?.thumbnail?.url || image.url;
+  if (!path) return FALLBACK_IMAGE;
+  return path.startsWith('http') ? path : `${STRAPI_BASE}${path}`;
 }
 
 export default function NoticiasSection() {
-  const [noticias, setNoticias] = useState<PostWithImage[]>([]);
+  const [noticias, setNoticias] = useState<Noticia[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [lang, setLang] = useState<'es' | 'en'>('es');
   const t = translations[lang];
 
-  // Detect language from URL
   useEffect(() => {
     const currentPath = window.location.pathname;
     const detectedLang = currentPath.startsWith('/en/') || currentPath === '/en' ? 'en' : 'es';
@@ -53,41 +74,25 @@ export default function NoticiasSection() {
   useEffect(() => {
     const fetchNoticias = async () => {
       try {
-        // Obtener posts
         const response = await fetch(
-          'https://portal.blog.unag.edu.hn/wp-json/wp/v2/posts?_fields=title,featured_media,link,categories,date&per_page=6'
+          `${STRAPI_BASE}/api/posts?populate=image&pagination[limit]=6&sort=date:desc`
         );
-        
+
         if (!response.ok) {
           throw new Error(t.errorLoading);
         }
 
-        const posts: WordPressPost[] = await response.json();
+        const json = await response.json();
+        const posts: StrapiPost[] = json.data || [];
 
-        // Obtener imágenes destacadas para cada post
-        const postsWithImages = await Promise.all(
-          posts.map(async (post) => {
-            if (post.featured_media) {
-              try {
-                const mediaResponse = await fetch(
-                  `https://portal.blog.unag.edu.hn/wp-json/wp/v2/media/${post.featured_media}?_fields=id,source_url`
-                );
-                if (mediaResponse.ok) {
-                  const mediaData = await mediaResponse.json();
-                  return { ...post, imageUrl: mediaData.source_url };
-                }
-              } catch (err) {
-                console.error('Error fetching media:', err);
-              }
-            }
-            return { 
-              ...post, 
-              imageUrl: 'https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg' 
-            };
-          })
+        setNoticias(
+          posts.map((post) => ({
+            title: post.title,
+            date: post.date,
+            link: `${BLOG_BASE}/posts/${post.slug}`,
+            imageUrl: resolveImageUrl(post.image),
+          }))
         );
-
-        setNoticias(postsWithImages);
       } catch (err) {
         setError(err instanceof Error ? err.message : t.unknownError);
       } finally {
@@ -197,7 +202,7 @@ export default function NoticiasSection() {
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={noticia.imageUrl || 'https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg'}
-                  alt={noticia.title.rendered}
+                  alt={noticia.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -210,10 +215,10 @@ export default function NoticiasSection() {
               <div className="p-6 bg-unag-dark-green flex flex-col">
                 <h3 
                   className="text-lg font-bold text-white mb-2 line-clamp-2 transition-colors capitalize min-h-[3.5rem]"
-                  dangerouslySetInnerHTML={{ __html: noticia.title.rendered.toLocaleLowerCase() }}
+                  dangerouslySetInnerHTML={{ __html: noticia.title.toLocaleLowerCase() }}
                 />
                 <p className="text-gray-300 text-xs mb-3">
-                  {formatDate(noticia.date)}
+                  {noticia.date ? formatDate(noticia.date) : ''}
                 </p>
                 <div className="flex items-center gap-2 text-sm text-unag-green font-medium mt-auto">
                   <span>{t.readMore}</span>
@@ -234,7 +239,7 @@ export default function NoticiasSection() {
         {/* Botón Ver Todas */}
         <div className="text-center">
           <a
-            href="https://portal.blog.unag.edu.hn"
+            href={BLOG_BASE}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-unag-green hover:bg-unag-dark-green text-white font-semibold px-8 py-3 rounded-full transition-colors duration-300 group"

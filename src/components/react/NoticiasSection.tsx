@@ -215,7 +215,7 @@ export default function NoticiasSection() {
               <div className="p-6 bg-unag-dark-green flex flex-col">
                 <h3 
                   className="text-lg font-bold text-white mb-2 line-clamp-2 transition-colors capitalize min-h-[3.5rem]"
-                  dangerouslySetInnerHTML={{ __html: noticia.title.toLocaleLowerCase() }}
+                  dangerouslySetInnerHTML={{ __html: noticia.title }}
                 />
                 <p className="text-gray-300 text-xs mb-3">
                   {noticia.date ? formatDate(noticia.date) : ''}

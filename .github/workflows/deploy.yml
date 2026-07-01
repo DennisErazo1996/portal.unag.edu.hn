@@ -15,6 +15,10 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+<<<<<<< HEAD
+=======
+          port: 2222     
+>>>>>>> f07d3c0ec6b38cf1e1a591f1c84727bd5b282aab
           script: |
             cd /home/unagedu/public_html/unag.edu.hn
             git pull origin main
@@ -22,4 +26,8 @@ jobs:
             nvm use 22
             bun install
             bun run build
+<<<<<<< HEAD
             pm2 restart portal-unag
+=======
+            pm2 restart portal-unag
+>>>>>>> f07d3c0ec6b38cf1e1a591f1c84727bd5b282aab

@@ -17,12 +17,12 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 2222
           script: |
-            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S bash << 'EOF'
-            cd /home/unagedu/public_html/unag.edu.hn
-            git pull origin main
-            source /root/.bash_profile
-            nvm use 22
-            bun install
-            bun run build
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S -u root bash -c '
+            cd /home/unagedu/public_html/unag.edu.hn &&
+            git pull origin main &&
+            source /root/.bash_profile &&
+            nvm use 22 &&
+            bun install &&
+            bun run build &&
             pm2 restart portal-unag
-            EOF
+            '

@@ -13,10 +13,10 @@ import carreras from '@/consts/carreras';
 ---
 
 
-<nav class="flex lg:justify-center lg:items-center w-full text-white z-20 scale-100 min-[1280px]:scale-90 min-[2560px]:scale-110 py-2">
+<nav class="flex lg:justify-center lg:items-center w-full text-white z-20 scale-100 min-[1280px]:scale-90 min-[2560px]:scale-110 py-2 hover:scale-[0.93] transition-transform duration-300">
     
-    <div class="hidden lg:flex items-center">
-        <div id="logo-unag" class="bg-unag-dark-green px-20 py-4 ">
+    <div class="hidden lg:flex items-center gap-5">
+        <div id="logo-unag" class="bg-unag-dark-green px-20 py-3 rounded-full">
             <a href="/" class="block ">
                  <Image    
                     class="lg:w-45"
@@ -26,7 +26,7 @@ import carreras from '@/consts/carreras';
                   />
             </a>
         </div>
-        <div class="flex items-center bg-unag-green h-13 p-5 overflow-visible relative border-b-4 border-r-4 border-unag-dark-green">
+        <div class="flex items-center bg-unag-green h-13 p-5 overflow-visible relative border-b-4 border-r-4 border-unag-dark-green rounded-full">
             <ul class="flex gap-5">
               {NAV_ITEMS.map((item) => {
                 if (item.type === 'link') {

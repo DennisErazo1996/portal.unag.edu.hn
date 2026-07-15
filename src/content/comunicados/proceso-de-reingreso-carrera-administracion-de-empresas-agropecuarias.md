@@ -1,7 +1,7 @@
 ---
 title: "Proceso de Reingreso - Administración de Empresas Agropecuarias"
 description: "Recepción de documentos para trámites de reingreso, calendario académico 2026, del 27 de julio al 03 de agosto."
-category: "Académico"
+category: "Aviso"
 date: 2026-06-24
 featured: false
 

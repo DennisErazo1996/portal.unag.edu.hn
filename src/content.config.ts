@@ -7,7 +7,7 @@ const comunicadosCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    category: z.enum(['Convocatoria', 'Aviso', 'Graduación', 'Licitación', 'Académico']),
+    category: z.enum(['Convocatoria', 'Aviso', 'Graduación', 'Licitación']),
     date: z.coerce.date(),
     order: z.number().optional(), 
     image: z.string().optional(),

@@ -1,0 +1,32 @@
+---
+export const prerender = true;
+
+import Layout from '@/layouts/main.astro';
+import HeaderPages from '@/components/astro/ui/header-bg-pages.astro';
+
+const content = {
+    title: 'Recursos Descargables | UNAG'
+}
+---
+
+<Layout content={content}>
+    <HeaderPages
+        imagen="/img/bg-default-unag.webp"
+        etiqueta="UNAG"
+        titulo="Recursos Descargables"
+        descripcion="Descarga materiales de apoyo, presentaciones y recursos académicos diseñados para enriquecer tu experiencia institucional."
+        
+    />
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="mb-12 text-center max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-unag-dark-green mb-4">Componentes</h2>
+        </div>
+
+        <div class="space-y-4">
+            
+        </div>
+        
+        
+    </section>
+</Layout>   

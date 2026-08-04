@@ -32,3 +32,4 @@ pnpm-debug.log*
 # superpowers session data
 .superpowers/
 docs/
+.agents/

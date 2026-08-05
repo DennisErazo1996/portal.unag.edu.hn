@@ -1,6 +1,6 @@
 # Contenido del Sitio Web UNAG
   
-> Archivo generado automáticamente el 2026-05-27T15:40:07.387Z
+> Archivo generado automáticamente el 2026-08-05T15:55:24.422Z
 > Este archivo es utilizado por el chatbot para responder preguntas sobre el sitio.
 
 ---
@@ -113,6 +113,7 @@ La Junta de Dirección Universitaria (JDU) es el máximo órgano de gobierno de 
 
 ### General
 - Cocoin (/cocoin)
+- Recursos Descargables (/recursos-descargables)
 
 ### Comision-para-la-gestion-universitaria
 - Actas De Reuniones (/comision-para-la-gestion-universitaria/actas-de-reuniones)

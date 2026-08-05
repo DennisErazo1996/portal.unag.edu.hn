@@ -1,0 +1,50 @@
+---
+import { Download } from '@lucide/astro'
+import type { Plantilla } from '@/consts/plantillas'
+
+interface Props extends Plantilla {}
+
+const { nombre, descripcion, archivo, miniatura, formato, fondoOscuro } = Astro.props;
+---
+
+<div class="group relative bg-white dark:bg-background rounded-xl shadow-sm border border-gray-100 dark:border-unag-green hover:shadow-lg transition-all duration-300 flex flex-col h-full overflow-hidden">
+    <div class="absolute top-0 left-0 w-1 h-full bg-unag-green transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300"></div>
+
+    <div class:list={[
+        "relative aspect-[4/3] flex items-center justify-center",
+        fondoOscuro ? "bg-unag-dark-green" : "bg-unag-light-gray dark:bg-white/5",
+    ]}>
+        <img
+            src={miniatura}
+            alt={`Vista previa de ${nombre}`}
+            loading="lazy"
+            class="object-contain w-full h-full p-4"
+        />
+        <span class="absolute top-2 right-2 px-2 py-1 bg-unag-light-gray dark:bg-unag-green dark:text-white text-xs font-medium text-gray-500 rounded-md">
+            {formato}
+        </span>
+    </div>
+
+    <div class="p-6 flex-grow">
+        <h3 class="text-md font-bold text-unag-gray dark:text-white mb-2 group-hover:text-unag-green transition-colors">
+            {nombre}
+        </h3>
+
+        {descripcion && (
+            <p class="text-sm text-gray-500 dark:text-white line-clamp-3">
+                {descripcion}
+            </p>
+        )}
+    </div>
+
+    <div class="px-6 py-4 bg-gray-50 dark:bg-unag-dark-green border-t border-gray-100 dark:border-unag-green flex justify-end items-center h-fit">
+        <a
+            href={archivo}
+            class="flex items-center gap-2 text-sm font-medium text-white bg-unag-green hover:bg-unag-dark-green px-3 py-1.5 rounded-md transition-colors shadow-sm"
+            download
+        >
+            <Download class="w-4 h-4" />
+            <span>Descargar</span>
+        </a>
+    </div>
+</div>

@@ -51,6 +51,7 @@ export const gruposPlantillas: GrupoPlantillas[] = [
         descripcion: 'Versión a color',
         archivo: '/documents/plantillas/logos/unag-escudo-color.png',
         miniatura: '/documents/plantillas/logos/unag-escudo-color.png',
+        
         formato: 'PNG',
         orientacion: 'vertical'
       },

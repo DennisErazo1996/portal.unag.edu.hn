@@ -87,6 +87,7 @@ const NAV_ITEMS: NavItem[] = [
         ],
       },
       { type: 'link', label: 'Junta de Dirección Universitaria', href: '/organizacion/junta-de-direccion-universitaria/' },
+      { type: 'link', label: 'Organigrama', href: 'https://sys.unag.edu.hn/organigrama_unag' },
     ],
   },
   {

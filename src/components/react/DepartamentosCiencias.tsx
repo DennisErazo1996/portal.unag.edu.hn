@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { GraduationCap, Briefcase, Mail } from "lucide-react";
 import type { Departamento } from "@/types/departamento";
+import type { Docente } from "@/types/docente";
 
 interface Props {
   departamentos: Departamento[];
@@ -123,8 +125,19 @@ export default function DepartamentosCiencias({ departamentos }: Props) {
               <p className="text-sm text-gray-500 dark:text-white/70 leading-relaxed max-w-xl">
                 {selected.descripcion}
               </p>
+              {selected.docentes && selected.docentes.length > 0 && (
+                <div className="mt-6 pt-6 border-t border-gray-100 dark:border-unag-green/20">
+                  <p className="text-[0.65rem] font-extrabold uppercase tracking-[0.18em] text-unag-green mb-4">
+                    Planta Docente
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+                    {selected.docentes.map((docente) => (
+                      <DocenteCard key={docente.nombreCompleto} docente={docente} />
+                    ))}
+                  </div>
+                </div>
+              )}
               <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-gray-100 dark:border-unag-green/20">
-                <ComingSoonTag icon="person">Planta docente</ComingSoonTag>
                 <ComingSoonTag icon="calendar">Actividades</ComingSoonTag>
               </div>
             </div>
@@ -139,6 +152,52 @@ export default function DepartamentosCiencias({ departamentos }: Props) {
           to   { opacity: 1; clip-path: inset(0 0 0% 0); }
         }
       `}</style>
+    </div>
+  );
+}
+
+function DocenteCard({ docente }: { docente: Docente }) {
+  const avatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(docente.nombre)}+${encodeURIComponent(docente.apellido)}&size=200&background=1ba333&color=fff&bold=true`;
+
+  return (
+    <div className="bg-white dark:bg-unag-dark-green border border-gray-100 dark:border-unag-green/20 flex flex-col gap-3 p-4">
+      <div className="flex items-start gap-3">
+        <img
+          src={avatar}
+          alt={docente.nombreCompleto}
+          className="w-12 h-12 rounded-full object-cover border-2 border-unag-green/20 shrink-0"
+        />
+        <div className="flex-1 min-w-0">
+          <p className="font-bold text-sm text-gray-800 dark:text-white leading-tight">
+            {docente.nombreCompleto}
+          </p>
+          <p className="text-xs text-unag-green font-semibold mt-0.5">{docente.cargo}</p>
+          {docente.grado && (
+            <div className="flex items-start gap-1 mt-1 text-xs text-gray-500 dark:text-white/60">
+              <GraduationCap className="w-3 h-3 mt-0.5 shrink-0 text-unag-green" />
+              <span>{docente.grado}</span>
+            </div>
+          )}
+        </div>
+      </div>
+      {(docente.area || docente.correo) && (
+        <div className="space-y-1.5">
+          {docente.area && (
+            <div className="flex items-start gap-1.5 text-xs text-gray-600 dark:text-white/70 bg-gray-50 dark:bg-black/20 px-2 py-1.5">
+              <Briefcase className="w-3 h-3 mt-0.5 shrink-0 text-unag-green" />
+              <span>{docente.area}</span>
+            </div>
+          )}
+          {docente.correo && (
+            <div className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-white/70 bg-gray-50 dark:bg-black/20 px-2 py-1.5">
+              <Mail className="w-3 h-3 shrink-0 text-unag-green" />
+              <a href={`mailto:${docente.correo}`} className="hover:text-unag-green transition-colors break-all">
+                {docente.correo}
+              </a>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

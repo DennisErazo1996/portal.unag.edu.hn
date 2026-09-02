@@ -4,8 +4,10 @@ export const prerender = true;
 import Layout from "@/layouts/main.astro";
 import HeaderFacultad from "@/components/astro/ui/header-facultad.astro";
 import DocenteCard from "@/components/astro/ui/docente-card.astro";
+import PersonalCard from "@/components/astro/ui/personal-card.astro";
 
 import docentesFacultadCienciasEconomicas from "@/consts/facultades/docentes-facultad-de-ciencias-economicas.ts";
+import personalFacultadCienciasEconomicas from "@/consts/facultades/personal-facultad-de-ciencias-economicas.ts";
 
 const content = {
   title: "Facultad de Ciencias Económicas y Administrativas | UNAG",
@@ -44,7 +46,7 @@ const docentes = docentesFacultadCienciasEconomicas.slice(
       </p>
     </div>
 
-    <h1 class="font-bold">Personal:</h1>
+    <h2 class="font-bold text-xl mb-4">Planta Docente</h2>
 
     {
       decano.map((persona : any) => (
@@ -74,6 +76,22 @@ const docentes = docentesFacultadCienciasEconomicas.slice(
               correo={persona.correo}
             />
           </div>
+        ))
+      }
+    </div>
+
+    <h2 class="font-bold text-xl mt-16 mb-4">Administración y Apoyo</h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+      {
+        personalFacultadCienciasEconomicas.map((persona) => (
+          <PersonalCard
+            nombreCompleto={persona.nombreCompleto}
+            nombre={persona.nombre}
+            apellido={persona.apellido}
+            cargo={persona.cargo}
+            correo={persona.correo}
+          />
         ))
       }
     </div>

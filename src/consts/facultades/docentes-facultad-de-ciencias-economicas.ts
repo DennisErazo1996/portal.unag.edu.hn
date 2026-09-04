@@ -8,7 +8,7 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     cargo: "Decana de la Facultad",
     grado: "Licenciatura en Administración de Empresas, Maestría en Gestión de Proyectos",
     area: "Organización y Dirección Empresarial",
-    correo: "nescobar@unag.edu.hn",
+    correo: "",
   },
   {
     nombreCompleto: "Alex René Dubón",
@@ -17,7 +17,7 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     cargo: "Jefe del Departamento de Economía Sectorial, Docente",
     grado: "Licenciatura en Economía Agrícola, Maestría en Ciencias",
     area: "Economía Sectorial",
-    correo: "ardubon@unag.edu.hn",
+    correo: "",
   },
   {
     nombreCompleto: "Norman Leonel Mercadal Tejada",
@@ -26,7 +26,7 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     cargo: "Jefe del Departamento de Organización y Dirección Empresarial, Docente",
     grado: "Ingeniero Agrónomo",
     area: "Organización y Dirección Empresarial",
-    correo: "nmercadal@unag.edu.hn",
+    correo: "",
   },
   {
     nombreCompleto: "Selmira Azucena Cruz Ávila",
@@ -44,7 +44,7 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     cargo: "Coordinadora de la carrera de Economía Social Agraria, Docente",
     grado: "Licenciatura en Mercadotecnia, Máster en Economía y Finanzas",
     area: "Economía Sectorial",
-    correo: "klara@unag.edu.hn",
+    correo: "",
   },
   {
     nombreCompleto: "Francisco Javier Medina",
@@ -62,7 +62,7 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     cargo: "Docente",
     grado: "Máster en Gestión de Proyectos",
     area: "Organización y Dirección Empresarial",
-    correo: "maleman@unag.edu.hn",
+    correo: "",
   },
   {
     nombreCompleto: "Leslie Waleska Escobar Sánchez",
@@ -71,7 +71,7 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     cargo: "Docente",
     grado: "Licenciatura en Administración, Máster en Gestión de la Calidad Total, Master en Economía y Finanzas",
     area: "Economía Sectorial",
-    correo: "wescobar@unag.edu.hn",
+    correo: "",
   },
   {
     nombreCompleto: "Miriam Anabel Alvarado",
@@ -89,13 +89,13 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     cargo: "Secretario de la Facultad de Ciencias Económicas y Administrativas, Docente",
     grado: "Ingeniero Agrónomo",
     area: "Economía Sectorial",
-    correo: "mguillen@unag.edu.hn",
+    correo: "",
   },
   {
     nombreCompleto: "José Antonio Padilla",
     nombre: "José",
     apellido: "Padilla",
-    cargo: "Asistente de la Dirección de Admisiones, Docente",
+    cargo: "Docente",
     grado: "Licenciatura en Administración de Empresas, Maestría en Economía y Desarrollo",
     area: "Economía Sectorial",
     correo: "",
@@ -107,7 +107,7 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     cargo: "Docente",
     grado: "Ingeniero Agrónomo, Master en Gerencia de Proyectos de Desarrollo Agrícola",
     area: "Organización y Dirección Empresarial",
-    correo: "jcastillo@unag.edu.hn",
+    correo: "",
   },
   {
     nombreCompleto: "Tony Dester Escobar Sánchez",
@@ -116,7 +116,7 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     cargo: "Docente",
     grado: "Licenciado en Administración de Empresas, Licenciado en Informática Educativa",
     area: "Economía Sectorial",
-    correo: "lescobar@unag.edu.hn",
+    correo: "",
   },
   {
     nombreCompleto: "Linda María Molina Solís",
@@ -131,7 +131,7 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     nombreCompleto: "Elkin Armando Herrera",
     nombre: "Elkin",
     apellido: "Herrera",
-    cargo: "Docente",
+    cargo: "Asistente de la Dirección de Admisiones",
     grado: "Licenciado en Administración de Empresas Agropecuarias, Master en Economía y Finanzas, Doctor en Ciencias con orientación en Ciencias Administrativas, Posdoctorante en Desarrollo Económico, Innovación y Gestión Empresarial",
     area: "Economía Sectorial",
     correo: "",
@@ -152,7 +152,7 @@ const docentesFacultadCienciasEconomicas: Docente[] = [
     cargo: "Docente",
     grado: "Ingeniero Agrónomo, Master en Formulación de Proyectos",
     area: "Organización y Dirección Empresarial",
-    correo: "mmoreno@unag.edu.hn",
+    correo: "",
   },
   {
     nombreCompleto: "Bessy Esmeralda Mejía Cálix",

@@ -113,7 +113,7 @@ const NAV_ITEMS: NavItem[] = [
     icon: 'BookOpen',
     children: [
       { type: 'link', label: 'Editorial', href: 'https://editorial.unag.edu.hn/', target: '_blank' },
-      { type: 'link', label: 'Portal', href: 'https://biblioteca-intra.unag.edu.hn:8000/' },
+      { type: 'link', label: 'Portal', href: 'https://biblioteca-catalogo.unag.edu.hn/' },
       { type: 'link', label: 'Recursos Descargables', href: '/recursos-descargables' },
     ],
   },

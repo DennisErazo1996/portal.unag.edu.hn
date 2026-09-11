@@ -155,11 +155,10 @@ import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
       const modal = document.getElementById('videoModal');
       const closeBtn = document.getElementById('closeVideoModal');
       const iframe = document.getElementById('youtubeIframe') as HTMLIFrameElement;
-      
-      const videoUrl = 'https://www.youtube.com/embed/W3YL0tmk2hg?autoplay=1&rel=0';
+      const videoUrl = 'https://www.youtube.com/embed/W3YL0tmk2hg?autoplay=1&rel=0&cc_load_policy=0';
       
       // Open modal
-      playBtn?.addEventListener('click', () => {
+      playBtn?.addEventListener('click', async () => {
         if (modal && iframe) {
           iframe.src = videoUrl;
           modal.classList.remove('hidden');
@@ -171,8 +170,6 @@ import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
             modalContent?.classList.remove('scale-95', 'opacity-0');
             modalContent?.classList.add('scale-100', 'opacity-100');
           }, 10);
-          
-          
           this.stopAutoPlay();
         }
       });
@@ -187,7 +184,7 @@ import hojaDesencadda02 from "@assets/img/hojas/hoja-desenfocada-02.webp";
           setTimeout(() => {
             modal.classList.remove('flex');
             modal.classList.add('hidden');
-            iframe.src = ''; // Stop video
+            iframe.src = '';
           }, 300);
           
           // Resume slideshow when modal closes

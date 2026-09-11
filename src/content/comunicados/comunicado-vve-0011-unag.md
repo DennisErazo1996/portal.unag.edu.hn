@@ -4,7 +4,7 @@ description: "La Universidad Nacional de Agricultura invita a la comunidad unive
 category: "Aviso"
 date: 2026-09-11
 order: 1
-featured: true
+featured: false
 
 ---
 

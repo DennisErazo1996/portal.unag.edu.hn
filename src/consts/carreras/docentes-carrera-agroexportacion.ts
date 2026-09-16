@@ -1,0 +1,78 @@
+import type { Docente } from "@/types/docente";
+
+const docentesCarreraAgroexportacion: Docente[] = [
+  {
+    nombreCompleto: "Carmen Elenea Barahona",
+    nombre: "Carmen",
+    apellido: "Barahona",
+    cargo: "Directora, Docente",
+    grado: "Ing. en Administración de Agronegocios. Msc. Ciencias del café",
+    area: "Área de desempeño profesional: Dirección regional Comayagua.",
+    correo: "Direccion.comayagua@unag.edu.hn",
+  },
+  {
+    nombreCompleto: "Andrea Cecilia Molina",
+    nombre: "Andrea",
+    apellido: "Molina",
+    cargo: "Coordinadora de Vida Estudiantil, Docente",
+    grado: "Lic. Comercio Internacional orientado a la Agroindustria",
+    area: "Área de desempeño profesional: Vida estudiantil y docencia.",
+    correo: "amomolina@unag.edu.hn",
+  },
+  {
+    nombreCompleto: "Euclides Romeo Guevara Aguilar",
+    nombre: "Euclides",
+    apellido: "Guevara",
+    cargo: "Secretario Regional, Docente",
+    grado: "Ing. en Tecnología en Alimentos. Msc. Nutrición y Biotecnología Bioalimentaria. Msc. Desarrollo Comunitario Sostenible",
+    area: "Área de desempeño profesional: Secretaría regional y docencia.",
+    correo: "eguevara@unag.edu.hn",
+  },
+  {
+    nombreCompleto: "Kenia Lizeth Valladares Mejia",
+    nombre: "Kenia",
+    apellido: "Valladares",
+    cargo: "Administradora Regional, Docente",
+    grado: "Lic. Comercio Internacional con orientación a la Agroindustria. Msc. Administración de Empresas con orientación en Mercadotecnia",
+    area: "Área de desempeño profesional: Administración regional y docencia.",
+    correo: "klvalladares@unag.edu.hn",
+  },
+  {
+    nombreCompleto: "Manuel de Jesús Maldonado",
+    nombre: "Manuel",
+    apellido: "Maldonado",
+    cargo: "Coordinador de Ciencias Económicas y Administrativas, Docente",
+    grado: "Ing. Agroindustrial. Msc. Gestión Integrada: Medio, Calidad y Prevención",
+    area: "Área de desempeño profesional: Coordinación académica y docencia.",
+    correo: "mmaldonado@unag.edu.hn",
+  },
+  {
+    nombreCompleto: "Wilmer Omar Rios Valladares",
+    nombre: "Wilmer",
+    apellido: "Rios",
+    cargo: "Coordinador de Investigación, Docente",
+    grado: "Lic. Administración de Empresas. Msc. Economía y Finanzas",
+    area: "Área de desempeño profesional: Investigación y docencia.",
+    correo: "nwrios@unag.edu.hn",
+  },
+  {
+    nombreCompleto: "Marco Antonio Barcenas Hernandez",
+    nombre: "Marco",
+    apellido: "Barcenas",
+    cargo: "Docente",
+    grado: "Ing. Agrónomo. Msc. Gerencia de Proyectos",
+    area: "Área de desempeño profesional: Docencia.",
+    correo: "mahernandez@unag.edu.hn",
+  },
+  {
+    nombreCompleto: "Nahun Gerardo Salinas Diaz",
+    nombre: "Nahun",
+    apellido: "Salinas",
+    cargo: "Docente",
+    grado: "Lic. Gerencia y Desarrollo. PhD. Administración Gerencial",
+    area: "Área de desempeño profesional: Docencia.",
+    correo: "nsalinas@unag.edu.hn",
+  },
+];
+
+export default docentesCarreraAgroexportacion;

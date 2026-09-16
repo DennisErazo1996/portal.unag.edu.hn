@@ -2,11 +2,14 @@
 export const prerender = true;
 
 import Layout from "@/layouts/main.astro";
-import { File, FileCheck } from "@lucide/astro";
+import { File, FileCheck, Users } from "@lucide/astro";
 
 import HeaderPages from "@/components/astro/ui/header-bg-pages.astro";
 import DescargaCard from "@/components/astro/ui/descarga-card.astro";
 import SedeCard from "@/components/astro/ui/sede-card.astro";
+import DocenteCard from "@/components/astro/ui/docente-card.astro";
+
+import docentesCarreraAgroexportacion from "@/consts/carreras/docentes-carrera-agroexportacion";
 
 const content = {
   title: "Ingeniería en Agroexportación | UNAG",
@@ -274,6 +277,39 @@ const content = {
                     agroexportación.
                   </li>
                 </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Docentes -->
+          <article id="docentes" class="mt-15">
+            <div class="mb-8">
+              <div class="flex items-center gap-3 mb-2">
+                <div class="bg-unag-green/10 p-3 rounded-lg">
+                  <Users size={32} class="text-unag-green" />
+                </div>
+                <h2 class="text-2xl font-black text-gray-800">Docentes</h2>
+              </div>
+              <p class="text-gray-600 text-sm ml-16">
+                Conoce al equipo de profesionales que te guiarán en tu formación
+                académica:
+              </p>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {
+                  docentesCarreraAgroexportacion.map((docente) => (
+                    <div class="mt-5">
+                      <DocenteCard
+                        nombreCompleto={docente.nombreCompleto}
+                        nombre={docente.nombre}
+                        apellido={docente.apellido}
+                        cargo={docente.cargo}
+                        grado={docente.grado}
+                        area={docente.area}
+                        correo={docente.correo}
+                      />
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </article>

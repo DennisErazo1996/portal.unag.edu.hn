@@ -97,7 +97,7 @@ const NAV_ITEMS: NavItem[] = [
     children: [
       { type: 'link', label: 'Ingresar ERP', href: 'https://erp.unag.edu.hn/', target: '_blank' },
       { type: 'link', label: 'SysUNAG', href: 'https://sys.unag.edu.hn/login', target: '_blank' },
-      { type: 'link', label: 'Sistema de Egresados', href: 'https://sys.unag.edu.hn/login_egresados', target: '_blank' },
+      { type: 'link', label: 'Sistema de Graduados', href: 'https://sys.unag.edu.hn/login_graduados', target: '_blank' },
       { type: 'link', label: 'Campus Virtual', href: 'https://moodle.unag.edu.hn', target: '_blank' },
       { type: 'link', label: 'Sistema de Educación a Distancia', href: 'https://sed.unag.edu.hn/', target: '_blank' },
     ],

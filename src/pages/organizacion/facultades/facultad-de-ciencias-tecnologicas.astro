@@ -41,6 +41,7 @@ const docentes = docentesFacultadCienciasTecnologicas.slice(
           >
             <option value="departamentos">Departamentos Académicos</option>
             <option value="unidades">Unidades Académicas</option>
+            <option value="laboratorios">Laboratorios</option>
             <option value="publicaciones">Publicaciones</option>
           </select>
         </div>
@@ -59,6 +60,12 @@ const docentes = docentesFacultadCienciasTecnologicas.slice(
               data-tab="unidades"
             >
               Unidades Académicas
+            </button>
+            <button
+              class="tab-button border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors"
+              data-tab="laboratorios"
+            >
+              Laboratorios
             </button>
             <button
               class="tab-button border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-colors"
@@ -155,23 +162,23 @@ const docentes = docentesFacultadCienciasTecnologicas.slice(
                 <h4 class="font-bold text-unag-green mb-3">Contacto:</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p class="font-medium">Ph.D Héctor Alonzo Gómez</p>
-                    <p class="text-gray-600">Jefe del departamento</p>
+                    <p class="font-medium">M Sc Arlin Danery Lobo Medina</p>
+                    <p class="text-gray-600">Jefe del Departamento</p>
                     <a
-                      href="mailto:hgomez@unag.edu.hn"
+                      href="mailto:alobo@unag.edu.hn"
                       class="text-unag-green hover:underline"
                     >
-                      hgomez@unag.edu.hn
+                      alobo@unag.edu.hn
                     </a>
                   </div>
                   <div>
-                    <p class="font-medium">Lic. Sonia Bertalina Escalante Rosales</p>
-                    <p class="text-gray-600">Auxiliar del departamento</p>
+                    <p class="font-medium">Bach. Admon Emp. Olga Dorina Moya Sanchez</p>
+                    <p class="text-gray-600">Asistente de Jefaturas de Departamento</p>
                     <a
-                      href="mailto:srosales@unag.edu.hn"
+                      href="mailto:omoya@unag.edu.hn"
                       class="text-unag-green hover:underline"
                     >
-                      srosales@unag.edu.hn
+                      omoya@unag.edu.hn
                     </a>
                   </div>
                 </div>
@@ -223,23 +230,23 @@ const docentes = docentesFacultadCienciasTecnologicas.slice(
                 <h4 class="font-bold text-unag-green mb-3">Contacto:</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p class="font-medium">M.Sc. Jaime Onán Salgado Mejía</p>
-                    <p class="text-gray-600">Jefe del departamento</p>
+                    <p class="font-medium">M Sc Zoila Esperanza Flores Hernández</p>
+                    <p class="text-gray-600">Jefe del Departamento</p>
                     <a
-                      href="mailto:jasalgado@unag.edu.hn"
+                      href="mailto:zflores@unag.edu.hn"
                       class="text-unag-green hover:underline"
                     >
-                      jasalgado@unag.edu.hn
+                      zflores@unag.edu.hn
                     </a>
                   </div>
                   <div>
-                    <p class="font-medium">Lic. Sonia Bertalina Escalante Rosales</p>
-                    <p class="text-gray-600">Auxiliar del departamento</p>
+                    <p class="font-medium">Bach. Admon Emp. Olga Dorina Moya Sanchez</p>
+                    <p class="text-gray-600">Asistente de Jefaturas de Departamento</p>
                     <a
-                      href="mailto:srosales@unag.edu.hn"
+                      href="mailto:omoya@unag.edu.hn"
                       class="text-unag-green hover:underline"
                     >
-                      srosales@unag.edu.hn
+                      omoya@unag.edu.hn
                     </a>
                   </div>
                 </div>
@@ -324,6 +331,122 @@ const docentes = docentesFacultadCienciasTecnologicas.slice(
                     etanol a base de caña de azúcar. Es el lugar donde se
                     desarrolla el aprender-haciendo de la UNAG en la temática de
                     bioprocesos.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Planta Purificadora de Agua -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-unag-green mb-3">
+                    Planta Purificadora de Agua
+                  </h3>
+                  <p class="text-sm text-gray-700">
+                    La Planta Purificadora de Agua es una unidad productiva que tiene como finalidad
+                    tratar y acondicionar el agua para obtener agua de calidad adecuada para el
+                    consumo humano. Se aplican operaciones como <strong>filtración, sedimentación,
+                    desinfección, reducción de sólidos disueltos y otras etapas de tratamiento,</strong>
+                    además de realizar controles de calidad del agua antes de su distribución o
+                    utilización.
+                  </p>
+                </div>
+                <div class="bg-gray-100 flex items-center justify-center min-h-48">
+                  <!-- Imagen pendiente de agregar -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Planta de procesamiento de Granos y Cereales -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="order-2 md:order-1 bg-gray-100 flex items-center justify-center min-h-48">
+                  <!-- Imagen pendiente de agregar -->
+                </div>
+                <div class="order-1 md:order-2 p-6">
+                  <h3 class="text-xl font-bold text-unag-green mb-3">
+                    Planta de procesamiento de Granos y Cereales
+                  </h3>
+                  <p class="text-sm text-gray-700 mb-3">
+                    La planta de procesamiento de granos y cereales es una instalación agroindustrial
+                    destinada a recibir, acondicionar, transformar, almacenar y empacar materias primas
+                    como <strong>maíz, arroz, frijol, trigo, sorgo, avena y otros cereales y
+                    leguminosas,</strong> convirtiéndolos en productos con mayor valor agregado, calidad
+                    e inocuidad.
+                  </p>
+                  <p class="text-sm text-gray-700">
+                    La planta integra diferentes <strong>operaciones unitarias y procesos
+                    agroindustriales</strong>, que permiten controlar las condiciones de la materia
+                    prima desde su recepción hasta la obtención del producto terminado. Entre las
+                    principales etapas se encuentran la <strong>recepción y pesaje, muestreo y control
+                    de calidad, limpieza, clasificación, selección, secado, almacenamiento, descascarado,
+                    molienda, mezclado, tratamiento térmico, envasado y almacenamiento final,</strong>
+                    dependiendo del producto que se desee elaborar.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Laboratorios -->
+        <div class="tab-content hidden" data-tab-content="laboratorios">
+          <div class="space-y-6">
+            <!-- Laboratorio Sensorial de Alimentos -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-unag-green mb-3">
+                    Laboratorio Sensorial de Alimentos
+                  </h3>
+                  <p class="text-sm text-gray-700 mb-3">
+                    El laboratorio sensorial de alimentos es un espacio especializado destinado a la
+                    <strong>evaluación científica y sistemática de las características sensoriales de
+                    los alimentos y bebidas,</strong> utilizando los sentidos humanos como instrumento
+                    de medición. Su propósito es generar información objetiva y confiable sobre la
+                    <strong>apariencia, color, aroma, sabor, textura, aceptación y preferencia</strong>
+                    de los productos alimenticios.
+                  </p>
+                  <p class="text-sm text-gray-700">
+                    El laboratorio está diseñado para proporcionar condiciones <strong>controladas,
+                    uniformes y libres de interferencias externas</strong>, de manera que las
+                    evaluaciones realizadas por jueces entrenados, semientrenados o consumidores
+                    permitan obtener resultados reproducibles. Para ello, dispone de <strong>cabinas
+                    individuales de evaluación, área de preparación de muestras, iluminación
+                    controlada, espacios para capacitación de panelistas y áreas para procesamiento
+                    y análisis de resultados.</strong>
+                  </p>
+                </div>
+                <div class="bg-gray-100 flex items-center justify-center min-h-48">
+                  <!-- Imagen pendiente de agregar -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Laboratorio de Análisis de Alimentos -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="order-2 md:order-1 bg-gray-100 flex items-center justify-center min-h-48">
+                  <!-- Imagen pendiente de agregar -->
+                </div>
+                <div class="order-1 md:order-2 p-6">
+                  <h3 class="text-xl font-bold text-unag-green mb-3">
+                    Laboratorio de Análisis de Alimentos
+                  </h3>
+                  <p class="text-sm text-gray-700 mb-3">
+                    El <strong>Laboratorio de Análisis de Alimentos</strong> es una unidad
+                    especializada destinada a realizar <strong>ensayos físicos y químicos</strong> en
+                    materias primas, productos en proceso, alimentos terminados, bebidas y otros
+                    productos relacionados con la industria alimentaria. Su finalidad es generar
+                    información confiable que permita determinar la <strong>calidad, inocuidad,
+                    composición y estabilidad de los alimentos.</strong>
+                  </p>
+                  <p class="text-sm text-gray-700">
+                    El laboratorio cuenta con equipos, materiales e instrumentos que permiten realizar
+                    análisis como <strong>humedad, cenizas, proteínas, grasas, fibra, carbohidratos,
+                    pH, acidez titulable, sólidos solubles (°Brix), actividad de agua, densidad,
+                    color, viscosidad,</strong> entre otros parámetros fisicoquímicos.
                   </p>
                 </div>
               </div>

@@ -1,19 +1,39 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, X } from "lucide-react";
 
-import CuentaRegresiva from "@/components/react/CuentaRegresiva";
-
 const COOKIE_NAME = "dasaace_popup_shown";
-const COOKIE_DAYS = 3;
+const AUDIT_END_DATE = new Date(2026, 8, 25, 23, 59, 59);
+
+function getTodayKey(date = new Date()): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+function isAuditActive(): boolean {
+  return new Date() <= AUDIT_END_DATE;
+}
 
 function shouldShowPopup(): boolean {
-  return !document.cookie.split(";").some((c) => c.trim().startsWith(`${COOKIE_NAME}=`));
+  if (!isAuditActive()) {
+    return false;
+  }
+
+  const todayKey = getTodayKey();
+  const cookieValue = document.cookie
+    .split(";")
+    .map((cookie) => cookie.trim())
+    .find((cookie) => cookie.startsWith(`${COOKIE_NAME}=`));
+
+  return !cookieValue || cookieValue.split("=")[1] !== todayKey;
 }
 
 function markPopupShown(): void {
   const expires = new Date();
-  expires.setDate(expires.getDate() + COOKIE_DAYS);
-  document.cookie = `${COOKIE_NAME}=1; expires=${expires.toUTCString()}; path=/`;
+  expires.setDate(expires.getDate() + 7);
+  document.cookie = `${COOKIE_NAME}=${getTodayKey()}; expires=${expires.toUTCString()}; path=/`;
 }
 
 const PopUpDasaace = () => {
@@ -23,6 +43,7 @@ const PopUpDasaace = () => {
 
   useEffect(function initPopup() {
     if (!shouldShowPopup()) return;
+
     markPopupShown();
     setIsOpen(true);
     requestAnimationFrame(() => requestAnimationFrame(() => setIsVisible(true)));
@@ -110,29 +131,28 @@ const PopUpDasaace = () => {
             </div>
 
             <h2 className="mt-3 max-w-xl text-xl font-extrabold leading-tight text-unag-dark-green dark:text-white sm:text-2xl">
-              La UNAG con mira a la Acreditación Institucional
+              Proceso de Acreditación Institucional en marcha
             </h2>
 
             <p className="mt-2 max-w-xl text-sm leading-6 text-unag-gray dark:text-white/75">
-                Trabajamos por el aseguramiento de la calidad académica e institucional de la Universidad Nacional de Agricultura, fomentando la mejora continua y la cultura de calidad.
+              La Universidad Nacional de Agricultura avanza en el proceso de aseguramiento de la calidad institucional, con la presencia de los pares evaluadores de HCERES en la institución.
             </p>
 
-            <div className="w-70 mx-auto">
-              <p className="text-center text-sm text-unag-dark-green dark:text-white/75 mt-5 font-semibold">
-                La visita de los pares evaluadores externo está cada vez más cerca, ¡prepárate!
+            <div className="mx-auto mt-5 rounded-2xl border border-unag-green/15 bg-unag-green/5 p-4 text-center">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-unag-dark-green/80 dark:text-unag-yellow">
+                Auditoría en curso
               </p>
-              <CuentaRegresiva
-                year={'2026'}
-                month={'september'}
-                day={'22'}
-              />
+              <p className="mt-2 text-sm leading-6 text-unag-dark-green dark:text-white/80">
+                Los evaluadores de HCÉRES ya están en la institución y el proceso de auditoría se encuentra en desarrollo.
+              </p>
             </div>
-            <div className="flex w-full justify-center mt-4 mb-4">
+
+            <div className="mt-4 flex w-full justify-center pb-1">
               <a
                 href="https://dasaace.unag.edu.hn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex w-full items-center justify-center rounded-sm bg-unag-green px-4 py-2 text-sm text-white transition-colors duration-200 hover:bg-unag-dark-green sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-sm bg-unag-green px-4 py-2 text-sm text-white transition-colors duration-200 hover:bg-unag-dark-green sm:w-auto"
               >
                 Descubre Más <ArrowRight className="ml-2 h-4 w-4" />
               </a>

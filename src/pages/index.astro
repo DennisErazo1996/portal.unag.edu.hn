@@ -5,7 +5,7 @@ import CarrerasSection from "@/components/react/CarrerasSection";
 import ComunicadosSection from "@/components/react/ComunicadosSection";
 import NoticiasSection from "@/components/react/NoticiasSection";
 
-import { getCollection } from "astro:content";
+import { getAllComunicados } from "@/lib/strapi-comunicados";
 import { Image } from "astro:assets";
 
 import imgEstudio from "@assets/img/estudio.png";
@@ -21,7 +21,7 @@ const content = {
 	title: "UNAG | Universidad Nacional de Agricultura",
 };
 
-const comunicados = (await getCollection("comunicados")).sort(
+const comunicados = (await getAllComunicados()).sort(
 	(a: any, b: any) => {
 		
 		const dateDiff = b.data.date.valueOf() - a.data.date.valueOf();

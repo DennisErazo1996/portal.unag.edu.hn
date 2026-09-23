@@ -6,7 +6,7 @@ date: 2025-11-24
 featured: true
 attachments:
   - name: "Convocatoria cargo Rector UNAG"
-    url: "/documents/CONVOCATORIA A CONCURSO PÚBLICO DE MÉRITOS JDU-UNAG-001-2025.pdf"
+    url: "/documents/comunicados/CONVOCATORIA A CONCURSO PÚBLICO DE MÉRITOS JDU-UNAG-001-2025.pdf"
     type: "PDF" 
 ---
 

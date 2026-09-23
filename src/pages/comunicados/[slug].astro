@@ -1,29 +1,19 @@
 ---
-export const prerender = true;
+export const prerender = false;
 
-import { getCollection, render } from 'astro:content';
+import { getComunicadoBySlug } from '@/lib/strapi-comunicados';
 import Layout from '@/layouts/main.astro';
 import { Calendar, Tag, ArrowLeft, Download, FileText, Star } from '@lucide/astro';
 import categoryColors from '@/consts/category-colors';
 
-import { Image } from 'astro:assets';
-
 import bgComunicadoDetalle from '@/assets/img/bg-comunicado-detalle.webp';
-interface Props {
-  comunicado: any;
-}
 
-export async function getStaticPaths() {
-  const comunicados = await getCollection('comunicados');
-  return comunicados.map((comunicado: any) => ({
-    params: { slug: comunicado.id },
-    props: { comunicado },
-  }));
-}
+const slug = Astro.params.slug;
+if (!slug) return Astro.redirect('/404');
 
+const comunicado = await getComunicadoBySlug(slug);
+if (!comunicado) return Astro.redirect('/404');
 
-const { comunicado } = Astro.props;
-const { Content } = await render(comunicado);
 const content = {
   title: `${comunicado.data.title} | UNAG`,
 };
@@ -37,8 +27,8 @@ const hasAttachments = comunicado.data.attachments && comunicado.data.attachment
   <div class="relative h-[80vh]  lg:h-[70vh] w-full overflow-hidden bg-unag-dark-green">
     <!-- Background Image -->
     <div class="absolute inset-0">
-      <Image 
-        src={comunicado.data.image || bgComunicadoDetalle} 
+      <img
+        src={comunicado.data.image || bgComunicadoDetalle.src}
         alt={comunicado.data.title}
         loading="eager"
         fetchpriority="high"
@@ -200,7 +190,7 @@ const hasAttachments = comunicado.data.attachments && comunicado.data.attachment
             dark:prose-h3:text-unag-green
             dark:prose-h1:text-unag-green
           ">
-            <Content />
+            <Fragment set:html={comunicado.data.content} />
           </div>
 
           <!-- Footer Info -->

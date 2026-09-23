@@ -1,8 +1,10 @@
 import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
+import { getAllComunicados } from '@/lib/strapi-comunicados';
+
+export const prerender = false;
 
 export const GET: APIRoute = async () => {
-  const comunicados = await getCollection('comunicados');
+  const comunicados = await getAllComunicados();
 
   const data = comunicados
     .sort((a, b) => {

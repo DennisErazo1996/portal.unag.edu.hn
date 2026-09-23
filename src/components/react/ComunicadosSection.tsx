@@ -42,7 +42,7 @@ interface Comunicado {
     category: string;
     date: Date;
     featured: boolean;
-    image?: string;
+    image?: string | null;
   };
 }
 
@@ -163,7 +163,7 @@ export default function ComunicadosSection({
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                     <span
-                      className={` text-unag-dark-green bg-unag-light-green font-extrabold text-xs font-semibold px-3 py-1 rounded-full`}
+                      className={` text-unag-dark-green bg-unag-light-green font-extrabold text-xs px-3 py-1 rounded-full`}
                     >
                       {translateCategory(comunicado.data.category)}
                     </span>

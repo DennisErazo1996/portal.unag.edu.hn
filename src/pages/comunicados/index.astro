@@ -1,14 +1,14 @@
 ---
-export const prerender = true;
+export const prerender = false;
 
-import { getCollection } from 'astro:content';
+import { getAllComunicados } from '@/lib/strapi-comunicados';
 import Layout from '@/layouts/main.astro';
 import { MoveRight, Calendar, Tag, Star } from '@lucide/astro';
 import { Image } from 'astro:assets';
 import bgComunicados from '@/assets/img/bg-comunicados.jpg';
 import categoryColors from '@/consts/category-colors';
 
-const comunicados = (await getCollection('comunicados')).sort(
+const comunicados = (await getAllComunicados()).sort(
   (a: any, b: any) => {
     // Primero ordenar por fecha (más reciente primero)
     const dateDiff = b.data.date.valueOf() - a.data.date.valueOf();
@@ -91,7 +91,12 @@ const content = {
               data-title={comunicado.data.title.toLowerCase()}
               data-category={comunicado.data.category}
             >
-              <div class="h-40 bg-[url('/img/bg-comunicado.jpg')] bg-cover bg-center relative overflow-hidden">
+              <div class={`h-40 relative overflow-hidden`}>
+                <img
+                  src={comunicado.data.image || '/img/bg-comunicado.jpg'}
+                  alt={comunicado.data.title}
+                  class="absolute inset-0 h-full w-full object-cover"
+                />
                 <div class="absolute inset-0 bg-gradient-to-br from-unag-green/20 to-unag-dark-green/40" />
                 <div class="absolute top-3 left-3">
                   <span class={`px-2.5 py-1 rounded-full text-white text-xs font-bold ${categoryColors[comunicado.data.category]} shadow-lg`}>

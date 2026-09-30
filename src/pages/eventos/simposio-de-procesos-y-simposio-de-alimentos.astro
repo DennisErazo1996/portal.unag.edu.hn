@@ -9,6 +9,7 @@ import '@fontsource/montserrat/700.css';
 import '@fontsource/montserrat/800.css';
 
 import SimposioCertificadoModal from '@/components/astro/simposio-certificado-modal.astro';
+import CuentaRegresiva from '@/components/react/CuentaRegresiva.tsx';
 
 import hoja01 from '@assets/img/hojas/hoja-angulo-02.webp';
 import hoja02 from '@assets/img/hojas/hoja-angulo-01.webp';
@@ -101,6 +102,11 @@ const comiteLogistica = [
     </header>
 
     <main class="flex-1 dark:bg-background">
+
+     <div class="w-100 mx-auto">
+       <CuentaRegresiva year='2026' month='oct' day='14' client:only/>
+     </div>
+
       <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 class="text-2xl font-bold text-unag-dark-green dark:text-white mb-4">Descripción del evento</h2>
         <div class="space-y-4 text-unag-gray dark:text-white/70 text-sm">

@@ -12,6 +12,7 @@ import {
   UserPlus,
   FlaskConical,
   Award,
+  Landmark,
   X,
 } from "@lucide/astro";
 import { Image } from "astro:assets";
@@ -22,7 +23,7 @@ import carreras from "@/consts/carreras";
 
 const ICON_MAP = {
   Home, Newspaper, Info, Building2, Server,
-  GraduationCap, BookOpen, Eye, UserPlus, FlaskConical, Award,
+  GraduationCap, BookOpen, Eye, UserPlus, FlaskConical, Award, Landmark,
 } as const;
 
 type IconName = keyof typeof ICON_MAP;

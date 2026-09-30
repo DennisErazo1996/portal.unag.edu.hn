@@ -1,0 +1,231 @@
+---
+import { Image } from 'astro:assets';
+import { ClipboardList, Award } from '@lucide/astro';
+import '@/styles/global.css';
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/montserrat/600.css';
+import '@fontsource/montserrat/700.css';
+import '@fontsource/montserrat/800.css';
+
+import SimposioCertificadoModal from '@/components/astro/simposio-certificado-modal.astro';
+
+import hoja01 from '@assets/img/hojas/hoja-angulo-02.webp';
+import hoja02 from '@assets/img/hojas/hoja-angulo-01.webp';
+
+const title = 'Simposio de Procesos y Simposio de Alimentos | UNAG';
+const description =
+  'Simposio de Procesos y Simposio de Alimentos de la Universidad Nacional de Agricultura. Programa, comité organizador y descarga de certificados de participación.';
+
+const noSimposioAlimentos = 'VII';
+const noSimposioProcesos = 'V';
+
+const imgBase = '/img/eventos/simposio-procesos-alimentos';
+
+const comiteCoordinadores = [
+  { nombre: 'M.Sc. Zoila Esperanza Flores Hernández', foto: `${imgBase}/comite-zoila-flores.jpeg` },
+  { nombre: 'M.Sc. Arlin Daneri Lobo Medina', foto: `${imgBase}/comite-arlin-lobo.jpeg` },
+];
+
+const comiteAcademico = [
+  { nombre: 'M.Sc. Francisco Enrique Sánchez Rosales', foto: `${imgBase}/comite-francisco-sanchez.jpeg` },
+  { nombre: 'M.Sc. Katy Marcela Castellanos Reyes', foto: `${imgBase}/comite-katy-castellanos.jpeg` },
+  { nombre: 'M.Sc. Lizzy Alexandra Navarro Cruz', foto: `${imgBase}/comite-lizzy-navarro.jpeg` },
+];
+
+const comiteLogistica = [
+  { nombre: 'M.Sc. Lidia Magdalena Díaz Pineda', foto: `${imgBase}/comite-lidia-diaz.jpeg` },
+  { nombre: 'M.Sc. Pablo Antonio Pérez Salinas', foto: `${imgBase}/comite-pablo-perez.jpeg` },
+  { nombre: 'M.Sc. Nairoby Sevila Cardoso', foto: `${imgBase}/comite-nairoby-cardoso.jpeg` },
+  { nombre: 'M.Sc. Nora Patricia Quan Najera', foto: `${imgBase}/comite-nora-quan.jpeg` },
+];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/img/unag-hoja.png" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#1ba333" />
+
+    <!-- <script is:inline>
+      (function () {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script> -->
+  </head>
+  <body class="min-h-screen flex flex-col text-zinc-900 dark:text-zinc-100 dark:bg-background">
+    <header class="relative bg-[url('/img/eventos/simposio-procesos-alimentos/bg-simposio-alimentos.webp')] bg-cover bg-center overflow-hidden">
+      <div class="absolute inset-0 z-0 bg-linear-to-b from-black/50 via-black/25 to-unag-dark-green/55 pointer-events-none"></div>
+
+      <section class="absolute z-5 inset-0 w-full flex justify-between pointer-events-none select-none overflow-hidden">
+        <Image src={hoja01} alt="" class="w-20 h-20 md:w-38 md:h-38 lg:w-50 lg:h-50 -ml-10 mt-40 lg:-ml-20 lg:mt-24" />
+        <Image src={hoja02} alt="" class="w-20 h-20 md:w-38 md:h-38 lg:w-40 lg:h-40 -mr-5 mt-10 lg:-mr-10 rotate-90" />
+      </section>
+
+      <div class="absolute inset-0 opacity-10 z-10 pointer-events-none">
+        <div
+          class="absolute inset-0"
+          style="background-image: radial-gradient(circle at 2px 2px, rgb(255, 255, 255) 1px, transparent 0); background-size: 40px 40px;"
+        >
+        </div>
+      </div>
+
+      <div class="absolute top-0 right-0 w-96 h-96 bg-unag-green/50 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2 z-10"></div>
+      <div class="absolute bottom-0 left-0 w-80 h-80 bg-unag-green/50 rounded-full blur-[140px] translate-y-1/2 -translate-x-1/2 z-10"></div>
+
+      <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 z-20 text-center">
+        <a href="/" class="inline-flex items-center gap-2 mb-8">
+          <img src="/img/unag-hoja.png" alt="UNAG" class="w-5 h-5" />
+          <span class="text-white/90">Universidad Nacional de Agricultura</span>
+        </a>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-5xl font-bold text-white tracking-tight">
+          {noSimposioProcesos} Simposio de Ingeniería de Procesos y {noSimposioAlimentos} Simposio de Alimentos
+        </h1>
+
+        <div class="flex items-center justify-center mt-6">
+          <div class="w-20 h-[2px] bg-unag-green rounded-full"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 dark:bg-background">
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 class="text-2xl font-bold text-unag-dark-green dark:text-white mb-4">Descripción del evento</h2>
+        <div class="space-y-4 text-unag-gray dark:text-white/70 text-sm">
+          <p>
+            El {noSimposioProcesos} Simposio de Ingeniería de Procesos y el {noSimposioAlimentos} Simposio de
+            Alimentos, organizado por la Facultad de Ciencias Tecnológicas de la Universidad Nacional de Agricultura
+            (UNAG) en Catacamas, Olancho, se proyecta como un espacio académico, científico y tecnológico orientado a
+            fortalecer el diálogo entre la investigación, la innovación industrial y la formación de profesionales
+            capaces de responder a los desafíos de los sistemas agroalimentarios.
+          </p>
+          <p>
+            La convocatoria para este año 2026 surge del trabajo conjunto de los dos departamentos que integran la
+            Facultad: el Departamento Académico de Ingeniería de Procesos (DAIP) y el Departamento Académico de
+            Alimentos (DAA). El encuentro pretende contar con la participación de docentes, investigadores,
+            estudiantes, profesionales, emprendedores y representantes del sector productivo para conocer
+            experiencias y soluciones en áreas estratégicas como la transformación y conservación de alimentos, la
+            inocuidad y la calidad, el desarrollo de nuevos productos, la sostenibilidad, la automatización, la
+            eficiencia energética, la valorización de subproductos y la optimización de procesos industriales.
+          </p>
+          <p>
+            A través de conferencias magistrales, ponencias técnicas, presentación de investigaciones, talleres y
+            experiencias innovadoras en campo, los Simposios constituyen una plataforma para visibilizar el talento
+            académico y profesional, fomentar redes de colaboración y estimular el desarrollo de soluciones que
+            aporten valor a las cadenas agroalimentarias.
+          </p>
+        </div>
+      </section>
+
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-black/10 dark:border-white/10">
+        <h2 class="text-2xl font-bold text-unag-dark-green dark:text-white mb-6">Formulario de inscripción</h2>
+        <div class="flex flex-col lg:flex-row items-center gap-8">
+          <div class="flex items-center justify-center w-28 h-28 rounded-full bg-unag-green/10 shrink-0">
+            <ClipboardList class="w-14 h-14 text-unag-green" />
+          </div>
+          <div class="flex-1 text-center lg:text-left">
+            <p class="text-unag-gray dark:text-white/70 text-sm mb-6">
+              Completa el formulario de inscripción para participar en el {noSimposioProcesos} Simposio de
+              Ingeniería de Procesos y el {noSimposioAlimentos} Simposio de Alimentos.
+            </p>
+            <a
+              href="https://forms.gle/gotLa2KBNkX2sKZP9"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-unag-green text-white font-semibold hover:bg-unag-dark-green transition-colors"
+            >
+              Ir al formulario de inscripción
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-black/10 dark:border-white/10">
+        <h2 class="text-2xl font-bold text-unag-dark-green dark:text-white mb-8">Comité organizador</h2>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold text-unag-dark-green dark:text-white mb-4">Coordinadores generales</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            {
+              comiteCoordinadores.map((miembro) => (
+                <div class="flex flex-col items-center text-center">
+                  <img
+                    src={miembro.foto}
+                    alt={miembro.nombre}
+                    class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover mb-3 border-3 border-unag-green"
+                  />
+                  <p class="text-sm font-semibold text-unag-dark-green dark:text-white">{miembro.nombre}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold text-unag-dark-green dark:text-white mb-4">Comité académico</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            {
+              comiteAcademico.map((miembro) => (
+                <div class="flex flex-col items-center text-center">
+                  <img
+                    src={miembro.foto}
+                    alt={miembro.nombre}
+                    class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover mb-3 border-3 border-unag-green"
+                  />
+                  <p class="text-sm font-semibold text-unag-dark-green dark:text-white">{miembro.nombre}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold text-unag-dark-green dark:text-white mb-4">
+            Comité de inscripción y logística
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            {
+              comiteLogistica.map((miembro) => (
+                <div class="flex flex-col items-center text-center">
+                  <img
+                    src={miembro.foto}
+                    alt={miembro.nombre}
+                    class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover mb-3 border-3 border-unag-green"
+                  />
+                  <p class="text-sm font-semibold text-unag-dark-green dark:text-white">{miembro.nombre}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-black/10 dark:border-white/10 text-center">
+        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-unag-green/10 mx-auto mb-4">
+          <Award class="w-8 h-8 text-unag-green" />
+        </div>
+        <h2 class="text-2xl font-bold text-unag-dark-green dark:text-white mb-3">Certificado de participación</h2>
+        <p class="text-unag-gray dark:text-white/70 mb-6 text-sm">
+          Ingresa el código que recibiste para descargar tu certificado en PDF.
+        </p>
+        <SimposioCertificadoModal />
+      </section>
+    </main>
+
+    <footer class="py-8 text-center text-sm text-unag-gray/70 dark:text-white/50 border-t border-black/10 dark:border-white/10">
+      &copy; {new Date().getFullYear()} Universidad Nacional de Agricultura
+    </footer>
+  </body>
+</html>

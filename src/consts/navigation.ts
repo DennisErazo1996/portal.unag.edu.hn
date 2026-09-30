@@ -157,6 +157,14 @@ const NAV_ITEMS: NavItem[] = [
       { type: 'link', label: 'Decreto No. 9-2026', href: '/documents/cgu/decreto-cgu-2026.pdf' },
     ],
   },
+  {
+    type: 'dropdown',
+    label: 'JDU',
+    icon: 'Landmark',
+    children: [
+      { type: 'link', label: 'Actas de Reuniones', href: '/junta-de-direccion-universitaria/actas-de-reuniones' },
+    ],
+  },
 ];
 
 export default NAV_ITEMS;

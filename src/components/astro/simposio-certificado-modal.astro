@@ -1,0 +1,151 @@
+---
+import { Download } from '@lucide/astro';
+
+interface Props {
+  triggerLabel?: string;
+}
+
+const { triggerLabel = 'Descargar mi certificado' } = Astro.props;
+---
+
+<button
+  id="abrirCertificadoModal"
+  type="button"
+  disabled
+  aria-disabled="true"
+  class="inline-flex items-center gap-2 bg-unag-green/50 text-white font-semibold px-6 py-3 rounded-full cursor-not-allowed"
+>
+  <Download class="w-5 h-5" />
+  {triggerLabel}
+</button>
+
+<p class="mt-3 text-sm text-unag-gray dark:text-white/60">
+  La descarga de certificados aún no está disponible. Vuelve a intentarlo más adelante.
+</p>
+
+<div
+  id="certificadoModal"
+  class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+>
+  <div class="relative w-full max-w-md bg-white dark:bg-unag-gray rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-black/10 dark:border-white/10">
+      <h2 class="text-sm font-bold text-unag-dark-green dark:text-white">Descarga tu certificado</h2>
+      <button
+        id="cerrarCertificadoModal"
+        type="button"
+
+        
+        aria-label="Cerrar"
+        class="p-2 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full transition-colors duration-200"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <form id="certificadoForm" class="px-6 py-6 space-y-4">
+      <div>
+        <label for="certificadoCodigo" class="block text-sm font-medium text-unag-gray dark:text-white/80 mb-2">
+          Código de participante
+        </label>
+        <input
+          id="certificadoCodigo"
+          name="codigo"
+          type="text"
+          required
+          autocomplete="off"
+          placeholder="Ej. SIMP-045"
+          class="w-full rounded-lg border border-black/15 dark:border-white/20 bg-transparent px-4 py-2.5 text-unag-gray dark:text-white focus:outline-none focus:ring-2 focus:ring-unag-green"
+        />
+      </div>
+
+      <p id="certificadoError" class="hidden text-sm text-red-600" role="alert"></p>
+
+      <button
+        id="certificadoSubmit"
+        type="submit"
+        class="w-full bg-unag-green hover:bg-unag-dark-green text-white font-semibold px-6 py-2.5 rounded-full transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        Descargar certificado
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function initCertificadoModal(): void {
+    const openBtn = document.getElementById('abrirCertificadoModal');
+    const modal = document.getElementById('certificadoModal');
+    const closeBtn = document.getElementById('cerrarCertificadoModal');
+    const form = document.getElementById('certificadoForm') as HTMLFormElement | null;
+    const input = document.getElementById('certificadoCodigo') as HTMLInputElement | null;
+    const errorEl = document.getElementById('certificadoError');
+    const submitBtn = document.getElementById('certificadoSubmit') as HTMLButtonElement | null;
+
+    if (!openBtn || !modal || !closeBtn || !form || !input || !errorEl || !submitBtn) return;
+
+    const openModal = () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      input.focus();
+    };
+
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      errorEl.classList.add('hidden');
+    };
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.classList.add('hidden');
+
+      const codigo = input.value.trim();
+      if (!codigo) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Verificando...';
+
+      try {
+        const res = await fetch(`/api/certificado?codigo=${encodeURIComponent(codigo)}`);
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          errorEl.textContent = data.error || 'No se pudo descargar el certificado.';
+          errorEl.classList.remove('hidden');
+          return;
+        }
+
+        const blob = await res.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = `certificado-${codigo}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(blobUrl);
+      } catch {
+        errorEl.textContent = 'Error de conexión. Intenta de nuevo.';
+        errorEl.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Descargar certificado';
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initCertificadoModal);
+</script>

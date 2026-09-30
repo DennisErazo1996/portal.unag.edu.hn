@@ -11,9 +11,7 @@ const { triggerLabel = 'Descargar mi certificado' } = Astro.props;
 <button
   id="abrirCertificadoModal"
   type="button"
-  disabled
-  aria-disabled="true"
-  class="inline-flex items-center gap-2 bg-unag-green/50 text-white font-semibold px-6 py-3 rounded-full cursor-not-allowed"
+  class="inline-flex items-center gap-2 bg-unag-green text-white font-semibold px-6 py-3 rounded-full transition-colors duration-200 hover:bg-unag-dark-green"
 >
   <Download class="w-5 h-5" />
   {triggerLabel}
@@ -65,7 +63,7 @@ const { triggerLabel = 'Descargar mi certificado' } = Astro.props;
       <button
         id="certificadoSubmit"
         type="submit"
-        class="w-full bg-unag-green hover:bg-unag-dark-green text-white font-semibold px-6 py-2.5 rounded-full transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+        class="w-full bg-unag-green hover:bg-unag-dark-green text-white font-semibold px-6 py-2.5 rounded-full transition-colors duration-200 "
       >
         Descargar certificado
       </button>

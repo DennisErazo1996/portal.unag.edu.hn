@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { ClipboardList, Award } from '@lucide/astro';
+import { ClipboardList, Award, Clock, MapPin, ChevronDown } from '@lucide/astro';
 import '@/styles/global.css';
 import '@fontsource/montserrat/400.css';
 import '@fontsource/montserrat/500.css';
@@ -42,6 +42,193 @@ const comiteLogistica = [
   { nombre: 'M.Sc. Pablo Antonio Pérez Salinas', foto: `${imgBase}/comite-pablo-perez.jpeg` },
   { nombre: 'M.Sc. Nairoby Sevila Cardoso', foto: `${imgBase}/comite-nairoby-cardoso.jpeg` },
   { nombre: 'M.Sc. Nora Patricia Quan Najera', foto: `${imgBase}/comite-nora-quan.jpeg` },
+];
+
+const programa = [
+  {
+    fecha: 'Miércoles 14 de octubre',
+    subtitulo: 'Actividades previas',
+    eventos: [
+      {
+        hora: '06:00 – 09:30',
+        actividad: 'V Maratón "Muévete más"',
+        responsable:
+          'M.Sc. Pablo Antonio Pérez Salinas, M.Sc. Nora Quan, Ing. Lizzy Alexandra Navarro Cruz, M.Sc. Arlin Daneri Lobo Medina',
+        lugar: 'Edificio de la Policía',
+      },
+      {
+        hora: '08:00 – 12:00',
+        actividad: 'Visita de investigadores de la REDALIM-MIC a APROSACAO y a una Escuela de Campo de Talgua',
+        responsable: 'M.Sc. Nairoby Sevila Cardoso, PhD. Héctor Alonzo Gómez Gómez',
+        lugar: 'Las Tablas, Talgua, Catacamas',
+      },
+      {
+        hora: '10:00 – 15:00',
+        actividad: 'Encuentros deportivos entre estudiantes de 1ro a 4to año de ITA (fútbol)',
+        responsable:
+          'M.Sc. Pablo Antonio Pérez Salinas, Ing. Lizzy Alexandra Navarro Cruz, M.Sc. Katy Marcela Castellanos Reyes, M.Sc. Arlin Daneri Lobo Medina',
+        lugar: 'Campo deportivo UNAG',
+      },
+      {
+        hora: '15:00 – 17:00',
+        actividad: 'Reunión de la red REDALIM-MIC',
+        responsable: 'M.Sc. Francisco Enrique Sánchez Rosales, PhD. Héctor Alonzo Gómez Gómez',
+        lugar: 'Salón de FCT',
+      },
+      {
+        hora: '18:00 – 21:00',
+        actividad: 'Presentación de las candidatas a Madrina de la carrera de Ingeniería en Tecnología Alimentaria',
+        responsable: 'M.Sc. Nora Patricia Quan Najera, M.Sc. Pablo Antonio Pérez Salinas, Estudiantes de 3er año ITA',
+        lugar: 'Escenario H5 UNAG',
+      },
+      {
+        hora: '18:00 – 20:00',
+        actividad: 'Coctel de bienvenida (investigadores de la REDALIM-MIC, autoridades, invitados especiales)',
+        responsable: 'M.Sc. Katy Marcela Castellanos Reyes, Ing. Lizzy Alexandra Navarro Cruz',
+        lugar: 'Salón de video conferencia 2 UNAG',
+      },
+    ],
+  },
+  {
+    fecha: 'Jueves 15 de octubre',
+    subtitulo: 'V Simposio de Ingeniería de Procesos y VII Simposio de Alimentos',
+    eventos: [
+      { hora: '7:30', actividad: 'Inscripción / recepción de donación de alimentos', responsable: 'Personas inscritas en el Simposio', lugar: 'Biblioteca UNAG' },
+      { hora: '8:25', actividad: 'Invocación a Dios', responsable: 'M.Sc. Wilson Alexander Martínez Martínez', lugar: 'Biblioteca UNAG' },
+      { hora: '8:30', actividad: 'Entonación del Himno Nacional de Honduras', responsable: 'Moderador', lugar: 'Biblioteca UNAG' },
+      { hora: '8:35', actividad: 'Palabras de apertura del evento', responsable: 'Rector de la UNAG', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '8:50',
+        actividad: 'Conferencia 1. "Del alimento a la célula: screening de bioactivos protectores contra el estrés oxidativo en patologías hepáticas"',
+        responsable: 'Dra. Natalia Oddone (Uruguay)',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '9:35', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      { hora: '9:40', actividad: 'Receso', responsable: '', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '9:50',
+        actividad: 'Conferencia 2. "Optimización de las cadenas de producción agroindustrial"',
+        responsable: 'Ing. Juan De Dios Chávez (El Salvador)',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '10:35', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '10:40',
+        actividad:
+          'Conferencia 3. "Economía circular y aprovechamiento integral de recursos agroalimentarios: experiencias de investigación en Guatemala"',
+        responsable: 'Dra. Sully M. Cruz (Guatemala)',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '11:25', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      { hora: '11:30', actividad: 'Fotografía oficial del evento', responsable: 'UCI (UNAG)', lugar: '' },
+      { hora: '12:00', actividad: 'Almuerzo', responsable: '', lugar: '' },
+      {
+        hora: '13:00',
+        actividad:
+          'Conferencia 4. "Del campo a la mesa: seguridad y valorización sostenible de subproductos y recursos alimentarios no convencionales"',
+        responsable: 'PhD. María do Ceu Costa (Portugal)',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '13:45', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '13:50',
+        actividad: 'Conferencia 5. "Innovaciones en el manejo poscosecha para mantener la calidad e inocuidad de frutas y hortalizas"',
+        responsable: 'M.Sc. Humberto Ruiz Mejía (El Salvador)',
+        lugar: 'Biblioteca UNAG',
+      },
+      {
+        hora: '15:00',
+        actividad: 'Taller 1. "Uso de la Inteligencia Artificial para simulación de procesos: una herramienta para el análisis"',
+        responsable: 'M.Sc. Olvin Steve Rosales Menjívar (Honduras)',
+        lugar: 'Salón FCT',
+      },
+      {
+        hora: '15:00',
+        actividad: 'Taller 2. "De la investigación a la publicación científica: tipos de artículos, redacción, revistas e indicadores bibliométricos"',
+        responsable: 'REDALIM-MIC: PhD. Ericsson Coy-Barrera (Colombia), Dra. Natalia Oddone (Uruguay), Dra. Valeria Sülsen (Argentina)',
+        lugar: 'Biblioteca UNAG',
+      },
+      {
+        hora: '15:00',
+        actividad: 'Taller 3. "Ética en la investigación científica"',
+        responsable: 'Ph.D. Lorenzo Fuentes Berrio (Colombia)',
+        lugar: 'Salón de video conferencia 1 UNAG',
+      },
+    ],
+  },
+  {
+    fecha: 'Viernes 16 de octubre',
+    subtitulo: 'Conferencias magistrales',
+    eventos: [
+      { hora: '7:40', actividad: 'Inscripción / recepción de donación de alimentos', responsable: 'Personas inscritas en el Simposio', lugar: 'Biblioteca UNAG' },
+      { hora: '8:30', actividad: 'Palabras de inicio', responsable: 'Moderador', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '8:50',
+        actividad: 'Conferencia 6. "Plantas comestibles iberoamericanas: biodiversidad, potencial antimicrobiano y aporte nutricional"',
+        responsable: 'Dra. Valeria Sülsen (Argentina)',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '9:20', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '9:30',
+        actividad: 'Conferencia 7. "Más allá del valor nutricional: propiedades funcionales y aprovechamiento de frutas tropicales"',
+        responsable: 'Dr. Ericsson Coy Barrera (Colombia)',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '10:00', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      { hora: '10:05', actividad: 'Receso', responsable: '', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '10:20',
+        actividad:
+          'Conferencia 8. "Seguridad de las plantas alimenticias no convencionales (PANC), los complementos (SA) y nuevos productos alimenticios: nuevos enfoques para identificar riesgos asociados a ingredientes botánicos"',
+        responsable: 'PhD. María do Ceu Costa (Portugal)',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '11:00', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '11:05',
+        actividad: 'Recorrido por los posters',
+        responsable: 'PhD. Emerson Josué Martínez, estudiantes de IV año de ITA',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '12:00', actividad: 'Almuerzo', responsable: '', lugar: '' },
+      {
+        hora: '13:00',
+        actividad: 'Presentación oral 1. "Evaluación de las propiedades fisicoquímicas y mecánicas de matrices biocompuestas"',
+        responsable: 'Owen Geovany Sabillon Larios, estudiante de IV año de ITA',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '13:15', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '13:25',
+        actividad: 'Presentación oral 2. "Propiedades fisicoquímicas y perfil mineral en harina funcional de Justicia secunda"',
+        responsable: 'Yeisson Isaac Martínez Alas, estudiante de IV año de ITA',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '14:10', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '14:20',
+        actividad: 'Presentación oral 3. "Perfil fisicoquímico y funcional de bebida a base de maíz con ingredientes vegetales"',
+        responsable: 'Angie Giselle López Rodríguez, estudiante de IV año de ITA',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '14:35', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      { hora: '14:40', actividad: 'Receso', responsable: '', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '15:10',
+        actividad: 'Conferencia 9. "Nuevos alimentos; el papel de la ingeniería en alimentos funcionales de nueva generación"',
+        responsable: 'PhD. Jhunior Abraham Marcia (Honduras)',
+        lugar: 'Biblioteca UNAG',
+      },
+      { hora: '15:55', actividad: 'Preguntas', responsable: 'Participantes', lugar: 'Biblioteca UNAG' },
+      {
+        hora: '16:00',
+        actividad: 'Palabras de cierre del evento',
+        responsable: 'PhD. Mario Josué Gonzáles Santos, Decano de la FCT',
+        lugar: 'Biblioteca UNAG',
+      },
+    ],
+  },
 ];
 ---
 
@@ -107,7 +294,7 @@ const comiteLogistica = [
     <main class="flex-1 dark:bg-background">
 
      <div class="max-w-md mx-auto px-4 sm:px-7 py-7">
-       <CuentaRegresiva year='2026' month='oct' day='14' client:only/>
+       <CuentaRegresiva year='2026' month='october' day='14' client:only/>
      </div>
 
       <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -135,6 +322,49 @@ const comiteLogistica = [
             académico y profesional, fomentar redes de colaboración y estimular el desarrollo de soluciones que
             aporten valor a las cadenas agroalimentarias.
           </p>
+        </div>
+      </section>
+
+      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-black/10 dark:border-white/10">
+        <h2 class="text-2xl font-bold text-unag-dark-green dark:text-white mb-8">Programación del evento</h2>
+
+        <div class="space-y-4">
+          {
+            programa.map((dia, index) => (
+              <details class="group rounded-xl border border-black/10 dark:border-white/10 overflow-hidden" open={index === 0}>
+                <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer bg-unag-green/5 dark:bg-white/5 list-none">
+                  <div>
+                    <p class="font-bold text-unag-dark-green dark:text-white">{dia.fecha}</p>
+                    <p class="text-sm text-unag-gray dark:text-white/70">{dia.subtitulo}</p>
+                  </div>
+                  <ChevronDown class="w-5 h-5 text-unag-green shrink-0 transition-transform group-open:rotate-180" />
+                </summary>
+
+                <div class="divide-y divide-black/5 dark:divide-white/5">
+                  {dia.eventos.map((evento) => (
+                    <div class="flex flex-col sm:flex-row gap-2 sm:gap-6 px-5 py-4">
+                      <div class="flex items-center gap-2 sm:w-32 shrink-0 text-sm font-semibold text-unag-green">
+                        <Clock class="w-4 h-4 shrink-0" />
+                        {evento.hora}
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-sm font-medium text-unag-dark-green dark:text-white">{evento.actividad}</p>
+                        {evento.responsable && (
+                          <p class="text-sm text-unag-gray dark:text-white/70 mt-1">{evento.responsable}</p>
+                        )}
+                        {evento.lugar && (
+                          <p class="flex items-center gap-1 text-xs text-unag-gray/80 dark:text-white/50 mt-1">
+                            <MapPin class="w-3 h-3 shrink-0" />
+                            {evento.lugar}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            ))
+          }
         </div>
       </section>
 

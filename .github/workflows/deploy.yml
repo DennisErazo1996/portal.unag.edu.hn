@@ -19,6 +19,7 @@ jobs:
           script: |
             echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S -u root bash -c '
             cd /home/unagedu/public_html/unag.edu.hn &&
+            git checkout -- bun.lock &&
             git pull origin main &&
             source /root/.bash_profile &&
             nvm use 22 &&

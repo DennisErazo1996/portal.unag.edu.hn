@@ -3,12 +3,17 @@ export const prerender = true;
 
 import Layout from '@/layouts/main.astro';
 import HeaderPages from '@/components/astro/ui/header-bg-pages.astro';
-import { actasJdu } from '@/consts/actas-jdu';
+import { actasJduOrdinarias, actasJduExtraordinarias } from '@/consts/actas-jdu';
 import ArchivoCard from '@/components/astro/ui/archivo-card.astro';
 
 const content = {
     title: 'Actas de Reuniones - JDU | UNAG'
 }
+
+const secciones = [
+    { id: 'sesiones-ordinarias', titulo: 'Sesiones Ordinarias', actas: actasJduOrdinarias },
+    { id: 'sesiones-extraordinarias', titulo: 'Sesiones Extraordinarias', actas: actasJduExtraordinarias },
+];
 ---
 
 <Layout content={content}>
@@ -24,20 +29,21 @@ const content = {
             <p class="text-unag-dark-green dark:text-white mb-4 text-sm">Estas actas son fundamentales para mantener un registro transparente y accesible de las actividades y decisiones de la JDU, permitiendo a los miembros de la comunidad universitaria estar informados sobre los acuerdos y las iniciativas de la dirección universitaria.</p>
         </div>
 
-        <div class="space-y-4">
-            {actasJdu.length > 0 ? (
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {actasJdu.map((doc) => (
-                        <ArchivoCard
-                            titulo={doc.title}
-                            fecha={doc.date}
-                            archivo={doc.url}
-                        />
-                    ))}
+        <div class="space-y-16">
+            {secciones.map((seccion) => (
+                <div id={seccion.id} class="space-y-6 scroll-mt-24">
+                    <h2 class="text-2xl font-bold text-unag-dark-green dark:text-white">{seccion.titulo}</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {seccion.actas.map((doc) => (
+                            <ArchivoCard
+                                titulo={doc.title}
+                                fecha={doc.date}
+                                archivo={doc.url}
+                            />
+                        ))}
+                    </div>
                 </div>
-            ) : (
-                <p class="text-center text-gray-500 dark:text-gray-400 py-12">Próximamente se publicarán las actas de reuniones de la JDU.</p>
-            )}
+            ))}
         </div>
     </section>
 </Layout>

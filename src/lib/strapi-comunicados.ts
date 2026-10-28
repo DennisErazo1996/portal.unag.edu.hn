@@ -1,6 +1,36 @@
 import { marked } from 'marked';
 
-const BASE = import.meta.env.STRAPI_URL || import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337';
+// El editor de Strapi suele dejar espacios/&nbsp; dentro de los ** (ej. "** texto **")
+// o puntuación pegada ("**Fecha:**15"), casos que CommonMark no reconoce como negrita.
+// Esta extensión acepta esos casos y saca los espacios fuera del <strong>.
+marked.use({
+  extensions: [
+    {
+      name: 'lenientStrong',
+      level: 'inline',
+      start(src: string) {
+        const i = src.indexOf('**');
+        return i < 0 ? undefined : i;
+      },
+      tokenizer(src: string) {
+        const match = /^\*\*(?!\*)(\s*)([\s\S]+?)(\s*)\*\*/.exec(src);
+        if (!match || !match[2].trim()) return;
+        return {
+          type: 'lenientStrong',
+          raw: match[0],
+          before: match[1] ? ' ' : '',
+          after: match[3] ? ' ' : '',
+          tokens: this.lexer.inlineTokens(match[2]),
+        };
+      },
+      renderer(token: any) {
+        return `${token.before}<strong>${this.parser.parseInline(token.tokens)}</strong>${token.after}`;
+      },
+    },
+  ],
+});
+
+const BASE =import.meta.env.STRAPI_URL || import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337';
 const TOKEN = import.meta.env.STRAPI_TOKEN || import.meta.env.VITE_STRAPI_TOKEN || '';
 
 export interface ComunicadoAttachment {

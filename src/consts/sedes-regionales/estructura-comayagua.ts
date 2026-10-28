@@ -89,7 +89,7 @@ export const estructuraAdministrativa: PersonalSedeRegional[] = [
     nombreCompleto: "Gabriela Suyapa Hernández Casco",
     nombre: "Gabriela",
     apellido: "Hernández",
-    cargo: "Coordinadora de Ingeniería Agronómica",
+    cargo: "Coordinadora de Producción y de Ingeniería Agronómica",
     correo: "ghernan@unag.edu.hn",
   },
   {
@@ -106,20 +106,20 @@ export const estructuraAdministrativa: PersonalSedeRegional[] = [
     cargo: "Encargado Regional de SETIC",
     correo: "setic.comayagua@unag.edu.hn",
   },
-  {
-    nombreCompleto: "Wendy Elizabeth Cerrato Altamirano",
-    nombre: "Wendy",
-    apellido: "Cerrato",
-    cargo: "Coordinadora del Área de Producción Vegetal",
-    correo: "coordinacion.vegetal.comayagua@unag.edu.hn",
-  },
-  {
-    nombreCompleto: "Delia Dixiana Molina Martínez",
-    nombre: "Delia",
-    apellido: "Molina",
-    cargo: "Coordinadora del Área de Producción Animal",
-    correo: "coordinacion.animal.comayagua@unag.edu.hn",
-  },
+  // {
+  //   nombreCompleto: "Wendy Elizabeth Cerrato Altamirano",
+  //   nombre: "Wendy",
+  //   apellido: "Cerrato",
+  //   cargo: "Coordinadora del Área de Producción Vegetal",
+  //   correo: "coordinacion.vegetal.comayagua@unag.edu.hn",
+  // },
+  // {
+  //   nombreCompleto: "Delia Dixiana Molina Martínez",
+  //   nombre: "Delia",
+  //   apellido: "Molina",
+  //   cargo: "Coordinadora del Área de Producción Animal",
+  //   correo: "coordinacion.animal.comayagua@unag.edu.hn",
+  // },
 ];
 
 export const personalDocente: PersonalDocenteArea[] = [
